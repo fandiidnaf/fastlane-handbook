@@ -1,0 +1,118 @@
+/* Fastlane Handbook - Flight Control / High-Density Terminal Design */
+
+:root {
+  --sl-color-accent-low: #2a0b14;
+  --sl-color-accent: #e11d48;
+  --sl-color-accent-high: #fda4af;
+
+  --sl-font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --sl-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-bg: #090d16;
+  --sl-color-bg-nav: #090d16e6;
+  --sl-color-bg-sidebar: #0b111e;
+  --sl-color-bg-inline-code: #131c2e;
+  --sl-color-hairline-light: #1e293b;
+  --sl-color-hairline: #172033;
+
+  --sl-color-text: #e2e8f0;
+  --sl-color-text-accent: #f43f5e;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #f1f5f9;
+  --sl-color-gray-2: #cbd5e1;
+  --sl-color-gray-3: #94a3b8;
+  --sl-color-gray-4: #64748b;
+  --sl-color-gray-5: #334155;
+  --sl-color-gray-6: #1e293b;
+  --sl-color-black: #090d16;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #ffe4e6;
+  --sl-color-accent: #e11d48;
+  --sl-color-accent-high: #9f1239;
+
+  --sl-color-bg: #f8fafc;
+  --sl-color-bg-nav: #f8fafce6;
+  --sl-color-bg-sidebar: #f1f5f9;
+  --sl-color-hairline-light: #e2e8f0;
+  --sl-color-hairline: #cbd5e1;
+}
+
+/* Parameter and Badge Components */
+.param-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+}
+
+.param-table th {
+  background-color: var(--sl-color-gray-6);
+  color: var(--sl-color-gray-1);
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 2px solid var(--sl-color-hairline-light);
+  font-family: var(--sl-font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.param-table td {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  vertical-align: top;
+}
+
+.badge-tag {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.72rem;
+  font-family: var(--sl-font-mono);
+  font-weight: 600;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+
+.badge-type {
+  background-color: rgba(6, 182, 212, 0.15);
+  color: #06b6d4;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.badge-required {
+  background-color: rgba(225, 29, 72, 0.15);
+  color: #f43f5e;
+  border: 1px solid rgba(225, 29, 72, 0.3);
+}
+
+.badge-optional {
+  background-color: rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.badge-env {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  font-family: var(--sl-font-mono);
+}
+
+/* Callout & Disclaimer */
+.community-disclaimer {
+  padding: 0.85rem 1.15rem;
+  margin: 1.5rem 0;
+  border-left: 3px solid #e11d48;
+  background-color: rgba(225, 29, 72, 0.08);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.875rem;
+}
+
+.community-disclaimer p {
+  margin: 0;
+  color: var(--sl-color-gray-2);
+}
