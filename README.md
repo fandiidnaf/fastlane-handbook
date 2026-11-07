@@ -2,6 +2,13 @@
 
 An independent, high-density community handbook and complete API reference for [Fastlane](https://github.com/fastlane/fastlane) mobile automation.
 
+[![Live Website](https://img.shields.io/badge/Live%20Docs-fandiidnaf.github.io%2Ffastlane--handbook-e11d48?style=for-the-badge&logo=githubpages&logoColor=white)](https://fandiidnaf.github.io/fastlane-handbook/)
+[![GitHub Discussions](https://img.shields.io/badge/Discussions-Join%20Chat-238636?style=for-the-badge&logo=github)](https://github.com/fandiidnaf/fastlane-handbook/discussions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-30363D?style=for-the-badge)](LICENSE)
+
+> 📖 **Read the Live Documentation:** [https://fandiidnaf.github.io/fastlane-handbook/](https://fandiidnaf.github.io/fastlane-handbook/)  
+> 💬 **Join the Discussion & Ask Questions:** [GitHub Discussions](https://github.com/fandiidnaf/fastlane-handbook/discussions)
+
 > **Disclaimer & Legal Notice:**
 > Fastlane Handbook is an independent, community-created technical handbook authored by fans and automation practitioners. It is **not** an official Fastlane project and is neither affiliated with, maintained by, nor endorsed by Fastlane.
 >
