@@ -18,7 +18,8 @@
   --sl-color-hairline: #21262d;
 
   --sl-color-text: #e6edf3;
-  --sl-color-text-accent: #f43f5e;
+  --sl-color-text-accent: #e11d48;
+  --sl-color-text-invert: #ffffff; /* Crucial: White text when inverted over accent */
   --sl-color-white: #ffffff;
   --sl-color-gray-1: #f0f6fc;
   --sl-color-gray-2: #c9d1d9;
@@ -33,6 +34,7 @@
   --sl-color-accent-low: #ffe4e6;
   --sl-color-accent: #e11d48;
   --sl-color-accent-high: #9f1239;
+  --sl-color-text-invert: #ffffff;
 
   --sl-color-bg: #f6f8fa;
   --sl-color-bg-nav: rgba(246, 248, 250, 0.88);
@@ -47,6 +49,23 @@ header.header {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--sl-color-hairline-light);
+}
+
+/* Left Sidebar: Fix active item container & text contrast */
+.sidebar-content [aria-current='page'],
+.sidebar-content [aria-current='page']:hover,
+.sidebar-content [aria-current='page']:focus,
+[aria-current='page'] {
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  background-color: #e11d48 !important;
+  border-left: 3px solid #fda4af !important;
+  border-radius: 4px !important;
+  padding-left: 0.65rem !important;
+}
+
+.sidebar-content [aria-current='page'] * {
+  color: #ffffff !important;
 }
 
 /* Tactile button hover interactions */
@@ -85,17 +104,34 @@ header.header {
   transform: translateY(-1px) !important;
 }
 
-/* Starlight Card hover polish */
-.card {
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
-  border: 1px solid var(--sl-color-hairline-light) !important;
-  background-color: var(--sl-color-bg-sidebar) !important;
+/* Right Sidebar: Table of Contents (On this page) */
+starlight-toc {
+  font-size: 0.8125rem !important;
 }
 
-.card:hover {
-  transform: translateY(-2px) !important;
-  border-color: rgba(225, 29, 72, 0.4) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+starlight-toc a {
+  color: var(--sl-color-gray-3) !important;
+  transition: color 0.15s ease, border-left-color 0.15s ease !important;
+  border-left: 2px solid transparent !important;
+  border-radius: 0 !important;
+  padding-left: 0.75rem !important;
+  line-height: 1.4 !important;
+}
+
+starlight-toc a:hover {
+  color: var(--sl-color-white) !important;
+}
+
+starlight-toc a[aria-current='true'],
+starlight-toc a[aria-current='true']:hover {
+  color: #f43f5e !important;
+  font-weight: 600 !important;
+  border-left-color: #e11d48 !important;
+}
+
+/* Headings with smooth anchor fragment scrolling */
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: 5.5rem !important;
 }
 
 /* Parameter & Specification Tables (Responsive & Unwrapped) */

@@ -17,6 +17,30 @@ export default defineConfig({
       social: {
         github: 'https://github.com/fastlane/fastlane',
       },
+      head: [
+        {
+          tag: 'script',
+          content: `
+            // Table of Contents Scrollspy Bottom Fix
+            window.addEventListener('scroll', function() {
+              if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+                const toc = document.querySelector('starlight-toc');
+                if (toc) {
+                  const links = toc.querySelectorAll('a');
+                  if (links.length > 0) {
+                    const lastLink = links[links.length - 1];
+                    const current = toc.querySelector('a[aria-current="true"]');
+                    if (current && current !== lastLink) {
+                      current.removeAttribute('aria-current');
+                    }
+                    lastLink.setAttribute('aria-current', 'true');
+                  }
+                }
+              }
+            }, { passive: true });
+          `,
+        },
+      ],
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
