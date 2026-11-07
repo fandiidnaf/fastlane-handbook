@@ -1,0 +1,109 @@
+---
+title: "Standard Single-App Pipeline"
+description: "The straightforward, robust Fastlane workflow for applications targeting a single bundle ID and production store"
+---
+
+Not every mobile project requires multiple flavors, complex tenant configs, or white-label pipelines. The vast majority of mobile applications start as a **standard single app** with a linear deployment lifecycle:
+
+```mermaid
+flowchart LR
+    Dev["Local Dev / Commit"] --> CI["CI Runner (Lint & Test)"]
+    CI --> Beta["Internal Track / TestFlight Beta"]
+    Beta --> QA["QA Sign-Off"]
+    QA --> Release["Production Store Release"]
+```
+
+---
+
+## 1. Minimal Working Setup
+
+A complete, production-ready single-app `Fastfile` requires only three primary lanes: `test`, `beta`, and `release`.
+
+### Android:
+```ruby
+# android/fastlane/Fastfile
+default_platform(:android)
+
+platform :android do
+  desc "Run unit tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Compile release AAB and upload to Internal Testing"
+  lane :beta do
+    test
+    gradle(task: "bundle", build_type: "Release")
+    upload_to_play_store(
+      track: "internal",
+      skip_upload_metadata: true,
+      skip_upload_images: true
+    )
+  end
+
+  desc "Promote existing Internal build to Production"
+  lane :release do
+    upload_to_play_store(
+      track: "internal",
+      track_promote_to: "production",
+      track_promote_release_status: "completed",
+      skip_upload_aab: true,
+      skip_upload_apk: true
+    )
+  end
+end
+```
+
+### iOS:
+```ruby
+# ios/fastlane/Fastfile
+default_platform(:ios)
+
+platform :ios do
+  desc "Run test suite"
+  lane :test do
+    run_tests(scheme: "App")
+  end
+
+  desc "Build and upload to TestFlight"
+  lane :beta do
+    test
+    match(type: "appstore", readonly: is_ci)
+    build_app(scheme: "App", export_method: "app-store")
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
+
+  desc "Submit for App Store Review"
+  lane :release do
+    upload_to_app_store(
+      submit_for_review: true,
+      automatic_release: true
+    )
+  end
+end
+```
+
+---
+
+## 2. Managing Environment Secrets via `.env`
+
+In a single-app setup, avoid hardcoding IDs into files. Keep sensitive keys in a single `.env` file loaded automatically by Fastlane:
+
+```bash
+# .env (Never commit to Git!)
+PLAY_STORE_JSON_KEY_PATH="fastlane/play_store_key.json"
+APP_STORE_CONNECT_API_KEY_KEY_ID="D383X7YKP4"
+APP_STORE_CONNECT_API_KEY_ISSUER_ID="69a6de70-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+APP_STORE_CONNECT_API_KEY_KEY="-----BEGIN PRIVATE KEY-----\n..."
+```
+
+---
+
+## 3. When to Graduate to Flavors & Schemes
+
+Stay with this single-app pipeline until your business needs require:
+- Installing **Debug**, **Staging**, and **Production** apps side-by-side on the same physical phone.
+- Connecting to distinct staging vs production API backends.
+- Different app icons or bundle IDs for internal QA builds.
+
+When you reach that stage, read the [Flavors & Schemes Guide](/fastlane-handbook/architecture/flavors-and-schemes/).
