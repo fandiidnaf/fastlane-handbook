@@ -56,18 +56,18 @@ This action writes the following values to `Actions.lane_context[SharedValues::.
 
 ```ruby
 testfairy(
-            api_key: "...",
-            ipa: "./ipa_file.ipa",
-            comment: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
-          )
+  api_key: "...",
+  ipa: "./ipa_file.ipa",
+  comment: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
+)
 ```
 
 ```ruby
 testfairy(
-            api_key: "...",
-            apk: "../build/app/outputs/apk/qa/release/app-qa-release.apk",
-            comment: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
-           )
+  api_key: "...",
+  apk: "../build/app/outputs/apk/qa/release/app-qa-release.apk",
+  comment: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
+)
 ```
 
 

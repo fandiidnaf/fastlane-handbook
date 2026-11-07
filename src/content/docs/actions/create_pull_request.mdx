@@ -46,14 +46,14 @@ This action writes the following values to `Actions.lane_context[SharedValues::.
 
 ```ruby
 create_pull_request(
-            api_token: "secret",                # optional, defaults to ENV["GITHUB_API_TOKEN"]
-            repo: "fastlane/fastlane",
-            title: "Amazing new feature",
-            head: "my-feature",                 # optional, defaults to current branch name
-            base: "master",                     # optional, defaults to "master"
-            body: "Please pull this in!",       # optional
-            api_url: "http://yourdomain/api/v3" # optional, for GitHub Enterprise, defaults to "https://api.github.com"
-          )
+  api_token: "secret",                # optional, defaults to ENV["GITHUB_API_TOKEN"]
+  repo: "fastlane/fastlane",
+  title: "Amazing new feature",
+  head: "my-feature",                 # optional, defaults to current branch name
+  base: "master",                     # optional, defaults to "master"
+  body: "Please pull this in!",       # optional
+  api_url: "http://yourdomain/api/v3" # optional, for GitHub Enterprise, defaults to "https://api.github.com"
+)
 ```
 
 

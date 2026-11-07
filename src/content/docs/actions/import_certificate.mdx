@@ -38,23 +38,23 @@ import_certificate(certificate_path: "certs/AppleWWDRCA6.cer")
 
 ```ruby
 import_certificate(
-            certificate_path: "certs/dist.p12",
-            certificate_password: ENV["CERTIFICATE_PASSWORD"] || "default"
-          )
+  certificate_path: "certs/dist.p12",
+  certificate_password: ENV["CERTIFICATE_PASSWORD"] || "default"
+)
 ```
 
 ```ruby
 import_certificate(
-            certificate_path: "certs/development.cer"
-          )
+  certificate_path: "certs/development.cer"
+)
 ```
 
 ```ruby
 import_certificate(
-            certificate_path: "certs/dist.p12",
-            certificate_password: ENV["CERTIFICATE_PASSWORD"] || "default",
-            certificate_format: "pkcs12"
-          )
+  certificate_path: "certs/dist.p12",
+  certificate_password: ENV["CERTIFICATE_PASSWORD"] || "default",
+  certificate_format: "pkcs12"
+)
 ```
 
 

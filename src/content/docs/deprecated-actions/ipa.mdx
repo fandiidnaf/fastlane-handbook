@@ -49,19 +49,19 @@ This action writes the following values to `Actions.lane_context[SharedValues::.
 
 ```ruby
 ipa(
-            workspace: "MyApp.xcworkspace",
-            configuration: "Debug",
-            scheme: "MyApp",
-            # (optionals)
-            clean: true,                     # This means "Do Clean". Cleans project before building (the default if not specified).
-            destination: "path/to/dir",      # Destination directory. Defaults to current directory.
-            ipa: "my-app.ipa",               # specify the name of the .ipa file to generate (including file extension)
-            xcargs: "MY_ADHOC=0",            # pass additional arguments to xcodebuild when building the app.
-            embed: "my.mobileprovision",     # Sign .ipa file with .mobileprovision
-            identity: "MyIdentity",          # Identity to be used along with --embed
-            sdk: "10.0",                     # use SDK as the name or path of the base SDK when building the project.
-            archive: true                    # this means "Do Archive". Archive project after building (the default if not specified).
-          )
+  workspace: "MyApp.xcworkspace",
+  configuration: "Debug",
+  scheme: "MyApp",
+  # (optionals)
+  clean: true,                     # This means "Do Clean". Cleans project before building (the default if not specified).
+  destination: "path/to/dir",      # Destination directory. Defaults to current directory.
+  ipa: "my-app.ipa",               # specify the name of the .ipa file to generate (including file extension)
+  xcargs: "MY_ADHOC=0",            # pass additional arguments to xcodebuild when building the app.
+  embed: "my.mobileprovision",     # Sign .ipa file with .mobileprovision
+  identity: "MyIdentity",          # Identity to be used along with --embed
+  sdk: "10.0",                     # use SDK as the name or path of the base SDK when building the project.
+  archive: true                    # this means "Do Archive". Archive project after building (the default if not specified).
+)
 ```
 
 

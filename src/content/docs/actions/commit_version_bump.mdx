@@ -53,45 +53,45 @@ commit_version_bump
 
 ```ruby
 commit_version_bump(
-            message: "Version Bump",                    # create a commit with a custom message
-            xcodeproj: "./path/to/MyProject.xcodeproj"  # optional, if you have multiple Xcode project files, you must specify your main project here
-          )
+  message: "Version Bump",                    # create a commit with a custom message
+  xcodeproj: "./path/to/MyProject.xcodeproj"  # optional, if you have multiple Xcode project files, you must specify your main project here
+)
 ```
 
 ```ruby
 commit_version_bump(
-            settings: true # Include Settings.bundle/Root.plist
-          )
+  settings: true # Include Settings.bundle/Root.plist
+)
 ```
 
 ```ruby
 commit_version_bump(
-            settings: "About.plist" # Include Settings.bundle/About.plist
-          )
+  settings: "About.plist" # Include Settings.bundle/About.plist
+)
 ```
 
 ```ruby
 commit_version_bump(
-            settings: %w[About.plist Root.plist] # Include more than one plist from Settings.bundle
-          )
+  settings: %w[About.plist Root.plist] # Include more than one plist from Settings.bundle
+)
 ```
 
 ```ruby
 commit_version_bump(
-            include: %w[package.json custom.cfg] # include other updated files as part of the version bump
-          )
+  include: %w[package.json custom.cfg] # include other updated files as part of the version bump
+)
 ```
 
 ```ruby
 commit_version_bump(
-            ignore: /OtherProject/ # ignore files matching a regular expression
-          )
+  ignore: /OtherProject/ # ignore files matching a regular expression
+)
 ```
 
 ```ruby
 commit_version_bump(
-            no_verify: true           # optional, default: false
-          )
+  no_verify: true           # optional, default: false
+)
 ```
 
 

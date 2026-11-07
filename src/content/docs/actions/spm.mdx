@@ -44,37 +44,37 @@ spm
 
 ```ruby
 spm(
-            command: "build",
-            scratch_path: "./build",
-            configuration: "release"
-          )
+  command: "build",
+  scratch_path: "./build",
+  configuration: "release"
+)
 ```
 
 ```ruby
 spm(
-            command: "generate-xcodeproj",
-            xcconfig: "Package.xcconfig"
-          )
+  command: "generate-xcodeproj",
+  xcconfig: "Package.xcconfig"
+)
 ```
 
 ```ruby
 spm(
-            command: "test",
-            parallel: true
-          )
+  command: "test",
+  parallel: true
+)
 ```
 
 ```ruby
 spm(
-            simulator: "iphonesimulator"
-          )
+  simulator: "iphonesimulator"
+)
 ```
 
 ```ruby
 spm(
-            simulator: "macosx",
-            simulator_arch: "arm64"
-          )
+  simulator: "macosx",
+  simulator_arch: "arm64"
+)
 ```
 
 

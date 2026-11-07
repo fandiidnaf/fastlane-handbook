@@ -58,9 +58,18 @@ if (fs.existsSync(docsDeprecatedDir)) {
 }
 fs.mkdirSync(docsDeprecatedDir, { recursive: true });
 
+function stripDeadLinks(str: string): string {
+  if (!str) return '';
+  return str.replace(
+    /\[([^\]]+)\]\(https?:\/\/(?:www\.)?(?:apteligent\.com|hockeyapp\.net|mint\.splunk\.com)[^\)]*\)/gi,
+    '$1'
+  );
+}
+
 function escapeMarkdownTable(str: string): string {
   if (!str) return '';
-  return str
+  const sanitized = stripDeadLinks(str);
+  return sanitized
     .replace(/\\/g, '\\\\')
     .replace(/\{/g, '&#123;')
     .replace(/\}/g, '&#125;')
@@ -72,12 +81,47 @@ function escapeMarkdownTable(str: string): string {
 
 function cleanDetails(str: string): string {
   if (!str) return '';
-  return str
+  const sanitized = stripDeadLinks(str);
+  return sanitized
     .replace(/```([a-z0-9_-]+)\|/gi, '```$1')
     .replace(/```\|/g, '```')
     .replace(/```no-highlight/gi, '```txt')
     .replace(/\{/g, '&#123;')
     .replace(/\}/g, '&#125;');
+}
+
+function cleanRubyExample(code: string): string {
+  if (!code) return '';
+  const rawLines = code.trim().replace(/^```[a-z]*\r?\n?/i, '').replace(/\r?\n?```$/i, '').split(/\r?\n/);
+  if (rawLines.length <= 1) return rawLines[0]?.trim() || '';
+
+  const first = rawLines[0].trim();
+  const last = rawLines[rawLines.length - 1].trim();
+
+  const isOpenBlock = first.endsWith('(') || first.endsWith('{') || first.endsWith('[') || /\bdo(\s*\|[^|]*\|)?\s*$/.test(first);
+  const isCloseBlock = last === ')' || last === '}' || last === ']' || last === 'end' || last === ');';
+
+  if (rawLines.length > 2 && isOpenBlock && isCloseBlock) {
+    const middle = rawLines.slice(1, -1);
+    const nonBlankMiddle = middle.filter(l => l.trim().length > 0);
+    const minMiddleIndent = nonBlankMiddle.length > 0
+      ? Math.min(...nonBlankMiddle.map(l => l.match(/^(\s*)/)?.[1].length || 0))
+      : 0;
+
+    const formattedMiddle = middle.map(l => {
+      if (l.trim().length === 0) return '';
+      const stripped = l.slice(minMiddleIndent);
+      return '  ' + stripped;
+    });
+
+    return [first, ...formattedMiddle, last].join('\n');
+  }
+
+  // General multiline dedent
+  const nonBlank = rawLines.filter(l => l.trim().length > 0);
+  if (nonBlank.length === 0) return '';
+  const minIndent = Math.min(...nonBlank.map(l => l.match(/^(\s*)/)?.[1].length || 0));
+  return rawLines.map(l => l.trim().length === 0 ? '' : l.slice(minIndent)).join('\n');
 }
 
 let activeCount = 0;
@@ -133,8 +177,8 @@ ${action.output.map(out => `| \`SharedValues::${out.key}\` | ${escapeMarkdownTab
     examplesSection = `## Examples
 
 ${action.examples.map(ex => {
-  const cleanEx = ex.trim().replace(/^```[a-z]*\n?/i, '').replace(/\n?```$/i, '');
-  return `\`\`\`ruby\n${cleanEx}\n\`\`\``;
+  const formatted = cleanRubyExample(ex);
+  return `\`\`\`ruby\n${formatted}\n\`\`\``;
 }).join('\n\n')}
 `;
   }
@@ -147,8 +191,9 @@ ${cleanDetails(action.details)}
 `;
   }
 
-  const safeDesc = action.description && action.description.trim().length > 0
-    ? action.description.trim().replace(/\r?\n/g, ' ').slice(0, 200)
+  const safeRawDesc = stripDeadLinks(action.description || '');
+  const safeDesc = safeRawDesc && safeRawDesc.trim().length > 0
+    ? safeRawDesc.trim().replace(/\r?\n/g, ' ').slice(0, 200)
     : `${action.name} action documentation`;
 
   const deprecationNotice = isDep

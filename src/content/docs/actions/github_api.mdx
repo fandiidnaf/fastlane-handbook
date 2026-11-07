@@ -49,12 +49,12 @@ This action writes the following values to `Actions.lane_context[SharedValues::.
 
 ```ruby
 result = github_api(
-            server_url: "https://api.github.com",
-            api_token: ENV["GITHUB_TOKEN"],
-            http_method: "GET",
-            path: "/repos/:owner/:repo/readme",
-            body: { ref: "master" }
-          )
+  server_url: "https://api.github.com",
+  api_token: ENV["GITHUB_TOKEN"],
+  http_method: "GET",
+  path: "/repos/:owner/:repo/readme",
+  body: { ref: "master" }
+)
 ```
 
 ```ruby

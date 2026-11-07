@@ -38,31 +38,31 @@ This action writes the following values to `Actions.lane_context[SharedValues::.
 
 ```ruby
 jira(
-            url: "https://bugs.yourdomain.com",
-            username: "Your username",
-            password: "Your password or API token",
-            ticket_id: "IOS-123",
-            comment_text: "Text to post as a comment"
-          )
+  url: "https://bugs.yourdomain.com",
+  username: "Your username",
+  password: "Your password or API token",
+  ticket_id: "IOS-123",
+  comment_text: "Text to post as a comment"
+)
 ```
 
 ```ruby
 jira(
-            url: "https://yourserverdomain.com",
-            context_path: "/jira",
-            username: "Your username",
-            password: "Your password or API token",
-            ticket_id: "IOS-123",
-            comment_text: "Text to post as a comment"
-          )
+  url: "https://yourserverdomain.com",
+  context_path: "/jira",
+  username: "Your username",
+  password: "Your password or API token",
+  ticket_id: "IOS-123",
+  comment_text: "Text to post as a comment"
+)
 ```
 
 ```ruby
 jira(
-            ticket_id: "IOS-123",
-            comment_text: "Text to post as a comment",
-            fail_on_error: false
-          )
+  ticket_id: "IOS-123",
+  comment_text: "Text to post as a comment",
+  fail_on_error: false
+)
 ```
 
 

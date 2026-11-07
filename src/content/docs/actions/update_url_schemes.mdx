@@ -31,18 +31,18 @@ Total options available: **3**
 
 ```ruby
 update_url_schemes(
-            path: "path/to/Info.plist",
-            url_schemes: ["com.myapp"]
-          )
+  path: "path/to/Info.plist",
+  url_schemes: ["com.myapp"]
+)
 ```
 
 ```ruby
 update_url_schemes(
-            path: "path/to/Info.plist",
-            update_url_schemes: proc do |schemes|
-              schemes + ["anotherscheme"]
-            end
-          )
+  path: "path/to/Info.plist",
+  update_url_schemes: proc do |schemes|
+    schemes + ["anotherscheme"]
+  end
+)
 ```
 
 

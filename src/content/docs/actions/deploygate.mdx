@@ -46,24 +46,24 @@ This action writes the following values to `Actions.lane_context[SharedValues::.
 
 ```ruby
 deploygate(
-            api_token: "...",
-            user: "target username or organization name",
-            ipa: "./ipa_file.ipa",
-            message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
-            distribution_key: "(Optional) Target Distribution Key",
-            distribution_name: "(Optional) Target Distribution Name"
-          )
+  api_token: "...",
+  user: "target username or organization name",
+  ipa: "./ipa_file.ipa",
+  message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
+  distribution_key: "(Optional) Target Distribution Key",
+  distribution_name: "(Optional) Target Distribution Name"
+)
 ```
 
 ```ruby
 deploygate(
-            api_token: "...",
-            user: "target username or organization name",
-            apk: "./apk_file.apk",
-            message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
-            distribution_key: "(Optional) Target Distribution Key",
-            distribution_name: "(Optional) Target Distribution Name"
-          )
+  api_token: "...",
+  user: "target username or organization name",
+  apk: "./apk_file.apk",
+  message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
+  distribution_key: "(Optional) Target Distribution Key",
+  distribution_name: "(Optional) Target Distribution Name"
+)
 ```
 
 

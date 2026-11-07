@@ -40,30 +40,30 @@ Total options available: **16**
 
 ```ruby
 mailgun(
-            to: "fastlane@krausefx.com",
-            success: true,
-            message: "This is the mail's content"
-          )
+  to: "fastlane@krausefx.com",
+  success: true,
+  message: "This is the mail's content"
+)
 ```
 
 ```ruby
 mailgun(
-            postmaster: "MY_POSTMASTER",
-            apikey: "MY_API_KEY",
-            to: "DESTINATION_EMAIL",
-            from: "EMAIL_FROM_NAME",
-            reply_to: "EMAIL_REPLY_TO",
-            success: true,
-            message: "Mail Body",
-            app_link: "http://www.myapplink.com",
-            ci_build_link: "http://www.mycibuildlink.com",
-            template_path: "HTML_TEMPLATE_PATH",
-            custom_placeholders: {
-              :var1 => 123,
-              :var2 => "string"
-            },
-            attachment: "dirname/filename.ext"
-          )
+  postmaster: "MY_POSTMASTER",
+  apikey: "MY_API_KEY",
+  to: "DESTINATION_EMAIL",
+  from: "EMAIL_FROM_NAME",
+  reply_to: "EMAIL_REPLY_TO",
+  success: true,
+  message: "Mail Body",
+  app_link: "http://www.myapplink.com",
+  ci_build_link: "http://www.mycibuildlink.com",
+  template_path: "HTML_TEMPLATE_PATH",
+  custom_placeholders: {
+    :var1 => 123,
+    :var2 => "string"
+  },
+  attachment: "dirname/filename.ext"
+)
 ```
 
 

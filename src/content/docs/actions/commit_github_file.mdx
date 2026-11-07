@@ -46,13 +46,13 @@ This action writes the following values to `Actions.lane_context[SharedValues::.
 
 ```ruby
 response = commit_github_file(
-            repository_name: "fastlane/fastlane",
-            server_url: "https://api.github.com",
-            api_token: ENV["GITHUB_TOKEN"],
-            message: "Add my new file",
-            branch: "master",
-            path: "assets/my_new_file.xcarchive"
-          )
+  repository_name: "fastlane/fastlane",
+  server_url: "https://api.github.com",
+  api_token: ENV["GITHUB_TOKEN"],
+  message: "Add my new file",
+  branch: "master",
+  path: "assets/my_new_file.xcarchive"
+)
 ```
 
 

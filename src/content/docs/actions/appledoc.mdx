@@ -79,19 +79,19 @@ This action writes the following values to `Actions.lane_context[SharedValues::.
 
 ```ruby
 appledoc(
-            project_name: "MyProjectName",
-            project_company: "Company Name",
-            input: [
-              "MyProjectSources",
-              "MyProjectSourceFile.h"
-            ],
-            ignore: [
-              "ignore/path/1",
-              "ignore/path/2"
-            ],
-            options: "--keep-intermediate-files --search-undocumented-doc",
-            warnings: "--warn-missing-output-path --warn-missing-company-id"
-          )
+  project_name: "MyProjectName",
+  project_company: "Company Name",
+  input: [
+    "MyProjectSources",
+    "MyProjectSourceFile.h"
+  ],
+  ignore: [
+    "ignore/path/1",
+    "ignore/path/2"
+  ],
+  options: "--keep-intermediate-files --search-undocumented-doc",
+  warnings: "--warn-missing-output-path --warn-missing-company-id"
+)
 ```
 
 

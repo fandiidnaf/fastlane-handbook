@@ -35,43 +35,43 @@ zip
 
 ```ruby
 zip(
-            path: "MyApp.app",
-            output_path: "Latest.app.zip"
-          )
+  path: "MyApp.app",
+  output_path: "Latest.app.zip"
+)
 ```
 
 ```ruby
 zip(
-            path: "MyApp.app",
-            output_path: "Latest.app.zip",
-            verbose: false
-          )
+  path: "MyApp.app",
+  output_path: "Latest.app.zip",
+  verbose: false
+)
 ```
 
 ```ruby
 zip(
-            path: "MyApp.app",
-            output_path: "Latest.app.zip",
-            verbose: false,
-            symlinks: true
-          )
+  path: "MyApp.app",
+  output_path: "Latest.app.zip",
+  verbose: false,
+  symlinks: true
+)
 ```
 
 ```ruby
 zip(
-            path: "./",
-            output_path: "Source Code.zip",
-            exclude: [".git/*"]
-          )
+  path: "./",
+  output_path: "Source Code.zip",
+  exclude: [".git/*"]
+)
 ```
 
 ```ruby
 zip(
-            path: "./",
-            output_path: "Swift Code.zip",
-            include: ["**/*.swift"],
-            exclude: ["Package.swift", "vendor/*", "Pods/*"]
-          )
+  path: "./",
+  output_path: "Swift Code.zip",
+  include: ["**/*.swift"],
+  exclude: ["Package.swift", "vendor/*", "Pods/*"]
+)
 ```
 
 

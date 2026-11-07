@@ -97,15 +97,15 @@ build_app(scheme: "MyApp", workspace: "MyApp.xcworkspace")
 
 ```ruby
 build_app(
-            workspace: "MyApp.xcworkspace",
-            configuration: "Debug",
-            scheme: "MyApp",
-            silent: true,
-            clean: true,
-            output_directory: "path/to/dir", # Destination directory. Defaults to current directory.
-            output_name: "my-app.ipa",       # specify the name of the .ipa file to generate (including file extension)
-            sdk: "iOS 11.1"                  # use SDK as the name or path of the base SDK when building the project.
-          )
+  workspace: "MyApp.xcworkspace",
+  configuration: "Debug",
+  scheme: "MyApp",
+  silent: true,
+  clean: true,
+  output_directory: "path/to/dir", # Destination directory. Defaults to current directory.
+  output_name: "my-app.ipa",       # specify the name of the .ipa file to generate (including file extension)
+  sdk: "iOS 11.1"                  # use SDK as the name or path of the base SDK when building the project.
+)
 ```
 
 ```ruby
