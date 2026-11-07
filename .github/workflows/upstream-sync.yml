@@ -54,6 +54,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           LATEST_VERSION=$(bun -e 'console.log(require("./src/data/fastlane-version.json").fastlane_version)')
-          git add src/data/ src/content/docs/actions/
+          git add src/data/ src/content/docs/actions/ src/content/docs/deprecated-actions/
           git commit -m "chore(upstream): sync fastlane actions to v${LATEST_VERSION} [skip ci]"
           git push origin main
