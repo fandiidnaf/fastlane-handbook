@@ -1,15 +1,19 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import mermaid from 'astro-mermaid';
 
 export default defineConfig({
   site: 'https://fastlane-community.github.io',
   base: '/fastlane-handbook',
   integrations: [
+    mermaid({
+      autoTheme: true,
+    }),
     starlight({
       title: 'Fastlane Handbook',
       description: 'The independent, high-density field guide and complete API reference for Fastlane automation',
-      tagline: 'Bridging Fastlane internals and modern mobile engineering (Flutter, React Native, Swift, Kotlin)',
+      tagline: 'Bridging Fastlane internals and modern mobile engineering (Android, iOS, Flutter, React Native)',
       social: {
         github: 'https://github.com/fastlane/fastlane',
       },
@@ -19,7 +23,24 @@ export default defineConfig({
           label: 'Start Here',
           items: [
             { label: 'Introduction & Mission', slug: '' },
+            { label: 'Step-by-Step Learning Roadmap', slug: 'start/step-by-step-roadmap' },
             { label: 'Architecture & Mental Model', slug: 'start/architecture' },
+          ],
+        },
+        {
+          label: 'Mobile Platform Guides',
+          items: [
+            { label: 'Native Android (Kotlin / Gradle)', slug: 'platforms/android' },
+            { label: 'Native iOS (Swift / Xcode)', slug: 'platforms/ios' },
+            { label: 'Flutter (Dart / Hybrid)', slug: 'platforms/flutter' },
+            { label: 'React Native (TypeScript / Hermes)', slug: 'platforms/react-native' },
+          ],
+        },
+        {
+          label: 'Architecture & Build Variants',
+          items: [
+            { label: 'Standard Single-App Pipeline', slug: 'architecture/single-app-pipeline' },
+            { label: 'Flavors & Schemes Guide', slug: 'architecture/flavors-and-schemes' },
           ],
         },
         {
@@ -30,9 +51,8 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Production Recipes & Patterns',
+          label: 'Production Recipes & Security',
           items: [
-            { label: 'White-Label Multi-Brand Pipeline', slug: 'recipes/white-label-multi-brand' },
             { label: 'Zero-Rebuild Track Promotion', slug: 'recipes/zero-rebuild-promotion' },
             { label: 'Keystore Decryption & Pre-Flight Guards', slug: 'recipes/signing-and-keystore-security' },
             { label: 'App Store Connect API (.p8)', slug: 'recipes/app-store-connect-api' },
@@ -48,7 +68,13 @@ export default defineConfig({
         },
         {
           label: 'Core Action Reference',
+          collapsed: true,
           autogenerate: { directory: 'actions' },
+        },
+        {
+          label: 'Deprecated Actions (Legacy)',
+          collapsed: true,
+          autogenerate: { directory: 'deprecated-actions' },
         },
       ],
     }),
