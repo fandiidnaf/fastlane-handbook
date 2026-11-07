@@ -30,6 +30,7 @@ interface Action {
   return_type: string;
   examples: string[];
   aliases: string[];
+  is_deprecated: boolean;
   source_file: string | null;
   source_url: string | null;
 }
@@ -37,6 +38,7 @@ interface Action {
 const rootDir = process.cwd();
 const actionsPath = path.join(rootDir, 'src/data/fastlane-actions.json');
 const docsActionsDir = path.join(rootDir, 'src/content/docs/actions');
+const docsDeprecatedDir = path.join(rootDir, 'src/content/docs/deprecated-actions');
 
 if (!fs.existsSync(actionsPath)) {
   console.error(`Actions file not found: ${actionsPath}`);
@@ -45,11 +47,16 @@ if (!fs.existsSync(actionsPath)) {
 
 const actions: Action[] = JSON.parse(fs.readFileSync(actionsPath, 'utf8'));
 
-// Clean and recreate actions directory
+// Clean and recreate directories
 if (fs.existsSync(docsActionsDir)) {
   fs.rmSync(docsActionsDir, { recursive: true, force: true });
 }
 fs.mkdirSync(docsActionsDir, { recursive: true });
+
+if (fs.existsSync(docsDeprecatedDir)) {
+  fs.rmSync(docsDeprecatedDir, { recursive: true, force: true });
+}
+fs.mkdirSync(docsDeprecatedDir, { recursive: true });
 
 function escapeMarkdownTable(str: string): string {
   if (!str) return '';
@@ -73,10 +80,16 @@ function cleanDetails(str: string): string {
     .replace(/\}/g, '&#125;');
 }
 
-console.log(`==> Generating MDX docs for ${actions.length} actions...`);
+let activeCount = 0;
+let deprecatedCount = 0;
 
 for (const action of actions) {
-  const filePath = path.join(docsActionsDir, `${action.name}.mdx`);
+  const isDep = action.is_deprecated;
+  const targetDir = isDep ? docsDeprecatedDir : docsActionsDir;
+  const filePath = path.join(targetDir, `${action.name}.mdx`);
+
+  if (isDep) deprecatedCount++;
+  else activeCount++;
 
   const platformsBadge = action.platforms.length > 0
     ? action.platforms.map(p => `\`${p}\``).join(', ')
@@ -138,12 +151,18 @@ ${cleanDetails(action.details)}
     ? action.description.trim().replace(/\r?\n/g, ' ').slice(0, 200)
     : `${action.name} action documentation`;
 
+  const deprecationNotice = isDep
+    ? `:::caution[Deprecated Action]
+This action is marked as **DEPRECATED** in upstream Fastlane. It may no longer be actively maintained or may be superseded by newer tools or native vendor APIs. Review the action source or consider modern alternatives.
+:::\n\n`
+    : '';
+
   const mdxContent = `---
-title: ${JSON.stringify(action.name)}
+title: ${JSON.stringify(action.name + (isDep ? ' [DEPRECATED]' : ''))}
 description: ${JSON.stringify(safeDesc)}
 ---
 
-<div class="community-disclaimer">
+${deprecationNotice}<div class="community-disclaimer">
   <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
 </div>
 
@@ -165,4 +184,4 @@ ${examplesSection}
   fs.writeFileSync(filePath, mdxContent, 'utf8');
 }
 
-console.log(`==> Successfully generated ${actions.length} action documentation pages!`);
+console.log(`==> Extracted: ${activeCount} active actions and ${deprecatedCount} deprecated actions.`);

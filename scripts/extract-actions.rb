@@ -21,6 +21,13 @@ Fastlane::ActionsList.all_actions do |action, name|
     name.to_s
   end
 
+  # Check deprecation
+  is_deprecated = begin
+    Fastlane::Actions.is_deprecated?(action)
+  rescue StandardError
+    false
+  end
+
   # Extract options safely
   options = []
   if action.available_options.is_a?(Array)
@@ -101,6 +108,7 @@ Fastlane::ActionsList.all_actions do |action, name|
     return_type: action.return_type.to_s,
     examples: examples,
     aliases: action_aliases,
+    is_deprecated: is_deprecated,
     source_file: source_file,
     source_url: source_file ? "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/#{source_file}" : nil
   }
@@ -124,6 +132,7 @@ version_info = {
   fastlane_version: Fastlane::VERSION,
   extracted_at: Time.now.utc.iso8601,
   total_actions: extracted_actions.size,
+  deprecated_actions: extracted_actions.count { |a| a[:is_deprecated] },
   upstream_repo: "https://github.com/fastlane/fastlane"
 }
 File.write(version_json_path, JSON.pretty_generate(version_info))
