@@ -116,17 +116,19 @@ starlight-toc a {
   border-radius: 0 !important;
   padding-left: 0.75rem !important;
   line-height: 1.4 !important;
+  text-decoration: none !important;
 }
 
 starlight-toc a:hover {
-  color: var(--sl-color-white) !important;
+  color: #ffffff !important;
 }
 
 starlight-toc a[aria-current='true'],
 starlight-toc a[aria-current='true']:hover {
-  color: #f43f5e !important;
-  font-weight: 600 !important;
-  border-left-color: #e11d48 !important;
+  color: #ffffff !important; /* Pure white text for clear visibility in dark mode */
+  font-weight: 700 !important;
+  border-left: 2px solid #e11d48 !important;
+  background-color: transparent !important;
 }
 
 /* Headings with smooth anchor fragment scrolling */

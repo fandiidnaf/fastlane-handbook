@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 import mermaid from 'astro-mermaid';
 
 export default defineConfig({
-  site: 'https://fastlane-community.github.io',
+  site: 'https://fandiidnaf.github.io',
   base: '/fastlane-handbook',
   integrations: [
     mermaid({
@@ -15,32 +15,8 @@ export default defineConfig({
       description: 'The independent, high-density field guide and complete API reference for Fastlane automation',
       tagline: 'Bridging Fastlane internals and modern mobile engineering (Android, iOS, Flutter, React Native)',
       social: {
-        github: 'https://github.com/fastlane/fastlane',
+        github: 'https://github.com/fandiidnaf/fastlane-handbook',
       },
-      head: [
-        {
-          tag: 'script',
-          content: `
-            // Table of Contents Scrollspy Bottom Fix
-            window.addEventListener('scroll', function() {
-              if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
-                const toc = document.querySelector('starlight-toc');
-                if (toc) {
-                  const links = toc.querySelectorAll('a');
-                  if (links.length > 0) {
-                    const lastLink = links[links.length - 1];
-                    const current = toc.querySelector('a[aria-current="true"]');
-                    if (current && current !== lastLink) {
-                      current.removeAttribute('aria-current');
-                    }
-                    lastLink.setAttribute('aria-current', 'true');
-                  }
-                }
-              }
-            }, { passive: true });
-          `,
-        },
-      ],
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
