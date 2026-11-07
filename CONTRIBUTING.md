@@ -22,7 +22,7 @@ Fastlane Handbook is built with **Bun** and **Astro Starlight**.
 
 ### Prerequisites
 - [Bun](https://bun.sh/) (v1.1 or higher)
-- [Ruby](https://www.ruby-lang.org/) (v3.0+ with Bundler)
+- [Ruby](https://www.ruby-lang.org/) (v3.3+ or v4.0+ with Bundler)
 - [Fastlane](https://docs.fastlane.tools/) gem installed (`gem install fastlane` or `bundle install`)
 
 ### Setup Instructions
