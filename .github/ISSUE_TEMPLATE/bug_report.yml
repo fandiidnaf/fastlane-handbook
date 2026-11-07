@@ -1,0 +1,40 @@
+name: Bug Report / Documentation Inaccuracy
+description: Report an error, broken link, or inaccurate parameter schema in Fastlane Handbook.
+labels: ["bug", "documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an inaccuracy or bug in Fastlane Handbook. Please provide as much detail as possible.
+  - type: input
+    id: affected-url
+    attributes:
+      label: Affected Page URL or File Path
+      description: What page or file contains the bug?
+      placeholder: "e.g., https://fandiidnaf.github.io/fastlane-handbook/actions/upload_to_play_store/ or src/content/docs/recipes/zero-rebuild-promotion.mdx"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the Issue
+      description: Explain what is incorrect or broken.
+      placeholder: "e.g., The 'track_promote_to' parameter is marked as String, but in Fastlane v2.220+ it also supports..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior or Correct Information
+      description: What should the documentation or code sample say according to Fastlane source code or behavior?
+      placeholder: "e.g., The code sample should show..."
+    validations:
+      required: false
+  - type: input
+    id: fastlane-version
+    attributes:
+      label: Fastlane Version Tested (if applicable)
+      description: Which Fastlane gem version were you testing against?
+      placeholder: "e.g., 2.241.2"
+    validations:
+      required: false

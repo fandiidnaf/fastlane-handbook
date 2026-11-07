@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: GitHub Discussions
+    url: https://github.com/fandiidnaf/fastlane-handbook/discussions
+    about: Ask questions, share ideas, and discuss mobile CI/CD pipelines with fellow mobile engineers.

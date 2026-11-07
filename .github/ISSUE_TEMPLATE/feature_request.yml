@@ -1,0 +1,45 @@
+name: Feature Request / Guide Proposal
+description: Suggest a new platform guide, production recipe, or architecture pattern for Fastlane Handbook.
+labels: ["enhancement", "guide-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea for a missing recipe, new platform guide, or CI/CD pattern? We'd love to hear it!
+  - type: input
+    id: title
+    attributes:
+      label: Proposal Title
+      description: A concise summary of the proposed guide or feature.
+      placeholder: "e.g., Guide for Fastlane with GitHub Actions & AWS Device Farm"
+    validations:
+      required: true
+  - type: dropdown
+    id: target-platform
+    attributes:
+      label: Target Platform
+      description: Which mobile development ecosystem does this proposal target?
+      options:
+        - "Cross-Platform / General"
+        - "Flutter"
+        - "React Native"
+        - "Android (Kotlin/Gradle)"
+        - "iOS (Swift/Xcode)"
+    validations:
+      required: true
+  - type: textarea
+    id: problem-statement
+    attributes:
+      label: Problem Statement
+      description: What challenge or knowledge gap does this recipe solve for mobile developers?
+      placeholder: "e.g., Setting up automated screenshot generation on iOS simulator matrix often fails due to..."
+    validations:
+      required: true
+  - type: textarea
+    id: suggested-solution
+    attributes:
+      label: Proposed Content / Outline
+      description: Outline the steps, code snippets, or configuration needed for this guide.
+      placeholder: "e.g., 1. Lane configuration in Fastfile\n2. Gemfile setup\n3. CI workflow..."
+    validations:
+      required: false
