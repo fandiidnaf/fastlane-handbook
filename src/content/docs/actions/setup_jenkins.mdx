@@ -1,0 +1,58 @@
+---
+title: "setup_jenkins"
+description: "Setup xcodebuild, gym and scan for easier Jenkins integration"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `mac`
+
+> Setup xcodebuild, gym and scan for easier Jenkins integration
+
+## Details
+
+- Adds and unlocks keychains from Jenkins 'Keychains and Provisioning Profiles Plugin'|
+- Sets unlocked keychain to be used by Match|
+- Sets code signing identity from Jenkins 'Keychains and Provisioning Profiles Plugin'|
+- Sets output directory to './output' (gym, scan and backup_xcarchive)|
+- Sets derived data path to './derivedData' (xcodebuild, gym, scan and clear_derived_data, carthage)|
+- Produce result bundle (gym and scan)|
+>|
+This action helps with Jenkins integration. Creates own derived data for each job. All build results like IPA files and archives will be stored in the `./output` directory.
+The action also works with [Keychains and Provisioning Profiles Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Keychains+and+Provisioning+Profiles+Plugin), the selected keychain will be automatically unlocked and the selected code signing identity will be used.
+[Match](https://docs.fastlane.tools/actions/match/) will be also set up to use the unlocked keychain and set in read-only mode, if its environment variables were not yet defined.
+By default this action will only work when _fastlane_ is executed on a CI system.
+
+## Parameters & Options
+
+Total options available: **11**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `force` | `Fastlane::Boolean` | `FL_SETUP_JENKINS_FORCE` | `false` | **Yes** | Force setup, even if not executed by Jenkins |
+| `unlock_keychain` | `Fastlane::Boolean` | `FL_SETUP_JENKINS_UNLOCK_KEYCHAIN` | `true` | **Yes** | Unlocks keychain |
+| `add_keychain_to_search_list` | `String` | `FL_SETUP_JENKINS_ADD_KEYCHAIN_TO_SEARCH_LIST` | `replace` | **Yes** | Add to keychain search list, valid values are true, false, :add, and :replace |
+| `set_default_keychain` | `Fastlane::Boolean` | `FL_SETUP_JENKINS_SET_DEFAULT_KEYCHAIN` | `true` | **Yes** | Set keychain as default |
+| `keychain_path` | `String` | `KEYCHAIN_PATH` | `-` | No | Path to keychain |
+| `keychain_password` | `String` | `KEYCHAIN_PASSWORD` | `-` | **Yes** | Keychain password |
+| `set_code_signing_identity` | `Fastlane::Boolean` | `FL_SETUP_JENKINS_SET_CODE_SIGNING_IDENTITY` | `true` | **Yes** | Set code signing identity from CODE_SIGNING_IDENTITY environment |
+| `code_signing_identity` | `String` | `CODE_SIGNING_IDENTITY` | `-` | No | Code signing identity |
+| `output_directory` | `String` | `FL_SETUP_JENKINS_OUTPUT_DIRECTORY` | `./output` | **Yes** | The directory in which the ipa file should be stored in |
+| `derived_data_path` | `String` | `FL_SETUP_JENKINS_DERIVED_DATA_PATH` | `./derivedData` | **Yes** | The directory where built products and other derived data will go |
+| `result_bundle` | `Fastlane::Boolean` | `FL_SETUP_JENKINS_RESULT_BUNDLE` | `true` | **Yes** | Produce the result bundle describing what occurred will be placed |
+
+
+## Examples
+
+```ruby
+setup_jenkins
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `setup_jenkins.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/setup_jenkins.rb)
+- **Authors**: `bartoszj`

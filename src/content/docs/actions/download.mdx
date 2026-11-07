@@ -1,0 +1,47 @@
+---
+title: "download"
+description: "Download a file from a remote server (e.g. JSON file)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Download a file from a remote server (e.g. JSON file)
+
+## Details
+
+Specify the URL to download and get the content as a return value.
+Automatically parses JSON into a Ruby data structure.
+For more advanced networking code, use the Ruby functions instead: [http://docs.ruby-lang.org/en/2.0.0/Net/HTTP.html](http://docs.ruby-lang.org/en/2.0.0/Net/HTTP.html).
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `url` | `String` | `FL_DOWNLOAD_URL` | `-` | **Yes** | The URL that should be downloaded |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::DOWNLOAD_CONTENT` | The content of the file we just downloaded |
+
+## Examples
+
+```ruby
+data = download(url: "https://host.com/api.json")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `download.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/download.rb)
+- **Authors**: `KrauseFx`

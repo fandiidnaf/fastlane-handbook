@@ -1,0 +1,42 @@
+---
+title: "adb"
+description: "Run ADB Actions"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `android`
+
+> Run ADB Actions
+
+## Details
+
+see adb --help for more details
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `serial` | `String` | `FL_ANDROID_SERIAL` | `-` | **Yes** | Android serial of the device to use for this command |
+| `command` | `String` | `FL_ADB_COMMAND` | `-` | No | All commands you want to pass to the adb command, e.g. `kill-server` |
+| `adb_path` | `String` | `FL_ADB_PATH` | `adb` | No | The path to your `adb` binary (can be left blank if the ANDROID_SDK_ROOT, ANDROID_HOME or ANDROID_SDK environment variable is set) |
+
+
+## Examples
+
+```ruby
+adb(
+            command: "shell ls"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `adb.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/adb.rb)
+- **Authors**: `hjanuschka`

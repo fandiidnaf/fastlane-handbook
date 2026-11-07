@@ -1,0 +1,43 @@
+---
+title: "adb_devices"
+description: "Get an array of Connected android device serials"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `android`
+
+> Get an array of Connected android device serials
+
+## Details
+
+Fetches device list via adb, e.g. run an adb command on all connected devices.
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `adb_path` | `String` | `FL_ADB_PATH` | `adb` | No | The path to your `adb` binary (can be left blank if the ANDROID_SDK_ROOT environment variable is set) |
+
+
+## Examples
+
+```ruby
+adb_devices.each do |device|
+            model = adb(command: "shell getprop ro.product.model",
+                        serial: device.serial).strip
+
+            puts "Model #{model} is connected"
+          end
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `adb_devices.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/adb_devices.rb)
+- **Authors**: `hjanuschka`

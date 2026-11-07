@@ -1,0 +1,43 @@
+---
+title: "number_of_commits"
+description: "Return the number of commits in current git branch"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> Return the number of commits in current git branch
+
+## Details
+
+You can use this action to get the number of commits of this branch. This is useful if you want to set the build number to the number of commits. See `fastlane actions number_of_commits` for more details.
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `all` | `Fastlane::Boolean` | `FL_NUMBER_OF_COMMITS_ALL` | `-` | No | Returns number of all commits instead of current branch |
+
+
+## Examples
+
+```ruby
+increment_build_number(build_number: number_of_commits)
+```
+
+```ruby
+build_number = number_of_commits(all: true)
+          increment_build_number(build_number: build_number)
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `number_of_commits.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/number_of_commits.rb)
+- **Authors**: `onevcat`, `samuelbeek`

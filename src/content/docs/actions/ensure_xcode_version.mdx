@@ -1,0 +1,49 @@
+---
+title: "ensure_xcode_version"
+description: "Ensure the right version of Xcode is used"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Ensure the right version of Xcode is used
+
+## Details
+
+If building your app requires a specific version of Xcode, you can invoke this command before using gym.
+For example, to ensure that a beta version of Xcode is not accidentally selected to build, which would make uploading to TestFlight fail.
+You can either manually provide a specific version using `version:` or you make use of the `.xcode-version` file.
+Using the `strict` parameter, you can either verify the full set of version numbers strictly (i.e. `11.3.1`) or only a subset of them (i.e. `11.3` or `11`).
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `version` | `String` | `FL_ENSURE_XCODE_VERSION` | `-` | No | Xcode version to verify that is selected |
+| `strict` | `Fastlane::Boolean` | `-` | `true` | **Yes** | Should the version be verified strictly (all 3 version numbers), or matching only the given version numbers (i.e. `11.3` == `11.3.x`) |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::FL_ENSURE_XCODE_VERSION` | Xcode version to verify that is selected |
+
+## Examples
+
+```ruby
+ensure_xcode_version(version: "12.5")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `ensure_xcode_version.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ensure_xcode_version.rb)
+- **Authors**: `JaviSoto`, `KrauseFx`

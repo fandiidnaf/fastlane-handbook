@@ -1,0 +1,47 @@
+---
+title: "update_urban_airship_configuration"
+description: "Set [Urban Airship](https://www.urbanairship.com/) plist configuration values"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `push` | **Platforms:** `ios`
+
+> Set [Urban Airship](https://www.urbanairship.com/) plist configuration values
+
+## Details
+
+This action updates the `AirshipConfig.plist` needed to configure the Urban Airship SDK at runtime, allowing keys and secrets to easily be set for the Enterprise and Production versions of the application.
+
+## Parameters & Options
+
+Total options available: **6**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `plist_path` | `String` | `URBAN_AIRSHIP_PLIST_PATH` | `-` | **Yes** | Path to Urban Airship configuration Plist |
+| `development_app_key` | `String` | `URBAN_AIRSHIP_DEVELOPMENT_APP_KEY` | `-` | No | The development app key |
+| `development_app_secret` | `String` | `URBAN_AIRSHIP_DEVELOPMENT_APP_SECRET` | `-` | No | The development app secret |
+| `production_app_key` | `String` | `URBAN_AIRSHIP_PRODUCTION_APP_KEY` | `-` | No | The production app key |
+| `production_app_secret` | `String` | `URBAN_AIRSHIP_PRODUCTION_APP_SECRET` | `-` | No | The production app secret |
+| `detect_provisioning_mode` | `Fastlane::Boolean` | `URBAN_AIRSHIP_DETECT_PROVISIONING_MODE` | `-` | No | Automatically detect provisioning mode |
+
+
+## Examples
+
+```ruby
+update_urban_airship_configuration(
+            plist_path: "AirshipConfig.plist",
+            production_app_key: "PRODKEY",
+            production_app_secret: "PRODSECRET"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `update_urban_airship_configuration.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_urban_airship_configuration.rb)
+- **Authors**: `kcharwood`

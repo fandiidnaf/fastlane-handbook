@@ -1,0 +1,46 @@
+---
+title: "upload_to_play_store_internal_app_sharing"
+description: "Upload binaries to Google Play Internal App Sharing (via _supply_)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `production` | **Platforms:** `android`
+
+> Upload binaries to Google Play Internal App Sharing (via _supply_)
+
+## Details
+
+More information: https://docs.fastlane.tools/actions/upload_to_play_store_internal_app_sharing/
+
+## Parameters & Options
+
+Total options available: **9**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `package_name` | `String` | `SUPPLY_PACKAGE_NAME` | `-` | **Yes** | The package name of the application to use |
+| `json_key` | `String` | `SUPPLY_JSON_KEY` | `-` | No | The path to a Google credentials JSON file (Application Default, Workload Identity, or Service Account), used to authenticate with Google |
+| `json_key_data` | `String` | `SUPPLY_JSON_KEY_DATA` | `-` | No | The raw content of a Google credentials JSON file (Application Default, Workload Identity, or Service Account), used to authenticate with Google |
+| `apk` | `String` | `SUPPLY_APK` | `-` | No | Path to the APK file to upload |
+| `apk_paths` | `Array` | `SUPPLY_APK_PATHS` | `-` | No | An array of paths to APK files to upload |
+| `aab` | `String` | `SUPPLY_AAB` | `-` | No | Path to the AAB file to upload |
+| `aab_paths` | `Array` | `SUPPLY_AAB_PATHS` | `-` | No | An array of paths to AAB files to upload |
+| `root_url` | `String` | `SUPPLY_ROOT_URL` | `-` | No | Root URL for the Google Play API. The provided URL will be used for API calls in place of https://www.googleapis.com/ |
+| `timeout` | `Integer` | `SUPPLY_TIMEOUT` | `300` | No | Timeout for read, open, and send (in seconds) |
+
+
+## Examples
+
+```ruby
+upload_to_play_store_internal_app_sharing
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `upload_to_play_store_internal_app_sharing.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/upload_to_play_store_internal_app_sharing.rb)
+- **Authors**: `andrewhavens`

@@ -1,0 +1,78 @@
+---
+title: "carthage"
+description: "Runs `carthage` for your project"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Runs `carthage` for your project
+
+
+## Parameters & Options
+
+Total options available: **23**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `command` | `String` | `FL_CARTHAGE_COMMAND` | `bootstrap` | **Yes** | Carthage command (one of: build, bootstrap, update, archive) |
+| `dependencies` | `Array` | `-` | `[]` | **Yes** | Carthage dependencies to update, build or bootstrap |
+| `use_ssh` | `Fastlane::Boolean` | `FL_CARTHAGE_USE_SSH` | `-` | No | Use SSH for downloading GitHub repositories |
+| `use_submodules` | `Fastlane::Boolean` | `FL_CARTHAGE_USE_SUBMODULES` | `-` | No | Add dependencies as Git submodules |
+| `use_netrc` | `Fastlane::Boolean` | `FL_CARTHAGE_USE_NETRC` | `-` | No | Use .netrc for downloading frameworks |
+| `use_binaries` | `Fastlane::Boolean` | `FL_CARTHAGE_USE_BINARIES` | `-` | No | Check out dependency repositories even when prebuilt frameworks exist |
+| `no_checkout` | `Fastlane::Boolean` | `FL_CARTHAGE_NO_CHECKOUT` | `-` | No | When bootstrapping Carthage do not checkout |
+| `no_build` | `Fastlane::Boolean` | `FL_CARTHAGE_NO_BUILD` | `-` | No | When bootstrapping Carthage do not build |
+| `no_skip_current` | `Fastlane::Boolean` | `FL_CARTHAGE_NO_SKIP_CURRENT` | `-` | No | Don't skip building the Carthage project (in addition to its dependencies) |
+| `derived_data` | `String` | `FL_CARTHAGE_DERIVED_DATA` | `-` | No | Use derived data folder at path |
+| `verbose` | `Fastlane::Boolean` | `FL_CARTHAGE_VERBOSE` | `-` | No | Print xcodebuild output inline |
+| `platform` | `String` | `FL_CARTHAGE_PLATFORM` | `-` | No | Define which platform to build for |
+| `cache_builds` | `Fastlane::Boolean` | `FL_CARTHAGE_CACHE_BUILDS` | `false` | **Yes** | By default Carthage will rebuild a dependency regardless of whether it's the same resolved version as before. Passing the --cache-builds will cause carthage to avoid rebuilding a dependency if it can |
+| `frameworks` | `Array` | `-` | `[]` | **Yes** | Framework name or names to archive, could be applied only along with the archive command |
+| `output` | `String` | `-` | `-` | No | Output name for the archive, could be applied only along with the archive command. Use following format *.framework.zip |
+| `configuration` | `String` | `FL_CARTHAGE_CONFIGURATION` | `-` | No | Define which build configuration to use when building |
+| `toolchain` | `String` | `FL_CARTHAGE_TOOLCHAIN` | `-` | No | Define which xcodebuild toolchain to use when building |
+| `project_directory` | `String` | `FL_CARTHAGE_PROJECT_DIRECTORY` | `-` | No | Define the directory containing the Carthage project |
+| `new_resolver` | `Fastlane::Boolean` | `FL_CARTHAGE_NEW_RESOLVER` | `-` | No | Use new resolver when resolving dependency graph |
+| `log_path` | `String` | `FL_CARTHAGE_LOG_PATH` | `-` | No | Path to the xcode build output |
+| `use_xcframeworks` | `Fastlane::Boolean` | `FL_CARTHAGE_USE_XCFRAMEWORKS` | `false` | **Yes** | Create xcframework bundles instead of one framework per platform (requires Xcode 12+) |
+| `archive` | `Fastlane::Boolean` | `FL_CARTHAGE_ARCHIVE` | `false` | **Yes** | Archive built frameworks from the current project |
+| `executable` | `String` | `FL_CARTHAGE_EXECUTABLE` | `carthage` | **Yes** | Path to the `carthage` executable on your machine |
+
+
+## Examples
+
+```ruby
+carthage
+```
+
+```ruby
+carthage(
+            frameworks: ["MyFramework1", "MyFramework2"],   # Specify which frameworks to archive (only for the archive command)
+            output: "MyFrameworkBundle.framework.zip",      # Specify the output archive name (only for the archive command)
+            command: "bootstrap",                           # One of: build, bootstrap, update, archive. (default: bootstrap)
+            dependencies: ["Alamofire", "Notice"],          # Specify which dependencies to update or build (only for update, build and bootstrap commands)
+            use_ssh: false,                                 # Use SSH for downloading GitHub repositories.
+            use_submodules: false,                          # Add dependencies as Git submodules.
+            use_binaries: true,                             # Check out dependency repositories even when prebuilt frameworks exist
+            no_build: false,                                # When bootstrapping Carthage do not build
+            no_skip_current: false,                         # Don't skip building the current project (only for frameworks)
+            verbose: false,                                 # Print xcodebuild output inline
+            platform: "all",                                # Define which platform to build for (one of ‘all’, ‘Mac’, ‘iOS’, ‘watchOS’, ‘tvOS‘, or comma-separated values of the formers except for ‘all’)
+            configuration: "Release",                       # Build configuration to use when building
+            cache_builds: true,                             # By default Carthage will rebuild a dependency regardless of whether its the same resolved version as before.
+            toolchain: "com.apple.dt.toolchain.Swift_2_3",  # Specify the xcodebuild toolchain
+            new_resolver: false,                            # Use the new resolver to resolve dependency graph
+            log_path: "carthage.log"                        # Path to the xcode build output
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `carthage.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/carthage.rb)
+- **Authors**: `bassrock`, `petester42`, `jschmid`, `JaviSoto`, `uny`, `phatblat`, `bfcrampton`, `antondomashnev`, `gbrhaz`

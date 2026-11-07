@@ -1,0 +1,42 @@
+---
+title: "git_remote_branch"
+description: "Returns the name of the current git remote default branch"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> Returns the name of the current git remote default branch
+
+## Details
+
+If no default remote branch could be found, this action will return nil. This is a wrapper for the internal action Actions.git_default_remote_branch_name
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `remote_name` | `String` | `FL_REMOTE_REPOSITORY_NAME` | `-` | No | The remote repository to check |
+
+
+## Examples
+
+```ruby
+git_remote_branch # Query git for first available remote name
+```
+
+```ruby
+git_remote_branch(remote_name:"upstream") # Provide a remote name
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `git_remote_branch.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_remote_branch.rb)
+- **Authors**: `SeanMcNeil`

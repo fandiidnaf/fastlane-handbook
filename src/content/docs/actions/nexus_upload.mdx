@@ -1,0 +1,79 @@
+---
+title: "nexus_upload"
+description: "Upload a file to [Sonatype Nexus platform](https://www.sonatype.com)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `beta` | **Platforms:** `ios`, `android`, `mac`
+
+> Upload a file to [Sonatype Nexus platform](https://www.sonatype.com)
+
+
+## Parameters & Options
+
+Total options available: **17**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `file` | `String` | `FL_NEXUS_FILE` | `-` | **Yes** | File to be uploaded to Nexus |
+| `repo_id` | `String` | `FL_NEXUS_REPO_ID` | `-` | **Yes** | Nexus repository id e.g. artefacts |
+| `repo_group_id` | `String` | `FL_NEXUS_REPO_GROUP_ID` | `-` | **Yes** | Nexus repository group id e.g. com.company |
+| `repo_project_name` | `String` | `FL_NEXUS_REPO_PROJECT_NAME` | `-` | **Yes** | Nexus repository commandect name. Only letters, digits, underscores(_), hyphens(-), and dots(.) are allowed |
+| `repo_project_version` | `String` | `FL_NEXUS_REPO_PROJECT_VERSION` | `-` | **Yes** | Nexus repository commandect version |
+| `repo_classifier` | `String` | `FL_NEXUS_REPO_CLASSIFIER` | `-` | No | Nexus repository artifact classifier (optional) |
+| `endpoint` | `String` | `FL_NEXUS_ENDPOINT` | `-` | **Yes** | Nexus endpoint e.g. http://nexus:8081 |
+| `mount_path` | `String` | `FL_NEXUS_MOUNT_PATH` | `/nexus` | No | Nexus mount path (Nexus 3 instances have this configured as empty by default) |
+| `username` | `String` | `FL_NEXUS_USERNAME` | `-` | **Yes** | Nexus username |
+| `password` | `String` | `FL_NEXUS_PASSWORD` | `-` | **Yes** | Nexus password |
+| `ssl_verify` | `Fastlane::Boolean` | `FL_NEXUS_SSL_VERIFY` | `true` | No | Verify SSL |
+| `nexus_version` | `Integer` | `FL_NEXUS_MAJOR_VERSION` | `2` | No | Nexus major version |
+| `verbose` | `Fastlane::Boolean` | `FL_NEXUS_VERBOSE` | `false` | No | Make detailed output |
+| `proxy_username` | `String` | `FL_NEXUS_PROXY_USERNAME` | `-` | No | Proxy username |
+| `proxy_password` | `String` | `FL_NEXUS_PROXY_PASSWORD` | `-` | No | Proxy password |
+| `proxy_address` | `String` | `FL_NEXUS_PROXY_ADDRESS` | `-` | No | Proxy address |
+| `proxy_port` | `String` | `FL_NEXUS_PROXY_PORT` | `-` | No | Proxy port |
+
+
+## Examples
+
+```ruby
+# for Nexus 2
+          nexus_upload(
+            file: "/path/to/file.ipa",
+            repo_id: "artefacts",
+            repo_group_id: "com.fastlane",
+            repo_project_name: "ipa",
+            repo_project_version: "1.13",
+            repo_classifier: "dSYM", # Optional
+            endpoint: "http://localhost:8081",
+            username: "admin",
+            password: "admin123"
+          )
+```
+
+```ruby
+# for Nexus 3
+          nexus_upload(
+            nexus_version: 3,
+            mount_path: "",
+            file: "/path/to/file.ipa",
+            repo_id: "artefacts",
+            repo_group_id: "com.fastlane",
+            repo_project_name: "ipa",
+            repo_project_version: "1.13",
+            repo_classifier: "dSYM", # Optional
+            endpoint: "http://localhost:8081",
+            username: "admin",
+            password: "admin123"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `nexus_upload.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/nexus_upload.rb)
+- **Authors**: `xfreebird`, `mdio`

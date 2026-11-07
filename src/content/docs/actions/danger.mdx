@@ -1,0 +1,61 @@
+---
+title: "danger"
+description: "Runs `danger` for the project"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Runs `danger` for the project
+
+## Details
+
+Formalize your Pull Request etiquette.
+More information: [https://github.com/danger/danger](https://github.com/danger/danger).
+
+## Parameters & Options
+
+Total options available: **14**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `use_bundle_exec` | `Fastlane::Boolean` | `FL_DANGER_USE_BUNDLE_EXEC` | `true` | **Yes** | Use bundle exec when there is a Gemfile presented |
+| `verbose` | `Fastlane::Boolean` | `FL_DANGER_VERBOSE` | `false` | **Yes** | Show more debugging information |
+| `danger_id` | `String` | `FL_DANGER_ID` | `-` | No | The identifier of this Danger instance |
+| `dangerfile` | `String` | `FL_DANGER_DANGERFILE` | `-` | No | The location of your Dangerfile |
+| `github_api_token` | `String` | `FL_DANGER_GITHUB_API_TOKEN` | `-` | No | GitHub API token for danger |
+| `github_enterprise_host` | `String` | `FL_DANGER_GITHUB_ENTERPRISE_HOST` | `-` | No | GitHub host URL for GitHub Enterprise |
+| `github_enterprise_api_base_url` | `String` | `FL_DANGER_GITHUB_ENTERPRISE_API_BASE_URL` | `-` | No | GitHub API base URL for GitHub Enterprise |
+| `fail_on_errors` | `Fastlane::Boolean` | `FL_DANGER_FAIL_ON_ERRORS` | `false` | No | Should always fail the build process, defaults to false |
+| `new_comment` | `Fastlane::Boolean` | `FL_DANGER_NEW_COMMENT` | `false` | No | Makes Danger post a new comment instead of editing its previous one |
+| `remove_previous_comments` | `Fastlane::Boolean` | `FL_DANGER_REMOVE_PREVIOUS_COMMENT` | `false` | No | Makes Danger remove all previous comment and create a new one in the end of the list |
+| `base` | `String` | `FL_DANGER_BASE` | `-` | No | A branch/tag/commit to use as the base of the diff. [master\|dev\|stable] |
+| `head` | `String` | `FL_DANGER_HEAD` | `-` | No | A branch/tag/commit to use as the head. [master\|dev\|stable] |
+| `pr` | `String` | `FL_DANGER_PR` | `-` | No | Run danger on a specific pull request. e.g. "https://github.com/danger/danger/pull/518" |
+| `fail_if_no_pr` | `Fastlane::Boolean` | `FL_DANGER_FAIL_IF_NO_PR` | `false` | **Yes** | Fail Danger execution if no PR is found |
+
+
+## Examples
+
+```ruby
+danger
+```
+
+```ruby
+danger(
+            danger_id: "unit-tests",
+            dangerfile: "tests/MyOtherDangerFile",
+            github_api_token: ENV["GITHUB_API_TOKEN"],
+            verbose: true
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `danger.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/danger.rb)
+- **Authors**: `KrauseFx`

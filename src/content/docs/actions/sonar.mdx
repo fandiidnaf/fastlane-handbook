@@ -1,0 +1,72 @@
+---
+title: "sonar"
+description: "Invokes sonar-scanner to programmatically run SonarQube analysis"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `testing` | **Platforms:** `ios`, `android`, `mac`
+
+> Invokes sonar-scanner to programmatically run SonarQube analysis
+
+## Details
+
+See [http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner](http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) for details.
+It can process unit test results if formatted as junit report as shown in [xctest](https://docs.fastlane.tools/actions/xctest/) action. It can also integrate coverage reports in Cobertura format, which can be transformed into by the [slather](https://docs.fastlane.tools/actions/slather/) action.
+
+## Parameters & Options
+
+Total options available: **17**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `project_configuration_path` | `String` | `FL_SONAR_RUNNER_PROPERTIES_PATH` | `-` | No | The path to your sonar project configuration file; defaults to `sonar-project.properties` |
+| `project_key` | `String` | `FL_SONAR_RUNNER_PROJECT_KEY` | `-` | No | The key sonar uses to identify the project, e.g. `name.gretzki.awesomeApp`. Must either be specified here or inside the sonar project configuration file |
+| `project_name` | `String` | `FL_SONAR_RUNNER_PROJECT_NAME` | `-` | No | The name of the project that gets displayed on the sonar report page. Must either be specified here or inside the sonar project configuration file |
+| `project_version` | `String` | `FL_SONAR_RUNNER_PROJECT_VERSION` | `-` | No | The project's version that gets displayed on the sonar report page. Must either be specified here or inside the sonar project configuration file |
+| `sources_path` | `String` | `FL_SONAR_RUNNER_SOURCES_PATH` | `-` | No | Comma-separated paths to directories containing source files. Must either be specified here or inside the sonar project configuration file |
+| `exclusions` | `String` | `FL_SONAR_RUNNER_EXCLUSIONS` | `-` | No | Comma-separated paths to directories to be excluded from the analysis |
+| `project_language` | `String` | `FL_SONAR_RUNNER_PROJECT_LANGUAGE` | `-` | No | Language key, e.g. objc |
+| `source_encoding` | `String` | `FL_SONAR_RUNNER_SOURCE_ENCODING` | `-` | No | Used encoding of source files, e.g., UTF-8 |
+| `sonar_runner_args` | `String` | `FL_SONAR_RUNNER_ARGS` | `-` | No | Pass additional arguments to sonar-scanner. Be sure to provide the arguments with a leading `-D` e.g. FL_SONAR_RUNNER_ARGS="-Dsonar.verbose=true" |
+| `sonar_login` | `String` | `FL_SONAR_LOGIN` | `-` | No | **DEPRECATED!** Login and password were deprecated in favor of login token. See https://community.sonarsource.com/t/deprecating-sonar-login-and-sonar-password-in-favor-of-sonar-token/95829 for more details - Pass the Sonar Login Token (e.g: xxxxxxprivate_token_XXXXbXX7e) |
+| `sonar_token` | `String` | `FL_SONAR_TOKEN` | `-` | No | Pass the Sonar Token (e.g: xxxxxxprivate_token_XXXXbXX7e) |
+| `sonar_url` | `String` | `FL_SONAR_URL` | `-` | No | Pass the url of the Sonar server |
+| `sonar_organization` | `String` | `FL_SONAR_ORGANIZATION` | `-` | No | Key of the organization on SonarCloud |
+| `branch_name` | `String` | `FL_SONAR_RUNNER_BRANCH_NAME` | `-` | No | Pass the branch name which is getting scanned |
+| `pull_request_branch` | `String` | `FL_SONAR_RUNNER_PULL_REQUEST_BRANCH` | `-` | No | The name of the branch that contains the changes to be merged |
+| `pull_request_base` | `String` | `FL_SONAR_RUNNER_PULL_REQUEST_BASE` | `-` | No | The long-lived branch into which the PR will be merged |
+| `pull_request_key` | `String` | `FL_SONAR_RUNNER_PULL_REQUEST_KEY` | `-` | No | Unique identifier of your PR. Must correspond to the key of the PR in GitHub or TFS |
+
+
+## Examples
+
+```ruby
+sonar(
+            project_key: "name.gretzki.awesomeApp",
+            project_version: "1.0",
+            project_name: "iOS - AwesomeApp",
+            sources_path: File.expand_path("../AwesomeApp")
+          )
+```
+
+```ruby
+sonar(
+            project_key: "name.gretzki.awesomeApp",
+            project_version: "1.0",
+            project_name: "iOS - AwesomeApp",
+            sources_path: File.expand_path("../AwesomeApp"),
+            sonar_organization: "myOrg",
+            sonar_token: "123456abcdef",
+            sonar_url: "https://sonarcloud.io"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `sonar.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/sonar.rb)
+- **Authors**: `c_gretzki`

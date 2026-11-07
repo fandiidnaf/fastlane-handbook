@@ -1,0 +1,74 @@
+---
+title: "slack"
+description: "Send a success/error message to your [Slack](https://slack.com) group"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `notifications` | **Platforms:** `ios`, `android`, `mac`
+
+> Send a success/error message to your [Slack](https://slack.com) group
+
+## Details
+
+Create an Incoming WebHook and export this as `SLACK_URL`. Can send a message to **#channel** (by default), a direct message to **@username** or a message to a private group **group** with success (green) or failure (red) status.
+
+## Parameters & Options
+
+Total options available: **15**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `message` | `String` | `FL_SLACK_MESSAGE` | `-` | No | The message that should be displayed on Slack. This supports the standard Slack markup language |
+| `pretext` | `String` | `FL_SLACK_PRETEXT` | `-` | No | This is optional text that appears above the message attachment block. This supports the standard Slack markup language |
+| `channel` | `String` | `FL_SLACK_CHANNEL` | `-` | No | #channel or @username |
+| `use_webhook_configured_username_and_icon` | `Fastlane::Boolean` | `FL_SLACK_USE_WEBHOOK_CONFIGURED_USERNAME_AND_ICON` | `false` | No | Use webhook's default username and icon settings? (true/false) |
+| `slack_url` | `String` | `SLACK_URL` | `-` | **Yes** | Create an Incoming WebHook for your Slack group |
+| `username` | `String` | `FL_SLACK_USERNAME` | `fastlane` | No | Overrides the webhook's username property if use_webhook_configured_username_and_icon is false |
+| `icon_url` | `String` | `FL_SLACK_ICON_URL` | `https://fastlane.tools/assets/img/fastlane_icon.png` | No | Specifies a URL of an image to use as the photo of the message. Overrides the webhook's image property if use_webhook_configured_username_and_icon is false |
+| `icon_emoji` | `String` | `FL_SLACK_ICON_EMOJI` | `-` | No | Specifies an emoji (using colon shortcodes, eg. :white_check_mark:) to use as the photo of the message. Overrides the webhook's image property if use_webhook_configured_username_and_icon is false. This parameter takes precedence over icon_url |
+| `thread_ts` | `String` | `FL_SLACK_THREAD_TS` | `-` | No | Specifies a thread timestamp to reply to a message in a thread |
+| `payload` | `Hash` | `FL_SLACK_PAYLOAD` | `&#123;&#125;` | **Yes** | Add additional information to this post. payload must be a hash containing any key with any value |
+| `default_payloads` | `Array` | `FL_SLACK_DEFAULT_PAYLOADS` | `["lane", "test_result", "git_branch", "git_author", "last_git_commit", "last_git_commit_hash"]` | **Yes** | Specifies default payloads to include. Pass an empty array to suppress all the default payloads |
+| `attachment_properties` | `Hash` | `FL_SLACK_ATTACHMENT_PROPERTIES` | `&#123;&#125;` | **Yes** | Merge additional properties in the slack attachment, see https://api.slack.com/docs/attachments |
+| `success` | `Fastlane::Boolean` | `FL_SLACK_SUCCESS` | `true` | No | Was this build successful? (true/false) |
+| `fail_on_error` | `Fastlane::Boolean` | `FL_SLACK_FAIL_ON_ERROR` | `true` | No | Should an error sending the slack notification cause a failure? (true/false) |
+| `link_names` | `Fastlane::Boolean` | `FL_SLACK_LINK_NAMES` | `false` | No | Find and link channel names and usernames (true/false) |
+
+
+## Examples
+
+```ruby
+slack(message: "App successfully released!")
+```
+
+```ruby
+slack(
+            message: "App successfully released!",
+            channel: "#channel",  # Optional, by default will post to the default channel configured for the POST URL.
+            success: true,        # Optional, defaults to true.
+            payload: {            # Optional, lets you specify any number of your own Slack attachments.
+              "Build Date" => Time.new.to_s,
+              "Built by" => "Jenkins",
+            },
+            default_payloads: [:git_branch, :git_author], # Optional, lets you specify default payloads to include. Pass an empty array to suppress all the default payloads.
+            attachment_properties: { # Optional, lets you specify any other properties available for attachments in the slack API (see https://api.slack.com/docs/attachments).
+                                     # This hash is deep merged with the existing properties set using the other properties above. This allows your own fields properties to be appended to the existing fields that were created using the `payload` property for instance.
+              thumb_url: "http://example.com/path/to/thumb.png",
+              fields: [{
+                title: "My Field",
+                value: "My Value",
+                short: true
+              }]
+            }
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `slack.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/slack.rb)
+- **Authors**: `KrauseFx`

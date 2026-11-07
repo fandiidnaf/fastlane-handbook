@@ -1,0 +1,43 @@
+---
+title: "set_info_plist_value"
+description: "Sets value to Info.plist of your project as native Ruby data structures"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`, `mac`
+
+> Sets value to Info.plist of your project as native Ruby data structures
+
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `key` | `String` | `FL_SET_INFO_PLIST_PARAM_NAME` | `-` | **Yes** | Name of key in plist |
+| `subkey` | `String` | `FL_SET_INFO_PLIST_SUBPARAM_NAME` | `-` | No | Name of subkey in plist |
+| `value` | `String` | `FL_SET_INFO_PLIST_PARAM_VALUE` | `-` | **Yes** | Value to setup |
+| `path` | `String` | `FL_SET_INFO_PLIST_PATH` | `-` | **Yes** | Path to plist file you want to update |
+| `output_file_name` | `String` | `FL_SET_INFO_PLIST_OUTPUT_FILE_NAME` | `-` | No | Path to the output file you want to generate |
+
+
+## Examples
+
+```ruby
+set_info_plist_value(path: "./Info.plist", key: "CFBundleIdentifier", value: "com.krausefx.app.beta")
+```
+
+```ruby
+set_info_plist_value(path: "./MyApp-Info.plist", key: "NSAppTransportSecurity", subkey: "NSAllowsArbitraryLoads", value: true, output_file_name: "./Info.plist")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `set_info_plist_value.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/set_info_plist_value.rb)
+- **Authors**: `kohtenko`, `uwehollatz`

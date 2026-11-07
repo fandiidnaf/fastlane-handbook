@@ -1,0 +1,37 @@
+---
+title: "notarize"
+description: "Notarizes a macOS app"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `code_signing` | **Platforms:** `mac`
+
+> Notarizes a macOS app
+
+
+## Parameters & Options
+
+Total options available: **8**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `package` | `String` | `FL_NOTARIZE_PACKAGE` | `-` | **Yes** | Path to package to notarize, e.g. .app bundle or disk image |
+| `skip_stapling` | `Fastlane::Boolean` | `FL_NOTARIZE_SKIP_STAPLING` | `false` | No | Do not staple the notarization ticket to the artifact; useful for single file executables and ZIP archives |
+| `username` | `String` | `FL_NOTARIZE_USERNAME` | `-` | No | Apple ID username |
+| `asc_provider` | `String` | `FL_NOTARIZE_ASC_PROVIDER` | `-` | No | Provider short name for accounts associated with multiple providers |
+| `print_log` | `Fastlane::Boolean` | `FL_NOTARIZE_PRINT_LOG` | `false` | No | Whether to print notarization log file, listing issues on failure and warnings on success |
+| `verbose` | `Fastlane::Boolean` | `FL_NOTARIZE_VERBOSE` | `false` | No | Whether to log requests |
+| `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |
+| `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option) |
+
+
+
+
+## Source & Upstream
+
+- **Gem Action**: `notarize.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/notarize.rb)
+- **Authors**: `zeplin`

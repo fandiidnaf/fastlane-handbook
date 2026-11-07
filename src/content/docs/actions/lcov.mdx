@@ -1,0 +1,42 @@
+---
+title: "lcov"
+description: "Generates coverage data using lcov"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `ios`, `mac`
+
+> Generates coverage data using lcov
+
+
+## Parameters & Options
+
+Total options available: **4**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `project_name` | `String` | `FL_LCOV_PROJECT_NAME` | `-` | **Yes** | Name of the project |
+| `scheme` | `String` | `FL_LCOV_SCHEME` | `-` | **Yes** | Scheme of the project |
+| `arch` | `String` | `FL_LCOV_ARCH` | `i386` | **Yes** | The build arch where will search .gcda files |
+| `output_dir` | `String` | `FL_LCOV_OUTPUT_DIR` | `coverage_reports` | No | The output directory that coverage data will be stored. If not passed will use coverage_reports as default value |
+
+
+## Examples
+
+```ruby
+lcov(
+            project_name: "ProjectName",
+            scheme: "yourScheme",
+            output_dir: "cov_reports" # This value is optional. Default is coverage_reports
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `lcov.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/lcov.rb)
+- **Authors**: `thiagolioy`

@@ -1,0 +1,55 @@
+---
+title: "xcodes"
+description: "Make sure a certain version of Xcode is installed, installing it only if needed"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Make sure a certain version of Xcode is installed, installing it only if needed
+
+## Details
+
+Makes sure a specific version of Xcode is installed. If that's not the case, it will automatically be downloaded by [xcodes](https://github.com/RobotsAndPencils/xcodes).
+This will make sure to use the correct Xcode version for later actions.
+Note that this action depends on [xcodes](https://github.com/RobotsAndPencils/xcodes) CLI, so make sure you have it installed in your environment. For the installation guide, see: https://github.com/RobotsAndPencils/xcodes#installation
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `version` | `String` | `FL_XCODE_VERSION` | `-` | **Yes** | The version number of the version of Xcode to install. Defaults to the value specified in the .xcode-version file |
+| `update_list` | `Fastlane::Boolean` | `FL_XCODES_UPDATE_LIST` | `true` | **Yes** | Whether the list of available Xcode versions should be updated before running the install command |
+| `select_for_current_build_only` | `Fastlane::Boolean` | `FL_XCODES_SELECT_FOR_CURRENT_BUILD_ONLY` | `false` | **Yes** | When true, it won't attempt to install an Xcode version, just find the installed Xcode version that best matches the passed version argument, and select it for the current build steps. It doesn't change the global Xcode version (e.g. via 'xcrun xcode-select'), which would require sudo permissions — when this option is true, this action doesn't require sudo permissions |
+| `binary_path` | `String` | `FL_XCODES_BINARY_PATH` | `-` | **Yes** | Where the xcodes binary lives on your system (full path) |
+| `xcodes_args` | `String` | `FL_XCODES_ARGS` | `-` | No | Pass in xcodes command line arguments directly. When present, other parameters are ignored and only this parameter is used to build the command to be executed |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::XCODES_XCODE_PATH` | The path to the newly installed Xcode version |
+
+## Examples
+
+```ruby
+xcodes(version: "14.1")
+```
+
+```ruby
+xcodes # When missing, the version value defaults to the value specified in the .xcode-version file
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `xcodes.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcodes.rb)
+- **Authors**: `rogerluan`

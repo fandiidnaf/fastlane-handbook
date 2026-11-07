@@ -1,0 +1,66 @@
+---
+title: "spaceship_logs"
+description: "Find, print, and copy Spaceship logs"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Find, print, and copy Spaceship logs
+
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `latest` | `Fastlane::Boolean` | `-` | `true` | **Yes** | Finds only the latest Spaceshop log file if set to true, otherwise returns all |
+| `print_contents` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Prints the contents of the found Spaceship log file(s) |
+| `print_paths` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Prints the paths of the found Spaceship log file(s) |
+| `copy_to_path` | `String` | `-` | `-` | No | Copies the found Spaceship log file(s) to a directory |
+| `copy_to_clipboard` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Copies the contents of the found Spaceship log file(s) to the clipboard |
+
+
+## Examples
+
+```ruby
+spaceship_logs
+```
+
+```ruby
+spaceship_logs(
+            copy_to_path: "/tmp/artifacts"
+          )
+```
+
+```ruby
+spaceship_logs(
+            copy_to_clipboard: true
+          )
+```
+
+```ruby
+spaceship_logs(
+            print_contents: true,
+            print_paths: true
+          )
+```
+
+```ruby
+spaceship_logs(
+            latest: false,
+            print_contents: true,
+            print_paths: true
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `spaceship_logs.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/spaceship_logs.rb)
+- **Authors**: `joshdholtz`

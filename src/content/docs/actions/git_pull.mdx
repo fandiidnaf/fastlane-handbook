@@ -1,0 +1,44 @@
+---
+title: "git_pull"
+description: "Executes a simple git pull command"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> Executes a simple git pull command
+
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `only_tags` | `Fastlane::Boolean` | `-` | `false` | No | Simply pull the tags, and not bring new commits to the current branch from the remote |
+| `rebase` | `Fastlane::Boolean` | `-` | `false` | No | Rebase on top of the remote branch instead of merge |
+
+
+## Examples
+
+```ruby
+git_pull
+```
+
+```ruby
+git_pull(only_tags: true) # only the tags, no commits
+```
+
+```ruby
+git_pull(rebase: true) # use --rebase with pull
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `git_pull.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_pull.rb)
+- **Authors**: `KrauseFx`, `JaviSoto`

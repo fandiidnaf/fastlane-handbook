@@ -1,0 +1,73 @@
+---
+title: "update_app_age_rating"
+description: "Update your app's age rating on App Store Connect"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `app_store_connect` | **Platforms:** `ios`, `mac`
+
+> Update your app's age rating on App Store Connect
+
+## Details
+
+Updates only the age rating of your app on App Store Connect without touching any other metadata, screenshots, or binaries. Useful for CI pipelines that need to update age ratings independently of an app release. Supports both API key and Apple ID authentication.
+
+## Parameters & Options
+
+Total options available: **7**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/) |
+| `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/) |
+| `app_identifier` | `String` | `DELIVER_APP_IDENTIFIER` | `-` | **Yes** | The bundle identifier of your app |
+| `username` | `String` | `DELIVER_USER` | `-` | No | Your Apple ID username |
+| `age_rating_config_path` | `String` | `DELIVER_AGE_RATING_CONFIG_PATH` | `-` | **Yes** | Path to the JSON file containing the age rating configuration |
+| `team_id` | `String` | `FASTLANE_TEAM_ID` | `-` | No | The ID of your App Store Connect team if you're in multiple teams |
+| `team_name` | `String` | `FASTLANE_TEAM_NAME` | `-` | No | The name of your App Store Connect team if you're in multiple teams |
+
+
+## Examples
+
+```ruby
+# Using App Store Connect API key (recommended for CI)
+          update_app_age_rating(
+            api_key_path: "fastlane/api_key.json",
+            app_identifier: "com.example.app",
+            age_rating_config_path: "fastlane/metadata/age_rating.json"
+          )
+```
+
+```ruby
+# Using Apple ID
+          update_app_age_rating(
+            username: "user@example.com",
+            app_identifier: "com.example.app",
+            age_rating_config_path: "fastlane/metadata/age_rating.json",
+            team_id: "ABC123456"
+          )
+```
+
+```ruby
+# Using the api_key hash returned by app_store_connect_api_key action
+          api_key = app_store_connect_api_key(
+            key_id: "D383SF739",
+            issuer_id: "6053b7fe-68a8-4acb-89be-165aa6465141",
+            key_filepath: "./AuthKey_D383SF739.p8"
+          )
+          update_app_age_rating(
+            api_key: api_key,
+            app_identifier: "com.example.app",
+            age_rating_config_path: "fastlane/metadata/age_rating.json"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `update_app_age_rating.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_app_age_rating.rb)
+- **Authors**: `PratikPatil131`

@@ -1,0 +1,48 @@
+---
+title: "git_submodule_update"
+description: "Executes a git submodule update command"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> Executes a git submodule update command
+
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `recursive` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Should the submodules be updated recursively? |
+| `init` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Should the submodules be initiated before update? |
+
+
+## Examples
+
+```ruby
+git_submodule_update
+```
+
+```ruby
+git_submodule_update(recursive: true)
+```
+
+```ruby
+git_submodule_update(init: true)
+```
+
+```ruby
+git_submodule_update(recursive: true, init: true)
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `git_submodule_update.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_submodule_update.rb)
+- **Authors**: `braunico`

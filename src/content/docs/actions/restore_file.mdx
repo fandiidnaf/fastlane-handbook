@@ -1,0 +1,35 @@
+---
+title: "restore_file"
+description: "This action restore your file that was backed up with the `backup_file` action"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> This action restore your file that was backed up with the `backup_file` action
+
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `-` | `-` | **Yes** | Original file name you want to restore |
+
+
+## Examples
+
+```ruby
+restore_file(path: "/path/to/file")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `restore_file.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/restore_file.rb)
+- **Authors**: `gin0606`

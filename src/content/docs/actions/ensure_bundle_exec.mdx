@@ -1,0 +1,35 @@
+---
+title: "ensure_bundle_exec"
+description: "Raises an exception if not using `bundle exec` to run fastlane"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Raises an exception if not using `bundle exec` to run fastlane
+
+## Details
+
+This action will check if you are using `bundle exec` to run fastlane.
+You can put it into `before_all` to make sure that fastlane is ran using the `bundle exec fastlane` command.
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+ensure_bundle_exec
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `ensure_bundle_exec.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ensure_bundle_exec.rb)
+- **Authors**: `rishabhtayal`

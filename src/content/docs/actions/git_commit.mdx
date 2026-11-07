@@ -1,0 +1,50 @@
+---
+title: "git_commit"
+description: "Directly commit the given file with the given message"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> Directly commit the given file with the given message
+
+
+## Parameters & Options
+
+Total options available: **4**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `Array` | `-` | `-` | **Yes** | The file(s) or directory(ies) you want to commit. You can pass an array of multiple file-paths or fileglobs "*.txt" to commit all matching files. The files already staged but not specified and untracked files won't be committed |
+| `message` | `String` | `-` | `-` | **Yes** | The commit message that should be used |
+| `skip_git_hooks` | `Fastlane::Boolean` | `-` | `false` | No | Set to true to pass `--no-verify` to git |
+| `allow_nothing_to_commit` | `Fastlane::Boolean` | `-` | `false` | No | Set to true to allow commit without any git changes in the files you want to commit |
+
+
+## Examples
+
+```ruby
+git_commit(path: "./version.txt", message: "Version Bump")
+```
+
+```ruby
+git_commit(path: ["./version.txt", "./changelog.txt"], message: "Version Bump")
+```
+
+```ruby
+git_commit(path: ["./*.txt", "./*.md"], message: "Update documentation")
+```
+
+```ruby
+git_commit(path: ["./*.txt", "./*.md"], message: "Update documentation", skip_git_hooks: true)
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `git_commit.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_commit.rb)
+- **Authors**: `KrauseFx`

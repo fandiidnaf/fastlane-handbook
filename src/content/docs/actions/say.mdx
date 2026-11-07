@@ -1,0 +1,36 @@
+---
+title: "say"
+description: "This action speaks the given text out loud"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> This action speaks the given text out loud
+
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `text` | `Array` | `-` | `-` | **Yes** | Text to be spoken out loud (as string or array of strings) |
+| `mute` | `Fastlane::Boolean` | `SAY_MUTE` | `false` | **Yes** | If say should be muted with text printed out |
+
+
+## Examples
+
+```ruby
+say("I can speak")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `say.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/say.rb)
+- **Authors**: `KrauseFx`

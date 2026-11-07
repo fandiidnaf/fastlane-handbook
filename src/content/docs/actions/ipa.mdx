@@ -1,0 +1,68 @@
+---
+title: "ipa"
+description: "Easily build and sign your app using shenzhen"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `ios`
+
+> Easily build and sign your app using shenzhen
+
+
+## Parameters & Options
+
+Total options available: **13**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `workspace` | `String` | `IPA_WORKSPACE` | `-` | No | WORKSPACE Workspace (.xcworkspace) file to use to build app (automatically detected in current directory) |
+| `project` | `String` | `IPA_PROJECT` | `-` | No | Project (.xcodeproj) file to use to build app (automatically detected in current directory, overridden by --workspace option, if passed) |
+| `configuration` | `String` | `IPA_CONFIGURATION` | `-` | No | Configuration used to build |
+| `scheme` | `String` | `IPA_SCHEME` | `-` | No | Scheme used to build app |
+| `clean` | `Fastlane::Boolean` | `IPA_CLEAN` | `-` | No | Clean project before building |
+| `archive` | `Fastlane::Boolean` | `IPA_ARCHIVE` | `-` | No | Archive project after building |
+| `destination` | `String` | `IPA_DESTINATION` | `-` | No | Build destination. Defaults to current directory |
+| `embed` | `String` | `IPA_EMBED` | `-` | No | Sign .ipa file with .mobileprovision |
+| `identity` | `String` | `IPA_IDENTITY` | `-` | No | Identity to be used along with --embed |
+| `sdk` | `String` | `IPA_SDK` | `-` | No | Use SDK as the name or path of the base SDK when building the project |
+| `ipa` | `String` | `IPA_IPA` | `-` | No | Specify the name of the .ipa file to generate (including file extension) |
+| `xcconfig` | `String` | `IPA_XCCONFIG` | `-` | No | Use an extra XCCONFIG file to build the app |
+| `xcargs` | `String` | `IPA_XCARGS` | `-` | No | Pass additional arguments to xcodebuild when building the app. Be sure to quote multiple args |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::IPA_OUTPUT_PATH` | The path to the newly generated ipa file |
+| `SharedValues::DSYM_OUTPUT_PATH` | The path to the dsym file |
+
+## Examples
+
+```ruby
+ipa(
+            workspace: "MyApp.xcworkspace",
+            configuration: "Debug",
+            scheme: "MyApp",
+            # (optionals)
+            clean: true,                     # This means "Do Clean". Cleans project before building (the default if not specified).
+            destination: "path/to/dir",      # Destination directory. Defaults to current directory.
+            ipa: "my-app.ipa",               # specify the name of the .ipa file to generate (including file extension)
+            xcargs: "MY_ADHOC=0",            # pass additional arguments to xcodebuild when building the app.
+            embed: "my.mobileprovision",     # Sign .ipa file with .mobileprovision
+            identity: "MyIdentity",          # Identity to be used along with --embed
+            sdk: "10.0",                     # use SDK as the name or path of the base SDK when building the project.
+            archive: true                    # this means "Do Archive". Archive project after building (the default if not specified).
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `ipa.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ipa.rb)
+- **Authors**: `joshdholtz`

@@ -1,0 +1,57 @@
+---
+title: "cocoapods"
+description: "Runs `pod install` for the project"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Runs `pod install` for the project
+
+## Details
+
+If you use [CocoaPods](http://cocoapods.org) you can use the `cocoapods` integration to run `pod install` before building your app.
+
+## Parameters & Options
+
+Total options available: **13**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `repo_update` | `Fastlane::Boolean` | `FL_COCOAPODS_REPO_UPDATE` | `false` | **Yes** | Add `--repo-update` flag to `pod install` command |
+| `clean_install` | `Fastlane::Boolean` | `FL_COCOAPODS_CLEAN_INSTALL` | `false` | **Yes** | Execute a full pod installation ignoring the content of the project cache |
+| `silent` | `Fastlane::Boolean` | `FL_COCOAPODS_SILENT` | `false` | **Yes** | Execute command without logging output |
+| `verbose` | `Fastlane::Boolean` | `FL_COCOAPODS_VERBOSE` | `false` | **Yes** | Show more debugging information |
+| `ansi` | `Fastlane::Boolean` | `FL_COCOAPODS_ANSI` | `true` | **Yes** | Show output with ANSI codes |
+| `use_bundle_exec` | `Fastlane::Boolean` | `FL_COCOAPODS_USE_BUNDLE_EXEC` | `true` | **Yes** | Use bundle exec when there is a Gemfile presented |
+| `podfile` | `String` | `FL_COCOAPODS_PODFILE` | `-` | No | Explicitly specify the path to the Cocoapods' Podfile. You can either set it to the Podfile's path or to the folder containing the Podfile file |
+| `error_callback` | `string_callback` | `-` | `-` | No | A callback invoked with the command output if there is a non-zero exit status |
+| `try_repo_update_on_error` | `Fastlane::Boolean` | `FL_COCOAPODS_TRY_REPO_UPDATE_ON_ERROR` | `false` | No | Retry with --repo-update if action was finished with error |
+| `deployment` | `Fastlane::Boolean` | `FL_COCOAPODS_DEPLOYMENT` | `false` | No | Disallow any changes to the Podfile or the Podfile.lock during installation |
+| `allow_root` | `Fastlane::Boolean` | `FL_COCOAPODS_ALLOW_ROOT` | `false` | No | Allows CocoaPods to run as root |
+| `clean` | `Fastlane::Boolean` | `FL_COCOAPODS_CLEAN` | `true` | No | **DEPRECATED!** (Option renamed as clean_install) Remove SCM directories |
+| `integrate` | `Fastlane::Boolean` | `FL_COCOAPODS_INTEGRATE` | `true` | No | **DEPRECATED!** (Option removed from cocoapods) Integrate the Pods libraries into the Xcode project(s) |
+
+
+## Examples
+
+```ruby
+cocoapods
+```
+
+```ruby
+cocoapods(
+            clean_install: true,
+            podfile: "./CustomPodfile"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `cocoapods.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/cocoapods.rb)
+- **Authors**: `KrauseFx`, `tadpol`, `birmacher`, `Liquidsoul`

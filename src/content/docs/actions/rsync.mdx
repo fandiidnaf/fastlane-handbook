@@ -1,0 +1,43 @@
+---
+title: "rsync"
+description: "Rsync files from :source to :destination"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Rsync files from :source to :destination
+
+## Details
+
+A wrapper around `rsync`, which is a tool that lets you synchronize files, including permissions and so on. For a more detailed information about `rsync`, please see [rsync(1) man page](https://linux.die.net/man/1/rsync).
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `extra` | `String` | `FL_RSYNC_EXTRA` | `-av` | No | Port |
+| `source` | `String` | `FL_RSYNC_SRC` | `-` | **Yes** | source file/folder |
+| `destination` | `String` | `FL_RSYNC_DST` | `-` | **Yes** | destination file/folder |
+
+
+## Examples
+
+```ruby
+rsync(
+            source: "root@host:/tmp/1.txt",
+            destination: "/tmp/local_file.txt"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `rsync.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/rsync.rb)
+- **Authors**: `hjanuschka`

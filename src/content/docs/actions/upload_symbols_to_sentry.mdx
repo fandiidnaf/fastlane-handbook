@@ -1,0 +1,49 @@
+---
+title: "upload_symbols_to_sentry"
+description: "Upload dSYM symbolication files to Sentry"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `ios`
+
+> Upload dSYM symbolication files to Sentry
+
+## Details
+
+This action allows you to upload symbolication files to Sentry. It's extra useful if you use it to download the latest dSYM files from Apple when you use Bitcode.
+
+## Parameters & Options
+
+Total options available: **7**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_host` | `String` | `SENTRY_HOST` | `https://app.getsentry.com/api/0` | No | API host url for Sentry |
+| `api_key` | `String` | `SENTRY_API_KEY` | `-` | No | API key for Sentry |
+| `auth_token` | `String` | `SENTRY_AUTH_TOKEN` | `-` | No | Authentication token for Sentry |
+| `org_slug` | `String` | `SENTRY_ORG_SLUG` | `-` | **Yes** | Organization slug for Sentry project |
+| `project_slug` | `String` | `SENTRY_PROJECT_SLUG` | `-` | **Yes** | Project slug for Sentry |
+| `dsym_path` | `String` | `SENTRY_DSYM_PATH` | `-` | No | Path to your symbols file. For iOS and Mac provide path to app.dSYM.zip |
+| `dsym_paths` | `Array` | `SENTRY_DSYM_PATHS` | `-` | No | Path to an array of your symbols file. For iOS and Mac provide path to app.dSYM.zip |
+
+
+## Examples
+
+```ruby
+upload_symbols_to_sentry(
+            auth_token: "...",
+            org_slug: "...",
+            project_slug: "...",
+            dsym_path: "./App.dSYM.zip"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `upload_symbols_to_sentry.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/upload_symbols_to_sentry.rb)
+- **Authors**: `joshdholtz`

@@ -1,0 +1,77 @@
+---
+title: "produce"
+description: "Alias for the `create_app_online` action"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `app_store_connect` | **Platforms:** `ios`
+
+> Alias for the `create_app_online` action
+
+## Details
+
+Create new apps on App Store Connect and Apple Developer Portal via _produce_.
+If the app already exists, `create_app_online` will not do anything.
+For more information about _produce_, visit its documentation page: [https://docs.fastlane.tools/actions/produce/](https://docs.fastlane.tools/actions/produce/).
+
+## Parameters & Options
+
+Total options available: **19**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `username` | `String` | `PRODUCE_USERNAME` | `-` | **Yes** | Your Apple ID Username |
+| `app_identifier` | `String` | `PRODUCE_APP_IDENTIFIER` | `-` | **Yes** | App Identifier (Bundle ID, e.g. com.krausefx.app) |
+| `bundle_identifier_suffix` | `String` | `PRODUCE_APP_IDENTIFIER_SUFFIX` | `-` | No | App Identifier Suffix (Ignored if App Identifier does not end with .*) |
+| `app_name` | `String` | `PRODUCE_APP_NAME` | `-` | **Yes** | App Name |
+| `app_version` | `String` | `PRODUCE_VERSION` | `-` | No | Initial version number (e.g. '1.0') |
+| `sku` | `String` | `PRODUCE_SKU` | `1794056911` | **Yes** | SKU Number (e.g. '1234') |
+| `platform` | `String` | `PRODUCE_PLATFORM` | `ios` | No | The platform to use (optional) |
+| `platforms` | `Array` | `PRODUCE_PLATFORMS` | `-` | No | The platforms to use (optional) |
+| `language` | `String` | `PRODUCE_LANGUAGE` | `English` | **Yes** | Primary Language (e.g. 'en-US', 'fr-FR') |
+| `company_name` | `String` | `PRODUCE_COMPANY_NAME` | `-` | No | The name of your company. It's used to set company name on App Store Connect team's app pages. Only required if it's the first app you create |
+| `skip_itc` | `String` | `PRODUCE_SKIP_ITC` | `false` | **Yes** | Skip the creation of the app on App Store Connect |
+| `itc_users` | `Array` | `ITC_USERS` | `-` | No | Array of App Store Connect users. If provided, you can limit access to this newly created app for users with the App Manager, Developer, Marketer or Sales roles |
+| `enabled_features` | `String` | `PRODUCE_ENABLED_FEATURES` | `&#123;&#125;` | No | **DEPRECATED!** Please use `enable_services` instead - Array with Spaceship App Services |
+| `enable_services` | `String` | `PRODUCE_ENABLE_SERVICES` | `&#123;&#125;` | **Yes** | Array with Spaceship App Services (e.g. access_wifi: (on\|off), app_attest: (on\|off), app_group: (on\|off), apple_pay: (on\|off), associated_domains: (on\|off), auto_fill_credential: (on\|off), class_kit: (on\|off), declared_age_range: (on\|off), icloud: (legacy\|cloudkit), custom_network_protocol: (on\|off), data_protection: (complete\|unlessopen\|untilfirstauth), extended_virtual_address_space: (on\|off), family_controls: (on\|off), file_provider_testing_mode: (on\|off), fonts: (on\|off), game_center: (ios\|mac), health_kit: (on\|off), hls_interstitial_preview: (on\|off), home_kit: (on\|off), hotspot: (on\|off), in_app_purchase: (on\|off), inter_app_audio: (on\|off), low_latency_hls: (on\|off), managed_associated_domains: (on\|off), maps: (on\|off), multipath: (on\|off), network_extension: (on\|off), nfc_tag_reading: (on\|off), personal_vpn: (on\|off), passbook: (on\|off), push_notification: (on\|off), sign_in_with_apple: (on), siri_kit: (on\|off), system_extension: (on\|off), user_management: (on\|off), vpn_configuration: (on\|off), wallet: (on\|off), wireless_accessory: (on\|off), car_play_audio_app: (on\|off), car_play_messaging_app: (on\|off), car_play_navigation_app: (on\|off), car_play_voip_calling_app: (on\|off), critical_alerts: (on\|off), hotspot_helper: (on\|off), driver_kit: (on\|off), driver_kit_endpoint_security: (on\|off), driver_kit_family_hid_device: (on\|off), driver_kit_family_networking: (on\|off), driver_kit_family_serial: (on\|off), driver_kit_hid_event_service: (on\|off), driver_kit_transport_hid: (on\|off), multitasking_camera_access: (on\|off), sf_universal_link_api: (on\|off), vp9_decoder: (on\|off), music_kit: (on\|off), shazam_kit: (on\|off), communication_notifications: (on\|off), group_activities: (on\|off), health_kit_estimate_recalibration: (on\|off), time_sensitive_notifications: (on\|off)) |
+| `skip_devcenter` | `String` | `PRODUCE_SKIP_DEVCENTER` | `false` | **Yes** | Skip the creation of the app on the Apple Developer Portal |
+| `team_id` | `String` | `PRODUCE_TEAM_ID` | `-` | No | The ID of your Developer Portal team if you're in multiple teams |
+| `team_name` | `String` | `PRODUCE_TEAM_NAME` | `-` | No | The name of your Developer Portal team if you're in multiple teams |
+| `itc_team_id` | `String` | `PRODUCE_ITC_TEAM_ID` | `-` | No | The ID of your App Store Connect team if you're in multiple teams |
+| `itc_team_name` | `String` | `PRODUCE_ITC_TEAM_NAME` | `-` | No | The name of your App Store Connect team if you're in multiple teams |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::PRODUCE_APPLE_ID` | The Apple ID of the newly created app. You probably need it for `deliver` |
+
+## Examples
+
+```ruby
+create_app_online(
+            username: "felix@krausefx.com",
+            app_identifier: "com.krausefx.app",
+            app_name: "MyApp",
+            language: "English",
+            app_version: "1.0",
+            sku: "123",
+            team_name: "SunApps GmbH" # Only necessary when in multiple teams.
+          )
+```
+
+```ruby
+produce   # alias for "create_app_online"
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `produce.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/produce.rb)
+- **Authors**: `KrauseFx`

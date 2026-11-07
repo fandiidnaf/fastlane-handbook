@@ -1,0 +1,74 @@
+---
+title: "deploygate"
+description: "Upload a new build to [DeployGate](https://deploygate.com/)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `beta` | **Platforms:** `ios`, `android`
+
+> Upload a new build to [DeployGate](https://deploygate.com/)
+
+## Details
+
+You can retrieve your username and API token on [your settings page](https://deploygate.com/settings).
+More information about the available options can be found in the [DeployGate Push API document](https://deploygate.com/docs/api).
+
+## Parameters & Options
+
+Total options available: **9**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_token` | `String` | `DEPLOYGATE_API_TOKEN` | `-` | **Yes** | Deploygate API Token |
+| `user` | `String` | `DEPLOYGATE_USER` | `-` | **Yes** | Target username or organization name |
+| `ipa` | `String` | `DEPLOYGATE_IPA_PATH` | `-` | No | Path to your IPA file. Optional if you use the _gym_ or _xcodebuild_ action |
+| `apk` | `String` | `DEPLOYGATE_APK_PATH` | `-` | No | Path to your APK file |
+| `message` | `String` | `DEPLOYGATE_MESSAGE` | `No changelog provided` | **Yes** | Release Notes |
+| `distribution_key` | `String` | `DEPLOYGATE_DISTRIBUTION_KEY` | `-` | No | Target Distribution Key |
+| `release_note` | `String` | `DEPLOYGATE_RELEASE_NOTE` | `-` | No | Release note for distribution page |
+| `disable_notify` | `Fastlane::Boolean` | `DEPLOYGATE_DISABLE_NOTIFY` | `false` | No | Disables Push notification emails |
+| `distribution_name` | `String` | `DEPLOYGATE_DISTRIBUTION_NAME` | `-` | No | Target Distribution Name |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::DEPLOYGATE_URL` | URL of the newly uploaded build |
+| `SharedValues::DEPLOYGATE_REVISION` | auto incremented revision number |
+| `SharedValues::DEPLOYGATE_APP_INFO` | Contains app revision, bundle identifier, etc. |
+
+## Examples
+
+```ruby
+deploygate(
+            api_token: "...",
+            user: "target username or organization name",
+            ipa: "./ipa_file.ipa",
+            message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
+            distribution_key: "(Optional) Target Distribution Key",
+            distribution_name: "(Optional) Target Distribution Name"
+          )
+```
+
+```ruby
+deploygate(
+            api_token: "...",
+            user: "target username or organization name",
+            apk: "./apk_file.apk",
+            message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
+            distribution_key: "(Optional) Target Distribution Key",
+            distribution_name: "(Optional) Target Distribution Name"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `deploygate.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/deploygate.rb)
+- **Authors**: `tnj`, `tomorrowkey`

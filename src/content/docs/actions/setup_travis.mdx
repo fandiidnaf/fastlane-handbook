@@ -1,0 +1,41 @@
+---
+title: "setup_travis"
+description: "Setup the keychain and match to work with Travis CI"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Setup the keychain and match to work with Travis CI
+
+## Details
+
+- Creates a new temporary keychain for use with match|
+- Switches match to `readonly` mode to not create new profiles/cert on CI|
+>|
+This action helps with Travis integration. Add this to the top of your Fastfile if you use Travis.
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `force` | `Fastlane::Boolean` | `FL_SETUP_TRAVIS_FORCE` | `false` | **Yes** | Force setup, even if not executed by travis |
+
+
+## Examples
+
+```ruby
+setup_travis
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `setup_travis.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/setup_travis.rb)
+- **Authors**: `KrauseFx`

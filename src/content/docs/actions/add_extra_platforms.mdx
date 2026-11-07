@@ -1,0 +1,37 @@
+---
+title: "add_extra_platforms"
+description: "Modify the default list of supported platforms"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Modify the default list of supported platforms
+
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `platforms` | `Array` | `-` | `-` | **Yes** | The optional extra platforms to support |
+
+
+## Examples
+
+```ruby
+add_extra_platforms(
+            platforms: [:windows, :neogeo]
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `add_extra_platforms.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/add_extra_platforms.rb)
+- **Authors**: `lacostej`

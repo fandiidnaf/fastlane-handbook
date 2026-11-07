@@ -1,0 +1,43 @@
+---
+title: "validate_play_store_json_key"
+description: "Validate Google credentials JSON for the Google Play Store"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `android`
+
+> Validate Google credentials JSON for the Google Play Store
+
+## Details
+
+Use this action to test and validate your Google credentials JSON file (of type authorized_user, external_account, service_account) used to connect and authenticate with the Google Play API
+
+## Parameters & Options
+
+Total options available: **4**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `json_key` | `String` | `SUPPLY_JSON_KEY` | `-` | No | The path to a Google credentials JSON file (Application Default, Workload Identity, or Service Account), used to authenticate with Google |
+| `json_key_data` | `String` | `SUPPLY_JSON_KEY_DATA` | `-` | No | The raw content of a Google credentials JSON file (Application Default, Workload Identity, or Service Account), used to authenticate with Google |
+| `root_url` | `String` | `SUPPLY_ROOT_URL` | `-` | No | Root URL for the Google Play API. The provided URL will be used for API calls in place of https://www.googleapis.com/ |
+| `timeout` | `Integer` | `SUPPLY_TIMEOUT` | `300` | No | Timeout for read, open, and send (in seconds) |
+
+
+## Examples
+
+```ruby
+validate_play_store_json_key(
+            json_key: 'path/to/you/json/key/file'
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `validate_play_store_json_key.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/validate_play_store_json_key.rb)
+- **Authors**: `janpio`

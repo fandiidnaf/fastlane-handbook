@@ -1,0 +1,43 @@
+---
+title: "flock"
+description: "Send a message to a [Flock](https://flock.com/) group"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `notifications` | **Platforms:** `ios`, `android`, `mac`
+
+> Send a message to a [Flock](https://flock.com/) group
+
+## Details
+
+To obtain the token, create a new [incoming message webhook](https://dev.flock.co/wiki/display/FlockAPI/Incoming+Webhooks) in your Flock admin panel.
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `message` | `String` | `FL_FLOCK_MESSAGE` | `-` | **Yes** | Message text |
+| `token` | `String` | `FL_FLOCK_TOKEN` | `-` | **Yes** | Token for the Flock incoming webhook |
+| `base_url` | `String` | `FL_FLOCK_BASE_URL` | `https://api.flock.co/hooks/sendMessage` | No | Base URL of the Flock incoming message webhook |
+
+
+## Examples
+
+```ruby
+flock(
+            message: "Hello",
+            token: "xxx"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `flock.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/flock.rb)
+- **Authors**: `Manav`

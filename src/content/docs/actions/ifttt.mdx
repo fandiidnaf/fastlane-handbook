@@ -1,0 +1,48 @@
+---
+title: "ifttt"
+description: "Connect to the [IFTTT Maker Channel](https://ifttt.com/maker)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `notifications` | **Platforms:** `ios`, `android`, `mac`
+
+> Connect to the [IFTTT Maker Channel](https://ifttt.com/maker)
+
+## Details
+
+Connect to the IFTTT [Maker Channel](https://ifttt.com/maker). An IFTTT Recipe has two components: a Trigger and an Action. In this case, the Trigger will fire every time the Maker Channel receives a web request (made by this _fastlane_ action) to notify it of an event. The Action can be anything that IFTTT supports: email, SMS, etc.
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_key` | `String` | `IFTTT_API_KEY` | `-` | **Yes** | API key |
+| `event_name` | `String` | `IFTTT_EVENT_NAME` | `-` | **Yes** | The name of the event that will be triggered |
+| `value1` | `String` | `IFTTT_VALUE1` | `-` | No | Extra data sent with the event |
+| `value2` | `String` | `IFTTT_VALUE2` | `-` | No | Extra data sent with the event |
+| `value3` | `String` | `IFTTT_VALUE3` | `-` | No | Extra data sent with the event |
+
+
+## Examples
+
+```ruby
+ifttt(
+            api_key: "...",
+            event_name: "...",
+            value1: "foo",
+            value2: "bar",
+            value3: "baz"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `ifttt.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ifttt.rb)
+- **Authors**: `vpolouchkine`

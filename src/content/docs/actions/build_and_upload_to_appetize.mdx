@@ -1,0 +1,39 @@
+---
+title: "build_and_upload_to_appetize"
+description: "Generate and upload an ipa file to appetize.io"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`
+
+> Generate and upload an ipa file to appetize.io
+
+## Details
+
+This should be called from danger.
+More information in the [device_grid guide](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/device_grid/README.md).
+
+## Parameters & Options
+
+Total options available: **6**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `xcodebuild` | `Hash` | `-` | `&#123;&#125;` | No | Parameters that are passed to the xcodebuild action |
+| `scheme` | `String` | `-` | `-` | No | The scheme to build. Can also be passed using the `xcodebuild` parameter |
+| `api_token` | `String` | `APPETIZE_API_TOKEN` | `-` | **Yes** | Appetize.io API Token |
+| `public_key` | `String` | `-` | `-` | No | If not provided, a new app will be created. If provided, the existing build will be overwritten |
+| `note` | `String` | `-` | `-` | No | Notes you wish to add to the uploaded app |
+| `timeout` | `Integer` | `-` | `-` | No | The number of seconds to wait until automatically ending the session due to user inactivity. Must be 30, 60, 90, 120, 180, 300, 600, 1800, 3600 or 7200. Default is 120 |
+
+
+
+
+## Source & Upstream
+
+- **Gem Action**: `build_and_upload_to_appetize.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/build_and_upload_to_appetize.rb)
+- **Authors**: `KrauseFx`

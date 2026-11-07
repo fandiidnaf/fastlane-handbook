@@ -1,0 +1,62 @@
+---
+title: "latest_testflight_build_number"
+description: "Fetches most recent build number from TestFlight"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `app_store_connect` | **Platforms:** `ios`, `mac`
+
+> Fetches most recent build number from TestFlight
+
+## Details
+
+Provides a way to have `increment_build_number` be based on the latest build you uploaded to iTC.
+Fetches the most recent build number from TestFlight based on the version number. Provides a way to have `increment_build_number` be based on the latest build you uploaded to iTC.
+
+## Parameters & Options
+
+Total options available: **10**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |
+| `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option) |
+| `live` | `Fastlane::Boolean` | `CURRENT_BUILD_NUMBER_LIVE` | `false` | No | Query the live version (ready-for-sale) |
+| `app_identifier` | `String` | `FASTLANE_APP_IDENTIFIER` | `-` | **Yes** | The bundle identifier of your app |
+| `username` | `String` | `ITUNESCONNECT_USER` | `-` | No | Your Apple ID Username |
+| `version` | `String` | `LATEST_VERSION` | `-` | No | The version number whose latest build number we want |
+| `platform` | `String` | `APPSTORE_PLATFORM` | `ios` | No | The platform to use (optional) |
+| `initial_build_number` | `String` | `INITIAL_BUILD_NUMBER` | `1` | **Yes** | sets the build number to given value if no build (upload) is in current train |
+| `team_id` | `String` | `LATEST_TESTFLIGHT_BUILD_NUMBER_TEAM_ID` | `-` | No | The ID of your App Store Connect team if you're in multiple teams |
+| `team_name` | `String` | `LATEST_TESTFLIGHT_BUILD_NUMBER_TEAM_NAME` | `-` | No | The name of your App Store Connect team if you're in multiple teams |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::LATEST_TESTFLIGHT_BUILD_NUMBER` | The latest build number of the latest version of the app uploaded to TestFlight |
+| `SharedValues::LATEST_TESTFLIGHT_VERSION` | The version of the latest build number |
+
+## Examples
+
+```ruby
+latest_testflight_build_number(version: "1.3")
+```
+
+```ruby
+increment_build_number({
+            build_number: latest_testflight_build_number + 1
+          })
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `latest_testflight_build_number.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/latest_testflight_build_number.rb)
+- **Authors**: `daveanderson`

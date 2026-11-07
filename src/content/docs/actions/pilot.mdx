@@ -1,0 +1,147 @@
+---
+title: "pilot"
+description: "Alias for the `upload_to_testflight` action"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `beta` | **Platforms:** `ios`, `mac`
+
+> Alias for the `upload_to_testflight` action
+
+## Details
+
+More details can be found on https://docs.fastlane.tools/actions/pilot/.
+This integration will only do the TestFlight upload.
+
+## Parameters & Options
+
+Total options available: **43**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |
+| `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option) |
+| `username` | `String` | `PILOT_USERNAME` | `-` | No | Your Apple ID Username |
+| `app_identifier` | `String` | `PILOT_APP_IDENTIFIER` | `-` | No | The bundle identifier of the app to upload or manage testers (optional) |
+| `app_platform` | `String` | `PILOT_PLATFORM` | `-` | No | The platform to use (optional) |
+| `apple_id` | `String` | `PILOT_APPLE_ID` | `-` | No | Apple ID property in the App Information section in App Store Connect |
+| `ipa` | `String` | `PILOT_IPA` | `-` | No | Path to the ipa file to upload |
+| `pkg` | `String` | `PILOT_PKG` | `-` | No | Path to your pkg file |
+| `demo_account_required` | `Fastlane::Boolean` | `DEMO_ACCOUNT_REQUIRED` | `-` | No | Do you need a demo account when Apple does review? |
+| `beta_app_review_info` | `Hash` | `PILOT_BETA_APP_REVIEW_INFO` | `-` | No | Beta app review information for contact info and demo account |
+| `localized_app_info` | `Hash` | `PILOT_LOCALIZED_APP_INFO` | `-` | No | Localized beta app test info for description, feedback email, marketing url, and privacy policy |
+| `beta_app_description` | `String` | `PILOT_BETA_APP_DESCRIPTION` | `-` | No | Provide the 'Beta App Description' when uploading a new build |
+| `beta_app_feedback_email` | `String` | `PILOT_BETA_APP_FEEDBACK` | `-` | No | Provide the beta app email when uploading a new build |
+| `localized_build_info` | `Hash` | `PILOT_LOCALIZED_BUILD_INFO` | `-` | No | Localized beta app test info for what's new |
+| `changelog` | `String` | `PILOT_CHANGELOG` | `-` | No | Provide the 'What to Test' text when uploading a new build |
+| `skip_submission` | `String` | `PILOT_SKIP_SUBMISSION` | `false` | **Yes** | Skip the distributing action of pilot and only upload the ipa file |
+| `skip_waiting_for_build_processing` | `String` | `PILOT_SKIP_WAITING_FOR_BUILD_PROCESSING` | `false` | **Yes** | If set to true, the `distribute_external` option won't work and no build will be distributed to testers. (You might want to use this option if you are using this action on CI and have to pay for 'minutes used' on your CI plan). If set to `true` and a changelog is provided, it will partially wait for the build to appear on AppStore Connect so the changelog can be set, and skip the remaining processing steps |
+| `update_build_info_on_upload` | `String` | `PILOT_UPDATE_BUILD_INFO_ON_UPLOAD` | `false` | No | **DEPRECATED!** Update build info immediately after validation. This is deprecated and will be removed in a future release. App Store Connect no longer supports setting build info until after build processing has completed, which is when build info is updated by default |
+| `app_clip_invocations` | `Array` | `PILOT_APP_CLIP_INVOCATIONS` | `-` | No | Add beta app clip invocations to your builds in TestFlight |
+| `overwrite_app_clip_invocations` | `Fastlane::Boolean` | `PILOT_APP_CLIPS_OVERWRITE_INVOCATIONS` | `false` | No | Clear all previous beta app clip invocations before adding new ones |
+| `routing_app_coverage_file` | `String` | `PILOT_ROUTING_APP_COVERAGE_FILE` | `-` | No | Path to the routing app coverage file (`.geojson`) that is required for routing apps. It will be uploaded to the editable App Store version of the app |
+| `distribute_only` | `Fastlane::Boolean` | `PILOT_DISTRIBUTE_ONLY` | `false` | **Yes** | Distribute a previously uploaded build (equivalent to the `fastlane pilot distribute` command) |
+| `uses_non_exempt_encryption` | `Fastlane::Boolean` | `PILOT_USES_NON_EXEMPT_ENCRYPTION` | `false` | **Yes** | Provide the 'Uses Non-Exempt Encryption' for export compliance. This is used if there is 'ITSAppUsesNonExemptEncryption' is not set in the Info.plist |
+| `distribute_external` | `String` | `PILOT_DISTRIBUTE_EXTERNAL` | `false` | **Yes** | Should the build be distributed to external testers? If set to true, use of `groups` option is required |
+| `notify_external_testers` | `String` | `PILOT_NOTIFY_EXTERNAL_TESTERS` | `-` | No | Should notify external testers? (Not setting a value will use App Store Connect's default which is to notify) |
+| `app_version` | `String` | `PILOT_APP_VERSION` | `-` | No | The version number of the application build to distribute. If the version number is not specified, then the most recent build uploaded to TestFlight will be distributed. If specified, the most recent build for the version number will be distributed |
+| `build_number` | `String` | `PILOT_BUILD_NUMBER` | `-` | No | The build number of the application build to distribute. If the build number is not specified, the most recent build is distributed |
+| `expire_previous_builds` | `String` | `PILOT_EXPIRE_PREVIOUS_BUILDS` | `false` | **Yes** | Should expire previous builds? |
+| `first_name` | `String` | `PILOT_TESTER_FIRST_NAME` | `-` | No | The tester's first name |
+| `last_name` | `String` | `PILOT_TESTER_LAST_NAME` | `-` | No | The tester's last name |
+| `email` | `String` | `PILOT_TESTER_EMAIL` | `-` | No | The tester's email |
+| `testers_file_path` | `String` | `PILOT_TESTERS_FILE` | `./testers.csv` | No | Path to a CSV file of testers |
+| `groups` | `Array` | `PILOT_GROUPS` | `-` | No | Associate tester to one group or more by group name / group id. E.g. `-g "Team 1","a06cf5b5-95a9-4beb-88c6-f22bd6b3f7a2"` This is required when `distribute_external` option is set to true or when we want to add a tester to one or more external testing groups  |
+| `team_id` | `String` | `PILOT_TEAM_ID` | `-` | No | The ID of your App Store Connect team if you're in multiple teams |
+| `team_name` | `String` | `PILOT_TEAM_NAME` | `-` | No | The name of your App Store Connect team if you're in multiple teams |
+| `dev_portal_team_id` | `String` | `PILOT_DEV_PORTAL_TEAM_ID` | `-` | No | The short ID of your team in the developer portal, if you're in multiple teams. Different from your iTC team ID! |
+| `itc_provider` | `String` | `PILOT_ITC_PROVIDER` | `-` | No | The provider short name to be used with the iTMSTransporter to identify your team. This value will override the automatically detected provider short name. To get provider short name run `xcrun iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off`. The short names of providers should be listed in the second column |
+| `provider_public_id` | `String` | `PILOT_PROVIDER_PUBLIC_ID` | `-` | No | The provider public ID to be used with altool (--provider-public-id). This value will override the automatically detected provider value for altool uploads. Required after Xcode 26 when your account is associated with multiple providers and using username/app-password authentication |
+| `wait_processing_interval` | `Integer` | `PILOT_WAIT_PROCESSING_INTERVAL` | `30` | **Yes** | Interval in seconds to wait for App Store Connect processing |
+| `wait_processing_timeout_duration` | `Integer` | `PILOT_WAIT_PROCESSING_TIMEOUT_DURATION` | `-` | No | Timeout duration in seconds to wait for App Store Connect processing. If set, after exceeding timeout duration, this will `force stop` to wait for App Store Connect processing and exit with exception |
+| `wait_for_uploaded_build` | `String` | `PILOT_WAIT_FOR_UPLOADED_BUILD` | `false` | No | **DEPRECATED!** No longer needed with the transition over to the App Store Connect API - Use version info from uploaded ipa file to determine what build to use for distribution. If set to false, latest processing or any latest build will be used |
+| `reject_build_waiting_for_review` | `String` | `PILOT_REJECT_PREVIOUS_BUILD` | `false` | **Yes** | Expire previous if it's 'waiting for review' |
+| `submit_beta_review` | `Fastlane::Boolean` | `PILOT_DISTRIBUTE_EXTERNAL` | `true` | **Yes** | Send the build for a beta review |
+
+
+## Examples
+
+```ruby
+upload_to_testflight
+```
+
+```ruby
+testflight # alias for "upload_to_testflight"
+```
+
+```ruby
+pilot # alias for "upload_to_testflight"
+```
+
+```ruby
+upload_to_testflight(skip_submission: true) # to only upload the build
+```
+
+```ruby
+upload_to_testflight(
+            username: "felix@krausefx.com",
+            app_identifier: "com.krausefx.app",
+            itc_provider: "abcde12345" # pass a specific value to the iTMSTransporter -itc_provider option
+          )
+```
+
+```ruby
+upload_to_testflight(
+            beta_app_feedback_email: "email@email.com",
+            beta_app_description: "This is a description of my app",
+            demo_account_required: true,
+            notify_external_testers: false,
+            changelog: "This is my changelog of things that have changed in a log"
+          )
+```
+
+```ruby
+upload_to_testflight(
+            beta_app_review_info: {
+              contact_email: "email@email.com",
+              contact_first_name: "Connect",
+              contact_last_name: "API",
+              contact_phone: "5558675309",
+              demo_account_name: "demo@email.com",
+              demo_account_password: "connectapi",
+              notes: "this is review note for the reviewer <3 thank you for reviewing"
+            },
+            localized_app_info: {
+              "default": {
+                feedback_email: "default@email.com",
+                marketing_url: "https://example.com/marketing-default",
+                privacy_policy_url: "https://example.com/privacy-default",
+                description: "Default description",
+              },
+              "en-GB": {
+                feedback_email: "en-gb@email.com",
+                marketing_url: "https://example.com/marketing-en-gb",
+                privacy_policy_url: "https://example.com/privacy-en-gb",
+                description: "en-gb description",
+              }
+            },
+            localized_build_info: {
+              "default": {
+                whats_new: "Default changelog",
+              },
+              "en-GB": {
+                whats_new: "en-gb changelog",
+              }
+            }
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `pilot.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/pilot.rb)
+- **Authors**: `KrauseFx`

@@ -1,0 +1,43 @@
+---
+title: "delete_keychain"
+description: "Delete keychains and remove them from the search list"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Delete keychains and remove them from the search list
+
+## Details
+
+Keychains can be deleted after being created with `create_keychain`
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `name` | `String` | `KEYCHAIN_NAME` | `-` | No | Keychain name |
+| `keychain_path` | `String` | `KEYCHAIN_PATH` | `-` | No | Keychain path |
+
+
+## Examples
+
+```ruby
+delete_keychain(name: "KeychainName")
+```
+
+```ruby
+delete_keychain(keychain_path: "/keychains/project.keychain")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `delete_keychain.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/delete_keychain.rb)
+- **Authors**: `gin0606`, `koenpunt`

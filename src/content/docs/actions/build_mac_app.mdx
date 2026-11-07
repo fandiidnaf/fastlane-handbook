@@ -1,0 +1,126 @@
+---
+title: "build_mac_app"
+description: "Alias for the `build_app` action but only for macOS"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `mac`
+
+> Alias for the `build_app` action but only for macOS
+
+## Details
+
+More information: https://fastlane.tools/gym
+
+## Parameters & Options
+
+Total options available: **54**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `workspace` | `String` | `GYM_WORKSPACE` | `-` | No | Path to the workspace file |
+| `project` | `String` | `GYM_PROJECT` | `-` | No | Path to the project file |
+| `scheme` | `String` | `GYM_SCHEME` | `-` | No | The project's scheme. Make sure it's marked as `Shared` |
+| `clean` | `Fastlane::Boolean` | `GYM_CLEAN` | `false` | **Yes** | Should the project be cleaned before building it? |
+| `output_directory` | `String` | `GYM_OUTPUT_DIRECTORY` | `.` | **Yes** | The directory in which the ipa file should be stored in |
+| `output_name` | `String` | `GYM_OUTPUT_NAME` | `-` | No | The name of the resulting ipa file |
+| `app_name` | `String` | `GYM_APP_NAME` | `-` | No | App name to use in logfile name |
+| `configuration` | `String` | `GYM_CONFIGURATION` | `-` | No | The configuration to use when building the app. Defaults to 'Release' |
+| `silent` | `Fastlane::Boolean` | `GYM_SILENT` | `false` | **Yes** | Hide all information that's not necessary while building |
+| `codesigning_identity` | `String` | `GYM_CODE_SIGNING_IDENTITY` | `-` | No | The name of the code signing identity to use. It has to match the name exactly. e.g. 'iPhone Distribution: SunApps GmbH' |
+| `skip_package_pkg` | `Fastlane::Boolean` | `GYM_SKIP_PACKAGE_PKG` | `false` | **Yes** | Should we skip packaging the pkg? |
+| `include_symbols` | `Fastlane::Boolean` | `GYM_INCLUDE_SYMBOLS` | `-` | No | Should the ipa file include symbols? |
+| `include_bitcode` | `Fastlane::Boolean` | `GYM_INCLUDE_BITCODE` | `-` | No | Should the ipa file include bitcode? |
+| `export_method` | `String` | `GYM_EXPORT_METHOD` | `-` | No | Method used to export the archive. Valid values are: app-store, validation, ad-hoc, package, enterprise, development, developer-id and mac-application |
+| `export_options` | `Hash` | `GYM_EXPORT_OPTIONS` | `-` | No | Path to an export options plist or a hash with export options. Use 'xcodebuild -help' to print the full set of available options |
+| `export_xcargs` | `String` | `GYM_EXPORT_XCARGS` | `-` | No | Pass additional arguments to xcodebuild for the package phase. Be sure to quote the setting names and values e.g. OTHER_LDFLAGS="-ObjC -lstdc++" |
+| `skip_build_archive` | `Fastlane::Boolean` | `GYM_SKIP_BUILD_ARCHIVE` | `-` | No | Export ipa from previously built xcarchive. Uses archive_path as source |
+| `skip_archive` | `Fastlane::Boolean` | `GYM_SKIP_ARCHIVE` | `-` | No | After building, don't archive, effectively not including -archivePath param |
+| `skip_codesigning` | `Fastlane::Boolean` | `GYM_SKIP_CODESIGNING` | `-` | No | Build without codesigning |
+| `installer_cert_name` | `String` | `GYM_INSTALLER_CERT_NAME` | `-` | No | Full name of 3rd Party Mac Developer Installer or Developer ID Installer certificate. Example: `3rd Party Mac Developer Installer: Your Company (ABC1234XWYZ)` |
+| `build_path` | `String` | `GYM_BUILD_PATH` | `-` | No | The directory in which the archive should be stored in |
+| `archive_path` | `String` | `GYM_ARCHIVE_PATH` | `-` | No | The path to the created archive |
+| `derived_data_path` | `String` | `GYM_DERIVED_DATA_PATH` | `-` | No | The directory where built products and other derived data will go |
+| `result_bundle` | `Fastlane::Boolean` | `GYM_RESULT_BUNDLE` | `false` | No | Should an Xcode result bundle be generated in the output directory |
+| `result_bundle_path` | `String` | `GYM_RESULT_BUNDLE_PATH` | `-` | No | Path to the result bundle directory to create. Ignored if `result_bundle` if false |
+| `buildlog_path` | `String` | `GYM_BUILDLOG_PATH` | `~/Library/Logs/gym` | **Yes** | The directory where to store the build log |
+| `sdk` | `String` | `GYM_SDK` | `-` | No | The SDK that should be used for building the application |
+| `toolchain` | `String` | `GYM_TOOLCHAIN` | `-` | No | The toolchain that should be used for building the application (e.g. com.apple.dt.toolchain.Swift_2_3, org.swift.30p620160816a) |
+| `destination` | `String` | `GYM_DESTINATION` | `-` | No | Use a custom destination for building the app |
+| `export_team_id` | `String` | `GYM_EXPORT_TEAM_ID` | `-` | No | Optional: Sometimes you need to specify a team id when exporting the ipa file |
+| `xcargs` | `String` | `GYM_XCARGS` | `-` | No | Pass additional arguments to xcodebuild for the build phase. Be sure to quote the setting names and values e.g. OTHER_LDFLAGS="-ObjC -lstdc++" |
+| `xcconfig` | `String` | `GYM_XCCONFIG` | `-` | No | Use an extra XCCONFIG file to build your app |
+| `suppress_xcode_output` | `Fastlane::Boolean` | `SUPPRESS_OUTPUT` | `-` | No | Suppress the output of xcodebuild to stdout. Output is still saved in buildlog_path |
+| `xcodebuild_formatter` | `String` | `-` | `xcpretty` | **Yes** | xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/) |
+| `build_timing_summary` | `Fastlane::Boolean` | `GYM_BUILD_TIMING_SUMMARY` | `false` | No | Create a build timing summary |
+| `disable_xcpretty` | `Fastlane::Boolean` | `DISABLE_XCPRETTY` | `-` | No | **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Disable xcpretty formatting of build output |
+| `xcpretty_test_format` | `Fastlane::Boolean` | `XCPRETTY_TEST_FORMAT` | `-` | No | Use the test (RSpec style) format for build output |
+| `xcpretty_formatter` | `String` | `XCPRETTY_FORMATTER` | `-` | No | A custom xcpretty formatter to use |
+| `xcpretty_report_junit` | `String` | `XCPRETTY_REPORT_JUNIT` | `-` | No | Have xcpretty create a JUnit-style XML report at the provided path |
+| `xcpretty_report_html` | `String` | `XCPRETTY_REPORT_HTML` | `-` | No | Have xcpretty create a simple HTML report at the provided path |
+| `xcpretty_report_json` | `String` | `XCPRETTY_REPORT_JSON` | `-` | No | Have xcpretty create a JSON compilation database at the provided path |
+| `xcpretty_utf` | `Fastlane::Boolean` | `XCPRETTY_UTF` | `-` | No | Have xcpretty use unicode encoding when reporting builds |
+| `analyze_build_time` | `Fastlane::Boolean` | `GYM_ANALYZE_BUILD_TIME` | `-` | No | Analyze the project build time and store the output in 'culprits.txt' file |
+| `skip_profile_detection` | `Fastlane::Boolean` | `GYM_SKIP_PROFILE_DETECTION` | `false` | No | Do not try to build a profile mapping from the xcodeproj. Match or a manually provided mapping should be used |
+| `xcodebuild_command` | `String` | `GYM_XCODE_BUILD_COMMAND` | `xcodebuild` | No | Allows for override of the default `xcodebuild` command |
+| `cloned_source_packages_path` | `String` | `GYM_CLONED_SOURCE_PACKAGES_PATH` | `-` | No | Sets a custom path for Swift Package Manager dependencies |
+| `package_cache_path` | `String` | `GYM_PACKAGE_CACHE_PATH` | `-` | No | Sets a custom package cache path for Swift Package Manager dependencies |
+| `skip_package_dependencies_resolution` | `Fastlane::Boolean` | `GYM_SKIP_PACKAGE_DEPENDENCIES_RESOLUTION` | `false` | **Yes** | Skips resolution of Swift Package Manager dependencies |
+| `disallow_xcodebuild_settings_lookup` | `Fastlane::Boolean` | `GYM_DISALLOW_XCODEBUILD_SETTINGS_LOOKUP` | `false` | **Yes** | Raises an error instead of fetching build settings by running `xcodebuild -showBuildSettings`, which can take a long time on large projects. The error names the required build setting, so the corresponding option can be specified manually |
+| `disable_package_automatic_updates` | `Fastlane::Boolean` | `GYM_DISABLE_PACKAGE_AUTOMATIC_UPDATES` | `false` | **Yes** | Prevents packages from automatically being resolved to versions other than those recorded in the `Package.resolved` file. This translates in the option `-disableAutomaticPackageResolution` being passed to xcodebuild |
+| `skip_package_repository_fetches` | `Fastlane::Boolean` | `GYM_SKIP_PACKAGE_REPOSITORY_FETCHES` | `false` | **Yes** | Skips updating package dependencies from their remote. This translates in the option `-skipPackageUpdates` being passed to xcodebuild |
+| `use_system_scm` | `Fastlane::Boolean` | `GYM_USE_SYSTEM_SCM` | `false` | No | Lets xcodebuild use system's scm configuration |
+| `package_authorization_provider` | `String` | `GYM_PACKAGE_AUTHORIZATION_PROVIDER` | `-` | No | Lets xcodebuild use a specified package authorization provider (keychain\|netrc) |
+| `generate_appstore_info` | `Fastlane::Boolean` | `GYM_GENERATE_APPSTORE_INFO` | `false` | No | Generate AppStoreInfo.plist using swinfo for app-store exports |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::IPA_OUTPUT_PATH` | The path to the newly generated ipa file |
+| `SharedValues::PKG_OUTPUT_PATH` | The path to the newly generated pkg file |
+| `SharedValues::DSYM_OUTPUT_PATH` | The path to the dSYM files |
+| `SharedValues::XCODEBUILD_ARCHIVE` | The path to the xcodebuild archive |
+
+## Examples
+
+```ruby
+build_app(scheme: "MyApp", workspace: "MyApp.xcworkspace")
+```
+
+```ruby
+build_app(
+            workspace: "MyApp.xcworkspace",
+            configuration: "Debug",
+            scheme: "MyApp",
+            silent: true,
+            clean: true,
+            output_directory: "path/to/dir", # Destination directory. Defaults to current directory.
+            output_name: "my-app.ipa",       # specify the name of the .ipa file to generate (including file extension)
+            sdk: "iOS 11.1"                  # use SDK as the name or path of the base SDK when building the project.
+          )
+```
+
+```ruby
+gym              # alias for "build_app"
+```
+
+```ruby
+build_ios_app    # alias for "build_app (only iOS options)"
+```
+
+```ruby
+build_mac_app    # alias for "build_app (only macOS options)"
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `build_mac_app.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/build_mac_app.rb)
+- **Authors**: `KrauseFx`

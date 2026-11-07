@@ -1,0 +1,61 @@
+---
+title: "swiftlint"
+description: "Run swift code validation using SwiftLint"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `testing` | **Platforms:** `ios`, `mac`
+
+> Run swift code validation using SwiftLint
+
+
+## Parameters & Options
+
+Total options available: **15**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `mode` | `Symbol` | `FL_SWIFTLINT_MODE` | `lint` | No | SwiftLint mode: :lint, :fix, :autocorrect or :analyze |
+| `path` | `String` | `FL_SWIFTLINT_PATH` | `-` | No | Specify path to lint |
+| `output_file` | `String` | `FL_SWIFTLINT_OUTPUT_FILE` | `-` | No | Path to output SwiftLint result |
+| `config_file` | `String` | `FL_SWIFTLINT_CONFIG_FILE` | `-` | No | Custom configuration file of SwiftLint |
+| `strict` | `Fastlane::Boolean` | `FL_SWIFTLINT_STRICT` | `false` | No | Fail on warnings? (true/false) |
+| `files` | `Array` | `FL_SWIFTLINT_FILES` | `-` | No | List of files to process |
+| `ignore_exit_status` | `Fastlane::Boolean` | `FL_SWIFTLINT_IGNORE_EXIT_STATUS` | `false` | No | Ignore the exit status of the SwiftLint command, so that serious violations                                                     don't fail the build (true/false) |
+| `raise_if_swiftlint_error` | `Fastlane::Boolean` | `FL_SWIFTLINT_RAISE_IF_SWIFTLINT_ERROR` | `false` | No | Raises an error if swiftlint fails, so you can fail CI/CD jobs if necessary                                                     (true/false) |
+| `reporter` | `String` | `FL_SWIFTLINT_REPORTER` | `-` | No | Choose output reporter. Available: xcode, json, csv, checkstyle, codeclimate,                                                      junit, html, emoji, sonarqube, markdown, github-actions-logging |
+| `quiet` | `Fastlane::Boolean` | `FL_SWIFTLINT_QUIET` | `false` | No | Don't print status logs like 'Linting &lt;file&gt;' & 'Done linting' |
+| `executable` | `String` | `FL_SWIFTLINT_EXECUTABLE` | `-` | No | Path to the `swiftlint` executable on your machine |
+| `format` | `Fastlane::Boolean` | `FL_SWIFTLINT_FORMAT` | `false` | No | Format code when mode is :autocorrect |
+| `no_cache` | `Fastlane::Boolean` | `FL_SWIFTLINT_NO_CACHE` | `false` | No | Ignore the cache when mode is :autocorrect or :lint |
+| `compiler_log_path` | `String` | `FL_SWIFTLINT_COMPILER_LOG_PATH` | `-` | No | Compiler log path when mode is :analyze |
+| `progress` | `Fastlane::Boolean` | `FL_SWIFTLINT_PROGRESS` | `false` | No | Show a live-updating progress bar instead of each file being processed |
+
+
+## Examples
+
+```ruby
+swiftlint(
+            mode: :lint,                          # SwiftLint mode: :lint (default) or :autocorrect
+            path: "/path/to/lint",                 # Specify path to lint (optional)
+            output_file: "swiftlint.result.json", # The path of the output file (optional)
+            config_file: ".swiftlint-ci.yml",     # The path of the configuration file (optional)
+            files: [                              # List of files to process (optional)
+              "AppDelegate.swift",
+              "path/to/project/Model.swift"
+            ],
+            raise_if_swiftlint_error: true,      # Allow fastlane to raise an error if swiftlint fails
+            ignore_exit_status: true              # Allow fastlane to continue even if SwiftLint returns a non-zero exit status
+
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `swiftlint.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/swiftlint.rb)
+- **Authors**: `KrauseFx`

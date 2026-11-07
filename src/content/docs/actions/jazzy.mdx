@@ -1,0 +1,40 @@
+---
+title: "jazzy"
+description: "Generate docs using Jazzy"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `documentation` | **Platforms:** `ios`, `mac`
+
+> Generate docs using Jazzy
+
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `config` | `String` | `FL_JAZZY_CONFIG` | `-` | No | Path to jazzy config file |
+| `module_version` | `String` | `FL_JAZZY_MODULE_VERSION` | `-` | No | Version string to use as part of the default docs title and inside the docset |
+
+
+## Examples
+
+```ruby
+jazzy
+```
+
+```ruby
+jazzy(config: ".jazzy.yaml", module_version: "2.1.37")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `jazzy.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/jazzy.rb)
+- **Authors**: `KrauseFx`

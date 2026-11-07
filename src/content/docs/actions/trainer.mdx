@@ -1,0 +1,38 @@
+---
+title: "trainer"
+description: "Convert the Xcode plist log to a JUnit report"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `testing` | **Platforms:** `ios`, `mac`
+
+> Convert the Xcode plist log to a JUnit report
+
+
+## Parameters & Options
+
+Total options available: **9**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `TRAINER_PATH` | `.` | **Yes** | Path to the directory that should be converted |
+| `extension` | `String` | `TRAINER_EXTENSION` | `.xml` | **Yes** | The extension for the newly created file. Usually .xml or .junit |
+| `output_directory` | `String` | `TRAINER_OUTPUT_DIRECTORY` | `-` | No | Directory in which the xml files should be written to. Same directory as source by default |
+| `output_filename` | `String` | `TRAINER_OUTPUT_FILENAME` | `-` | No | Filename the xml file should be written to. Defaults to name of input file. (Only works if one input file is used) |
+| `fail_build` | `String` | `TRAINER_FAIL_BUILD` | `true` | **Yes** | Should this step stop the build if the tests fail? Set this to false if you're handling this with a test reporter |
+| `xcpretty_naming` | `String` | `TRAINER_XCPRETTY_NAMING` | `false` | **Yes** | Produces class name and test name identical to xcpretty naming in junit file |
+| `force_legacy_xcresulttool` | `Fastlane::Boolean` | `TRAINER_FORCE_LEGACY_XCRESULTTOOL` | `false` | **Yes** | Force the use of the '--legacy' flag for xcresulttool instead of using the new commands |
+| `silent` | `String` | `TRAINER_SILENT` | `false` | **Yes** | Silences all output |
+| `output_remove_retry_attempts` | `String` | `TRAINER_OUTPUT_REMOVE_RETRY_ATTEMPTS` | `false` | **Yes** | Doesn't include retry attempts in the output |
+
+
+
+
+## Source & Upstream
+
+- **Gem Action**: `trainer.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/trainer.rb)
+- **Authors**: `KrauseFx`

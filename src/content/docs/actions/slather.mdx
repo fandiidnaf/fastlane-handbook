@@ -1,0 +1,76 @@
+---
+title: "slather"
+description: "Use slather to generate a code coverage report"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `testing` | **Platforms:** `ios`, `mac`
+
+> Use slather to generate a code coverage report
+
+## Details
+
+Slather works with multiple code coverage formats, including Xcode 7 code coverage.
+Slather is available at [https://github.com/SlatherOrg/slather](https://github.com/SlatherOrg/slather).
+
+## Parameters & Options
+
+Total options available: **33**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `build_directory` | `String` | `FL_SLATHER_BUILD_DIRECTORY` | `-` | No | The location of the build output |
+| `proj` | `String` | `FL_SLATHER_PROJ` | `-` | No | The project file that slather looks at |
+| `workspace` | `String` | `FL_SLATHER_WORKSPACE` | `-` | No | The workspace that slather looks at |
+| `scheme` | `String` | `FL_SLATHER_SCHEME` | `-` | No | Scheme to use when calling slather |
+| `configuration` | `String` | `FL_SLATHER_CONFIGURATION` | `-` | No | Configuration to use when calling slather (since slather-2.4.1) |
+| `input_format` | `String` | `FL_SLATHER_INPUT_FORMAT` | `-` | No | The input format that slather should look for |
+| `github` | `Fastlane::Boolean` | `FL_SLATHER_GITHUB_ENABLED` | `-` | No | Tell slather that it is running on GitHub Actions |
+| `buildkite` | `Fastlane::Boolean` | `FL_SLATHER_BUILDKITE_ENABLED` | `-` | No | Tell slather that it is running on Buildkite |
+| `teamcity` | `Fastlane::Boolean` | `FL_SLATHER_TEAMCITY_ENABLED` | `-` | No | Tell slather that it is running on TeamCity |
+| `jenkins` | `Fastlane::Boolean` | `FL_SLATHER_JENKINS_ENABLED` | `-` | No | Tell slather that it is running on Jenkins |
+| `travis` | `Fastlane::Boolean` | `FL_SLATHER_TRAVIS_ENABLED` | `-` | No | Tell slather that it is running on TravisCI |
+| `travis_pro` | `Fastlane::Boolean` | `FL_SLATHER_TRAVIS_PRO_ENABLED` | `-` | No | Tell slather that it is running on TravisCI Pro |
+| `circleci` | `Fastlane::Boolean` | `FL_SLATHER_CIRCLECI_ENABLED` | `-` | No | Tell slather that it is running on CircleCI |
+| `coveralls` | `Fastlane::Boolean` | `FL_SLATHER_COVERALLS_ENABLED` | `-` | No | Tell slather that it should post data to Coveralls |
+| `simple_output` | `Fastlane::Boolean` | `FL_SLATHER_SIMPLE_OUTPUT_ENABLED` | `-` | No | Tell slather that it should output results to the terminal |
+| `gutter_json` | `Fastlane::Boolean` | `FL_SLATHER_GUTTER_JSON_ENABLED` | `-` | No | Tell slather that it should output results as Gutter JSON format |
+| `cobertura_xml` | `Fastlane::Boolean` | `FL_SLATHER_COBERTURA_XML_ENABLED` | `-` | No | Tell slather that it should output results as Cobertura XML format |
+| `sonarqube_xml` | `Fastlane::Boolean` | `FL_SLATHER_SONARQUBE_XML_ENABLED` | `-` | No | Tell slather that it should output results as SonarQube Generic XML format |
+| `llvm_cov` | `Fastlane::Boolean` | `FL_SLATHER_LLVM_COV_ENABLED` | `-` | No | Tell slather that it should output results as llvm-cov show format |
+| `json` | `Fastlane::Boolean` | `FL_SLATHER_JSON_ENABLED` | `-` | No | Tell slather that it should output results as static JSON report |
+| `html` | `Fastlane::Boolean` | `FL_SLATHER_HTML_ENABLED` | `-` | No | Tell slather that it should output results as static HTML pages |
+| `show` | `Fastlane::Boolean` | `FL_SLATHER_SHOW_ENABLED` | `false` | **Yes** | Tell slather that it should open static html pages automatically |
+| `source_directory` | `String` | `FL_SLATHER_SOURCE_DIRECTORY` | `-` | No | Tell slather the location of your source files |
+| `output_directory` | `String` | `FL_SLATHER_OUTPUT_DIRECTORY` | `-` | No | Tell slather the location of for your output files |
+| `ignore` | `Array` | `FL_SLATHER_IGNORE` | `-` | No | Tell slather to ignore files matching a path or any path from an array of paths |
+| `verbose` | `Fastlane::Boolean` | `FL_SLATHER_VERBOSE` | `-` | No | Tell slather to enable verbose mode |
+| `use_bundle_exec` | `Fastlane::Boolean` | `FL_SLATHER_USE_BUNDLE_EXEC` | `false` | **Yes** | Use bundle exec to execute slather. Make sure it is in the Gemfile |
+| `binary_basename` | `Array` | `FL_SLATHER_BINARY_BASENAME` | `-` | No | Basename of the binary file, this should match the name of your bundle excluding its extension (i.e. YourApp [for YourApp.app bundle]) |
+| `binary_file` | `Array` | `FL_SLATHER_BINARY_FILE` | `-` | No | Binary file name to be used for code coverage |
+| `arch` | `String` | `FL_SLATHER_ARCH` | `-` | No | Specify which architecture the binary file is in. Needed for universal binaries |
+| `source_files` | `String` | `FL_SLATHER_SOURCE_FILES` | `false` | No | A Dir.glob compatible pattern used to limit the lookup to specific source files. Ignored in gcov mode |
+| `decimals` | `String` | `FL_SLATHER_DECIMALS` | `false` | No | The amount of decimals to use for % coverage reporting |
+| `ymlfile` | `String` | `FL_SLATHER_YMLFILE` | `-` | No | Relative path to a file used in place of '.slather.yml' |
+
+
+## Examples
+
+```ruby
+slather(
+            build_directory: "foo",
+            input_format: "bah",
+            scheme: "MyScheme",
+            proj: "MyProject.xcodeproj"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `slather.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/slather.rb)
+- **Authors**: `mattdelves`

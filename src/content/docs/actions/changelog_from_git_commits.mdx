@@ -1,0 +1,68 @@
+---
+title: "changelog_from_git_commits"
+description: "Collect git commit messages into a changelog"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> Collect git commit messages into a changelog
+
+## Details
+
+By default, messages will be collected back to the last tag, but the range can be controlled
+
+## Parameters & Options
+
+Total options available: **13**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `between` | `Array` | `FL_CHANGELOG_FROM_GIT_COMMITS_BETWEEN` | `-` | No | Array containing two Git revision values between which to collect messages, you mustn't use it with :commits_count key at the same time |
+| `commits_count` | `Integer` | `FL_CHANGELOG_FROM_GIT_COMMITS_COUNT` | `-` | No | Number of commits to include in changelog, you mustn't use it with :between key at the same time |
+| `path` | `String` | `FL_CHANGELOG_FROM_GIT_COMMITS_PATH` | `./` | No | Path of the git repository |
+| `pretty` | `String` | `FL_CHANGELOG_FROM_GIT_COMMITS_PRETTY` | `%B` | No | The format applied to each commit while generating the collected value |
+| `matching_pattern` | `String` | `FL_CHANGELOG_FROM_GIT_COMMITS_MATCHING_PATTERN` | `-` | No | A regexp pattern to filter only the commits matching the pattern |
+| `date_format` | `String` | `FL_CHANGELOG_FROM_GIT_COMMITS_DATE_FORMAT` | `-` | No | The date format applied to each commit while generating the collected value |
+| `ancestry_path` | `Fastlane::Boolean` | `FL_CHANGELOG_FROM_GIT_COMMITS_ANCESTRY_PATH` | `false` | No | Whether or not to use ancestry-path param |
+| `tag_match_pattern` | `String` | `FL_CHANGELOG_FROM_GIT_COMMITS_TAG_MATCH_PATTERN` | `-` | No | A glob(7) pattern to match against when finding the last git tag |
+| `match_lightweight_tag` | `Fastlane::Boolean` | `FL_CHANGELOG_FROM_GIT_COMMITS_MATCH_LIGHTWEIGHT_TAG` | `true` | No | Whether or not to match a lightweight tag when searching for the last one |
+| `quiet` | `Fastlane::Boolean` | `FL_CHANGELOG_FROM_GIT_COMMITS_TAG_QUIET` | `false` | No | Whether or not to disable changelog output |
+| `include_merges` | `Fastlane::Boolean` | `FL_CHANGELOG_FROM_GIT_COMMITS_INCLUDE_MERGES` | `-` | No | **DEPRECATED!** Use `:merge_commit_filtering` instead - Whether or not to include any commits that are merges |
+| `merge_commit_filtering` | `String` | `FL_CHANGELOG_FROM_GIT_COMMITS_MERGE_COMMIT_FILTERING` | `include_merges` | No | Controls inclusion of merge commits when collecting the changelog. Valid values: 'include_merges', 'exclude_merges', 'only_include_merges' |
+| `app_path` | `String` | `FL_CHANGELOG_FROM_GIT_COMMITS_APP_PATH` | `-` | No | Scopes the changelog to a specific subdirectory of the repository |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::FL_CHANGELOG` | The changelog string generated from the collected git commit messages |
+
+## Examples
+
+```ruby
+changelog_from_git_commits
+```
+
+```ruby
+changelog_from_git_commits(
+            between: ["7b092b3", "HEAD"],            # Optional, lets you specify a revision/tag range between which to collect commit info
+            pretty: "- (%ae) %s",                    # Optional, lets you provide a custom format to apply to each commit when generating the changelog text
+            date_format: "short",                    # Optional, lets you provide an additional date format to dates within the pretty-formatted string
+            match_lightweight_tag: false,            # Optional, lets you ignore lightweight (non-annotated) tags when searching for the last tag
+            matching_pattern: "[.*?].*",             # Optional, lets you filter out commits not matching the regex pattern
+            merge_commit_filtering: "exclude_merges" # Optional, lets you filter out merge commits
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `changelog_from_git_commits.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/changelog_from_git_commits.rb)
+- **Authors**: `mfurtak`, `asfalcone`, `SiarheiFedartsou`, `allewun`

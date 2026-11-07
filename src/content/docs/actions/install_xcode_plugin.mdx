@@ -1,0 +1,40 @@
+---
+title: "install_xcode_plugin"
+description: "Install an Xcode plugin for the current user"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `ios`, `mac`
+
+> Install an Xcode plugin for the current user
+
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `url` | `String` | `FL_XCODE_PLUGIN_URL` | `-` | **Yes** | URL for Xcode plugin ZIP file |
+| `github` | `String` | `FL_XCODE_PLUGIN_GITHUB` | `-` | No | GitHub repository URL for Xcode plugin |
+
+
+## Examples
+
+```ruby
+install_xcode_plugin(url: "https://example.com/clubmate/plugin.zip")
+```
+
+```ruby
+install_xcode_plugin(github: "https://github.com/contentful/ContentfulXcodePlugin")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `install_xcode_plugin.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/install_xcode_plugin.rb)
+- **Authors**: `NeoNachoSoto`, `tommeier`

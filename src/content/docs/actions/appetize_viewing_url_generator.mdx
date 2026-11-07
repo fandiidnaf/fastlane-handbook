@@ -1,0 +1,43 @@
+---
+title: "appetize_viewing_url_generator"
+description: "Generate an URL for appetize simulator"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`
+
+> Generate an URL for appetize simulator
+
+## Details
+
+Check out the [device_grid guide](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/device_grid/README.md) for more information
+
+## Parameters & Options
+
+Total options available: **11**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `public_key` | `String` | `APPETIZE_PUBLICKEY` | `-` | **Yes** | Public key of the app you wish to update |
+| `base_url` | `String` | `APPETIZE_VIEWING_URL_GENERATOR_BASE` | `https://appetize.io/embed` | No | Base URL of Appetize service |
+| `device` | `String` | `APPETIZE_VIEWING_URL_GENERATOR_DEVICE` | `iphone5s` | **Yes** | Device type: iphone4s, iphone5s, iphone6, iphone6plus, ipadair, iphone6s, iphone6splus, ipadair2, nexus5, nexus7 or nexus9 |
+| `scale` | `String` | `APPETIZE_VIEWING_URL_GENERATOR_SCALE` | `-` | No | Scale of the simulator |
+| `orientation` | `String` | `APPETIZE_VIEWING_URL_GENERATOR_ORIENTATION` | `portrait` | **Yes** | Device orientation |
+| `language` | `String` | `APPETIZE_VIEWING_URL_GENERATOR_LANGUAGE` | `-` | No | Device language in ISO 639-1 language code, e.g. 'de' |
+| `color` | `String` | `APPETIZE_VIEWING_URL_GENERATOR_COLOR` | `black` | **Yes** | Color of the device |
+| `launch_url` | `String` | `APPETIZE_VIEWING_URL_GENERATOR_LAUNCH_URL` | `-` | No | Specify a deep link to open when your app is launched |
+| `os_version` | `String` | `APPETIZE_VIEWING_URL_GENERATOR_OS_VERSION` | `-` | No | The operating system version on which to run your app, e.g. 10.3, 8.0 |
+| `params` | `String` | `APPETIZE_VIEWING_URL_GENERATOR_PARAMS` | `-` | No | Specify params value to be passed to Appetize |
+| `proxy` | `String` | `APPETIZE_VIEWING_URL_GENERATOR_PROXY` | `-` | No | Specify a HTTP proxy to be passed to Appetize |
+
+
+
+
+## Source & Upstream
+
+- **Gem Action**: `appetize_viewing_url_generator.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/appetize_viewing_url_generator.rb)
+- **Authors**: `KrauseFx`

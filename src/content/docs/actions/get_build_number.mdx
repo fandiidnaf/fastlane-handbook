@@ -1,0 +1,47 @@
+---
+title: "get_build_number"
+description: "Get the build number of your project"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`, `mac`
+
+> Get the build number of your project
+
+## Details
+
+This action will return the current build number set on your project.
+You first have to set up your Xcode project, if you haven't done it already: [https://developer.apple.com/library/ios/qa/qa1827/_index.html](https://developer.apple.com/library/ios/qa/qa1827/_index.html).
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `xcodeproj` | `String` | `FL_BUILD_NUMBER_PROJECT` | `-` | No | optional, you must specify the path to your main Xcode project if it is not in the project root directory |
+| `hide_error_when_versioning_disabled` | `Fastlane::Boolean` | `FL_BUILD_NUMBER_HIDE_ERROR_WHEN_VERSIONING_DISABLED` | `false` | **Yes** | Used during `fastlane init` to hide the error message |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::BUILD_NUMBER` | The build number |
+
+## Examples
+
+```ruby
+build_number = get_build_number(xcodeproj: "Project.xcodeproj")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `get_build_number.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_build_number.rb)
+- **Authors**: `Liquidsoul`

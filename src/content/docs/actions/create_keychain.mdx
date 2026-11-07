@@ -1,0 +1,58 @@
+---
+title: "create_keychain"
+description: "Create a new Keychain"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Create a new Keychain
+
+
+## Parameters & Options
+
+Total options available: **10**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `name` | `String` | `KEYCHAIN_NAME` | `-` | No | Keychain name |
+| `path` | `String` | `KEYCHAIN_PATH` | `-` | No | Path to keychain |
+| `password` | `String` | `KEYCHAIN_PASSWORD` | `-` | **Yes** | Password for the keychain |
+| `default_keychain` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Should the newly created Keychain be the new system default keychain |
+| `unlock` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Unlock keychain after create |
+| `timeout` | `Integer` | `-` | `300` | **Yes** | timeout interval in seconds. Set `0` if you want to specify "no time-out" |
+| `lock_when_sleeps` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Lock keychain when the system sleeps |
+| `lock_after_timeout` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Lock keychain after timeout interval |
+| `add_to_search_list` | `Fastlane::Boolean` | `-` | `true` | **Yes** | Add keychain to search list |
+| `require_create` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Fail the action if the Keychain already exists |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::ORIGINAL_DEFAULT_KEYCHAIN` | The path to the default keychain |
+| `SharedValues::KEYCHAIN_PATH` | The path of the keychain |
+
+## Examples
+
+```ruby
+create_keychain(
+            name: "KeychainName",
+            default_keychain: true,
+            unlock: true,
+            timeout: 3600,
+            lock_when_sleeps: true
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `create_keychain.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/create_keychain.rb)
+- **Authors**: `gin0606`

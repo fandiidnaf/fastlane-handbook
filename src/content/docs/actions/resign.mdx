@@ -1,0 +1,65 @@
+---
+title: "resign"
+description: "Codesign an existing ipa file"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `code_signing` | **Platforms:** `ios`
+
+> Codesign an existing ipa file
+
+
+## Parameters & Options
+
+Total options available: **12**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `ipa` | `String` | `FL_RESIGN_IPA` | `-` | **Yes** | Path to the ipa file to resign. Optional if you use the _gym_ or _xcodebuild_ action |
+| `signing_identity` | `String` | `FL_RESIGN_SIGNING_IDENTITY` | `-` | **Yes** | Code signing identity to use. e.g. `iPhone Distribution: Luka Mirosevic (0123456789)` |
+| `entitlements` | `String` | `FL_RESIGN_ENTITLEMENTS` | `-` | No | Path to the entitlement file to use, e.g. `myApp/MyApp.entitlements` |
+| `provisioning_profile` | `String` | `FL_RESIGN_PROVISIONING_PROFILE` | `-` | **Yes** | Path to your provisioning_profile. Optional if you use _sigh_ |
+| `version` | `String` | `FL_RESIGN_VERSION` | `-` | No | Version number to force resigned ipa to use. Updates both `CFBundleShortVersionString` and `CFBundleVersion` values in `Info.plist`. Applies for main app and all nested apps or extensions |
+| `display_name` | `String` | `FL_DISPLAY_NAME` | `-` | No | Display name to force resigned ipa to use |
+| `short_version` | `String` | `FL_RESIGN_SHORT_VERSION` | `-` | No | Short version string to force resigned ipa to use (`CFBundleShortVersionString`) |
+| `bundle_version` | `String` | `FL_RESIGN_BUNDLE_VERSION` | `-` | No | Bundle version to force resigned ipa to use (`CFBundleVersion`) |
+| `bundle_id` | `String` | `FL_RESIGN_BUNDLE_ID` | `-` | No | Set new bundle ID during resign (`CFBundleIdentifier`) |
+| `use_app_entitlements` | `Fastlane::Boolean` | `FL_USE_APP_ENTITLEMENTS` | `-` | No | Extract app bundle codesigning entitlements and combine with entitlements from new provisioning profile |
+| `keychain_path` | `String` | `FL_RESIGN_KEYCHAIN_PATH` | `-` | No | Provide a path to a keychain file that should be used by `/usr/bin/codesign` |
+| `pagesize` | `Integer` | `FL_RESIGN_PAGESIZE` | `-` | No | Page size in bytes passed to `/usr/bin/codesign --pagesize` (must be a power of two) |
+
+
+## Examples
+
+```ruby
+resign(
+            ipa: "path/to/ipa", # can omit if using the `ipa` action
+            signing_identity: "iPhone Distribution: Luka Mirosevic (0123456789)",
+            provisioning_profile: "path/to/profile", # can omit if using the _sigh_ action
+          )
+```
+
+```ruby
+# You may provide multiple provisioning profiles if the application contains nested
+          # applications or app extensions, which need their own provisioning profile.
+          # You can do so by passing an array of provisioning profile strings or a hash
+          # that associates provisioning profile values to bundle identifier keys.
+          resign(
+            ipa: "path/to/ipa", # can omit if using the `ipa` action
+            signing_identity: "iPhone Distribution: Luka Mirosevic (0123456789)",
+            provisioning_profile: {
+              "com.example.awesome-app" => "path/to/profile",
+              "com.example.awesome-app.app-extension" => "path/to/app-extension/profile"
+            }
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `resign.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/resign.rb)
+- **Authors**: `lmirosevic`

@@ -1,0 +1,82 @@
+---
+title: "app_store_build_number"
+description: "Returns the current build_number of either live or edit version"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `app_store_connect` | **Platforms:** `ios`, `mac`
+
+> Returns the current build_number of either live or edit version
+
+## Details
+
+Returns the current build number of either the live or testflight version - it is useful for getting the build_number of the current or ready-for-sale app version, and it also works on non-live testflight version.
+If you need to handle more build-trains please see `latest_testflight_build_number`.
+
+## Parameters & Options
+
+Total options available: **10**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |
+| `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option) |
+| `initial_build_number` | `String` | `INITIAL_BUILD_NUMBER` | `-` | **Yes** | sets the build number to given value if no build (upload) is in current train |
+| `app_identifier` | `String` | `FASTLANE_APP_IDENTIFIER` | `-` | **Yes** | The bundle identifier of your app |
+| `username` | `String` | `ITUNESCONNECT_USER` | `-` | No | Your Apple ID Username |
+| `team_id` | `String` | `APPSTORE_BUILD_NUMBER_LIVE_TEAM_ID` | `-` | No | The ID of your App Store Connect team if you're in multiple teams |
+| `live` | `Fastlane::Boolean` | `APPSTORE_BUILD_NUMBER_LIVE` | `true` | No | Query the live version (ready-for-sale) |
+| `version` | `String` | `LATEST_VERSION` | `-` | No | The version number whose latest build number we want |
+| `platform` | `String` | `APPSTORE_PLATFORM` | `ios` | No | The platform to use (optional) |
+| `team_name` | `String` | `LATEST_TESTFLIGHT_BUILD_NUMBER_TEAM_NAME` | `-` | No | The name of your App Store Connect team if you're in multiple teams |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::LATEST_BUILD_NUMBER` | The latest build number of either live or testflight version |
+| `SharedValues::LATEST_VERSION` | The version of the latest build number |
+
+## Examples
+
+```ruby
+app_store_build_number
+```
+
+```ruby
+app_store_build_number(
+            app_identifier: "app.identifier",
+            username: "user@host.com"
+          )
+```
+
+```ruby
+app_store_build_number(
+            live: false,
+            app_identifier: "app.identifier",
+            version: "1.2.9"
+          )
+```
+
+```ruby
+api_key = app_store_connect_api_key(
+            key_id: "MyKeyID12345",
+            issuer_id: "00000000-0000-0000-0000-000000000000",
+            key_filepath: "./AuthKey.p8"
+          )
+          build_num = app_store_build_number(
+            api_key: api_key
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `app_store_build_number.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/app_store_build_number.rb)
+- **Authors**: `hjanuschka`

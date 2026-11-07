@@ -1,0 +1,43 @@
+---
+title: "version_get_podspec"
+description: "Receive the version number from a podspec file"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `mac`
+
+> Receive the version number from a podspec file
+
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `FL_VERSION_PODSPEC_PATH` | `-` | **Yes** | You must specify the path to the podspec file |
+| `require_variable_prefix` | `Fastlane::Boolean` | `FL_VERSION_BUMP_PODSPEC_VERSION_REQUIRE_VARIABLE_PREFIX` | `true` | **Yes** | true by default, this is used for non CocoaPods version bumps only |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::PODSPEC_VERSION_NUMBER` | The podspec version number |
+
+## Examples
+
+```ruby
+version = version_get_podspec(path: "TSMessages.podspec")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `version_get_podspec.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/version_get_podspec.rb)
+- **Authors**: `Liquidsoul`, `KrauseFx`

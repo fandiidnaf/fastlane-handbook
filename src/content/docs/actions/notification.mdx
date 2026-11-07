@@ -1,0 +1,43 @@
+---
+title: "notification"
+description: "Display a macOS notification with custom message and title"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `notifications` | **Platforms:** `ios`, `android`, `mac`
+
+> Display a macOS notification with custom message and title
+
+
+## Parameters & Options
+
+Total options available: **9**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `title` | `String` | `-` | `fastlane` | **Yes** | The title to display in the notification |
+| `subtitle` | `String` | `-` | `-` | No | A subtitle to display in the notification |
+| `message` | `String` | `-` | `-` | **Yes** | The message to display in the notification |
+| `sound` | `String` | `-` | `-` | No | The name of a sound to play when the notification appears (names are listed in Sound Preferences) |
+| `activate` | `String` | `-` | `-` | No | Bundle identifier of application to be opened when the notification is clicked |
+| `app_icon` | `String` | `-` | `-` | No | **DEPRECATED!** The URL of an image to display instead of the application icon |
+| `content_image` | `String` | `-` | `-` | No | The local path of an image to display attached to the notification (Mavericks+) |
+| `open` | `String` | `-` | `-` | No | URL of the resource to be opened when the notification is clicked |
+| `execute` | `String` | `-` | `-` | No | Shell command to run when the notification is clicked |
+
+
+## Examples
+
+```ruby
+notification(subtitle: "Finished Building", message: "Ready to upload...")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `notification.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/notification.rb)
+- **Authors**: `champo`, `cbowns`, `KrauseFx`, `amarcadet`, `dusek`

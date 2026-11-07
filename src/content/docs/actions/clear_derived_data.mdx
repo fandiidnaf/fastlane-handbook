@@ -1,0 +1,42 @@
+---
+title: "clear_derived_data"
+description: "Deletes the Xcode Derived Data"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Deletes the Xcode Derived Data
+
+## Details
+
+Deletes the Derived Data from path set on Xcode or a supplied path
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `derived_data_path` | `String` | `DERIVED_DATA_PATH` | `~/Library/Developer/Xcode/DerivedData` | **Yes** | Custom path for derivedData |
+
+
+## Examples
+
+```ruby
+clear_derived_data
+```
+
+```ruby
+clear_derived_data(derived_data_path: "/custom/")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `clear_derived_data.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/clear_derived_data.rb)
+- **Authors**: `KrauseFx`

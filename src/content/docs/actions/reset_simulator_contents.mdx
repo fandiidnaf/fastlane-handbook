@@ -1,0 +1,40 @@
+---
+title: "reset_simulator_contents"
+description: "Shutdown and reset running simulators"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`
+
+> Shutdown and reset running simulators
+
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `ios` | `Array` | `FASTLANE_RESET_SIMULATOR_VERSIONS` | `-` | No | **DEPRECATED!** Use `:os_versions` instead - Which OS versions of Simulators you want to reset content and settings, this does not remove/recreate the simulators |
+| `os_versions` | `Array` | `FASTLANE_RESET_SIMULATOR_OS_VERSIONS` | `-` | No | Which OS versions of Simulators you want to reset content and settings, this does not remove/recreate the simulators |
+
+
+## Examples
+
+```ruby
+reset_simulator_contents
+```
+
+```ruby
+reset_simulator_contents(os_versions: ["10.3.1","12.2"])
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `reset_simulator_contents.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/reset_simulator_contents.rb)
+- **Authors**: `danramteke`

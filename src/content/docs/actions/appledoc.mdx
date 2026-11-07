@@ -1,0 +1,102 @@
+---
+title: "appledoc"
+description: "Generate Apple-like source code documentation from the source code"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `documentation` | **Platforms:** `ios`, `mac`
+
+> Generate Apple-like source code documentation from the source code
+
+## Details
+
+Runs `appledoc [OPTIONS] <paths to source dirs or files>` for the project
+
+## Parameters & Options
+
+Total options available: **45**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `input` | `Array` | `FL_APPLEDOC_INPUT` | `-` | **Yes** | Path(s) to source file directories or individual source files. Accepts a single path or an array of paths |
+| `output` | `String` | `FL_APPLEDOC_OUTPUT` | `-` | No | Output path |
+| `templates` | `String` | `FL_APPLEDOC_TEMPLATES` | `-` | No | Template files path |
+| `docset_install_path` | `String` | `FL_APPLEDOC_DOCSET_INSTALL_PATH` | `-` | No | DocSet installation path |
+| `include` | `String` | `FL_APPLEDOC_INCLUDE` | `-` | No | Include static doc(s) at path |
+| `ignore` | `Array` | `FL_APPLEDOC_IGNORE` | `-` | No | Ignore given path |
+| `exclude_output` | `Array` | `FL_APPLEDOC_EXCLUDE_OUTPUT` | `-` | No | Exclude given path from output |
+| `index_desc` | `String` | `FL_APPLEDOC_INDEX_DESC` | `-` | No | File including main index description |
+| `project_name` | `String` | `FL_APPLEDOC_PROJECT_NAME` | `-` | **Yes** | Project name |
+| `project_version` | `String` | `FL_APPLEDOC_PROJECT_VERSION` | `-` | No | Project version |
+| `project_company` | `String` | `FL_APPLEDOC_PROJECT_COMPANY` | `-` | **Yes** | Project company |
+| `company_id` | `String` | `FL_APPLEDOC_COMPANY_ID` | `-` | No | Company UTI (i.e. reverse DNS name) |
+| `create_html` | `Fastlane::Boolean` | `FL_APPLEDOC_CREATE_HTML` | `false` | **Yes** | Create HTML |
+| `create_docset` | `Fastlane::Boolean` | `FL_APPLEDOC_CREATE_DOCSET` | `false` | **Yes** | Create documentation set |
+| `install_docset` | `Fastlane::Boolean` | `FL_APPLEDOC_INSTALL_DOCSET` | `false` | **Yes** | Install documentation set to Xcode |
+| `publish_docset` | `Fastlane::Boolean` | `FL_APPLEDOC_PUBLISH_DOCSET` | `false` | **Yes** | Prepare DocSet for publishing |
+| `no_create_docset` | `Fastlane::Boolean` | `FL_APPLEDOC_NO_CREATE_DOCSET` | `false` | **Yes** | Create HTML and skip creating a DocSet |
+| `html_anchors` | `String` | `FL_APPLEDOC_HTML_ANCHORS` | `-` | No | The html anchor format to use in DocSet HTML |
+| `clean_output` | `Fastlane::Boolean` | `FL_APPLEDOC_CLEAN_OUTPUT` | `false` | **Yes** | Remove contents of output path before starting |
+| `docset_bundle_id` | `String` | `FL_APPLEDOC_DOCSET_BUNDLE_ID` | `-` | No | DocSet bundle identifier |
+| `docset_bundle_name` | `String` | `FL_APPLEDOC_DOCSET_BUNDLE_NAME` | `-` | No | DocSet bundle name |
+| `docset_desc` | `String` | `FL_APPLEDOC_DOCSET_DESC` | `-` | No | DocSet description |
+| `docset_copyright` | `String` | `FL_APPLEDOC_DOCSET_COPYRIGHT` | `-` | No | DocSet copyright message |
+| `docset_feed_name` | `String` | `FL_APPLEDOC_DOCSET_FEED_NAME` | `-` | No | DocSet feed name |
+| `docset_feed_url` | `String` | `FL_APPLEDOC_DOCSET_FEED_URL` | `-` | No | DocSet feed URL |
+| `docset_feed_formats` | `String` | `FL_APPLEDOC_DOCSET_FEED_FORMATS` | `-` | No | DocSet feed formats. Separated by a comma [atom,xml] |
+| `docset_package_url` | `String` | `FL_APPLEDOC_DOCSET_PACKAGE_URL` | `-` | No | DocSet package (.xar) URL |
+| `docset_fallback_url` | `String` | `FL_APPLEDOC_DOCSET_FALLBACK_URL` | `-` | No | DocSet fallback URL |
+| `docset_publisher_id` | `String` | `FL_APPLEDOC_DOCSET_PUBLISHER_ID` | `-` | No | DocSet publisher identifier |
+| `docset_publisher_name` | `String` | `FL_APPLEDOC_DOCSET_PUBLISHER_NAME` | `-` | No | DocSet publisher name |
+| `docset_min_xcode_version` | `String` | `FL_APPLEDOC_DOCSET_MIN_XCODE_VERSION` | `-` | No | DocSet min. Xcode version |
+| `docset_platform_family` | `String` | `FL_APPLEDOC_DOCSET_PLATFORM_FAMILY` | `-` | No | DocSet platform family |
+| `docset_cert_issuer` | `String` | `FL_APPLEDOC_DOCSET_CERT_ISSUER` | `-` | No | DocSet certificate issuer |
+| `docset_cert_signer` | `String` | `FL_APPLEDOC_DOCSET_CERT_SIGNER` | `-` | No | DocSet certificate signer |
+| `docset_bundle_filename` | `String` | `FL_APPLEDOC_DOCSET_BUNDLE_FILENAME` | `-` | No | DocSet bundle filename |
+| `docset_atom_filename` | `String` | `FL_APPLEDOC_DOCSET_ATOM_FILENAME` | `-` | No | DocSet atom feed filename |
+| `docset_xml_filename` | `String` | `FL_APPLEDOC_DOCSET_XML_FILENAME` | `-` | No | DocSet xml feed filename |
+| `docset_package_filename` | `String` | `FL_APPLEDOC_DOCSET_PACKAGE_FILENAME` | `-` | No | DocSet package (.xar,.tgz) filename |
+| `options` | `String` | `FL_APPLEDOC_OPTIONS` | `-` | No | Documentation generation options |
+| `crossref_format` | `String` | `FL_APPLEDOC_OPTIONS_CROSSREF_FORMAT` | `-` | No | Cross reference template regex |
+| `exit_threshold` | `Integer` | `FL_APPLEDOC_OPTIONS_EXIT_THRESHOLD` | `2` | No | Exit code threshold below which 0 is returned |
+| `docs_section_title` | `String` | `FL_APPLEDOC_OPTIONS_DOCS_SECTION_TITLE` | `-` | No | Title of the documentation section (defaults to "Programming Guides" |
+| `warnings` | `String` | `FL_APPLEDOC_WARNINGS` | `-` | No | Documentation generation warnings |
+| `logformat` | `Integer` | `FL_APPLEDOC_LOGFORMAT` | `-` | No | Log format [0-3] |
+| `verbose` | `String` | `FL_APPLEDOC_VERBOSE` | `-` | No | Log verbosity level [0-6,xcode] |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::APPLEDOC_DOCUMENTATION_OUTPUT` | Documentation set output path |
+
+## Examples
+
+```ruby
+appledoc(
+            project_name: "MyProjectName",
+            project_company: "Company Name",
+            input: [
+              "MyProjectSources",
+              "MyProjectSourceFile.h"
+            ],
+            ignore: [
+              "ignore/path/1",
+              "ignore/path/2"
+            ],
+            options: "--keep-intermediate-files --search-undocumented-doc",
+            warnings: "--warn-missing-output-path --warn-missing-company-id"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `appledoc.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/appledoc.rb)
+- **Authors**: `alexmx`

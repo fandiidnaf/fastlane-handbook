@@ -1,0 +1,64 @@
+---
+title: "badge"
+description: "Automatically add a badge to your app icon"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `ios`, `android`, `mac`
+
+> Automatically add a badge to your app icon
+
+## Details
+
+Please use the [badge plugin](https://github.com/HazAT/fastlane-plugin-badge) instead.
+This action will add a light/dark badge onto your app icon.
+You can also provide your custom badge/overlay or add a shield for more customization.
+More info: [https://github.com/HazAT/badge](https://github.com/HazAT/badge)
+**Note**: If you want to reset the badge back to default, you can use `sh 'git checkout -- <path>/Assets.xcassets/'`.
+
+## Parameters & Options
+
+Total options available: **11**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `dark` | `Fastlane::Boolean` | `FL_BADGE_DARK` | `-` | No | Adds a dark flavored badge on top of your icon |
+| `custom` | `String` | `FL_BADGE_CUSTOM` | `-` | No | Add your custom overlay/badge image |
+| `no_badge` | `Fastlane::Boolean` | `FL_BADGE_NO_BADGE` | `-` | No | Hides the beta badge |
+| `shield` | `String` | `FL_BADGE_SHIELD` | `-` | No | Add a shield to your app icon from shields.io |
+| `alpha` | `Fastlane::Boolean` | `FL_BADGE_ALPHA` | `-` | No | Adds and alpha badge instead of the default beta one |
+| `path` | `String` | `FL_BADGE_PATH` | `.` | No | Sets the root path to look for AppIcons |
+| `shield_io_timeout` | `Integer` | `FL_BADGE_SHIELD_IO_TIMEOUT` | `-` | No | Set custom duration for the timeout of the shields.io request in seconds |
+| `glob` | `String` | `FL_BADGE_GLOB` | `-` | No | Glob pattern for finding image files |
+| `alpha_channel` | `Fastlane::Boolean` | `FL_BADGE_ALPHA_CHANNEL` | `-` | No | Keeps/adds an alpha channel to the icon (useful for android icons) |
+| `shield_gravity` | `String` | `FL_BADGE_SHIELD_GRAVITY` | `-` | No | Position of shield on icon. Default: North - Choices include: NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast |
+| `shield_no_resize` | `Fastlane::Boolean` | `FL_BADGE_SHIELD_NO_RESIZE` | `-` | No | Shield image will no longer be resized to aspect fill the full icon. Instead it will only be shrunk to not exceed the icon graphic |
+
+
+## Examples
+
+```ruby
+badge(dark: true)
+```
+
+```ruby
+badge(alpha: true)
+```
+
+```ruby
+badge(custom: "/Users/xxx/Desktop/badge.png")
+```
+
+```ruby
+badge(shield: "Version-0.0.3-blue", no_badge: true)
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `badge.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/badge.rb)
+- **Authors**: `DanielGri`

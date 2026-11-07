@@ -1,0 +1,43 @@
+---
+title: "clean_cocoapods_cache"
+description: "Remove the cache for pods"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Remove the cache for pods
+
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `name` | `String` | `FL_CLEAN_COCOAPODS_CACHE_DEVELOPMENT` | `-` | No | Pod name to be removed from cache |
+| `no_ansi` | `Fastlane::Boolean` | `FL_CLEAN_COCOAPODS_CACHE_NO_ANSI` | `false` | **Yes** | Show output without ANSI codes |
+| `verbose` | `Fastlane::Boolean` | `FL_CLEAN_COCOAPODS_CACHE_VERBOSE` | `false` | **Yes** | Show more debugging information |
+| `silent` | `Fastlane::Boolean` | `FL_CLEAN_COCOAPODS_CACHE_SILENT` | `false` | **Yes** | Show nothing |
+| `allow_root` | `Fastlane::Boolean` | `FL_CLEAN_COCOAPODS_CACHE_ALLOW_ROOT` | `false` | **Yes** | Allows CocoaPods to run as root |
+
+
+## Examples
+
+```ruby
+clean_cocoapods_cache
+```
+
+```ruby
+clean_cocoapods_cache(name: "CACHED_POD")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `clean_cocoapods_cache.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/clean_cocoapods_cache.rb)
+- **Authors**: `alexmx`

@@ -1,0 +1,55 @@
+---
+title: "update_project_provisioning"
+description: "Update projects code signing settings from your provisioning profile"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `code_signing` | **Platforms:** `ios`, `mac`
+
+> Update projects code signing settings from your provisioning profile
+
+## Details
+
+You should check out the [code signing guide](https://docs.fastlane.tools/codesigning/getting-started/) before using this action.
+This action retrieves a provisioning profile UUID from a provisioning profile (`.mobileprovision`) to set up the Xcode projects' code signing settings in `*.xcodeproj/project.pbxproj`.
+The `:target_filter` value can be used to only update code signing for the specified targets.
+The `:build_configuration` value can be used to only update code signing for the specified build configurations of the targets passing through the `:target_filter`.
+Example usage is the WatchKit Extension or WatchKit App, where you need separate provisioning profiles.
+Example: `update_project_provisioning(xcodeproj: "..", target_filter: ".*WatchKit App.*")`.
+
+## Parameters & Options
+
+Total options available: **7**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `xcodeproj` | `String` | `FL_PROJECT_PROVISIONING_PROJECT_PATH` | `-` | No | Path to your Xcode project |
+| `profile` | `String` | `FL_PROJECT_PROVISIONING_PROFILE_FILE` | `-` | **Yes** | Path to provisioning profile (.mobileprovision) |
+| `target_filter` | `String` | `FL_PROJECT_PROVISIONING_PROFILE_TARGET_FILTER` | `-` | No | A filter for the target name. Use a standard regex |
+| `build_configuration_filter` | `String` | `FL_PROJECT_PROVISIONING_PROFILE_FILTER` | `-` | No | Legacy option, use 'target_filter' instead |
+| `build_configuration` | `String` | `FL_PROJECT_PROVISIONING_PROFILE_BUILD_CONFIGURATION` | `-` | No | A filter for the build configuration name. Use a standard regex. Applied to all configurations if not specified |
+| `certificate` | `String` | `FL_PROJECT_PROVISIONING_CERTIFICATE_PATH` | `/var/folders/ms/6l7tqllj7s15qt4l88v1mw080000gn/T/AppleIncRootCertificate.cer` | **Yes** | Path to apple root certificate |
+| `code_signing_identity` | `String` | `FL_PROJECT_PROVISIONING_CODE_SIGN_IDENTITY` | `-` | No | Code sign identity for build configuration |
+
+
+## Examples
+
+```ruby
+update_project_provisioning(
+            xcodeproj: "Project.xcodeproj",
+            profile: "./watch_app_store.mobileprovision", # optional if you use sigh
+            target_filter: ".*WatchKit Extension.*", # matches name or type of a target
+            build_configuration: "Release",
+            code_signing_identity: "iPhone Development" # optionally specify the codesigning identity
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `update_project_provisioning.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_project_provisioning.rb)
+- **Authors**: `tobiasstrebitzer`, `czechboy0`

@@ -1,0 +1,129 @@
+---
+title: "upload_to_app_store"
+description: "Upload metadata and binary to App Store Connect (via _deliver_)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `production` | **Platforms:** `ios`, `mac`
+
+> Upload metadata and binary to App Store Connect (via _deliver_)
+
+## Details
+
+Using _upload_to_app_store_ after _build_app_ and _capture_screenshots_ will automatically upload the latest ipa and screenshots with no other configuration.
+
+If you don't want to verify an HTML preview for App Store builds, use the `:force` option.
+This is useful when running _fastlane_ on your Continuous Integration server:
+`_upload_to_app_store_(force: true)`
+If your account is on multiple teams and you need to tell the transporter which provider to use, you can set `:itc_provider` or `:provider_public_id`.
+
+## Parameters & Options
+
+Total options available: **76**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |
+| `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option) |
+| `username` | `String` | `DELIVER_USERNAME` | `-` | No | Your Apple ID Username |
+| `app_identifier` | `String` | `DELIVER_APP_IDENTIFIER` | `-` | No | The bundle identifier of your app |
+| `app_version` | `String` | `DELIVER_APP_VERSION` | `-` | No | The version that should be edited or created |
+| `ipa` | `String` | `DELIVER_IPA_PATH` | `-` | No | Path to your ipa file |
+| `pkg` | `String` | `DELIVER_PKG_PATH` | `-` | No | Path to your pkg file |
+| `build_number` | `String` | `DELIVER_BUILD_NUMBER` | `-` | No | If set the given build number (already uploaded to iTC) will be used instead of the current built one |
+| `platform` | `String` | `DELIVER_PLATFORM` | `ios` | No | The platform to use (optional) |
+| `edit_live` | `Fastlane::Boolean` | `DELIVER_EDIT_LIVE` | `false` | No | Modify live metadata, this option disables ipa upload and screenshot upload |
+| `use_live_version` | `Fastlane::Boolean` | `DELIVER_USE_LIVE_VERSION` | `false` | **Yes** | Force usage of live version rather than edit version |
+| `metadata_path` | `String` | `DELIVER_METADATA_PATH` | `-` | No | Path to the folder containing the metadata files |
+| `screenshots_path` | `String` | `DELIVER_SCREENSHOTS_PATH` | `-` | No | Path to the folder containing the screenshots |
+| `app_clip_header_images_path` | `String` | `DELIVER_APP_CLIP_HEADER_IMAGES_PATH` | `-` | No | Path to the folder containing the app clip header images |
+| `app_clip_default_experience_metadata_path` | `String` | `DELIVER_APP_CLIP_DEFAULT_EXPERIENCE_METADATA_PATH` | `-` | No | Path to the folder containing the app clip default experience metadata |
+| `app_previews_path` | `String` | `DELIVER_APP_PREVIEWS_PATH` | `-` | No | Path to the folder containing localized App Preview videos |
+| `preview_frame_time_code` | `String` | `DELIVER_PREVIEW_FRAME_TIME_CODE` | `00:00:05:00` | No | Time code for the App Preview still frame written as hour:minute:second:centisecond (e.g. 00:00:00:01) |
+| `overwrite_preview_videos` | `Fastlane::Boolean` | `DELIVER_OVERWRITE_PREVIEW_VIDEOS` | `false` | **Yes** | Clear all previously uploaded App Preview videos before uploading the new ones |
+| `skip_binary_upload` | `Fastlane::Boolean` | `DELIVER_SKIP_BINARY_UPLOAD` | `false` | **Yes** | Skip uploading an ipa or pkg to App Store Connect |
+| `skip_screenshots` | `Fastlane::Boolean` | `DELIVER_SKIP_SCREENSHOTS` | `false` | **Yes** | Don't upload the screenshots |
+| `skip_metadata` | `Fastlane::Boolean` | `DELIVER_SKIP_METADATA` | `false` | **Yes** | Don't upload the metadata (e.g. title, description). This will still upload screenshots |
+| `skip_app_version_update` | `Fastlane::Boolean` | `DELIVER_SKIP_APP_VERSION_UPDATE` | `false` | **Yes** | Don’t create or update the app version that is being prepared for submission |
+| `force` | `Fastlane::Boolean` | `DELIVER_FORCE` | `false` | **Yes** | Skip verification of HTML preview file |
+| `overwrite_screenshots` | `Fastlane::Boolean` | `DELIVER_OVERWRITE_SCREENSHOTS` | `false` | **Yes** | Clear all previously uploaded screenshots before uploading the new ones |
+| `screenshot_processing_timeout` | `Integer` | `DELIVER_SCREENSHOT_PROCESSING_TIMEOUT` | `3600` | **Yes** | Timeout in seconds to wait before considering screenshot processing as failed, used to handle cases where uploads to the App Store are stuck in processing |
+| `sync_screenshots` | `Fastlane::Boolean` | `DELIVER_SYNC_SCREENSHOTS` | `false` | **Yes** | Sync screenshots with local ones. This is currently beta option so set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well |
+| `submit_for_review` | `Fastlane::Boolean` | `DELIVER_SUBMIT_FOR_REVIEW` | `false` | **Yes** | Submit the new version for Review after uploading everything |
+| `verify_only` | `Fastlane::Boolean` | `DELIVER_VERIFY_ONLY` | `false` | **Yes** | Verifies archive with App Store Connect without uploading |
+| `reject_if_possible` | `Fastlane::Boolean` | `DELIVER_REJECT_IF_POSSIBLE` | `false` | **Yes** | Rejects the previously submitted build if it's in a state where it's possible |
+| `version_check_wait_retry_limit` | `Integer` | `DELIVER_VERSION_CHECK_WAIT_RETRY_LIMIT` | `7` | **Yes** | After submitting a new version, App Store Connect takes some time to recognize the new version and we must wait until it's available before attempting to upload metadata for it. There is a mechanism that will check if it's available and retry with an exponential backoff if it's not available yet. This option specifies how many times we should retry before giving up. Setting this to a value below 5 is not recommended and will likely cause failures. Increase this parameter when Apple servers seem to be degraded or slow |
+| `automatic_release` | `Fastlane::Boolean` | `DELIVER_AUTOMATIC_RELEASE` | `-` | No | Should the app be automatically released once it's approved? (Cannot be used together with `auto_release_date`) |
+| `auto_release_date` | `Integer` | `DELIVER_AUTO_RELEASE_DATE` | `-` | No | Date in milliseconds for automatically releasing on pending approval (Cannot be used together with `automatic_release`) |
+| `phased_release` | `Fastlane::Boolean` | `DELIVER_PHASED_RELEASE` | `false` | No | Enable the phased release feature of iTC |
+| `reset_ratings` | `Fastlane::Boolean` | `DELIVER_RESET_RATINGS` | `false` | No | Reset the summary rating when you release a new version of the application |
+| `price_tier` | `Integer` | `DELIVER_PRICE_TIER` | `-` | No | The price tier of this application |
+| `app_rating_config_path` | `String` | `DELIVER_APP_RATING_CONFIG_PATH` | `-` | No | Path to the app rating's config |
+| `submission_information` | `Hash` | `-` | `-` | No | Extra information for the submission (e.g. compliance specifications) |
+| `team_id` | `String` | `DELIVER_TEAM_ID` | `-` | No | The ID of your App Store Connect team if you're in multiple teams |
+| `team_name` | `String` | `DELIVER_TEAM_NAME` | `-` | No | The name of your App Store Connect team if you're in multiple teams |
+| `dev_portal_team_id` | `String` | `DELIVER_DEV_PORTAL_TEAM_ID` | `-` | No | The short ID of your Developer Portal team, if you're in multiple teams. Different from your iTC team ID! |
+| `dev_portal_team_name` | `String` | `DELIVER_DEV_PORTAL_TEAM_NAME` | `-` | No | The name of your Developer Portal team if you're in multiple teams |
+| `itc_provider` | `String` | `DELIVER_ITC_PROVIDER` | `-` | No | The provider short name to be used with the iTMSTransporter to identify your team. This value will override the automatically detected provider short name. To get provider short name run `xcrun iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off`. The short names of providers should be listed in the second column |
+| `provider_public_id` | `String` | `DELIVER_PROVIDER_PUBLIC_ID` | `-` | No | The provider public ID to be used with altool (--provider-public-id). This value will override the automatically detected provider value for altool uploads. Required after Xcode 26 when your account is associated with multiple providers and using username/app-password authentication |
+| `run_precheck_before_submit` | `Fastlane::Boolean` | `DELIVER_RUN_PRECHECK_BEFORE_SUBMIT` | `true` | **Yes** | Run precheck before submitting to app review |
+| `precheck_default_rule_level` | `Symbol` | `DELIVER_PRECHECK_DEFAULT_RULE_LEVEL` | `warn` | **Yes** | The default precheck rule level unless otherwise configured |
+| `individual_metadata_items` | `Array` | `-` | `-` | No | **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow |
+| `app_icon` | `String` | `DELIVER_APP_ICON_PATH` | `-` | No | **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the app icon |
+| `apple_watch_app_icon` | `String` | `DELIVER_APPLE_WATCH_APP_ICON_PATH` | `-` | No | **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the Apple Watch app icon |
+| `copyright` | `String` | `DELIVER_COPYRIGHT` | `-` | No | Metadata: The copyright notice |
+| `primary_category` | `String` | `DELIVER_PRIMARY_CATEGORY` | `-` | No | Metadata: The english name of the primary category (e.g. `Business`, `Books`) |
+| `secondary_category` | `String` | `DELIVER_SECONDARY_CATEGORY` | `-` | No | Metadata: The english name of the secondary category (e.g. `Business`, `Books`) |
+| `primary_first_sub_category` | `String` | `DELIVER_PRIMARY_FIRST_SUB_CATEGORY` | `-` | No | Metadata: The english name of the primary first sub category (e.g. `Educational`, `Puzzle`) |
+| `primary_second_sub_category` | `String` | `DELIVER_PRIMARY_SECOND_SUB_CATEGORY` | `-` | No | Metadata: The english name of the primary second sub category (e.g. `Educational`, `Puzzle`) |
+| `secondary_first_sub_category` | `String` | `DELIVER_SECONDARY_FIRST_SUB_CATEGORY` | `-` | No | Metadata: The english name of the secondary first sub category (e.g. `Educational`, `Puzzle`) |
+| `secondary_second_sub_category` | `String` | `DELIVER_SECONDARY_SECOND_SUB_CATEGORY` | `-` | No | Metadata: The english name of the secondary second sub category (e.g. `Educational`, `Puzzle`) |
+| `trade_representative_contact_information` | `Hash` | `-` | `-` | No | **DEPRECATED!** This is no longer used by App Store Connect - Metadata: A hash containing the trade representative contact information |
+| `app_review_information` | `Hash` | `-` | `-` | No | Metadata: A hash containing the review information |
+| `app_clip_review_information` | `Hash` | `-` | `-` | No | Metadata: A hash containing the app clip review information |
+| `app_review_attachment_file` | `String` | `DELIVER_APP_REVIEW_ATTACHMENT_FILE` | `-` | No | Metadata: Path to the app review attachment file |
+| `routing_app_coverage_file` | `String` | `DELIVER_ROUTING_APP_COVERAGE_FILE` | `-` | No | Metadata: Path to the routing app coverage file (`.geojson`) that is required for routing apps |
+| `description` | `Hash` | `-` | `-` | No | Metadata: The localised app description |
+| `name` | `Hash` | `-` | `-` | No | Metadata: The localised app name |
+| `subtitle` | `Hash` | `-` | `-` | No | Metadata: The localised app subtitle |
+| `keywords` | `Hash` | `-` | `-` | No | Metadata: An array of localised keywords |
+| `promotional_text` | `Hash` | `-` | `-` | No | Metadata: An array of localised promotional texts |
+| `release_notes` | `Hash` | `-` | `-` | No | Metadata: Localised release notes for this version |
+| `privacy_url` | `Hash` | `-` | `-` | No | Metadata: Localised privacy url |
+| `apple_tv_privacy_policy` | `Hash` | `-` | `-` | No | Metadata: Localised Apple TV privacy policy text |
+| `support_url` | `Hash` | `-` | `-` | No | Metadata: Localised support url |
+| `marketing_url` | `Hash` | `-` | `-` | No | Metadata: Localised marketing url |
+| `languages` | `Array` | `DELIVER_LANGUAGES` | `-` | No | Metadata: List of languages to activate |
+| `ignore_language_directory_validation` | `Fastlane::Boolean` | `DELIVER_IGNORE_LANGUAGE_DIRECTORY_VALIDATION` | `false` | **Yes** | Ignore errors when invalid languages are found in metadata and screenshot directories |
+| `precheck_include_in_app_purchases` | `Fastlane::Boolean` | `PRECHECK_INCLUDE_IN_APP_PURCHASES` | `true` | No | Should precheck check in-app purchases? |
+| `app_clip_default_experience_subtitle` | `Hash` | `DELIVER_APP_CLIP_DEFAULT_EXPERIENCE_SUBTITLE` | `-` | No | The localized subtitle for the default app clip experience |
+| `app_clip_default_experience_action` | `String` | `DELIVER_APP_CLIP_DEFAULT_EXPERIENCE_ACTION` | `-` | No | Action for the default app clip experience (OPEN, VIEW, PLAY) |
+| `app` | `Integer` | `DELIVER_APP_ID` | `-` | No | The (spaceship) app ID of the app you want to use/modify |
+
+
+## Examples
+
+```ruby
+upload_to_app_store(
+            force: true, # Set to true to skip verification of HTML preview
+            itc_provider: "abcde12345" # pass a specific value to the iTMSTransporter -itc_provider option
+          )
+```
+
+```ruby
+deliver   # alias for "upload_to_app_store"
+```
+
+```ruby
+appstore  # alias for "upload_to_app_store"
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `upload_to_app_store.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/upload_to_app_store.rb)
+- **Authors**: `KrauseFx`

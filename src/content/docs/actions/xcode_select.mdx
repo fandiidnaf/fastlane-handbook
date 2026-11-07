@@ -1,0 +1,37 @@
+---
+title: "xcode_select"
+description: "Change the xcode-path to use. Useful for beta versions of Xcode"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Change the xcode-path to use. Useful for beta versions of Xcode
+
+## Details
+
+Select and build with the Xcode installed at the provided path.
+Use the `xcodes` action if you want to select an Xcode:
+- Based on a version specifier or
+- You don't have known, stable paths, as may happen in a CI environment.
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+xcode_select("/Applications/Xcode-8.3.2.app")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `xcode_select.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcode_select.rb)
+- **Authors**: `dtrenz`

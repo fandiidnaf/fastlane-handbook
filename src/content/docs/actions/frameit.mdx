@@ -1,0 +1,75 @@
+---
+title: "frameit"
+description: "Alias for the `frame_screenshots` action"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `screenshots` | **Platforms:** `ios`, `android`, `mac`
+
+> Alias for the `frame_screenshots` action
+
+## Details
+
+Uses [frameit](https://docs.fastlane.tools/actions/frameit/) to prepare perfect screenshots for the App Store, your website, QA or emails.
+You can add background and titles to the framed screenshots as well.
+
+## Parameters & Options
+
+Total options available: **17**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `white` | `Fastlane::Boolean` | `FRAMEIT_WHITE_FRAME` | `-` | No | Use white device frames |
+| `silver` | `Fastlane::Boolean` | `FRAMEIT_SILVER_FRAME` | `-` | No | Use white device frames. Alias for :white |
+| `rose_gold` | `Fastlane::Boolean` | `FRAMEIT_ROSE_GOLD_FRAME` | `-` | No | Use rose gold device frames. Alias for :rose_gold |
+| `gold` | `Fastlane::Boolean` | `FRAMEIT_GOLD_FRAME` | `-` | No | Use gold device frames. Alias for :gold |
+| `force_device_type` | `String` | `FRAMEIT_FORCE_DEVICE_TYPE` | `-` | No | Forces a given device type, useful for Mac screenshots, as their sizes vary |
+| `use_legacy_iphone5s` | `Fastlane::Boolean` | `FRAMEIT_USE_LEGACY_IPHONE_5_S` | `false` | **Yes** | Use iPhone 5s instead of iPhone SE frames |
+| `use_legacy_iphone6s` | `Fastlane::Boolean` | `FRAMEIT_USE_LEGACY_IPHONE_6_S` | `false` | **Yes** | Use iPhone 6s frames instead of iPhone 7 frames |
+| `use_legacy_iphone7` | `Fastlane::Boolean` | `FRAMEIT_USE_LEGACY_IPHONE_7` | `false` | **Yes** | Use iPhone 7 frames instead of iPhone 8 frames |
+| `use_legacy_iphonex` | `Fastlane::Boolean` | `FRAMEIT_USE_LEGACY_IPHONE_X` | `false` | **Yes** | Use iPhone X instead of iPhone XS frames |
+| `use_legacy_iphonexr` | `Fastlane::Boolean` | `FRAMEIT_USE_LEGACY_IPHONE_XR` | `false` | **Yes** | Use iPhone XR instead of iPhone 11 frames |
+| `use_legacy_iphonexs` | `Fastlane::Boolean` | `FRAMEIT_USE_LEGACY_IPHONE_XS` | `false` | **Yes** | Use iPhone XS instead of iPhone 11 Pro frames |
+| `use_legacy_iphonexsmax` | `Fastlane::Boolean` | `FRAMEIT_USE_LEGACY_IPHONE_XS_MAX` | `false` | **Yes** | Use iPhone XS Max instead of iPhone 11 Pro Max frames |
+| `force_orientation_block` | `string_callback` | `-` | `#&lt;Proc:0x00000001271aa568 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81&gt;` | No | [Advanced] A block to customize your screenshots' device orientation |
+| `debug_mode` | `Fastlane::Boolean` | `FRAMEIT_DEBUG_MODE` | `false` | **Yes** | Output debug information in framed screenshots |
+| `resume` | `Fastlane::Boolean` | `FRAMEIT_RESUME` | `false` | **Yes** | Resume frameit instead of reprocessing all screenshots |
+| `use_platform` | `String` | `FRAMEIT_USE_PLATFORM` | `IOS` | No | Choose a platform, the valid options are IOS, ANDROID and ANY (default is either general platform defined in the fastfile or IOS to ensure backward compatibility) |
+| `path` | `String` | `FRAMEIT_SCREENSHOTS_PATH` | `-` | **Yes** | The path to the directory containing the screenshots |
+
+
+## Examples
+
+```ruby
+frame_screenshots
+```
+
+```ruby
+frameit # alias for "frame_screenshots"
+```
+
+```ruby
+frame_screenshots(use_platform: "ANDROID")
+```
+
+```ruby
+frame_screenshots(silver: true)
+```
+
+```ruby
+frame_screenshots(path: "/screenshots")
+```
+
+```ruby
+frame_screenshots(rose_gold: true)
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `frameit.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/frameit.rb)
+- **Authors**: `KrauseFx`

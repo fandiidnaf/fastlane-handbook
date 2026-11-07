@@ -1,0 +1,38 @@
+---
+title: "gcovr"
+description: "Runs test coverage reports for your Xcode project"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `testing` | **Platforms:** `ios`
+
+> Runs test coverage reports for your Xcode project
+
+## Details
+
+Generate summarized code coverage reports using [gcovr](http://gcovr.com/)
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+gcovr(
+            html: true,
+            html_details: true,
+            output: "./code-coverage/report.html"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `gcovr.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/gcovr.rb)
+- **Authors**: `dtrenz`

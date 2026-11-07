@@ -1,0 +1,46 @@
+---
+title: "chatwork"
+description: "Send a success/error message to [ChatWork](https://go.chatwork.com/)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `notifications` | **Platforms:** `ios`, `android`, `mac`
+
+> Send a success/error message to [ChatWork](https://go.chatwork.com/)
+
+## Details
+
+Information on how to obtain an API token: [http://developer.chatwork.com/ja/authenticate.html](http://developer.chatwork.com/ja/authenticate.html)
+
+## Parameters & Options
+
+Total options available: **4**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_token` | `String` | `CHATWORK_API_TOKEN` | `-` | **Yes** | ChatWork API Token |
+| `message` | `String` | `FL_CHATWORK_MESSAGE` | `-` | **Yes** | The message to post on ChatWork |
+| `roomid` | `Integer` | `FL_CHATWORK_ROOMID` | `-` | **Yes** | The room ID |
+| `success` | `Fastlane::Boolean` | `FL_CHATWORK_SUCCESS` | `true` | No | Was this build successful? (true/false) |
+
+
+## Examples
+
+```ruby
+chatwork(
+            message: "App successfully released!",
+            roomid: 12345,
+            success: true,
+            api_token: "Your Token"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `chatwork.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/chatwork.rb)
+- **Authors**: `astronaughts`

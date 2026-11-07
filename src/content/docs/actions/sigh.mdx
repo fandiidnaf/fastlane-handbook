@@ -1,0 +1,90 @@
+---
+title: "sigh"
+description: "Alias for the `get_provisioning_profile` action"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `code_signing` | **Platforms:** `ios`, `mac`
+
+> Alias for the `get_provisioning_profile` action
+
+## Details
+
+**Note**: It is recommended to use [match](https://docs.fastlane.tools/actions/match/) according to the [codesigning.guide](https://codesigning.guide) for generating and maintaining your provisioning profiles. Use _sigh_ directly only if you want full control over what's going on and know more about codesigning.
+
+## Parameters & Options
+
+Total options available: **30**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `adhoc` | `String` | `SIGH_AD_HOC` | `false` | **Yes** | Setting this flag will generate AdHoc profiles instead of App Store Profiles |
+| `developer_id` | `String` | `SIGH_DEVELOPER_ID` | `false` | **Yes** | Setting this flag will generate Developer ID profiles instead of App Store Profiles |
+| `development` | `String` | `SIGH_DEVELOPMENT` | `false` | **Yes** | Renew the development certificate instead of the production one |
+| `skip_install` | `String` | `SIGH_SKIP_INSTALL` | `false` | **Yes** | By default, the certificate will be added to your local machine. Setting this flag will skip this action |
+| `force` | `String` | `SIGH_FORCE` | `false` | **Yes** | Renew provisioning profiles regardless of its state - to automatically add all devices for ad hoc profiles |
+| `include_mac_in_profiles` | `String` | `SIGH_INCLUDE_MAC_IN_PROFILES` | `false` | **Yes** | Include Apple Silicon Mac devices in provisioning profiles for iOS/iPadOS apps |
+| `app_identifier` | `String` | `SIGH_APP_IDENTIFIER` | `-` | **Yes** | The bundle identifier of your app |
+| `offline_profile` | `String` | `SIGH_OFFLINE_PROFILE` | `false` | **Yes** | Enable profile with 'Offline Support' (7 day validity). Requires Apple ID login, not supported with App Store Connect API key authentication |
+| `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |
+| `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option) |
+| `username` | `String` | `SIGH_USERNAME` | `-` | No | Your Apple ID Username |
+| `team_id` | `String` | `SIGH_TEAM_ID` | `-` | No | The ID of your Developer Portal team if you're in multiple teams |
+| `team_name` | `String` | `SIGH_TEAM_NAME` | `-` | No | The name of your Developer Portal team if you're in multiple teams |
+| `provisioning_name` | `String` | `SIGH_PROVISIONING_PROFILE_NAME` | `-` | No | The name of the profile that is used on the Apple Developer Portal |
+| `ignore_profiles_with_different_name` | `String` | `SIGH_IGNORE_PROFILES_WITH_DIFFERENT_NAME` | `false` | No | Use in combination with :provisioning_name - when true only profiles matching this exact name will be downloaded |
+| `output_path` | `String` | `SIGH_OUTPUT_PATH` | `.` | **Yes** | Directory in which the profile should be stored |
+| `cert_id` | `String` | `SIGH_CERTIFICATE_ID` | `-` | No | The ID of the code signing certificate to use (e.g. 78ADL6LVAA)  |
+| `cert_owner_name` | `String` | `SIGH_CERTIFICATE` | `-` | No | The certificate name to use for new profiles, or to renew with. (e.g. "Felix Krause") |
+| `filename` | `String` | `SIGH_PROFILE_FILE_NAME` | `-` | No | Filename to use for the generated provisioning profile (must include .mobileprovision) |
+| `skip_fetch_profiles` | `String` | `SIGH_SKIP_FETCH_PROFILES` | `false` | **Yes** | Skips the verification of existing profiles which is useful if you have thousands of profiles |
+| `include_all_certificates` | `String` | `SIGH_INCLUDE_ALL_CERTIFICATES` | `false` | **Yes** | Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type |
+| `skip_certificate_verification` | `String` | `SIGH_SKIP_CERTIFICATE_VERIFICATION` | `false` | **Yes** | Skips the verification of the certificates for every existing profiles. This will make sure the provisioning profile can be used on the local machine |
+| `platform` | `String` | `SIGH_PLATFORM` | `ios` | **Yes** | Set the provisioning profile's platform (i.e. ios, tvos, macos, catalyst) |
+| `readonly` | `String` | `SIGH_READONLY` | `false` | No | Only fetch existing profile, don't generate new ones |
+| `template_name` | `String` | `SIGH_PROVISIONING_PROFILE_TEMPLATE_NAME` | `-` | No | **DEPRECATED!** Removed since May 2025 on App Store Connect API OpenAPI v3.8.0 - Learn more: https://docs.fastlane.tools/actions/match/#managed-capabilities - The name of provisioning profile template. If the developer account has provisioning profile templates (aka: custom entitlements), the template name can be found by inspecting the Entitlements drop-down while creating/editing a provisioning profile (e.g. "Apple Pay Pass Suppression Development") |
+| `fail_on_name_taken` | `String` | `SIGH_FAIL_ON_NAME_TAKEN` | `false` | No | Should the command fail if it was about to create a duplicate of an existing provisioning profile. It can happen due to issues on Apple Developer Portal, when profile to be recreated was not properly deleted first |
+| `cached_certificates` | `String` | `-` | `-` | No | A list of cached certificates |
+| `cached_devices` | `String` | `-` | `-` | No | A list of cached devices |
+| `cached_bundle_ids` | `String` | `-` | `-` | No | A list of cached bundle ids |
+| `cached_profiles` | `String` | `-` | `-` | No | A list of cached bundle ids |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::SIGH_PROFILE_PATH` | A path in which certificates, key and profile are exported |
+| `SharedValues::SIGH_PROFILE_PATHS` | Paths in which certificates, key and profile are exported |
+| `SharedValues::SIGH_UUID` | UUID (Universally Unique IDentifier) of a provisioning profile |
+| `SharedValues::SIGH_NAME` | The name of the profile |
+| `SharedValues::SIGH_PROFILE_TYPE` | The profile type, can be app-store, ad-hoc, development, enterprise, developer-id, can be used in `build_app` as a default value for `export_method` |
+
+## Examples
+
+```ruby
+get_provisioning_profile
+```
+
+```ruby
+sigh # alias for "get_provisioning_profile"
+```
+
+```ruby
+get_provisioning_profile(
+            adhoc: true,
+            force: true,
+            filename: "myFile.mobileprovision"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `sigh.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/sigh.rb)
+- **Authors**: `KrauseFx`

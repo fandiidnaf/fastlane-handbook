@@ -1,0 +1,39 @@
+---
+title: "clipboard"
+description: "Copies a given string into the clipboard. Works only on macOS"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Copies a given string into the clipboard. Works only on macOS
+
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `value` | `String` | `FL_CLIPBOARD_VALUE` | `-` | **Yes** | The string that should be copied into the clipboard |
+
+
+## Examples
+
+```ruby
+clipboard(value: "https://docs.fastlane.tools/")
+```
+
+```ruby
+clipboard(value: lane_context[SharedValues::HOCKEY_DOWNLOAD_LINK] || "")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `clipboard.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/clipboard.rb)
+- **Authors**: `KrauseFx`, `joshdholtz`, `rogerluan`

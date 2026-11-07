@@ -1,0 +1,81 @@
+---
+title: "s3"
+description: "Generates a plist file and uploads all to AWS S3"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `All platforms (cross-platform)`
+
+> Generates a plist file and uploads all to AWS S3
+
+## Details
+
+Upload a new build to Amazon S3 to distribute the build to beta testers.
+Works for both Ad Hoc and Enterprise signed applications. This step will generate the necessary HTML, plist, and version files for you.
+It is recommended to **not** store the AWS access keys in the `Fastfile`. The uploaded `version.json` file provides an easy way for apps to poll if a new update is available.
+
+## Parameters & Options
+
+Total options available: **16**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `ipa` | `String` | `-` | `-` | No | .ipa file for the build  |
+| `dsym` | `String` | `-` | `-` | No | zipped .dsym package for the build  |
+| `upload_metadata` | `Fastlane::Boolean` | `-` | `true` | No | Upload relevant metadata for this build |
+| `plist_template_path` | `String` | `-` | `-` | No | plist template path |
+| `plist_file_name` | `String` | `-` | `-` | No | uploaded plist filename |
+| `html_template_path` | `String` | `-` | `-` | No | html erb template path |
+| `html_file_name` | `String` | `-` | `-` | No | uploaded html filename |
+| `version_template_path` | `String` | `-` | `-` | No | version erb template path |
+| `version_file_name` | `String` | `-` | `-` | No | uploaded version filename |
+| `access_key` | `String` | `S3_ACCESS_KEY` | `-` | No | AWS Access Key ID  |
+| `secret_access_key` | `String` | `S3_SECRET_ACCESS_KEY` | `-` | No | AWS Secret Access Key  |
+| `bucket` | `String` | `S3_BUCKET` | `-` | No | AWS bucket name |
+| `region` | `String` | `S3_REGION` | `-` | No | AWS region (for bucket creation)  |
+| `path` | `String` | `S3_PATH` | `v&#123;CFBundleShortVersionString&#125;_b&#123;CFBundleVersion&#125;/` | No | S3 'path'. Values from Info.plist will be substituted for keys wrapped in &#123;&#125;   |
+| `source` | `String` | `S3_SOURCE` | `-` | No | Optional source directory e.g. ./build  |
+| `acl` | `String` | `S3_ACL` | `public_read` | No | Uploaded object permissions e.g public_read (default), private, public_read_write, authenticated_read  |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::S3_IPA_OUTPUT_PATH` | Direct HTTP link to the uploaded ipa file |
+| `SharedValues::S3_DSYM_OUTPUT_PATH` | Direct HTTP link to the uploaded dsym file |
+| `SharedValues::S3_PLIST_OUTPUT_PATH` | Direct HTTP link to the uploaded plist file |
+| `SharedValues::S3_HTML_OUTPUT_PATH` | Direct HTTP link to the uploaded HTML file |
+| `SharedValues::S3_VERSION_OUTPUT_PATH` | Direct HTTP link to the uploaded Version file |
+
+## Examples
+
+```ruby
+s3
+```
+
+```ruby
+s3(
+            # All of these are used to make Shenzhen's `ipa distribute:s3` command
+            access_key: ENV["S3_ACCESS_KEY"],               # Required from user.
+            secret_access_key: ENV["S3_SECRET_ACCESS_KEY"], # Required from user.
+            bucket: ENV["S3_BUCKET"],                       # Required from user.
+            ipa: "AppName.ipa",                             # Optional if you use `ipa` to build
+            dsym: "AppName.app.dSYM.zip",                   # Optional if you use `ipa` to build
+            path: "v{CFBundleShortVersionString}_b{CFBundleVersion}/", # This is actually the default.
+            upload_metadata: true,                          # Upload version.json, plist and HTML. Set to false to skip uploading of these files.
+            version_file_name: "app_version.json",          # Name of the file to upload to S3. Defaults to "version.json"
+            version_template_path: "path/to/erb"            # Path to an ERB to configure the structure of the version JSON file
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `s3.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/s3.rb)
+- **Authors**: `joshdholtz`

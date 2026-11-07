@@ -1,0 +1,38 @@
+---
+title: "is_ci"
+description: "Is the current run being executed on a CI system, like Jenkins or Travis"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Is the current run being executed on a CI system, like Jenkins or Travis
+
+## Details
+
+The return value of this method is true if fastlane is currently executed on Travis, Jenkins, Circle or a similar CI service
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+if is_ci
+            puts "I'm a computer"
+          else
+            say "Hi Human!"
+          end
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `is_ci.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/is_ci.rb)
+- **Authors**: `KrauseFx`

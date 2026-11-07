@@ -1,0 +1,52 @@
+---
+title: "set_changelog"
+description: "Set the changelog for all languages on App Store Connect"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `app_store_connect` | **Platforms:** `ios`, `mac`
+
+> Set the changelog for all languages on App Store Connect
+
+## Details
+
+This is useful if you have only one changelog for all languages.
+You can store the changelog in `/changelog.txt` and it will automatically get loaded from there. This integration is useful if you support e.g. 10 languages and want to use the same "What's new"-text for all languages.
+Defining the version is optional. _fastlane_ will try to automatically detect it if you don't provide one.
+
+## Parameters & Options
+
+Total options available: **9**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |
+| `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option) |
+| `app_identifier` | `String` | `FASTLANE_APP_IDENTIFIER` | `-` | **Yes** | The bundle identifier of your app |
+| `username` | `String` | `FASTLANE_USERNAME` | `-` | No | Your Apple ID Username |
+| `version` | `String` | `FL_SET_CHANGELOG_VERSION` | `-` | No | The version number to create/update |
+| `changelog` | `String` | `FL_SET_CHANGELOG_CHANGELOG` | `-` | No | Changelog text that should be uploaded to App Store Connect |
+| `team_id` | `String` | `FL_SET_CHANGELOG_TEAM_ID` | `-` | No | The ID of your App Store Connect team if you're in multiple teams |
+| `team_name` | `String` | `FL_SET_CHANGELOG_TEAM_NAME` | `-` | No | The name of your App Store Connect team if you're in multiple teams |
+| `platform` | `String` | `FL_SET_CHANGELOG_PLATFORM` | `ios` | **Yes** | The platform of the app (ios, appletvos, xros, mac) |
+
+
+## Examples
+
+```ruby
+set_changelog(changelog: "Changelog for all Languages")
+```
+
+```ruby
+set_changelog(app_identifier: "com.krausefx.app", version: "1.0", changelog: "Changelog for all Languages")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `set_changelog.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/set_changelog.rb)
+- **Authors**: `KrauseFx`

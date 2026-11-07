@@ -1,0 +1,52 @@
+---
+title: "installr"
+description: "Upload a new build to [Installr](http://installrapp.com/)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `beta` | **Platforms:** `ios`
+
+> Upload a new build to [Installr](http://installrapp.com/)
+
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_token` | `String` | `INSTALLR_API_TOKEN` | `-` | **Yes** | API Token for Installr Access |
+| `ipa` | `String` | `INSTALLR_IPA_PATH` | `-` | **Yes** | Path to your IPA file. Optional if you use the _gym_ or _xcodebuild_ action |
+| `notes` | `String` | `INSTALLR_NOTES` | `-` | No | Release notes |
+| `notify` | `String` | `INSTALLR_NOTIFY` | `-` | No | Groups to notify (e.g. 'dev,qa') |
+| `add` | `String` | `INSTALLR_ADD` | `-` | No | Groups to add (e.g. 'exec,ops') |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::INSTALLR_BUILD_INFORMATION` | Contains release info like :appData. See http://help.installrapp.com/api/ |
+
+## Examples
+
+```ruby
+installr(
+            api_token: "...",
+            ipa: "test.ipa",
+            notes: "The next great version of the app!",
+            notify: "dev,qa",
+            add: "exec,ops"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `installr.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/installr.rb)
+- **Authors**: `scottrhoyt`

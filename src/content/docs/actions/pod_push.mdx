@@ -1,0 +1,65 @@
+---
+title: "pod_push"
+description: "Push a Podspec to Trunk or a private repository"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `mac`
+
+> Push a Podspec to Trunk or a private repository
+
+
+## Parameters & Options
+
+Total options available: **15**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `use_bundle_exec` | `Fastlane::Boolean` | `FL_POD_PUSH_USE_BUNDLE_EXEC` | `false` | **Yes** | Use bundle exec when there is a Gemfile presented |
+| `path` | `String` | `FL_POD_PUSH_PATH` | `-` | No | The Podspec you want to push |
+| `repo` | `String` | `FL_POD_PUSH_REPO` | `-` | No | The repo you want to push. Pushes to Trunk by default |
+| `allow_warnings` | `Fastlane::Boolean` | `FL_POD_PUSH_ALLOW_WARNINGS` | `-` | No | Allow warnings during pod push |
+| `use_libraries` | `Fastlane::Boolean` | `FL_POD_PUSH_USE_LIBRARIES` | `-` | No | Allow lint to use static libraries to install the spec |
+| `sources` | `Array` | `FL_POD_PUSH_SOURCES` | `-` | No | The sources of repos you want the pod spec to lint with, separated by commas |
+| `swift_version` | `String` | `FL_POD_PUSH_SWIFT_VERSION` | `-` | No | The SWIFT_VERSION that should be used to lint the spec. This takes precedence over a .swift-version file |
+| `skip_import_validation` | `Fastlane::Boolean` | `FL_POD_PUSH_SKIP_IMPORT_VALIDATION` | `-` | No | Lint skips validating that the pod can be imported |
+| `skip_tests` | `Fastlane::Boolean` | `FL_POD_PUSH_SKIP_TESTS` | `-` | No | Lint skips building and running tests during validation |
+| `use_json` | `Fastlane::Boolean` | `FL_POD_PUSH_USE_JSON` | `-` | No | Convert the podspec to JSON before pushing it to the repo |
+| `verbose` | `Fastlane::Boolean` | `FL_POD_PUSH_VERBOSE` | `false` | No | Show more debugging information |
+| `use_modular_headers` | `Fastlane::Boolean` | `FL_POD_PUSH_USE_MODULAR_HEADERS` | `-` | No | Use modular headers option during validation |
+| `synchronous` | `Fastlane::Boolean` | `FL_POD_PUSH_SYNCHRONOUS` | `-` | No | If validation depends on other recently pushed pods, synchronize |
+| `no_overwrite` | `Fastlane::Boolean` | `FL_POD_PUSH_NO_OVERWRITE` | `-` | No | Disallow pushing that would overwrite an existing spec |
+| `local_only` | `Fastlane::Boolean` | `FL_POD_PUSH_LOCAL_ONLY` | `-` | No | Does not perform the step of pushing REPO to its remote |
+
+
+## Examples
+
+```ruby
+# If no path is supplied then Trunk will attempt to find the first Podspec in the current directory.
+          pod_push
+```
+
+```ruby
+# Alternatively, supply the Podspec file path
+          pod_push(path: "TSMessages.podspec")
+```
+
+```ruby
+# You may also push to a private repo instead of Trunk
+          pod_push(path: "TSMessages.podspec", repo: "MyRepo")
+```
+
+```ruby
+# If the podspec has a dependency on another private pod, then you will have to supply the sources you want the podspec to lint with for pod_push to succeed. Read more here - https://github.com/CocoaPods/CocoaPods/issues/2543.
+          pod_push(path: "TMessages.podspec", repo: "MyRepo", sources: ["https://github.com/username/Specs", "https://github.com/CocoaPods/Specs"])
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `pod_push.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/pod_push.rb)
+- **Authors**: `squarefrog`

@@ -1,0 +1,47 @@
+---
+title: "get_build_number_repository"
+description: "Get the build number from the current repository"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `mac`
+
+> Get the build number from the current repository
+
+## Details
+
+This action will get the **build number** according to what the SCM HEAD reports.
+Currently supported SCMs are svn (uses root revision), git-svn (uses svn revision), git (uses short hash) and mercurial (uses short hash or revision number).
+There is an option, `:use_hg_revision_number`, which allows to use mercurial revision number instead of hash.
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `use_hg_revision_number` | `Fastlane::Boolean` | `USE_HG_REVISION_NUMBER` | `false` | No | Use hg revision number instead of hash (ignored for non-hg repos) |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::BUILD_NUMBER_REPOSITORY` | The build number from the current repository |
+
+## Examples
+
+```ruby
+get_build_number_repository
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `get_build_number_repository.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_build_number_repository.rb)
+- **Authors**: `bartoszj`, `pbrooks`, `armadsen`

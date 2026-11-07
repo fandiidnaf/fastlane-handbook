@@ -1,0 +1,47 @@
+---
+title: "update_project_team"
+description: "Update Xcode Development Team ID"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`, `mac`
+
+> Update Xcode Development Team ID
+
+## Details
+
+This action updates (or adds) the Developer Team ID of your Xcode project.
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `FL_PROJECT_SIGNING_PROJECT_PATH` | `-` | **Yes** | Path to your Xcode project |
+| `targets` | `Array` | `FL_PROJECT_TARGET` | `-` | No | Name of the targets you want to update |
+| `teamid` | `String` | `FL_PROJECT_TEAM_ID` | `-` | **Yes** | The Team ID you want to use |
+
+
+## Examples
+
+```ruby
+update_project_team
+```
+
+```ruby
+update_project_team(
+            path: "Example.xcodeproj",
+            teamid: "A3ZZVJ7CNY"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `update_project_team.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_project_team.rb)
+- **Authors**: `lgaches`, `iBotPeaches`

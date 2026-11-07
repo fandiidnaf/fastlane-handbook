@@ -1,0 +1,37 @@
+---
+title: "typetalk"
+description: "Post a message to [Typetalk](https://www.typetalk.com/)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `notifications` | **Platforms:** `ios`, `android`, `mac`
+
+> Post a message to [Typetalk](https://www.typetalk.com/)
+
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+typetalk(
+            message: "App successfully released!",
+            note_path: "ChangeLog.md",
+            topicId: 1,
+            success: true,
+            typetalk_token: "Your Typetalk Token"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `typetalk.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/typetalk.rb)
+- **Authors**: `Nulab Inc.`

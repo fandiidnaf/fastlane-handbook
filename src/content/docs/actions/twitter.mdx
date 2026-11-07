@@ -1,0 +1,48 @@
+---
+title: "twitter"
+description: "Post a tweet on [Twitter.com](https://twitter.com)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `notifications` | **Platforms:** `ios`, `android`, `mac`
+
+> Post a tweet on [Twitter.com](https://twitter.com)
+
+## Details
+
+Post a tweet on Twitter. Requires you to setup an app on [twitter.com](https://twitter.com) and obtain `consumer` and `access_token`.
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `consumer_key` | `String` | `FL_TW_CONSUMER_KEY` | `-` | **Yes** | Consumer Key |
+| `consumer_secret` | `String` | `FL_TW_CONSUMER_SECRET` | `-` | **Yes** | Consumer Secret |
+| `access_token` | `String` | `FL_TW_ACCESS_TOKEN` | `-` | **Yes** | Access Token |
+| `access_token_secret` | `String` | `FL_TW_ACCESS_TOKEN_SECRET` | `-` | **Yes** | Access Token Secret |
+| `message` | `String` | `FL_TW_MESSAGE` | `-` | **Yes** | The tweet |
+
+
+## Examples
+
+```ruby
+twitter(
+            access_token: "XXXX",
+            access_token_secret: "xxx",
+            consumer_key: "xxx",
+            consumer_secret: "xxx",
+            message: "You rock!"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `twitter.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/twitter.rb)
+- **Authors**: `hjanuschka`

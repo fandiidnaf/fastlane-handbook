@@ -1,0 +1,42 @@
+---
+title: "verify_xcode"
+description: "Verifies that the Xcode installation is properly signed by Apple"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Verifies that the Xcode installation is properly signed by Apple
+
+## Details
+
+This action was implemented after the recent Xcode attack to make sure you're not using a [hacked Xcode installation](http://researchcenter.paloaltonetworks.com/2015/09/novel-malware-xcodeghost-modifies-xcode-infects-apple-ios-apps-and-hits-app-store/).
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `xcode_path` | `String` | `FL_VERIFY_XCODE_XCODE_PATH` | `/Applications/Xcode.app` | **Yes** | The path to the Xcode installation to test |
+
+
+## Examples
+
+```ruby
+verify_xcode
+```
+
+```ruby
+verify_xcode(xcode_path: "/Applications/Xcode.app")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `verify_xcode.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/verify_xcode.rb)
+- **Authors**: `KrauseFx`

@@ -1,0 +1,102 @@
+---
+title: "commit_version_bump"
+description: "Creates a 'Version Bump' commit. Run after `increment_build_number`"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `mac`
+
+> Creates a 'Version Bump' commit. Run after `increment_build_number`
+
+## Details
+
+This action will create a 'Version Bump' commit in your repo. Useful in conjunction with `increment_build_number`.
+It checks the repo to make sure that only the relevant files have changed. These are the files that `increment_build_number` (`agvtool`) touches:|
+|
+>- All `.plist` files|
+- The `.xcodeproj/project.pbxproj` file|
+>|
+Then commits those files to the repo.
+Customize the message with the `:message` option. It defaults to 'Version Bump'.
+If you have other uncommitted changes in your repo, this action will fail. If you started off in a clean repo, and used the _ipa_ and or _sigh_ actions, then you can use the [clean_build_artifacts](https://docs.fastlane.tools/actions/clean_build_artifacts/) action to clean those temporary files up before running this action.
+
+## Parameters & Options
+
+Total options available: **7**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `message` | `String` | `FL_COMMIT_BUMP_MESSAGE` | `-` | No | The commit message when committing the version bump |
+| `xcodeproj` | `String` | `FL_BUILD_NUMBER_PROJECT` | `-` | No | The path to your project file (Not the workspace). If you have only one, this is optional |
+| `force` | `Fastlane::Boolean` | `FL_FORCE_COMMIT` | `false` | No | Forces the commit, even if other files than the ones containing the version number have been modified |
+| `settings` | `String` | `FL_COMMIT_INCLUDE_SETTINGS` | `false` | No | Include Settings.bundle/Root.plist with version bump |
+| `ignore` | `String` | `-` | `-` | No | A regular expression used to filter matched plist files to be modified |
+| `include` | `Array` | `-` | `[]` | No | A list of extra files to be included in the version bump (string array or comma-separated string) |
+| `no_verify` | `Fastlane::Boolean` | `FL_GIT_PUSH_USE_NO_VERIFY` | `false` | **Yes** | Whether or not to use --no-verify |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::MODIFIED_FILES` | The list of paths of modified files |
+
+## Examples
+
+```ruby
+commit_version_bump
+```
+
+```ruby
+commit_version_bump(
+            message: "Version Bump",                    # create a commit with a custom message
+            xcodeproj: "./path/to/MyProject.xcodeproj"  # optional, if you have multiple Xcode project files, you must specify your main project here
+          )
+```
+
+```ruby
+commit_version_bump(
+            settings: true # Include Settings.bundle/Root.plist
+          )
+```
+
+```ruby
+commit_version_bump(
+            settings: "About.plist" # Include Settings.bundle/About.plist
+          )
+```
+
+```ruby
+commit_version_bump(
+            settings: %w[About.plist Root.plist] # Include more than one plist from Settings.bundle
+          )
+```
+
+```ruby
+commit_version_bump(
+            include: %w[package.json custom.cfg] # include other updated files as part of the version bump
+          )
+```
+
+```ruby
+commit_version_bump(
+            ignore: /OtherProject/ # ignore files matching a regular expression
+          )
+```
+
+```ruby
+commit_version_bump(
+            no_verify: true           # optional, default: false
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `commit_version_bump.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/commit_version_bump.rb)
+- **Authors**: `lmirosevic`

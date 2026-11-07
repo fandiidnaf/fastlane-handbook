@@ -1,0 +1,53 @@
+---
+title: "prompt"
+description: "Ask the user for a value or for confirmation"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Ask the user for a value or for confirmation
+
+## Details
+
+You can use `prompt` to ask the user for a value or to just let the user confirm the next step.
+When this is executed on a CI service, the passed `ci_input` value will be returned.
+This action also supports multi-line inputs using the `multi_line_end_keyword` option.
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `text` | `String` | `-` | `Please enter some text: ` | **Yes** | The text that will be displayed to the user |
+| `ci_input` | `String` | `-` | `-` | **Yes** | The default text that will be used when being executed on a CI service |
+| `boolean` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Is that a boolean question (yes/no)? This will add (y/n) at the end |
+| `secure_text` | `Fastlane::Boolean` | `-` | `false` | **Yes** | Is that a secure text (yes/no)? |
+| `multi_line_end_keyword` | `String` | `-` | `-` | No | Enable multi-line inputs by providing an end text (e.g. 'END') which will stop the user input |
+
+
+## Examples
+
+```ruby
+changelog = prompt(text: "Changelog: ")
+```
+
+```ruby
+changelog = prompt(
+            text: "Changelog: ",
+            multi_line_end_keyword: "END"
+          )
+
+          pilot(changelog: changelog)
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `prompt.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/prompt.rb)
+- **Authors**: `KrauseFx`

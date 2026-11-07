@@ -1,0 +1,76 @@
+---
+title: "screengrab"
+description: "Alias for the `capture_android_screenshots` action"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `screenshots` | **Platforms:** `android`
+
+> Alias for the `capture_android_screenshots` action
+
+
+## Parameters & Options
+
+Total options available: **22**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `android_home` | `String` | `-` | `/Users/fandi/Library/Android/sdk` | No | Path to the root of your Android SDK installation, e.g. ~/tools/android-sdk-macosx |
+| `build_tools_version` | `String` | `-` | `-` | No | **DEPRECATED!** The Android build tools version to use, e.g. '23.0.2' |
+| `locales` | `Array` | `-` | `["en-US"]` | **Yes** | A list of locales which should be used |
+| `clear_previous_screenshots` | `Fastlane::Boolean` | `SCREENGRAB_CLEAR_PREVIOUS_SCREENSHOTS` | `false` | **Yes** | Enabling this option will automatically clear previously generated screenshots before running screengrab |
+| `output_directory` | `String` | `SCREENGRAB_OUTPUT_DIRECTORY` | `fastlane/metadata/android` | **Yes** | The directory where to store the screenshots |
+| `skip_open_summary` | `Fastlane::Boolean` | `SCREENGRAB_SKIP_OPEN_SUMMARY` | `false` | **Yes** | Don't open the summary after running _screengrab_ |
+| `app_package_name` | `String` | `SCREENGRAB_APP_PACKAGE_NAME` | `-` | **Yes** | The package name of the app under test (e.g. com.yourcompany.yourapp) |
+| `tests_package_name` | `String` | `SCREENGRAB_TESTS_PACKAGE_NAME` | `-` | No | The package name of the tests bundle (e.g. com.yourcompany.yourapp.test) |
+| `use_tests_in_packages` | `Array` | `SCREENGRAB_USE_TESTS_IN_PACKAGES` | `-` | No | Only run tests in these Java packages |
+| `use_tests_in_classes` | `Array` | `SCREENGRAB_USE_TESTS_IN_CLASSES` | `-` | No | Only run tests in these Java classes |
+| `launch_arguments` | `Array` | `SCREENGRAB_LAUNCH_ARGUMENTS` | `-` | No | Additional launch arguments |
+| `test_instrumentation_runner` | `String` | `SCREENGRAB_TEST_INSTRUMENTATION_RUNNER` | `androidx.test.runner.AndroidJUnitRunner` | No | The fully qualified class name of your test instrumentation runner |
+| `ending_locale` | `String` | `SCREENGRAB_ENDING_LOCALE` | `en-US` | No | **DEPRECATED!** Return the device to this locale after running tests |
+| `use_adb_root` | `Fastlane::Boolean` | `SCREENGRAB_USE_ADB_ROOT` | `false` | No | **DEPRECATED!** Restarts the adb daemon using `adb root` to allow access to screenshots directories on device. Use if getting 'Permission denied' errors |
+| `app_apk_path` | `String` | `SCREENGRAB_APP_APK_PATH` | `-` | No | The path to the APK for the app under test |
+| `tests_apk_path` | `String` | `SCREENGRAB_TESTS_APK_PATH` | `-` | No | The path to the APK for the tests bundle |
+| `specific_device` | `String` | `SCREENGRAB_SPECIFIC_DEVICE` | `-` | No | Use the device or emulator with the given serial number or qualifier |
+| `device_type` | `String` | `SCREENGRAB_DEVICE_TYPE` | `phone` | **Yes** | Type of device used for screenshots. Matches Google Play Types (phone, sevenInch, tenInch, tv, wear) |
+| `exit_on_test_failure` | `Fastlane::Boolean` | `EXIT_ON_TEST_FAILURE` | `true` | **Yes** | Whether or not to exit Screengrab on test failure. Exiting on failure will not copy screenshots to local machine nor open screenshots summary |
+| `reinstall_app` | `Fastlane::Boolean` | `SCREENGRAB_REINSTALL_APP` | `false` | **Yes** | Enabling this option will automatically uninstall the application before running it |
+| `use_timestamp_suffix` | `Fastlane::Boolean` | `SCREENGRAB_USE_TIMESTAMP_SUFFIX` | `true` | **Yes** | Add timestamp suffix to screenshot filename |
+| `adb_host` | `String` | `SCREENGRAB_ADB_HOST` | `-` | No | Configure the host used by adb to connect, allows running on remote devices farm |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::SCREENGRAB_OUTPUT_DIRECTORY` | The path to the output directory |
+
+## Examples
+
+```ruby
+capture_android_screenshots
+```
+
+```ruby
+screengrab # alias for "capture_android_screenshots"
+```
+
+```ruby
+capture_android_screenshots(
+            locales: ["en-US", "fr-FR", "ja-JP"],
+            clear_previous_screenshots: true,
+            app_apk_path: "build/outputs/apk/example-debug.apk",
+            tests_apk_path: "build/outputs/apk/example-debug-androidTest-unaligned.apk"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `screengrab.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/screengrab.rb)
+- **Authors**: `asfalcone`, `i2amsam`, `mfurtak`

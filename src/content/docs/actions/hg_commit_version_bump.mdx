@@ -1,0 +1,57 @@
+---
+title: "hg_commit_version_bump"
+description: "This will commit a version bump to the hg repo"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> This will commit a version bump to the hg repo
+
+## Details
+
+The mercurial equivalent of the [commit_version_bump](https://docs.fastlane.tools/actions/commit_version_bump/) git action. Like the git version, it is useful in conjunction with [`increment_build_number`](https://docs.fastlane.tools/actions/increment_build_number/).
+It checks the repo to make sure that only the relevant files have changed, these are the files that `increment_build_number` (`agvtool`) touches:|
+|
+>- All `.plist` files|
+- The `.xcodeproj/project.pbxproj` file|
+>|
+Then commits those files to the repo.
+Customize the message with the `:message` option, defaults to 'Version Bump'
+If you have other uncommitted changes in your repo, this action will fail. If you started off in a clean repo, and used the _ipa_ and or _sigh_ actions, then you can use the [clean_build_artifacts](https://docs.fastlane.tools/actions/clean_build_artifacts/) action to clean those temporary files up before running this action.
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `message` | `String` | `FL_COMMIT_BUMP_MESSAGE` | `Version Bump` | **Yes** | The commit message when committing the version bump |
+| `xcodeproj` | `String` | `FL_BUILD_NUMBER_PROJECT` | `-` | No | The path to your project file (Not the workspace). If you have only one, this is optional |
+| `force` | `Fastlane::Boolean` | `FL_FORCE_COMMIT` | `false` | No | Forces the commit, even if other files than the ones containing the version number have been modified |
+| `test_dirty_files` | `String` | `FL_HG_COMMIT_TEST_DIRTY_FILES` | `file1, file2` | No | A list of dirty files passed in for testing |
+| `test_expected_files` | `String` | `FL_HG_COMMIT_TEST_EXP_FILES` | `file1, file2` | No | A list of expected changed files passed in for testing |
+
+
+## Examples
+
+```ruby
+hg_commit_version_bump
+```
+
+```ruby
+hg_commit_version_bump(
+            message: "Version Bump",                 # create a commit with a custom message
+            xcodeproj: "./path/MyProject.xcodeproj", # optional, if you have multiple Xcode project files, you must specify your main project here
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `hg_commit_version_bump.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/hg_commit_version_bump.rb)
+- **Authors**: `sjrmanning`

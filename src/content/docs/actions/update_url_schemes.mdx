@@ -1,0 +1,53 @@
+---
+title: "update_url_schemes"
+description: "Updates the URL schemes in the given Info.plist"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`, `mac`
+
+> Updates the URL schemes in the given Info.plist
+
+## Details
+
+This action allows you to update the URL schemes of the app before building it.
+For example, you can use this to set a different URL scheme for the alpha or beta version of the app.
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `FL_UPDATE_URL_SCHEMES_PATH` | `-` | **Yes** | The Plist file's path |
+| `url_schemes` | `Array` | `FL_UPDATE_URL_SCHEMES_SCHEMES` | `-` | No | The new URL schemes |
+| `update_url_schemes` | `string_callback` | `-` | `-` | No | Block that is called to update schemes with current schemes passed in as parameter |
+
+
+## Examples
+
+```ruby
+update_url_schemes(
+            path: "path/to/Info.plist",
+            url_schemes: ["com.myapp"]
+          )
+```
+
+```ruby
+update_url_schemes(
+            path: "path/to/Info.plist",
+            update_url_schemes: proc do |schemes|
+              schemes + ["anotherscheme"]
+            end
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `update_url_schemes.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_url_schemes.rb)
+- **Authors**: `kmikael`

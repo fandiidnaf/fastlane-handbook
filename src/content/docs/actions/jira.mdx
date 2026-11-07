@@ -1,0 +1,73 @@
+---
+title: "jira"
+description: "Leave a comment on a Jira ticket"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Leave a comment on a Jira ticket
+
+
+## Parameters & Options
+
+Total options available: **7**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `url` | `String` | `FL_JIRA_SITE` | `-` | **Yes** | URL for Jira instance |
+| `context_path` | `String` | `FL_JIRA_CONTEXT_PATH` | `-` | No | Appends to the url (ex: "/jira") |
+| `username` | `String` | `FL_JIRA_USERNAME` | `-` | **Yes** | Username for Jira instance |
+| `password` | `String` | `FL_JIRA_PASSWORD` | `-` | **Yes** | Password or API token for Jira |
+| `ticket_id` | `String` | `FL_JIRA_TICKET_ID` | `-` | **Yes** | Ticket ID for Jira, i.e. IOS-123 |
+| `comment_text` | `String` | `FL_JIRA_COMMENT_TEXT` | `-` | **Yes** | Text to add to the ticket as a comment |
+| `fail_on_error` | `Fastlane::Boolean` | `FL_JIRA_FAIL_ON_ERROR` | `true` | No | Should an error adding the Jira comment cause a failure? |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::JIRA_JSON` | The whole Jira API JSON object |
+
+## Examples
+
+```ruby
+jira(
+            url: "https://bugs.yourdomain.com",
+            username: "Your username",
+            password: "Your password or API token",
+            ticket_id: "IOS-123",
+            comment_text: "Text to post as a comment"
+          )
+```
+
+```ruby
+jira(
+            url: "https://yourserverdomain.com",
+            context_path: "/jira",
+            username: "Your username",
+            password: "Your password or API token",
+            ticket_id: "IOS-123",
+            comment_text: "Text to post as a comment"
+          )
+```
+
+```ruby
+jira(
+            ticket_id: "IOS-123",
+            comment_text: "Text to post as a comment",
+            fail_on_error: false
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `jira.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/jira.rb)
+- **Authors**: `iAmChrisTruman`, `crazymanish`

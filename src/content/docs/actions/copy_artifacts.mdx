@@ -1,0 +1,59 @@
+---
+title: "copy_artifacts"
+description: "Copy and save your build artifacts (useful when you use reset_git_repo)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Copy and save your build artifacts (useful when you use reset_git_repo)
+
+## Details
+
+This action copies artifacts to a target directory. It's useful if you have a CI that will pick up these artifacts and attach them to the build. Useful e.g. for storing your `.ipa`s, `.dSYM.zip`s, `.mobileprovision`s, `.cert`s.
+Make sure your `:target_path` is ignored from git, and if you use `reset_git_repo`, make sure the artifacts are added to the exclude list.
+
+## Parameters & Options
+
+Total options available: **4**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `keep_original` | `Fastlane::Boolean` | `-` | `true` | No | Set this to false if you want move, rather than copy, the found artifacts |
+| `target_path` | `String` | `-` | `artifacts` | **Yes** | The directory in which you want your artifacts placed |
+| `artifacts` | `Array` | `-` | `[]` | **Yes** | An array of file patterns of the files/folders you want to preserve |
+| `fail_on_missing` | `Fastlane::Boolean` | `-` | `false` | No | Fail when a source file isn't found |
+
+
+## Examples
+
+```ruby
+copy_artifacts(
+            target_path: "artifacts",
+            artifacts: ["*.cer", "*.mobileprovision", "*.ipa", "*.dSYM.zip", "path/to/file.txt", "another/path/*.extension"]
+          )
+
+          # Reset the git repo to a clean state, but leave our artifacts in place
+          reset_git_repo(
+            exclude: "artifacts"
+          )
+```
+
+```ruby
+# Copy the .ipa created by _gym_ if it was successfully created
+          artifacts = []
+          artifacts << lane_context[SharedValues::IPA_OUTPUT_PATH] if lane_context[SharedValues::IPA_OUTPUT_PATH]
+          copy_artifacts(
+             artifacts: artifacts
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `copy_artifacts.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/copy_artifacts.rb)
+- **Authors**: `lmirosevic`

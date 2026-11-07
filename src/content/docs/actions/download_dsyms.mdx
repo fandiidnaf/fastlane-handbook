@@ -1,0 +1,88 @@
+---
+title: "download_dsyms"
+description: "Download dSYM files from App Store Connect for Bitcode apps"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `app_store_connect` | **Platforms:** `ios`
+
+> Download dSYM files from App Store Connect for Bitcode apps
+
+## Details
+
+This action downloads dSYM files from App Store Connect after the ipa gets re-compiled by Apple. Useful if you have Bitcode enabled.|
+|
+```ruby
+lane :refresh_dsyms do|
+  download_dsyms                  # Download dSYM files from iTC|
+  upload_symbols_to_crashlytics   # Upload them to Crashlytics|
+  clean_build_artifacts           # Delete the local dSYM files|
+end|
+```
+>|
+
+## Parameters & Options
+
+Total options available: **14**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |
+| `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option) |
+| `username` | `String` | `DOWNLOAD_DSYMS_USERNAME` | `-` | **Yes** | Your Apple ID Username for App Store Connect |
+| `app_identifier` | `String` | `DOWNLOAD_DSYMS_APP_IDENTIFIER` | `-` | **Yes** | The bundle identifier of your app |
+| `team_id` | `String` | `DOWNLOAD_DSYMS_TEAM_ID` | `-` | No | The ID of your App Store Connect team if you're in multiple teams |
+| `team_name` | `String` | `DOWNLOAD_DSYMS_TEAM_NAME` | `-` | No | The name of your App Store Connect team if you're in multiple teams |
+| `platform` | `String` | `DOWNLOAD_DSYMS_PLATFORM` | `ios` | **Yes** | The app platform for dSYMs you wish to download (ios, xros, appletvos) |
+| `version` | `String` | `DOWNLOAD_DSYMS_VERSION` | `-` | No | The app version for dSYMs you wish to download, pass in 'latest' to download only the latest build's dSYMs or 'live' to download only the live version dSYMs |
+| `build_number` | `String` | `DOWNLOAD_DSYMS_BUILD_NUMBER` | `-` | No | The app build_number for dSYMs you wish to download |
+| `min_version` | `String` | `DOWNLOAD_DSYMS_MIN_VERSION` | `-` | No | The minimum app version for dSYMs you wish to download |
+| `after_uploaded_date` | `String` | `DOWNLOAD_DSYMS_AFTER_UPLOADED_DATE` | `-` | No | The uploaded date after which you wish to download dSYMs |
+| `output_directory` | `String` | `DOWNLOAD_DSYMS_OUTPUT_DIRECTORY` | `-` | No | Where to save the download dSYMs, defaults to the current path |
+| `wait_for_dsym_processing` | `Fastlane::Boolean` | `DOWNLOAD_DSYMS_WAIT_FOR_DSYM_PROCESSING` | `false` | No | Wait for dSYMs to process |
+| `wait_timeout` | `Integer` | `DOWNLOAD_DSYMS_WAIT_TIMEOUT` | `300` | No | Number of seconds to wait for dSYMs to process |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::DSYM_PATHS` | An array to all the zipped dSYM files |
+| `SharedValues::DSYM_LATEST_UPLOADED_DATE` | Date of the most recent uploaded time of successfully downloaded dSYM files |
+
+## Examples
+
+```ruby
+download_dsyms
+```
+
+```ruby
+download_dsyms(version: "1.0.0", build_number: "345")
+```
+
+```ruby
+download_dsyms(version: "1.0.1", build_number: 42)
+```
+
+```ruby
+download_dsyms(version: "live")
+```
+
+```ruby
+download_dsyms(min_version: "1.2.3")
+```
+
+```ruby
+download_dsyms(after_uploaded_date: "2020-09-11T19:00:00+01:00")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `download_dsyms.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/download_dsyms.rb)
+- **Authors**: `KrauseFx`

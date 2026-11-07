@@ -1,0 +1,77 @@
+---
+title: "artifactory"
+description: "This action uploads an artifact to artifactory"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> This action uploads an artifact to artifactory
+
+## Details
+
+Connect to the artifactory server using either a username/password or an api_key
+
+## Parameters & Options
+
+Total options available: **15**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `file` | `String` | `FL_ARTIFACTORY_FILE` | `-` | **Yes** | File to be uploaded to artifactory |
+| `repo` | `String` | `FL_ARTIFACTORY_REPO` | `-` | **Yes** | Artifactory repo to put the file in |
+| `repo_path` | `String` | `FL_ARTIFACTORY_REPO_PATH` | `-` | **Yes** | Path to deploy within the repo, including filename |
+| `endpoint` | `String` | `FL_ARTIFACTORY_ENDPOINT` | `-` | **Yes** | Artifactory endpoint |
+| `username` | `String` | `FL_ARTIFACTORY_USERNAME` | `-` | No | Artifactory username |
+| `password` | `String` | `FL_ARTIFACTORY_PASSWORD` | `-` | No | Artifactory password |
+| `api_key` | `String` | `FL_ARTIFACTORY_API_KEY` | `-` | No | Artifactory API key |
+| `properties` | `Hash` | `FL_ARTIFACTORY_PROPERTIES` | `&#123;&#125;` | No | Artifact properties hash |
+| `ssl_pem_file` | `String` | `FL_ARTIFACTORY_SSL_PEM_FILE` | `-` | No | Location of pem file to use for ssl verification |
+| `ssl_verify` | `Fastlane::Boolean` | `FL_ARTIFACTORY_SSL_VERIFY` | `true` | No | Verify SSL |
+| `proxy_username` | `String` | `FL_ARTIFACTORY_PROXY_USERNAME` | `-` | No | Proxy username |
+| `proxy_password` | `String` | `FL_ARTIFACTORY_PROXY_PASSWORD` | `-` | No | Proxy password |
+| `proxy_address` | `String` | `FL_ARTIFACTORY_PROXY_ADDRESS` | `-` | No | Proxy address |
+| `proxy_port` | `String` | `FL_ARTIFACTORY_PROXY_PORT` | `-` | No | Proxy port |
+| `read_timeout` | `String` | `FL_ARTIFACTORY_READ_TIMEOUT` | `-` | No | Read timeout |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::ARTIFACTORY_DOWNLOAD_URL` | The download url for file uploaded |
+| `SharedValues::ARTIFACTORY_DOWNLOAD_SIZE` | The reported file size for file uploaded |
+
+## Examples
+
+```ruby
+artifactory(
+            username: "username",
+            password: "password",
+            endpoint: "https://artifactory.example.com/artifactory/",
+            file: "example.ipa",                                # File to upload
+            repo: "mobile_artifacts",                           # Artifactory repo
+            repo_path: "/ios/appname/example-major.minor.ipa"   # Path to place the artifact including its filename
+          )
+```
+
+```ruby
+artifactory(
+            api_key: "api_key",
+            endpoint: "https://artifactory.example.com/artifactory/",
+            file: "example.ipa",                                # File to upload
+            repo: "mobile_artifacts",                           # Artifactory repo
+            repo_path: "/ios/appname/example-major.minor.ipa"   # Path to place the artifact including its filename
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `artifactory.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/artifactory.rb)
+- **Authors**: `koglinjg`, `tommeier`

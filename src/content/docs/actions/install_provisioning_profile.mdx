@@ -1,0 +1,38 @@
+---
+title: "install_provisioning_profile"
+description: "Install provisioning profile from path"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `code_signing` | **Platforms:** `ios`, `mac`
+
+> Install provisioning profile from path
+
+## Details
+
+Install provisioning profile from path for current user
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `FL_INSTALL_PROVISIONING_PROFILE_PATH` | `-` | **Yes** | Path to provisioning profile |
+
+
+## Examples
+
+```ruby
+install_provisioning_profile(path: "profiles/profile.mobileprovision")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `install_provisioning_profile.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/install_provisioning_profile.rb)
+- **Authors**: `SofteqDG`

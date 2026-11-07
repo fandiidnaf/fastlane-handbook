@@ -1,0 +1,45 @@
+---
+title: "google_play_track_version_codes"
+description: "Retrieves version codes for a Google Play track"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `android`
+
+> Retrieves version codes for a Google Play track
+
+## Details
+
+More information: [https://docs.fastlane.tools/actions/supply/](https://docs.fastlane.tools/actions/supply/)
+
+## Parameters & Options
+
+Total options available: **8**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `package_name` | `String` | `SUPPLY_PACKAGE_NAME` | `-` | **Yes** | The package name of the application to use |
+| `track` | `String` | `SUPPLY_TRACK` | `production` | **Yes** | The track of the application to use. The default available tracks are: production, beta, alpha, internal |
+| `key` | `String` | `SUPPLY_KEY` | `-` | No | **DEPRECATED!** Use `--json_key` instead - The p12 File used to authenticate with Google |
+| `issuer` | `String` | `SUPPLY_ISSUER` | `-` | No | **DEPRECATED!** Use `--json_key` instead - The issuer of the p12 file (email address of the service account) |
+| `json_key` | `String` | `SUPPLY_JSON_KEY` | `-` | No | The path to a Google credentials JSON file (Application Default, Workload Identity, or Service Account), used to authenticate with Google |
+| `json_key_data` | `String` | `SUPPLY_JSON_KEY_DATA` | `-` | No | The raw content of a Google credentials JSON file (Application Default, Workload Identity, or Service Account), used to authenticate with Google |
+| `root_url` | `String` | `SUPPLY_ROOT_URL` | `-` | No | Root URL for the Google Play API. The provided URL will be used for API calls in place of https://www.googleapis.com/ |
+| `timeout` | `Integer` | `SUPPLY_TIMEOUT` | `300` | No | Timeout for read, open, and send (in seconds) |
+
+
+## Examples
+
+```ruby
+google_play_track_version_codes
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `google_play_track_version_codes.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/google_play_track_version_codes.rb)
+- **Authors**: `panthomakos`

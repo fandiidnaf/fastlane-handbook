@@ -1,0 +1,32 @@
+---
+title: "environment_variable"
+description: "Sets/gets env vars for Fastlane.swift. Don't use in ruby, use `ENV[key] = val`"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Sets/gets env vars for Fastlane.swift. Don't use in ruby, use `ENV[key] = val`
+
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `set` | `Hash` | `FL_ENVIRONMENT_VARIABLE_SET` | `-` | No | Set the environment variables named |
+| `get` | `String` | `FL_ENVIRONMENT_VARIABLE_GET` | `-` | No | Get the environment variable named |
+| `remove` | `String` | `FL_ENVIRONMENT_VARIABLE_REMOVE` | `-` | No | Remove the environment variable named |
+
+
+
+
+## Source & Upstream
+
+- **Gem Action**: `environment_variable.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/environment_variable.rb)
+- **Authors**: `taquitos`

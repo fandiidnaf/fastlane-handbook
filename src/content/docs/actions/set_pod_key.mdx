@@ -1,0 +1,45 @@
+---
+title: "set_pod_key"
+description: "Sets a value for a key with cocoapods-keys"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`, `mac`
+
+> Sets a value for a key with cocoapods-keys
+
+## Details
+
+Adds a key to [cocoapods-keys](https://github.com/orta/cocoapods-keys)
+
+## Parameters & Options
+
+Total options available: **4**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `use_bundle_exec` | `Fastlane::Boolean` | `FL_SET_POD_KEY_USE_BUNDLE_EXEC` | `true` | **Yes** | Use bundle exec when there is a Gemfile presented |
+| `key` | `String` | `FL_SET_POD_KEY_ITEM_KEY` | `-` | **Yes** | The key to be saved with cocoapods-keys |
+| `value` | `String` | `FL_SET_POD_KEY_ITEM_VALUE` | `-` | **Yes** | The value to be saved with cocoapods-keys |
+| `project` | `String` | `FL_SET_POD_KEY_PROJECT` | `-` | No | The project name |
+
+
+## Examples
+
+```ruby
+set_pod_key(
+            key: "APIToken",
+            value: "1234",
+            project: "MyProject"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `set_pod_key.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/set_pod_key.rb)
+- **Authors**: `marcelofabri`

@@ -1,0 +1,78 @@
+---
+title: "testfairy"
+description: "Upload a new build to SauceLabs' TestFairy"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `beta` | **Platforms:** `ios`, `android`
+
+> Upload a new build to SauceLabs' TestFairy
+
+## Details
+
+Upload a new build to [TestFairy](https://saucelabs.com/products/mobile-testing/app-betas).
+You can retrieve your API key on [your settings page](https://app.testfairy.com/settings/access-key)
+
+
+## Parameters & Options
+
+Total options available: **18**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_key` | `String` | `FL_TESTFAIRY_API_KEY` | `-` | **Yes** | API Key for TestFairy |
+| `ipa` | `String` | `TESTFAIRY_IPA_PATH` | `-` | No | Path to your IPA file for iOS |
+| `apk` | `String` | `TESTFAIRY_APK_PATH` | `-` | No | Path to your APK file for Android |
+| `symbols_file` | `String` | `FL_TESTFAIRY_SYMBOLS_FILE` | `-` | No | Symbols mapping file |
+| `upload_url` | `String` | `FL_TESTFAIRY_UPLOAD_URL` | `https://upload.testfairy.com` | No | API URL for TestFairy |
+| `testers_groups` | `Array` | `FL_TESTFAIRY_TESTERS_GROUPS` | `[]` | No | Array of tester groups to be notified |
+| `metrics` | `Array` | `FL_TESTFAIRY_METRICS` | `[]` | No | Array of metrics to record (cpu,memory,network,phone_signal,gps,battery,mic,wifi) |
+| `comment` | `String` | `FL_TESTFAIRY_COMMENT` | `No comment provided` | No | Additional release notes for this upload. This text will be added to email notifications |
+| `auto_update` | `String` | `FL_TESTFAIRY_AUTO_UPDATE` | `off` | No | Allows an easy upgrade of all users to the current version. To enable set to 'on' |
+| `notify` | `String` | `FL_TESTFAIRY_NOTIFY` | `off` | No | Send email to testers |
+| `options` | `Array` | `FL_TESTFAIRY_OPTIONS` | `[]` | No | Array of options (shake,video_only_wifi,anonymous) |
+| `custom` | `String` | `FL_TESTFAIRY_CUSTOM` | `-` | No | Array of custom options. Contact support for more information |
+| `timeout` | `Integer` | `FL_TESTFAIRY_TIMEOUT` | `-` | No | Request timeout in seconds |
+| `tags` | `Array` | `FL_TESTFAIRY_TAGS` | `[]` | No | Custom tags that can be used to organize your builds |
+| `folder_name` | `String` | `FL_TESTFAIRY_FOLDER_NAME` | `-` | No | Name of the dashboard folder that contains this app |
+| `landing_page_mode` | `String` | `FL_TESTFAIRY_LANDING_PAGE_MODE` | `open` | No | Visibility of build landing after upload. Can be 'open' or 'closed' |
+| `upload_to_saucelabs` | `String` | `FL_TESTFAIRY_UPLOAD_TO_SAUCELABS` | `off` | No | Upload file directly to Sauce Labs. It can be 'on' or 'off' |
+| `platform` | `String` | `FL_TESTFAIRY_PLATFORM` | `-` | No | Use if upload build is not iOS or Android. Contact support for more information |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::TESTFAIRY_BUILD_URL` | URL for the sessions of the newly uploaded build |
+| `SharedValues::TESTFAIRY_DOWNLOAD_URL` | URL directly to the newly uploaded build |
+| `SharedValues::TESTFAIRY_LANDING_PAGE` | URL of the build's landing page |
+
+## Examples
+
+```ruby
+testfairy(
+            api_key: "...",
+            ipa: "./ipa_file.ipa",
+            comment: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
+          )
+```
+
+```ruby
+testfairy(
+            api_key: "...",
+            apk: "../build/app/outputs/apk/qa/release/app-qa-release.apk",
+            comment: "Build #{lane_context[SharedValues::BUILD_NUMBER]}",
+           )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `testfairy.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/testfairy.rb)
+- **Authors**: `taka0125`, `tcurdt`, `vijaysharm`, `cdm2012`

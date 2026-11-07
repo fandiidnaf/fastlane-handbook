@@ -1,0 +1,47 @@
+---
+title: "cloc"
+description: "Generates a Code Count that can be read by Jenkins (xml format)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `mac`
+
+> Generates a Code Count that can be read by Jenkins (xml format)
+
+## Details
+
+This action will run cloc to generate a SLOC report that the Jenkins SLOCCount plugin can read.
+See [https://wiki.jenkins-ci.org/display/JENKINS/SLOCCount+Plugin](https://wiki.jenkins-ci.org/display/JENKINS/SLOCCount+Plugin) and [https://github.com/AlDanial/cloc](https://github.com/AlDanial/cloc) for more information.
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `binary_path` | `String` | `FL_CLOC_BINARY_PATH` | `/usr/local/bin/cloc` | No | Where the cloc binary lives on your system (full path including 'cloc') |
+| `exclude_dir` | `String` | `FL_CLOC_EXCLUDE_DIR` | `-` | No | Comma separated list of directories to exclude |
+| `output_directory` | `String` | `FL_CLOC_OUTPUT_DIRECTORY` | `build` | **Yes** | Where to put the generated report file |
+| `source_directory` | `String` | `FL_CLOC_SOURCE_DIRECTORY` | `-` | **Yes** | Where to look for the source code (relative to the project root folder) |
+| `xml` | `Fastlane::Boolean` | `FL_CLOC_XML` | `true` | **Yes** | Should we generate an XML File (if false, it will generate a plain text file)? |
+
+
+## Examples
+
+```ruby
+cloc(
+             exclude_dir: "ThirdParty,Resources",
+             output_directory: "reports",
+             source_directory: "MyCoolApp"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `cloc.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/cloc.rb)
+- **Authors**: `intere`

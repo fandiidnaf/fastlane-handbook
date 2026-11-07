@@ -1,0 +1,34 @@
+---
+title: "verify_pod_keys"
+description: "Verifies all keys referenced from the Podfile are non-empty"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Verifies all keys referenced from the Podfile are non-empty
+
+## Details
+
+Runs a check against all keys specified in your Podfile to make sure they're more than a single character long. This is to ensure you don't deploy with stubbed keys.
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+verify_pod_keys
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `verify_pod_keys.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/verify_pod_keys.rb)
+- **Authors**: `ashfurrow`

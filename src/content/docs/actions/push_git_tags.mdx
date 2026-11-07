@@ -1,0 +1,40 @@
+---
+title: "push_git_tags"
+description: "Push local tags to the remote - this will only push tags"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> Push local tags to the remote - this will only push tags
+
+## Details
+
+If you only want to push the tags and nothing else, you can use the `push_git_tags` action
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `force` | `Fastlane::Boolean` | `FL_PUSH_GIT_FORCE` | `false` | No | Force push to remote |
+| `remote` | `String` | `FL_GIT_PUSH_REMOTE` | `origin` | No | The remote to push tags to |
+| `tag` | `String` | `FL_GIT_PUSH_TAG` | `-` | No | The tag to push to remote |
+
+
+## Examples
+
+```ruby
+push_git_tags
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `push_git_tags.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/push_git_tags.rb)
+- **Authors**: `vittoriom`

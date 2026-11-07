@@ -1,0 +1,39 @@
+---
+title: "lane_context"
+description: "Access lane context values"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Access lane context values
+
+## Details
+
+Access the fastlane lane context values.
+More information about how the lane context works: [https://docs.fastlane.tools/advanced/#lane-context](https://docs.fastlane.tools/advanced/#lane-context).
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+lane_context[SharedValues::BUILD_NUMBER]
+```
+
+```ruby
+lane_context[SharedValues::IPA_OUTPUT_PATH]
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `lane_context.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/lane_context.rb)
+- **Authors**: `KrauseFx`

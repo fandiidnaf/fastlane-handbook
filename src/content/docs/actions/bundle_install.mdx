@@ -1,0 +1,49 @@
+---
+title: "bundle_install"
+description: "This action runs `bundle install` (if available)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> This action runs `bundle install` (if available)
+
+
+## Parameters & Options
+
+Total options available: **20**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `binstubs` | `String` | `FL_BUNDLE_INSTALL_BINSTUBS` | `-` | No | Generate bin stubs for bundled gems to ./bin |
+| `clean` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_CLEAN` | `false` | **Yes** | Run bundle clean automatically after install |
+| `full_index` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_FULL_INDEX` | `false` | **Yes** | Use the rubygems modern index instead of the API endpoint |
+| `gemfile` | `String` | `FL_BUNDLE_INSTALL_GEMFILE` | `-` | No | Use the specified gemfile instead of Gemfile |
+| `jobs` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_JOBS` | `-` | No | Install gems using parallel workers |
+| `local` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_LOCAL` | `false` | **Yes** | Do not attempt to fetch gems remotely and use the gem cache instead |
+| `deployment` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_DEPLOYMENT` | `false` | **Yes** | Install using defaults tuned for deployment and CI environments |
+| `no_cache` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_NO_CACHE` | `false` | **Yes** | Don't update the existing gem cache |
+| `no_prune` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_NO_PRUNE` | `false` | **Yes** | Don't remove stale gems from the cache |
+| `path` | `String` | `FL_BUNDLE_INSTALL_PATH` | `-` | No | Specify a different path than the system default ($BUNDLE_PATH or $GEM_HOME). Bundler will remember this value for future installs on this machine |
+| `system` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_SYSTEM` | `false` | **Yes** | Install to the system location ($BUNDLE_PATH or $GEM_HOME) even if the bundle was previously installed somewhere else for this application |
+| `quiet` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_QUIET` | `false` | **Yes** | Only output warnings and errors |
+| `retry` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_RETRY` | `-` | No | Retry network and git requests that have failed |
+| `shebang` | `String` | `FL_BUNDLE_INSTALL_SHEBANG` | `-` | No | Specify a different shebang executable name than the default (usually 'ruby') |
+| `standalone` | `String` | `FL_BUNDLE_INSTALL_STANDALONE` | `-` | No | Make a bundle that can work without the Bundler runtime |
+| `trust_policy` | `String` | `FL_BUNDLE_INSTALL_TRUST_POLICY` | `-` | No | Sets level of security when dealing with signed gems. Accepts `LowSecurity`, `MediumSecurity` and `HighSecurity` as values |
+| `without` | `String` | `FL_BUNDLE_INSTALL_WITHOUT` | `-` | No | Exclude gems that are part of the specified named group |
+| `with` | `String` | `FL_BUNDLE_INSTALL_WITH` | `-` | No | Include gems that are part of the specified named group |
+| `frozen` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_FROZEN` | `false` | **Yes** | Don't allow the Gemfile.lock to be updated after install |
+| `redownload` | `Fastlane::Boolean` | `FL_BUNDLE_INSTALL_REDOWNLOAD` | `false` | **Yes** | Force download every gem, even if the required versions are already available locally |
+
+
+
+
+## Source & Upstream
+
+- **Gem Action**: `bundle_install.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/bundle_install.rb)
+- **Authors**: `birmacher`, `koglinjg`

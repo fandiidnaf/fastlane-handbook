@@ -1,0 +1,32 @@
+---
+title: "update_project_code_signing"
+description: "Updated code signing settings from 'Automatic' to a specific profile"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `ios`
+
+> Updated code signing settings from 'Automatic' to a specific profile
+
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `FL_PROJECT_SIGNING_PROJECT_PATH` | `-` | **Yes** | Path to your Xcode project |
+| `udid` | `String` | `FL_PROJECT_SIGNING_UDID` | `-` | No | **DEPRECATED!** Use `:uuid` instead |
+| `uuid` | `String` | `FL_PROJECT_SIGNING_UUID` | `-` | **Yes** | The UUID of the provisioning profile you want to use |
+
+
+
+
+## Source & Upstream
+
+- **Gem Action**: `update_project_code_signing.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_project_code_signing.rb)
+- **Authors**: `KrauseFx`

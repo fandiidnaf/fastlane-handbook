@@ -1,0 +1,48 @@
+---
+title: "xcode_install"
+description: "Make sure a certain version of Xcode is installed"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `ios`, `mac`
+
+> Make sure a certain version of Xcode is installed
+
+## Details
+
+Makes sure a specific version of Xcode is installed. If that's not the case, it will automatically be downloaded by the [xcode_install](https://github.com/neonichu/xcode-install) gem. This will make sure to use the correct Xcode for later actions.
+
+## Parameters & Options
+
+Total options available: **4**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `version` | `String` | `FL_XCODE_VERSION` | `-` | **Yes** | The version number of the version of Xcode to install |
+| `username` | `String` | `XCODE_INSTALL_USER` | `-` | **Yes** | Your Apple ID Username |
+| `team_id` | `String` | `XCODE_INSTALL_TEAM_ID` | `-` | No | The ID of your team if you're in multiple teams |
+| `download_retry_attempts` | `Integer` | `XCODE_INSTALL_DOWNLOAD_RETRY_ATTEMPTS` | `3` | **Yes** | Number of times the download will be retried in case of failure |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::XCODE_INSTALL_XCODE_PATH` | The path to the newly installed Xcode |
+
+## Examples
+
+```ruby
+xcode_install(version: "7.1")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `xcode_install.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcode_install.rb)
+- **Authors**: `Krausefx`

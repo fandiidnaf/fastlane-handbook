@@ -1,0 +1,46 @@
+---
+title: "get_managed_play_store_publishing_rights"
+description: "Obtain publishing rights for custom apps on Managed Google Play Store"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `android`
+
+> Obtain publishing rights for custom apps on Managed Google Play Store
+
+## Details
+
+If you haven't done so before, start by following the first two steps of Googles ["Get started with custom app publishing"](https://developers.google.com/android/work/play/custom-app-api/get-started) -> ["Preliminary setup"](https://developers.google.com/android/work/play/custom-app-api/get-started#preliminary_setup) instructions:
+"[Enable the Google Play Custom App Publishing API](https://developers.google.com/android/work/play/custom-app-api/get-started#enable_the_google_play_custom_app_publishing_api)" and "[Create a service account](https://developers.google.com/android/work/play/custom-app-api/get-started#create_a_service_account)".
+You need the "service account's private key file" to continue.
+Run the action and supply the "private key file" to it as the `json_key` parameter. The command will output a URL to visit. After logging in you are redirected to a page that outputs your "Developer Account ID" - take note of that, you will need it to be able to use [`create_app_on_managed_play_store`](https://docs.fastlane.tools/actions/create_app_on_managed_play_store/).
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `json_key` | `String` | `SUPPLY_JSON_KEY` | `-` | No | The path to a file containing service account JSON, used to authenticate with Google |
+| `json_key_data` | `String` | `SUPPLY_JSON_KEY_DATA` | `-` | No | The raw service account JSON data used to authenticate with Google |
+
+
+## Examples
+
+```ruby
+get_managed_play_store_publishing_rights(
+            json_key: "path/to/your/json/key/file"
+          )
+          # it is probably easier to execute this action directly in the command line:
+          # $ fastlane run get_managed_play_store_publishing_rights
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `get_managed_play_store_publishing_rights.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_managed_play_store_publishing_rights.rb)
+- **Authors**: `janpio`

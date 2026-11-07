@@ -1,0 +1,49 @@
+---
+title: "update_app_group_identifiers"
+description: "This action changes the app group identifiers in the entitlements file"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`
+
+> This action changes the app group identifiers in the entitlements file
+
+## Details
+
+Updates the App Group Identifiers in the given Entitlements file, so you can have app groups for the app store build and app groups for an enterprise build.
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `entitlements_file` | `String` | `FL_UPDATE_APP_GROUP_IDENTIFIER_ENTITLEMENTS_FILE_PATH` | `-` | **Yes** | The path to the entitlement file which contains the app group identifiers |
+| `app_group_identifiers` | `Array` | `FL_UPDATE_APP_GROUP_IDENTIFIER_APP_GROUP_IDENTIFIERS` | `-` | **Yes** | An Array of unique identifiers for the app groups. Eg. ['group.com.test.testapp'] |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::APP_GROUP_IDENTIFIERS` | The new App Group Identifiers |
+
+## Examples
+
+```ruby
+update_app_group_identifiers(
+            entitlements_file: "/path/to/entitlements_file.entitlements",
+            app_group_identifiers: ["group.your.app.group.identifier"]
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `update_app_group_identifiers.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_app_group_identifiers.rb)
+- **Authors**: `mathiasAichinger`

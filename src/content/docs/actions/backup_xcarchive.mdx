@@ -1,0 +1,52 @@
+---
+title: "backup_xcarchive"
+description: "Save your [zipped] xcarchive elsewhere from default path"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `mac`
+
+> Save your [zipped] xcarchive elsewhere from default path
+
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `xcarchive` | `String` | `BACKUP_XCARCHIVE_ARCHIVE` | `-` | **Yes** | Path to your xcarchive file. Optional if you use the `xcodebuild` action |
+| `destination` | `String` | `BACKUP_XCARCHIVE_DESTINATION` | `-` | **Yes** | Where your archive will be placed |
+| `zip` | `Fastlane::Boolean` | `BACKUP_XCARCHIVE_ZIP` | `true` | No | Enable compression of the archive |
+| `zip_filename` | `String` | `BACKUP_XCARCHIVE_ZIP_FILENAME` | `-` | No | Filename of the compressed archive. Will be appended by `.xcarchive.zip`. Default value is the output xcarchive filename |
+| `versioned` | `Fastlane::Boolean` | `BACKUP_XCARCHIVE_VERSIONED` | `true` | No | Create a versioned (date and app version) subfolder where to put the archive |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::BACKUP_XCARCHIVE_FILE` | Path to your saved xcarchive (compressed) file |
+
+## Examples
+
+```ruby
+backup_xcarchive(
+            xcarchive: "/path/to/file.xcarchive", # Optional if you use the `xcodebuild` action
+            destination: "/somewhere/else/", # Where the backup should be created
+            zip_filename: "file.xcarchive", # The name of the backup file
+            zip: false, # Enable compression of the archive. Defaults to `true`.
+            versioned: true # Create a versioned (date and app version) subfolder where to put the archive
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `backup_xcarchive.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/backup_xcarchive.rb)
+- **Authors**: `dral3x`

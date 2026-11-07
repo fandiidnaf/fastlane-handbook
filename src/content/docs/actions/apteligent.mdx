@@ -1,0 +1,40 @@
+---
+title: "apteligent"
+description: "Upload dSYM file to [Apteligent (Crittercism)](http://www.apteligent.com/)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `ios`
+
+> Upload dSYM file to [Apteligent (Crittercism)](http://www.apteligent.com/)
+
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `dsym` | `String` | `FL_APTELIGENT_FILE` | `-` | No | dSYM.zip file to upload to Apteligent |
+| `app_id` | `String` | `FL_APTELIGENT_APP_ID` | `-` | **Yes** | Apteligent App ID key e.g. 569f5c87cb99e10e00c7xxxx |
+| `api_key` | `String` | `FL_APTELIGENT_API_KEY` | `-` | **Yes** | Apteligent App API key e.g. IXPQIi8yCbHaLliqzRoo065tH0lxxxxx |
+
+
+## Examples
+
+```ruby
+apteligent(
+            app_id: "...",
+            api_key: "..."
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `apteligent.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/apteligent.rb)
+- **Authors**: `Mo7amedFouad`

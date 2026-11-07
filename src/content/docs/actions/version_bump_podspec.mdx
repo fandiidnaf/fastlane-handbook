@@ -1,0 +1,56 @@
+---
+title: "version_bump_podspec"
+description: "Increment or set the version in a podspec file"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `mac`
+
+> Increment or set the version in a podspec file
+
+## Details
+
+You can use this action to manipulate any 'version' variable contained in a ruby file.
+For example, you can use it to bump the version of a CocoaPods' podspec file.
+It also supports versions that are not semantic: `1.4.14.4.1`.
+For such versions, there is an option to change the appendix (e.g. `4.1`).
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `FL_VERSION_BUMP_PODSPEC_PATH` | `-` | **Yes** | You must specify the path to the podspec file to update |
+| `bump_type` | `String` | `FL_VERSION_BUMP_PODSPEC_BUMP_TYPE` | `patch` | **Yes** | The type of this version bump. Available: patch, minor, major |
+| `version_number` | `String` | `FL_VERSION_BUMP_PODSPEC_VERSION_NUMBER` | `-` | No | Change to a specific version. This will replace the bump type value |
+| `version_appendix` | `String` | `FL_VERSION_BUMP_PODSPEC_VERSION_APPENDIX` | `-` | No | Change version appendix to a specific value. For example 1.4.14.4.1 -&gt; 1.4.14.5 |
+| `require_variable_prefix` | `Fastlane::Boolean` | `FL_VERSION_BUMP_PODSPEC_VERSION_REQUIRE_VARIABLE_PREFIX` | `true` | **Yes** | true by default, this is used for non CocoaPods version bumps only |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::PODSPEC_VERSION_NUMBER` | The new podspec version number |
+
+## Examples
+
+```ruby
+version = version_bump_podspec(path: "TSMessages.podspec", bump_type: "patch")
+```
+
+```ruby
+version = version_bump_podspec(path: "TSMessages.podspec", version_number: "1.4")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `version_bump_podspec.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/version_bump_podspec.rb)
+- **Authors**: `Liquidsoul`, `KrauseFx`

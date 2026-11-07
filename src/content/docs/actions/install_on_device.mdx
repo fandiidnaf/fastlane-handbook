@@ -1,0 +1,44 @@
+---
+title: "install_on_device"
+description: "Installs an .ipa file on a connected iOS-device via usb or wifi"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`
+
+> Installs an .ipa file on a connected iOS-device via usb or wifi
+
+## Details
+
+Installs the ipa on the device. If no id is given, the first found iOS device will be used. Works via USB or Wi-Fi. This requires `ios-deploy` to be installed. Please have a look at [ios-deploy](https://github.com/ios-control/ios-deploy). To quickly install it, use `brew install ios-deploy`
+
+## Parameters & Options
+
+Total options available: **4**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `extra` | `String` | `FL_IOD_EXTRA` | `-` | No | Extra Command-line arguments passed to ios-deploy |
+| `device_id` | `String` | `FL_IOD_DEVICE_ID` | `-` | No | id of the device / if not set defaults to first found device |
+| `skip_wifi` | `Fastlane::Boolean` | `FL_IOD_WIFI` | `-` | No | Do not search for devices via WiFi |
+| `ipa` | `String` | `FL_IOD_IPA` | `-` | No | The IPA file to put on the device |
+
+
+## Examples
+
+```ruby
+install_on_device(
+            device_id: "a3be6c9ff7e5c3c6028597513243b0f933b876d4",
+            ipa: "./app.ipa"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `install_on_device.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/install_on_device.rb)
+- **Authors**: `hjanuschka`

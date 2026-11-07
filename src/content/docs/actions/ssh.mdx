@@ -1,0 +1,58 @@
+---
+title: "ssh"
+description: "Allows remote command execution using ssh"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Allows remote command execution using ssh
+
+## Details
+
+Lets you execute remote commands via ssh using username/password or ssh-agent. If one of the commands in command-array returns non 0, it fails.
+
+## Parameters & Options
+
+Total options available: **6**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `username` | `String` | `FL_SSH_USERNAME` | `-` | **Yes** | Username |
+| `password` | `String` | `FL_SSH_PASSWORD` | `-` | No | Password |
+| `host` | `String` | `FL_SSH_HOST` | `-` | **Yes** | Hostname |
+| `port` | `String` | `FL_SSH_PORT` | `22` | No | Port |
+| `commands` | `Array` | `FL_SSH_COMMANDS` | `-` | No | Commands |
+| `log` | `Fastlane::Boolean` | `FL_SSH_LOG` | `true` | No | Log commands and output |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::SSH_STDOUT_VALUE` | Holds the standard output of all commands |
+| `SharedValues::SSH_STDERR_VALUE` | Holds the standard error of all commands |
+
+## Examples
+
+```ruby
+ssh(
+            host: "dev.januschka.com",
+            username: "root",
+            commands: [
+              "date",
+              "echo 1 > /tmp/file1"
+            ]
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `ssh.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ssh.rb)
+- **Authors**: `hjanuschka`

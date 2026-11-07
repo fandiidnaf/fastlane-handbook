@@ -1,0 +1,63 @@
+---
+title: "setup_ci"
+description: "Setup the keychain and match to work with CI"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `mac`
+
+> Setup the keychain and match to work with CI
+
+## Details
+
+- Creates a new temporary keychain for use with match|
+- Switches match to `readonly` mode to not create new profiles/cert on CI|
+- Sets up log and test result paths to be easily collectible|
+>|
+This action helps with CI integration. Add this to the top of your Fastfile if you use CI.
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `force` | `Fastlane::Boolean` | `FL_SETUP_CI_FORCE` | `false` | **Yes** | Force setup, even if not executed by CI |
+| `provider` | `String` | `FL_SETUP_CI_PROVIDER` | `-` | No | CI provider. If none is set, the provider is detected automatically |
+| `timeout` | `Integer` | `FL_SETUP_CI_TIMEOUT` | `3600` | **Yes** | Set a custom timeout in seconds for keychain.  Set `0` if you want to specify 'no time-out' |
+| `keychain_name` | `String` | `FL_SETUP_CI_KEYCHAIN_NAME` | `fastlane_tmp_keychain` | **Yes** | Set a custom keychain name |
+| `set_default_keychain` | `Fastlane::Boolean` | `FL_SETUP_CI_SET_DEFAULT_KEYCHAIN` | `true` | **Yes** | Set the temporary keychain as the system default |
+
+
+## Examples
+
+```ruby
+setup_ci(
+            provider: "circleci"
+          )
+```
+
+```ruby
+setup_ci(
+            provider: "circleci",
+            timeout: 0
+          )
+```
+
+```ruby
+setup_ci(
+            provider: "circleci",
+            timeout: 0,
+            keychain_name: "custom_keychain_name"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `setup_ci.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/setup_ci.rb)
+- **Authors**: `mollyIV`, `svenmuennich`

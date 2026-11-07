@@ -1,0 +1,35 @@
+---
+title: "recreate_schemes"
+description: "Recreate not shared Xcode project schemes"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`, `mac`
+
+> Recreate not shared Xcode project schemes
+
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `project` | `String` | `XCODE_PROJECT` | `-` | **Yes** | The Xcode project |
+
+
+## Examples
+
+```ruby
+recreate_schemes(project: "./path/to/MyApp.xcodeproj")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `recreate_schemes.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/recreate_schemes.rb)
+- **Authors**: `jerolimov`

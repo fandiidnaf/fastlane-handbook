@@ -1,0 +1,70 @@
+---
+title: "appetize"
+description: "Upload your app to [Appetize.io](https://appetize.io/) to stream it in browser"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `beta` | **Platforms:** `ios`, `android`
+
+> Upload your app to [Appetize.io](https://appetize.io/) to stream it in browser
+
+## Details
+
+If you provide a `public_key`, this will overwrite an existing application. If you want to have this build as a new app version, you shouldn't provide this value.
+
+To integrate appetize into your GitHub workflow check out the [device_grid guide](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/device_grid/README.md).
+
+## Parameters & Options
+
+Total options available: **8**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_host` | `String` | `APPETIZE_API_HOST` | `api.appetize.io` | **Yes** | Appetize API host |
+| `api_token` | `String` | `APPETIZE_API_TOKEN` | `-` | **Yes** | Appetize.io API Token |
+| `url` | `String` | `APPETIZE_URL` | `-` | No | URL from which the ipa file can be fetched. Alternative to :path |
+| `platform` | `String` | `APPETIZE_PLATFORM` | `ios` | **Yes** | Platform. Either `ios` or `android` |
+| `path` | `String` | `APPETIZE_FILE_PATH` | `-` | No | Path to zipped build on the local filesystem. Either this or `url` must be specified |
+| `public_key` | `String` | `APPETIZE_PUBLICKEY` | `-` | No | If not provided, a new app will be created. If provided, the existing build will be overwritten |
+| `note` | `String` | `APPETIZE_NOTE` | `-` | No | Notes you wish to add to the uploaded app |
+| `timeout` | `Integer` | `APPETIZE_TIMEOUT` | `-` | No | The number of seconds to wait until automatically ending the session due to user inactivity. Must be 30, 60, 90, 120, 180, 300, 600, 1800, 3600 or 7200. Default is 120 |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::APPETIZE_API_HOST` | Appetize API host. |
+| `SharedValues::APPETIZE_PUBLIC_KEY` | a public identifier for your app. Use this to update your app after it has been initially created. |
+| `SharedValues::APPETIZE_APP_URL` | a page to test and share your app. |
+| `SharedValues::APPETIZE_MANAGE_URL` | a page to manage your app. |
+
+## Examples
+
+```ruby
+appetize(
+            path: "./MyApp.zip",
+            api_token: "yourapitoken", # get it from https://appetize.io/docs#request-api-token
+            public_key: "your_public_key" # get it from https://appetize.io/dashboard
+          )
+```
+
+```ruby
+appetize(
+            path: "./MyApp.zip",
+            api_host: "company.appetize.io", # only needed for enterprise hosted solution
+            api_token: "yourapitoken", # get it from https://appetize.io/docs#request-api-token
+            public_key: "your_public_key" # get it from https://appetize.io/dashboard
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `appetize.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/appetize.rb)
+- **Authors**: `klundberg`, `giginet`, `steprescott`

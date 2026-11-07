@@ -1,0 +1,36 @@
+---
+title: "last_git_commit"
+description: "Return last git commit hash, abbreviated commit hash, commit message and author"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> Return last git commit hash, abbreviated commit hash, commit message and author
+
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+commit = last_git_commit
+          pilot(changelog: commit[:message]) # message of commit
+          author = commit[:author] # author of the commit
+          author_email = commit[:author_email] # email of the author of the commit
+          hash = commit[:commit_hash] # long sha of commit
+          short_hash = commit[:abbreviated_commit_hash] # short sha of commit
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `last_git_commit.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/last_git_commit.rb)
+- **Authors**: `ngutman`

@@ -1,0 +1,51 @@
+---
+title: "create_app_on_managed_play_store"
+description: "Create Managed Google Play Apps"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `android`
+
+> Create Managed Google Play Apps
+
+## Details
+
+Create new apps on Managed Google Play.
+
+## Parameters & Options
+
+Total options available: **8**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `json_key` | `String` | `SUPPLY_JSON_KEY` | `-` | No | The path to a Google credentials JSON file (Application Default, Workload Identity, or Service Account), used to authenticate with Google |
+| `json_key_data` | `String` | `SUPPLY_JSON_KEY_DATA` | `-` | No | The raw content of a Google credentials JSON file (Application Default, Workload Identity, or Service Account) used to authenticate with Google |
+| `developer_account_id` | `String` | `SUPPLY_DEVELOPER_ACCOUNT_ID` | `-` | **Yes** | The ID of your Google Play Console account. Can be obtained from the URL when you log in (`https://play.google.com/apps/publish/?account=...` or when you 'Obtain private app publishing rights' (https://developers.google.com/android/work/play/custom-app-api/get-started#retrieve_the_developer_account_id) |
+| `apk` | `String` | `SUPPLY_APK` | `-` | **Yes** | Path to the APK file to upload |
+| `app_title` | `String` | `SUPPLY_APP_TITLE` | `-` | **Yes** | App Title |
+| `language` | `String` | `SUPPLY_LANGUAGE` | `en_US` | **Yes** | Default app language (e.g. 'en_US') |
+| `root_url` | `String` | `SUPPLY_ROOT_URL` | `-` | No | Root URL for the Google Play API. The provided URL will be used for API calls in place of https://www.googleapis.com/ |
+| `timeout` | `Integer` | `SUPPLY_TIMEOUT` | `300` | No | Timeout for read, open, and send (in seconds) |
+
+
+## Examples
+
+```ruby
+create_app_on_managed_play_store(
+            json_key: 'path/to/you/json/key/file',
+            developer_account_id: 'developer_account_id', # obtained using the `get_managed_play_store_publishing_rights` action (or looking at the Play Console url)
+            app_title: 'Your app title',
+            language: 'en_US', # primary app language in BCP 47 format
+            apk: '/files/app-release.apk'
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `create_app_on_managed_play_store.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/create_app_on_managed_play_store.rb)
+- **Authors**: `janpio`

@@ -1,0 +1,95 @@
+---
+title: "automatic_code_signing"
+description: "Configures Xcode's Codesigning options"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `ios`, `mac`
+
+> Configures Xcode's Codesigning options
+
+## Details
+
+Configures Xcode's Codesigning options of all targets in the project
+
+## Parameters & Options
+
+Total options available: **8**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `FL_PROJECT_SIGNING_PROJECT_PATH` | `-` | **Yes** | Path to your Xcode project |
+| `use_automatic_signing` | `Fastlane::Boolean` | `FL_PROJECT_USE_AUTOMATIC_SIGNING` | `false` | **Yes** | Defines if project should use automatic signing |
+| `team_id` | `String` | `FASTLANE_TEAM_ID` | `-` | No | Team ID, is used when upgrading project |
+| `targets` | `Array` | `FL_PROJECT_SIGNING_TARGETS` | `-` | No | Specify targets you want to toggle the signing mech. (default to all targets) |
+| `code_sign_identity` | `String` | `FL_CODE_SIGN_IDENTITY` | `-` | No | Code signing identity type (iPhone Developer, iPhone Distribution) |
+| `profile_name` | `String` | `FL_PROVISIONING_PROFILE_SPECIFIER` | `-` | No | Provisioning profile name to use for code signing |
+| `profile_uuid` | `String` | `FL_PROVISIONING_PROFILE` | `-` | No | Provisioning profile UUID to use for code signing |
+| `bundle_identifier` | `String` | `FL_APP_IDENTIFIER` | `-` | No | Application Product Bundle Identifier |
+
+
+## Examples
+
+```ruby
+# enable automatic code signing
+          enable_automatic_code_signing
+```
+
+```ruby
+enable_automatic_code_signing(
+            path: "demo-project/demo/demo.xcodeproj"
+          )
+```
+
+```ruby
+# disable automatic code signing
+          disable_automatic_code_signing
+```
+
+```ruby
+disable_automatic_code_signing(
+            path: "demo-project/demo/demo.xcodeproj"
+          )
+```
+
+```ruby
+# also set team id
+          disable_automatic_code_signing(
+            path: "demo-project/demo/demo.xcodeproj",
+            team_id: "XXXX"
+          )
+```
+
+```ruby
+# Only specific targets
+          disable_automatic_code_signing(
+            path: "demo-project/demo/demo.xcodeproj",
+            use_automatic_signing: false,
+            targets: ["demo"]
+          )
+```
+
+```ruby
+# via generic action
+          automatic_code_signing(
+            path: "demo-project/demo/demo.xcodeproj",
+            use_automatic_signing: false
+          )
+```
+
+```ruby
+automatic_code_signing(
+            path: "demo-project/demo/demo.xcodeproj",
+            use_automatic_signing: true
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `automatic_code_signing.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/automatic_code_signing.rb)
+- **Authors**: `mathiasAichinger`, `hjanuschka`, `p4checo`, `portellaa`, `aeons`

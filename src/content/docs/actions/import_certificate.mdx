@@ -1,0 +1,65 @@
+---
+title: "import_certificate"
+description: "Import certificate from inputfile into a keychain"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `code_signing` | **Platforms:** `ios`, `android`, `mac`
+
+> Import certificate from inputfile into a keychain
+
+## Details
+
+Import certificates (and private keys) into the current default keychain. Use the `create_keychain` action to create a new keychain.
+
+## Parameters & Options
+
+Total options available: **7**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `certificate_path` | `String` | `-` | `-` | **Yes** | Path to certificate |
+| `certificate_password` | `String` | `-` | `-` | No | Certificate password |
+| `certificate_format` | `String` | `-` | `-` | No | Format of the certificate. Check the '-f' switch from 'security import --help' command |
+| `keychain_name` | `String` | `KEYCHAIN_NAME` | `-` | **Yes** | Keychain the items should be imported to |
+| `keychain_path` | `String` | `KEYCHAIN_PATH` | `-` | No | Path to the Keychain file to which the items should be imported |
+| `keychain_password` | `String` | `FL_IMPORT_CERT_KEYCHAIN_PASSWORD` | `-` | No | The password for the keychain. Note that for the login keychain this is your user's password |
+| `log_output` | `Fastlane::Boolean` | `-` | `false` | No | If output should be logged to the console |
+
+
+## Examples
+
+```ruby
+import_certificate(certificate_path: "certs/AppleWWDRCA6.cer")
+```
+
+```ruby
+import_certificate(
+            certificate_path: "certs/dist.p12",
+            certificate_password: ENV["CERTIFICATE_PASSWORD"] || "default"
+          )
+```
+
+```ruby
+import_certificate(
+            certificate_path: "certs/development.cer"
+          )
+```
+
+```ruby
+import_certificate(
+            certificate_path: "certs/dist.p12",
+            certificate_password: ENV["CERTIFICATE_PASSWORD"] || "default",
+            certificate_format: "pkcs12"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `import_certificate.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/import_certificate.rb)
+- **Authors**: `gin0606`

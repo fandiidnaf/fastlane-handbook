@@ -1,0 +1,47 @@
+---
+title: "splunkmint"
+description: "Upload dSYM file to [Splunk MINT](https://mint.splunk.com/)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `deprecated` | **Platforms:** `ios`
+
+> Upload dSYM file to [Splunk MINT](https://mint.splunk.com/)
+
+
+## Parameters & Options
+
+Total options available: **9**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `dsym` | `String` | `FL_SPLUNKMINT_FILE` | `-` | No | dSYM.zip file to upload to Splunk MINT |
+| `api_key` | `String` | `FL_SPLUNKMINT_API_KEY` | `-` | **Yes** | Splunk MINT App API key e.g. f57a57ca |
+| `api_token` | `String` | `FL_SPLUNKMINT_API_TOKEN` | `-` | **Yes** | Splunk MINT API token e.g. e05ba40754c4869fb7e0b61 |
+| `verbose` | `Fastlane::Boolean` | `FL_SPLUNKMINT_VERBOSE` | `false` | No | Make detailed output |
+| `upload_progress` | `Fastlane::Boolean` | `FL_SPLUNKMINT_UPLOAD_PROGRESS` | `false` | No | Show upload progress |
+| `proxy_username` | `String` | `FL_SPLUNKMINT_PROXY_USERNAME` | `-` | No | Proxy username |
+| `proxy_password` | `String` | `FL_SPLUNKMINT_PROXY_PASSWORD` | `-` | No | Proxy password |
+| `proxy_address` | `String` | `FL_SPLUNKMINT_PROXY_ADDRESS` | `-` | No | Proxy address |
+| `proxy_port` | `String` | `FL_SPLUNKMINT_PROXY_PORT` | `-` | No | Proxy port |
+
+
+## Examples
+
+```ruby
+splunkmint(
+            dsym: "My.app.dSYM.zip",
+            api_key: "43564d3a",
+            api_token: "e05456234c4869fb7e0b61"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `splunkmint.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/splunkmint.rb)
+- **Authors**: `xfreebird`

@@ -1,0 +1,54 @@
+---
+title: "appium"
+description: "Run UI test by Appium with RSpec"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `testing` | **Platforms:** `ios`, `android`
+
+> Run UI test by Appium with RSpec
+
+
+## Parameters & Options
+
+Total options available: **9**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `platform` | `String` | `FL_APPIUM_PLATFORM` | `-` | **Yes** | Appium platform name |
+| `spec_path` | `String` | `FL_APPIUM_SPEC_PATH` | `-` | **Yes** | Path to Appium spec directory |
+| `app_path` | `String` | `FL_APPIUM_APP_FILE_PATH` | `-` | **Yes** | Path to Appium target app file |
+| `invoke_appium_server` | `Fastlane::Boolean` | `FL_APPIUM_INVOKE_APPIUM_SERVER` | `true` | No | Use local Appium server with invoke automatically |
+| `host` | `String` | `FL_APPIUM_HOST` | `0.0.0.0` | No | Hostname of Appium server |
+| `port` | `Integer` | `FL_APPIUM_PORT` | `4723` | No | HTTP port of Appium server |
+| `appium_path` | `String` | `FL_APPIUM_EXECUTABLE_PATH` | `-` | No | Path to Appium executable |
+| `caps` | `Hash` | `FL_APPIUM_CAPS` | `-` | No | Hash of caps for Appium::Driver |
+| `appium_lib` | `Hash` | `FL_APPIUM_LIB` | `-` | No | Hash of appium_lib for Appium::Driver |
+
+
+## Examples
+
+```ruby
+appium(
+            app_path:  "appium/apps/TargetApp.app",
+            spec_path: "appium/spec",
+            platform:  "iOS",
+            caps: {
+              versionNumber: "9.1",
+              deviceName:    "iPhone 6"
+            },
+            appium_lib: {
+              wait: 10
+            }
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `appium.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/appium.rb)
+- **Authors**: `yonekawa`

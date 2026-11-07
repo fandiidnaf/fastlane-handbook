@@ -1,0 +1,42 @@
+---
+title: "clean_build_artifacts"
+description: "Deletes files created as result of running gym, cert, sigh or download_dsyms"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `mac`
+
+> Deletes files created as result of running gym, cert, sigh or download_dsyms
+
+## Details
+
+This action deletes the files that get created in your repo as a result of running the _gym_ and _sigh_ commands. It doesn't delete the `fastlane/report.xml` though, this is probably more suited for the .gitignore.
+
+From _cert_ it only deletes the `.cer` file. The private key (`<certificate id>.p12`, despite its name an unencrypted PEM key) and the `.certSigningRequest` that _cert_ writes to its `output_path` when it creates a certificate are kept: _cert_ uses that `.p12` to install the certificate on a machine that doesn't have it, and on systems other than macOS it is the only copy of the key. Keep them out of version control.
+
+Useful if you quickly want to send out a test build by dropping down to the command line and typing something like `fastlane beta`, without leaving your repo in a messy state afterwards.
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `exclude_pattern` | `String` | `FL_CLEAN_BUILD_ARTIFACTS_EXCLUDE_PATTERN` | `-` | No | Exclude all files from clearing that match the given Regex pattern: e.g. '.*.mobileprovision' |
+
+
+## Examples
+
+```ruby
+clean_build_artifacts
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `clean_build_artifacts.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/clean_build_artifacts.rb)
+- **Authors**: `lmirosevic`

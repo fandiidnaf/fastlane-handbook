@@ -1,0 +1,53 @@
+---
+title: "dsym_zip"
+description: "Creates a zipped dSYM in the project root from the .xcarchive"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `mac`
+
+> Creates a zipped dSYM in the project root from the .xcarchive
+
+## Details
+
+You can manually specify the path to the xcarchive (not needed if you use `xcodebuild`/`xcarchive` to build your archive)
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `archive_path` | `String` | `DSYM_ZIP_XCARCHIVE_PATH` | `-` | No | Path to your xcarchive file. Optional if you use the `xcodebuild` action |
+| `dsym_path` | `String` | `DSYM_ZIP_DSYM_PATH` | `-` | No | Path for generated dsym. Optional, default is your apps root directory |
+| `all` | `Fastlane::Boolean` | `DSYM_ZIP_ALL` | `false` | No | Whether or not all dSYM files are to be included. Optional, default is false in which only your app dSYM is included |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::DSYM_ZIP_PATH` | The named of the zipped dSYM |
+
+## Examples
+
+```ruby
+dsym_zip
+```
+
+```ruby
+dsym_zip(
+            archive_path: "MyApp.xcarchive"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `dsym_zip.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/dsym_zip.rb)
+- **Authors**: `lmirosevic`

@@ -1,0 +1,44 @@
+---
+title: "update_app_identifier"
+description: "Update the project's bundle identifier"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`
+
+> Update the project's bundle identifier
+
+## Details
+
+Update an app identifier by either setting `CFBundleIdentifier` or `PRODUCT_BUNDLE_IDENTIFIER`, depending on which is already in use.
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `xcodeproj` | `String` | `FL_UPDATE_APP_IDENTIFIER_PROJECT_PATH` | `-` | **Yes** | Path to your Xcode project |
+| `plist_path` | `String` | `FL_UPDATE_APP_IDENTIFIER_PLIST_PATH` | `-` | **Yes** | Path to info plist, relative to your Xcode project |
+| `app_identifier` | `String` | `FL_UPDATE_APP_IDENTIFIER` | `-` | **Yes** | The app Identifier you want to set |
+
+
+## Examples
+
+```ruby
+update_app_identifier(
+            xcodeproj: "Example.xcodeproj", # Optional path to xcodeproj, will use the first .xcodeproj if not set
+            plist_path: "Example/Info.plist", # Path to info plist file, relative to xcodeproj
+            app_identifier: "com.test.example" # The App Identifier
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `update_app_identifier.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_app_identifier.rb)
+- **Authors**: `squarefrog`, `tobiasstrebitzer`

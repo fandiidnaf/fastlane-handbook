@@ -1,0 +1,35 @@
+---
+title: "backup_file"
+description: "This action backs up your file to \"[path].back\""
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> This action backs up your file to "[path].back"
+
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `-` | `-` | **Yes** | Path to the file you want to backup |
+
+
+## Examples
+
+```ruby
+backup_file(path: "/path/to/file")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `backup_file.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/backup_file.rb)
+- **Authors**: `gin0606`

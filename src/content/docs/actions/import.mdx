@@ -1,0 +1,35 @@
+---
+title: "import"
+description: "Import another Fastfile to use its lanes"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Import another Fastfile to use its lanes
+
+## Details
+
+This is useful if you have shared lanes across multiple apps and you want to store a Fastfile in a separate folder.
+The path must be relative to the Fastfile this is called from.
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+import("./path/to/other/Fastfile")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `import.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/import.rb)
+- **Authors**: `KrauseFx`

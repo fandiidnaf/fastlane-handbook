@@ -1,0 +1,35 @@
+---
+title: "hg_add_tag"
+description: "This will add a hg tag to the current branch"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> This will add a hg tag to the current branch
+
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `tag` | `String` | `FL_HG_TAG_TAG` | `-` | **Yes** | Tag to create |
+
+
+## Examples
+
+```ruby
+hg_add_tag(tag: "1.3")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `hg_add_tag.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/hg_add_tag.rb)
+- **Authors**: `sjrmanning`

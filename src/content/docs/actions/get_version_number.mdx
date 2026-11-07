@@ -1,0 +1,54 @@
+---
+title: "get_version_number"
+description: "Get the version number of your project"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`, `mac`
+
+> Get the version number of your project
+
+## Details
+
+This action will return the current version number set on your project. It first looks in the plist and then for '$(MARKETING_VERSION)' in the build settings.
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `xcodeproj` | `String` | `FL_VERSION_NUMBER_PROJECT` | `-` | No | Path to the Xcode project to read version number from, or its containing directory, optional. If omitted, or if a directory is passed instead, it will use the first Xcode project found within the given directory, or the project root directory if none is passed |
+| `target` | `String` | `FL_VERSION_NUMBER_TARGET` | `-` | No | Target name, optional. Will be needed if you have more than one non-test target to avoid being prompted to select one |
+| `configuration` | `String` | `FL_VERSION_NUMBER_CONFIGURATION` | `-` | No | Configuration name, optional. Will be needed if you have altered the configurations from the default or your version number depends on the configuration selected |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::VERSION_NUMBER` | The version number |
+
+## Examples
+
+```ruby
+version = get_version_number(xcodeproj: "Project.xcodeproj")
+```
+
+```ruby
+version = get_version_number(
+            xcodeproj: "Project.xcodeproj",
+            target: "App"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `get_version_number.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_version_number.rb)
+- **Authors**: `Liquidsoul`, `joshdholtz`

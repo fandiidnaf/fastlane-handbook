@@ -1,0 +1,39 @@
+---
+title: "xcodebuild"
+description: "Use the `xcodebuild` command to build and sign your app"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Use the `xcodebuild` command to build and sign your app
+
+## Details
+
+**Note**: `xcodebuild` is a complex command, so it is recommended to use [_gym_](https://docs.fastlane.tools/actions/gym/) for building your ipa file and [_scan_](https://docs.fastlane.tools/actions/scan/) for testing your app instead.
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+xcodebuild(
+            archive: true,
+            archive_path: "./build-dir/MyApp.xcarchive",
+            scheme: "MyApp",
+            workspace: "MyApp.xcworkspace"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `xcodebuild.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcodebuild.rb)
+- **Authors**: `dtrenz`

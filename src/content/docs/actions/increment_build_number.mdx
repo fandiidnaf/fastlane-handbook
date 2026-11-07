@@ -1,0 +1,61 @@
+---
+title: "increment_build_number"
+description: "Increment the build number of your project"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`, `mac`
+
+> Increment the build number of your project
+
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `build_number` | `String` | `FL_BUILD_NUMBER_BUILD_NUMBER` | `-` | No | Change to a specific version. When you provide this parameter, Apple Generic Versioning does not have to be enabled |
+| `skip_info_plist` | `Fastlane::Boolean` | `FL_BUILD_NUMBER_SKIP_INFO_PLIST` | `false` | **Yes** | Don't update Info.plist files when updating the build version |
+| `xcodeproj` | `String` | `FL_BUILD_NUMBER_PROJECT` | `-` | No | optional, you must specify the path to your main Xcode project if it is not in the project root directory |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::BUILD_NUMBER` | The new build number |
+
+## Examples
+
+```ruby
+increment_build_number # automatically increment by one
+```
+
+```ruby
+increment_build_number(
+            build_number: "75" # set a specific number
+          )
+```
+
+```ruby
+increment_build_number(
+            build_number: 75, # specify specific build number (optional, omitting it increments by one)
+            xcodeproj: "./path/to/MyApp.xcodeproj" # (optional, you must specify the path to your main Xcode project if it is not in the project root directory)
+          )
+```
+
+```ruby
+build_number = increment_build_number
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `increment_build_number.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/increment_build_number.rb)
+- **Authors**: `KrauseFx`

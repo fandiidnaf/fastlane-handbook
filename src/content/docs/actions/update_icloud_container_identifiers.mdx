@@ -1,0 +1,49 @@
+---
+title: "update_icloud_container_identifiers"
+description: "This action changes the iCloud container identifiers in the entitlements file"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`
+
+> This action changes the iCloud container identifiers in the entitlements file
+
+## Details
+
+Updates the iCloud Container Identifiers in the given Entitlements file, so you can use different iCloud containers for different builds like Adhoc, App Store, etc.
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `entitlements_file` | `String` | `FL_UPDATE_ICLOUD_CONTAINER_IDENTIFIERS_ENTITLEMENTS_FILE_PATH` | `-` | **Yes** | The path to the entitlement file which contains the iCloud container identifiers |
+| `icloud_container_identifiers` | `Array` | `FL_UPDATE_ICLOUD_CONTAINER_IDENTIFIERS_IDENTIFIERS` | `-` | **Yes** | An Array of unique identifiers for the iCloud containers. Eg. ['iCloud.com.test.testapp'] |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::UPDATE_ICLOUD_CONTAINER_IDENTIFIERS` | The new iCloud Container Identifiers |
+
+## Examples
+
+```ruby
+update_icloud_container_identifiers(
+            entitlements_file: "/path/to/entitlements_file.entitlements",
+            icloud_container_identifiers: ["iCloud.com.companyname.appname"]
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `update_icloud_container_identifiers.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_icloud_container_identifiers.rb)
+- **Authors**: `JamesKuang`

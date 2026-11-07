@@ -1,0 +1,39 @@
+---
+title: "git_tag_exists"
+description: "Checks if the git tag with the given name exists in the current repo"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> Checks if the git tag with the given name exists in the current repo
+
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `tag` | `String` | `-` | `-` | **Yes** | The tag name that should be checked |
+| `remote` | `Fastlane::Boolean` | `-` | `false` | No | Whether to check remote. Defaults to `false` |
+| `remote_name` | `String` | `-` | `origin` | No | The remote to check. Defaults to `origin` |
+
+
+## Examples
+
+```ruby
+if git_tag_exists(tag: "1.1.0")
+            UI.message("Found it 🚀")
+          end
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `git_tag_exists.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_tag_exists.rb)
+- **Authors**: `antondomashnev`

@@ -1,0 +1,66 @@
+---
+title: "ensure_no_debug_code"
+description: "Ensures the given text is nowhere in the code base"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Ensures the given text is nowhere in the code base
+
+## Details
+
+You don't want any debug code to slip into production.
+This can be used to check if there is any debug code still in your codebase or if you have things like `// TO DO` or similar.
+
+## Parameters & Options
+
+Total options available: **6**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `text` | `String` | `FL_ENSURE_NO_DEBUG_CODE_TEXT` | `-` | **Yes** | The text that must not be in the code base |
+| `path` | `String` | `FL_ENSURE_NO_DEBUG_CODE_PATH` | `.` | **Yes** | The directory containing all the source files |
+| `extension` | `String` | `FL_ENSURE_NO_DEBUG_CODE_EXTENSION` | `-` | No | The extension that should be searched for |
+| `extensions` | `Array` | `FL_ENSURE_NO_DEBUG_CODE_EXTENSIONS` | `-` | No | An array of file extensions that should be searched for |
+| `exclude` | `String` | `FL_ENSURE_NO_DEBUG_CODE_EXCLUDE` | `-` | No | Exclude a certain pattern from the search |
+| `exclude_dirs` | `Array` | `FL_ENSURE_NO_DEBUG_CODE_EXCLUDE_DIRS` | `-` | No | An array of dirs that should not be included in the search |
+
+
+## Examples
+
+```ruby
+ensure_no_debug_code(text: "// TODO")
+```
+
+```ruby
+ensure_no_debug_code(text: "Log.v",
+                          extension: "java")
+```
+
+```ruby
+ensure_no_debug_code(text: "NSLog",
+                               path: "./lib",
+                          extension: "m")
+```
+
+```ruby
+ensure_no_debug_code(text: "(^#define DEBUG|NSLog)",
+                               path: "./lib",
+                          extension: "m")
+```
+
+```ruby
+ensure_no_debug_code(text: "<<<<<<",
+                         extensions: ["m", "swift", "java"])
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `ensure_no_debug_code.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ensure_no_debug_code.rb)
+- **Authors**: `KrauseFx`

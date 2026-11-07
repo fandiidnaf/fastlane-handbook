@@ -1,0 +1,38 @@
+---
+title: "dotgpg_environment"
+description: "Reads in production secrets set in a dotgpg file and puts them in ENV"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Reads in production secrets set in a dotgpg file and puts them in ENV
+
+## Details
+
+More information about dotgpg can be found at [https://github.com/ConradIrwin/dotgpg](https://github.com/ConradIrwin/dotgpg).
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `dotgpg_file` | `String` | `DOTGPG_FILE` | `-` | **Yes** | Path to your gpg file |
+
+
+## Examples
+
+```ruby
+dotgpg_environment(dotgpg_file: './path/to/gpgfile')
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `dotgpg_environment.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/dotgpg_environment.rb)
+- **Authors**: `simonlevy5`

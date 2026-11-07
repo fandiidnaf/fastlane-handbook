@@ -1,0 +1,40 @@
+---
+title: "ensure_env_vars"
+description: "Raises an exception if the specified env vars are not set"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Raises an exception if the specified env vars are not set
+
+## Details
+
+This action will check if some environment variables are set.
+
+## Parameters & Options
+
+Total options available: **1**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `env_vars` | `Array` | `-` | `-` | **Yes** | The environment variables names that should be checked |
+
+
+## Examples
+
+```ruby
+ensure_env_vars(
+            env_vars: ['GITHUB_USER_NAME', 'GITHUB_API_TOKEN']
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `ensure_env_vars.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ensure_env_vars.rb)
+- **Authors**: `revolter`

@@ -1,0 +1,48 @@
+---
+title: "verify_build"
+description: "Able to verify various settings in ipa file"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`
+
+> Able to verify various settings in ipa file
+
+## Details
+
+Verifies that the built app was built using the expected build resources. This is relevant for people who build on machines that are used to build apps with different profiles, certificates and/or bundle identifiers to guard against configuration mistakes.
+
+## Parameters & Options
+
+Total options available: **8**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `provisioning_type` | `String` | `FL_VERIFY_BUILD_PROVISIONING_TYPE` | `-` | No | Required type of provisioning |
+| `provisioning_uuid` | `String` | `FL_VERIFY_BUILD_PROVISIONING_UUID` | `-` | No | Required UUID of provisioning profile |
+| `team_identifier` | `String` | `FL_VERIFY_BUILD_TEAM_IDENTIFIER` | `-` | No | Required team identifier |
+| `team_name` | `String` | `FL_VERIFY_BUILD_TEAM_NAME` | `-` | No | Required team name |
+| `app_name` | `String` | `FL_VERIFY_BUILD_APP_NAME` | `-` | No | Required app name |
+| `bundle_identifier` | `String` | `FL_VERIFY_BUILD_BUNDLE_IDENTIFIER` | `-` | No | Required bundle identifier |
+| `ipa_path` | `String` | `FL_VERIFY_BUILD_IPA_PATH` | `-` | No | Explicitly set the ipa path |
+| `build_path` | `String` | `FL_VERIFY_BUILD_BUILD_PATH` | `-` | No | Explicitly set the ipa, app or xcarchive path |
+
+
+## Examples
+
+```ruby
+verify_build(
+            provisioning_type: "distribution",
+            bundle_identifier: "com.example.myapp"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `verify_build.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/verify_build.rb)
+- **Authors**: `CodeReaper`

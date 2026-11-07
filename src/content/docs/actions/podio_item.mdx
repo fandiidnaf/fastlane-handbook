@@ -1,0 +1,59 @@
+---
+title: "podio_item"
+description: "Creates or updates an item within your Podio app"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `beta` | **Platforms:** `ios`, `android`, `mac`
+
+> Creates or updates an item within your Podio app
+
+## Details
+
+Use this action to create or update an item within your Podio app (see [https://help.podio.com/hc/en-us/articles/201019278-Creating-apps-](https://help.podio.com/hc/en-us/articles/201019278-Creating-apps-)).
+Pass in dictionary with field keys and their values.
+Field key is located under `Modify app` -> `Advanced` -> `Developer` -> `External ID` (see [https://developers.podio.com/examples/items](https://developers.podio.com/examples/items)).
+
+## Parameters & Options
+
+Total options available: **7**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `client_id` | `String` | `PODIO_ITEM_CLIENT_ID` | `-` | **Yes** | Client ID for Podio API (see https://developers.podio.com/api-key) |
+| `client_secret` | `String` | `PODIO_ITEM_CLIENT_SECRET` | `-` | **Yes** | Client secret for Podio API (see https://developers.podio.com/api-key) |
+| `app_id` | `String` | `PODIO_ITEM_APP_ID` | `-` | **Yes** | App ID of the app you intend to authenticate with (see https://developers.podio.com/authentication/app_auth) |
+| `app_token` | `String` | `PODIO_ITEM_APP_TOKEN` | `-` | **Yes** | App token of the app you intend to authenticate with (see https://developers.podio.com/authentication/app_auth) |
+| `identifying_field` | `String` | `PODIO_ITEM_IDENTIFYING_FIELD` | `-` | **Yes** | String specifying the field key used for identification of an item |
+| `identifying_value` | `String` | `-` | `-` | **Yes** | String uniquely specifying an item within the app |
+| `other_fields` | `Hash` | `-` | `-` | No | Dictionary of your app fields. Podio supports several field types, see https://developers.podio.com/doc/items |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::PODIO_ITEM_URL` | URL to newly created (or updated) Podio item |
+
+## Examples
+
+```ruby
+podio_item(
+            identifying_value: "Your unique value",
+            other_fields: {
+              "field1" => "fieldValue",
+              "field2" => "fieldValue2"
+            }
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `podio_item.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/podio_item.rb)
+- **Authors**: `pprochazka72`, `laugejepsen`

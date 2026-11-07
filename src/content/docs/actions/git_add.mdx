@@ -1,0 +1,66 @@
+---
+title: "git_add"
+description: "Directly add the given file or all files"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `source_control` | **Platforms:** `ios`, `android`, `mac`
+
+> Directly add the given file or all files
+
+
+## Parameters & Options
+
+Total options available: **4**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `Array` | `-` | `-` | No | The file(s) and path(s) you want to add |
+| `shell_escape` | `Fastlane::Boolean` | `-` | `true` | No | Shell escapes paths (set to false if using wildcards or manually escaping spaces in :path) |
+| `force` | `Fastlane::Boolean` | `-` | `false` | No | Allow adding otherwise ignored files |
+| `pathspec` | `String` | `-` | `-` | No | **DEPRECATED!** Use `--path` instead - The pathspec you want to add files from |
+
+
+## Examples
+
+```ruby
+git_add
+```
+
+```ruby
+git_add(path: "./version.txt")
+```
+
+```ruby
+git_add(path: ["./version.txt", "./changelog.txt"])
+```
+
+```ruby
+git_add(path: "./Frameworks/*", shell_escape: false)
+```
+
+```ruby
+git_add(path: ["*.h", "*.m"], shell_escape: false)
+```
+
+```ruby
+git_add(path: "./Frameworks/*", shell_escape: false)
+```
+
+```ruby
+git_add(path: "*.txt", shell_escape: false)
+```
+
+```ruby
+git_add(path: "./tmp/.keep", force: true)
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `git_add.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_add.rb)
+- **Authors**: `4brunu`, `antondomashnev`

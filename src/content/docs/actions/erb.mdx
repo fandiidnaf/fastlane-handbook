@@ -1,0 +1,58 @@
+---
+title: "erb"
+description: "Allows to Generate output files based on ERB templates"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Allows to Generate output files based on ERB templates
+
+## Details
+
+Renders an ERB template with `:placeholders` given as a hash via parameter.
+If no `:destination` is set, it returns the rendered template as string.
+
+## Parameters & Options
+
+Total options available: **4**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `template` | `String` | `FL_ERB_SRC` | `-` | **Yes** | ERB Template File |
+| `destination` | `String` | `FL_ERB_DST` | `-` | No | Destination file |
+| `placeholders` | `Hash` | `FL_ERB_PLACEHOLDERS` | `&#123;&#125;` | **Yes** | Placeholders given as a hash |
+| `trim_mode` | `String` | `FL_ERB_TRIM_MODE` | `-` | No | Trim mode applied to the ERB |
+
+
+## Examples
+
+```ruby
+# Example `erb` template:
+
+          # Variable1 <%= var1 %>
+          # Variable2 <%= var2 %>
+          # <% for item in var3 %>
+          #        <%= item %>
+          # <% end %>
+
+          erb(
+            template: "1.erb",
+            destination: "/tmp/rendered.out",
+            placeholders: {
+              :var1 => 123,
+              :var2 => "string",
+              :var3 => ["element1", "element2"]
+            }
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `erb.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/erb.rb)
+- **Authors**: `hjanuschka`

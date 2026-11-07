@@ -1,0 +1,74 @@
+---
+title: "update_code_signing_settings"
+description: "Configures Xcode's Codesigning options"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `code_signing` | **Platforms:** `ios`, `mac`
+
+> Configures Xcode's Codesigning options
+
+## Details
+
+Configures Xcode's Codesigning options of all targets in the project
+
+## Parameters & Options
+
+Total options available: **11**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `path` | `String` | `FL_PROJECT_SIGNING_PROJECT_PATH` | `-` | **Yes** | Path to your Xcode project |
+| `use_automatic_signing` | `Fastlane::Boolean` | `FL_PROJECT_USE_AUTOMATIC_SIGNING` | `false` | **Yes** | Defines if project should use automatic signing |
+| `sdk` | `String` | `FASTLANE_BUILD_SDK` | `-` | No | Build target SDKs (iphoneos*, macosx*, iphonesimulator*) |
+| `team_id` | `String` | `FASTLANE_TEAM_ID` | `-` | No | Team ID, is used when upgrading project |
+| `targets` | `Array` | `FL_PROJECT_SIGNING_TARGETS` | `-` | No | Specify targets you want to toggle the signing mech. (default to all targets) |
+| `build_configurations` | `Array` | `FL_PROJECT_SIGNING_BUILD_CONFIGURATIONS` | `-` | No | Specify build_configurations you want to toggle the signing mech. (default to all configurations) |
+| `code_sign_identity` | `String` | `FL_CODE_SIGN_IDENTITY` | `-` | No | Code signing identity type (iPhone Developer, iPhone Distribution) |
+| `entitlements_file_path` | `String` | `FL_CODE_SIGN_ENTITLEMENTS_FILE_PATH` | `-` | No | Path to your entitlements file |
+| `profile_name` | `String` | `FL_PROVISIONING_PROFILE_SPECIFIER` | `-` | No | Provisioning profile name to use for code signing |
+| `profile_uuid` | `String` | `FL_PROVISIONING_PROFILE` | `-` | No | Provisioning profile UUID to use for code signing |
+| `bundle_identifier` | `String` | `FL_APP_IDENTIFIER` | `-` | No | Application Product Bundle Identifier |
+
+
+## Examples
+
+```ruby
+# manual code signing
+          update_code_signing_settings(
+            use_automatic_signing: false,
+            path: "demo-project/demo/demo.xcodeproj"
+          )
+```
+
+```ruby
+# automatic code signing
+          update_code_signing_settings(
+            use_automatic_signing: true,
+            path: "demo-project/demo/demo.xcodeproj"
+          )
+```
+
+```ruby
+# more advanced manual code signing
+          update_code_signing_settings(
+            use_automatic_signing: false,
+            path: "demo-project/demo/demo.xcodeproj",
+            team_id: "QABC123DEV",
+            bundle_identifier: "com.demoapp.QABC123DEV",
+            code_sign_identity: "iPhone Distribution",
+            sdk: "iphoneos*",
+            profile_name: "Demo App Deployment Profile",
+            entitlements_file_path: "Demo App/generated/New.entitlements"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `update_code_signing_settings.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_code_signing_settings.rb)
+- **Authors**: `mathiasAichinger`, `hjanuschka`, `p4checo`, `portellaa`, `aeons`, `att55`, `abcdev`

@@ -1,0 +1,45 @@
+---
+title: "sh"
+description: "Runs a shell command"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Runs a shell command
+
+## Details
+
+Allows running an arbitrary shell command.
+Be aware of a specific behavior of `sh` action with regard to the working directory. For details, refer to [Advanced](https://docs.fastlane.tools/advanced/#directory-behavior).
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `command` | `String` | `-` | `-` | **Yes** | Shell command to be executed |
+| `log` | `Fastlane::Boolean` | `-` | `true` | No | Determines whether fastlane should print out the executed command itself and output of the executed command. If command line option --troubleshoot is used, then it overrides this option to true |
+| `error_callback` | `string_callback` | `-` | `-` | No | A callback invoked with the command output if there is a non-zero exit status |
+
+
+## Examples
+
+```ruby
+sh("ls")
+```
+
+```ruby
+sh("git", "commit", "-m", "My message")
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `sh.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/sh.rb)
+- **Authors**: `KrauseFx`

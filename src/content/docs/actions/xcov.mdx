@@ -1,0 +1,39 @@
+---
+title: "xcov"
+description: "Nice code coverage reports without hassle"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `testing` | **Platforms:** `ios`, `mac`
+
+> Nice code coverage reports without hassle
+
+## Details
+
+Create nice code coverage reports and post coverage summaries on Slack *(xcov gem is required)*.
+More information: [https://github.com/fastlane-community/xcov](https://github.com/fastlane-community/xcov).
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+
+## Examples
+
+```ruby
+xcov(
+            workspace: "YourWorkspace.xcworkspace",
+            scheme: "YourScheme",
+            output_directory: "xcov_output"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `xcov.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcov.rb)
+- **Authors**: `nakiostudio`

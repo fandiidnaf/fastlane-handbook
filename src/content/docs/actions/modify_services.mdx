@@ -1,0 +1,52 @@
+---
+title: "modify_services"
+description: "Modifies the services of the app created on Developer Portal"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`
+
+> Modifies the services of the app created on Developer Portal
+
+## Details
+
+The options are the same as `:enable_services` in the [produce action](https://docs.fastlane.tools/actions/produce/#parameters_1)
+
+## Parameters & Options
+
+Total options available: **5**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `username` | `String` | `PRODUCE_USERNAME` | `-` | **Yes** | Your Apple ID Username |
+| `app_identifier` | `String` | `PRODUCE_APP_IDENTIFIER` | `-` | **Yes** | App Identifier (Bundle ID, e.g. com.krausefx.app) |
+| `services` | `Hash` | `PRODUCE_ENABLE_SERVICES` | `&#123;&#125;` | **Yes** | Array with Spaceship App Services (e.g. access_wifi: (on\|off)(:on\|:off)(true\|false), app_attest: (on\|off)(:on\|:off)(true\|false), app_group: (on\|off)(:on\|:off)(true\|false), apple_pay: (on\|off)(:on\|:off)(true\|false), associated_domains: (on\|off)(:on\|:off)(true\|false), auto_fill_credential: (on\|off)(:on\|:off)(true\|false), class_kit: (on\|off)(:on\|:off)(true\|false), declared_age_range: (on\|off)(:on\|:off)(true\|false), icloud: (legacy\|cloudkit)(:on\|:off)(true\|false), custom_network_protocol: (on\|off)(:on\|:off)(true\|false), data_protection: (complete\|unlessopen\|untilfirstauth)(:on\|:off)(true\|false), extended_virtual_address_space: (on\|off)(:on\|:off)(true\|false), family_controls: (on\|off)(:on\|:off)(true\|false), file_provider_testing_mode: (on\|off)(:on\|:off)(true\|false), fonts: (on\|off)(:on\|:off)(true\|false), game_center: (ios\|mac)(:on\|:off)(true\|false), health_kit: (on\|off)(:on\|:off)(true\|false), hls_interstitial_preview: (on\|off)(:on\|:off)(true\|false), home_kit: (on\|off)(:on\|:off)(true\|false), hotspot: (on\|off)(:on\|:off)(true\|false), in_app_purchase: (on\|off)(:on\|:off)(true\|false), inter_app_audio: (on\|off)(:on\|:off)(true\|false), low_latency_hls: (on\|off)(:on\|:off)(true\|false), managed_associated_domains: (on\|off)(:on\|:off)(true\|false), maps: (on\|off)(:on\|:off)(true\|false), multipath: (on\|off)(:on\|:off)(true\|false), network_extension: (on\|off)(:on\|:off)(true\|false), nfc_tag_reading: (on\|off)(:on\|:off)(true\|false), personal_vpn: (on\|off)(:on\|:off)(true\|false), passbook: (on\|off)(:on\|:off)(true\|false), push_notification: (on\|off)(:on\|:off)(true\|false), sign_in_with_apple: (on)(:on\|:off)(true\|false), siri_kit: (on\|off)(:on\|:off)(true\|false), system_extension: (on\|off)(:on\|:off)(true\|false), user_management: (on\|off)(:on\|:off)(true\|false), vpn_configuration: (on\|off)(:on\|:off)(true\|false), wallet: (on\|off)(:on\|:off)(true\|false), wireless_accessory: (on\|off)(:on\|:off)(true\|false), car_play_audio_app: (on\|off)(:on\|:off)(true\|false), car_play_messaging_app: (on\|off)(:on\|:off)(true\|false), car_play_navigation_app: (on\|off)(:on\|:off)(true\|false), car_play_voip_calling_app: (on\|off)(:on\|:off)(true\|false), critical_alerts: (on\|off)(:on\|:off)(true\|false), hotspot_helper: (on\|off)(:on\|:off)(true\|false), driver_kit: (on\|off)(:on\|:off)(true\|false), driver_kit_endpoint_security: (on\|off)(:on\|:off)(true\|false), driver_kit_family_hid_device: (on\|off)(:on\|:off)(true\|false), driver_kit_family_networking: (on\|off)(:on\|:off)(true\|false), driver_kit_family_serial: (on\|off)(:on\|:off)(true\|false), driver_kit_hid_event_service: (on\|off)(:on\|:off)(true\|false), driver_kit_transport_hid: (on\|off)(:on\|:off)(true\|false), multitasking_camera_access: (on\|off)(:on\|:off)(true\|false), sf_universal_link_api: (on\|off)(:on\|:off)(true\|false), vp9_decoder: (on\|off)(:on\|:off)(true\|false), music_kit: (on\|off)(:on\|:off)(true\|false), shazam_kit: (on\|off)(:on\|:off)(true\|false), communication_notifications: (on\|off)(:on\|:off)(true\|false), group_activities: (on\|off)(:on\|:off)(true\|false), health_kit_estimate_recalibration: (on\|off)(:on\|:off)(true\|false), time_sensitive_notifications: (on\|off)(:on\|:off)(true\|false)) |
+| `team_id` | `String` | `PRODUCE_TEAM_ID` | `-` | No | The ID of your Developer Portal team if you're in multiple teams |
+| `team_name` | `String` | `PRODUCE_TEAM_NAME` | `-` | No | The name of your Developer Portal team if you're in multiple teams |
+
+
+## Examples
+
+```ruby
+modify_services(
+            username: "test.account@gmail.com",
+            app_identifier: "com.someorg.app",
+            services: {
+              push_notification: "on",
+              associated_domains: "off",
+              wallet: :on,
+              apple_pay: :off,
+              data_protection: true,
+              multipath: false
+            })
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `modify_services.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/modify_services.rb)
+- **Authors**: `bhimsenpadalkar`

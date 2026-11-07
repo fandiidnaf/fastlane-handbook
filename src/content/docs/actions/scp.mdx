@@ -1,0 +1,58 @@
+---
+title: "scp"
+description: "Transfer files via SCP"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Transfer files via SCP
+
+
+## Parameters & Options
+
+Total options available: **6**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `username` | `String` | `FL_SSH_USERNAME` | `-` | **Yes** | Username |
+| `password` | `String` | `FL_SSH_PASSWORD` | `-` | No | Password |
+| `host` | `String` | `FL_SSH_HOST` | `-` | **Yes** | Hostname |
+| `port` | `String` | `FL_SSH_PORT` | `22` | No | Port |
+| `upload` | `Hash` | `FL_SCP_UPLOAD` | `-` | No | Upload |
+| `download` | `Hash` | `FL_SCP_DOWNLOAD` | `-` | No | Download |
+
+
+## Examples
+
+```ruby
+scp(
+            host: "dev.januschka.com",
+            username: "root",
+            upload: {
+              src: "/root/dir1",
+              dst: "/tmp/new_dir"
+            }
+          )
+```
+
+```ruby
+scp(
+            host: "dev.januschka.com",
+            username: "root",
+            download: {
+              src: "/root/dir1",
+              dst: "/tmp/new_dir"
+            }
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `scp.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/scp.rb)
+- **Authors**: `hjanuschka`

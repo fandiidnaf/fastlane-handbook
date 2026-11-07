@@ -1,0 +1,81 @@
+---
+title: "app_store_connect_api_key"
+description: "Load the App Store Connect API token to use in other fastlane tools and actions"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `app_store_connect` | **Platforms:** `ios`, `mac`
+
+> Load the App Store Connect API token to use in other fastlane tools and actions
+
+## Details
+
+Load the App Store Connect API token to use in other fastlane tools and actions
+
+## Parameters & Options
+
+Total options available: **8**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `key_id` | `String` | `APP_STORE_CONNECT_API_KEY_KEY_ID` | `-` | **Yes** | The key ID |
+| `issuer_id` | `String` | `APP_STORE_CONNECT_API_KEY_ISSUER_ID` | `-` | No | The issuer ID. It should be nil if the key is individual API key |
+| `key_filepath` | `String` | `APP_STORE_CONNECT_API_KEY_KEY_FILEPATH` | `-` | No | The path to the key p8 file |
+| `key_content` | `String` | `APP_STORE_CONNECT_API_KEY_KEY` | `-` | No | The content of the key p8 file |
+| `is_key_content_base64` | `Fastlane::Boolean` | `APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64` | `false` | **Yes** | Whether :key_content is Base64 encoded or not |
+| `duration` | `Integer` | `APP_STORE_CONNECT_API_KEY_DURATION` | `500` | No | The token session duration |
+| `in_house` | `Fastlane::Boolean` | `APP_STORE_CONNECT_API_KEY_IN_HOUSE` | `false` | **Yes** | Is App Store or Enterprise (in house) team? App Store Connect API cannot determine this on its own (yet) |
+| `set_spaceship_token` | `Fastlane::Boolean` | `APP_STORE_CONNECT_API_KEY_SET_SPACESHIP_TOKEN` | `true` | **Yes** | Authorizes all Spaceship::ConnectAPI requests by automatically setting Spaceship::ConnectAPI.token |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::APP_STORE_CONNECT_API_KEY` | The App Store Connect API key information used for authorization requests. This hash can be passed directly into the :api_key options on other tools or into Spaceship::ConnectAPI::Token.create method |
+
+## Examples
+
+```ruby
+app_store_connect_api_key(
+            key_id: "D83848D23",
+            issuer_id: "227b0bbf-ada8-458c-9d62-3d8022b7d07f",
+            key_filepath: "D83848D23.p8"
+          )
+```
+
+```ruby
+app_store_connect_api_key(
+            key_id: "D83848D23",
+            issuer_id: "227b0bbf-ada8-458c-9d62-3d8022b7d07f",
+            key_filepath: "D83848D23.p8",
+            duration: 200,
+            in_house: true
+          )
+```
+
+```ruby
+app_store_connect_api_key(
+            key_id: "D83848D23",
+            issuer_id: "227b0bbf-ada8-458c-9d62-3d8022b7d07f",
+            key_content: "-----BEGIN EC PRIVATE KEY-----\nfewfawefawfe\n-----END EC PRIVATE KEY-----"
+          )
+```
+
+```ruby
+app_store_connect_api_key(
+            key_id: "D83848D23", # no issuer_id if the key is individual
+            key_content: "-----BEGIN EC PRIVATE KEY-----\nfewfawefawfe\n-----END EC PRIVATE KEY-----"
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `app_store_connect_api_key.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/app_store_connect_api_key.rb)
+- **Authors**: `joshdholtz`

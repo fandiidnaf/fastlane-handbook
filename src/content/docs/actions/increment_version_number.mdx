@@ -1,0 +1,83 @@
+---
+title: "increment_version_number"
+description: "Increment the version number of your project"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `project` | **Platforms:** `ios`, `mac`
+
+> Increment the version number of your project
+
+## Details
+
+This action will increment the version number.
+You first have to set up your Xcode project, if you haven't done it already: [https://developer.apple.com/library/ios/qa/qa1827/_index.html](https://developer.apple.com/library/ios/qa/qa1827/_index.html).
+
+## Parameters & Options
+
+Total options available: **3**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `bump_type` | `String` | `FL_VERSION_NUMBER_BUMP_TYPE` | `bump` | **Yes** | The type of this version bump. Available: patch, minor, major |
+| `version_number` | `String` | `FL_VERSION_NUMBER_VERSION_NUMBER` | `-` | No | Change to a specific version. This will replace the bump type value |
+| `xcodeproj` | `String` | `FL_VERSION_NUMBER_PROJECT` | `-` | No | optional, you must specify the path to your main Xcode project if it is not in the project root directory |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::VERSION_NUMBER` | The new version number |
+
+## Examples
+
+```ruby
+increment_version_number # Automatically increment version number
+```
+
+```ruby
+increment_version_number(
+            bump_type: "patch" # Automatically increment patch version number
+          )
+```
+
+```ruby
+increment_version_number(
+            bump_type: "minor" # Automatically increment minor version number
+          )
+```
+
+```ruby
+increment_version_number(
+            bump_type: "major" # Automatically increment major version number
+          )
+```
+
+```ruby
+increment_version_number(
+            version_number: "2.1.1" # Set a specific version number
+          )
+```
+
+```ruby
+increment_version_number(
+            version_number: "2.1.1",                # specify specific version number (optional, omitting it increments patch version number)
+            xcodeproj: "./path/to/MyApp.xcodeproj"  # (optional, you must specify the path to your main Xcode project if it is not in the project root directory)
+          )
+```
+
+```ruby
+version = increment_version_number
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `increment_version_number.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/increment_version_number.rb)
+- **Authors**: `serluca`

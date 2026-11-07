@@ -1,0 +1,64 @@
+---
+title: "precheck"
+description: "Alias for the `check_app_store_metadata` action"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `app_store_connect` | **Platforms:** `ios`
+
+> Alias for the `check_app_store_metadata` action
+
+## Details
+
+More information: https://fastlane.tools/precheck
+
+## Parameters & Options
+
+Total options available: **20**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |
+| `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option) |
+| `app_identifier` | `String` | `PRECHECK_APP_IDENTIFIER` | `-` | **Yes** | The bundle identifier of your app |
+| `username` | `String` | `PRECHECK_USERNAME` | `-` | No | Your Apple ID Username |
+| `team_id` | `String` | `PRECHECK_TEAM_ID` | `-` | No | The ID of your App Store Connect team if you're in multiple teams |
+| `team_name` | `String` | `PRECHECK_TEAM_NAME` | `-` | No | The name of your App Store Connect team if you're in multiple teams |
+| `platform` | `String` | `PRECHECK_PLATFORM` | `ios` | No | The platform to use (optional) |
+| `default_rule_level` | `Symbol` | `PRECHECK_DEFAULT_RULE_LEVEL` | `error` | **Yes** | The default rule level unless otherwise configured |
+| `include_in_app_purchases` | `Fastlane::Boolean` | `PRECHECK_INCLUDE_IN_APP_PURCHASES` | `true` | No | Should check in-app purchases? |
+| `use_live` | `Fastlane::Boolean` | `PRECHECK_USE_LIVE` | `false` | **Yes** | Should force check live app? |
+| `negative_apple_sentiment` | `String` | `RULE_NEGATIVE_APPLE_SENTIMENT` | `-` | No | mentioning  in a way that could be considered negative |
+| `placeholder_text` | `String` | `RULE_PLACEHOLDER_TEXT_THINGS` | `-` | No | using placeholder text (e.g.:"lorem ipsum", "text here", etc...) |
+| `other_platforms` | `String` | `RULE_OTHER_PLATFORMS` | `-` | No | mentioning other platforms, like Android or Blackberry |
+| `future_functionality` | `String` | `RULE_FUTURE_FUNCTIONALITY` | `-` | No | mentioning features or content that is not currently available in your app |
+| `test_words` | `String` | `RULE_TEST_WORDS` | `-` | No | using text indicating this release is a test |
+| `curse_words` | `String` | `RULE_CURSE_WORDS` | `-` | No | including words that might be considered objectionable |
+| `free_stuff_in_iap` | `String` | `RULE_FREE_STUFF_IN_IAP` | `-` | No | using text indicating that your IAP is free |
+| `custom_text` | `String` | `RULE_CUSTOM_TEXT` | `-` | No | mentioning any of the user-specified words passed to custom_text(data: [words]) |
+| `copyright_date` | `String` | `RULE_COPYRIGHT_DATE` | `-` | No | using a copyright year in the future, or missing a copyright year |
+| `unreachable_urls` | `String` | `RULE_UNREACHABLE_URLS` | `-` | No | unreachable URLs in app metadata |
+
+
+## Examples
+
+```ruby
+check_app_store_metadata(
+            negative_apple_sentiment: [level: :skip], # Set to skip to not run the `negative_apple_sentiment` rule
+            curse_words: [level: :warn] # Set to warn to only warn on curse word check failures
+          )
+```
+
+```ruby
+precheck   # alias for "check_app_store_metadata"
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `precheck.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/precheck.rb)
+- **Authors**: `taquitos`

@@ -1,0 +1,38 @@
+---
+title: "default_platform"
+description: "Defines a default platform to not have to specify the platform"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `misc` | **Platforms:** `ios`, `android`, `mac`
+
+> Defines a default platform to not have to specify the platform
+
+
+## Parameters & Options
+
+This action takes no parameters or options.
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::DEFAULT_PLATFORM` | The default platform |
+
+## Examples
+
+```ruby
+default_platform(:android)
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `default_platform.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/default_platform.rb)
+- **Authors**: `KrauseFx`

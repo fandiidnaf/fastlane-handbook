@@ -1,0 +1,93 @@
+---
+title: "create_xcframework"
+description: "Package multiple build configs of a library/framework into a single xcframework"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `building` | **Platforms:** `ios`, `mac`
+
+> Package multiple build configs of a library/framework into a single xcframework
+
+## Details
+
+Utility for packaging multiple build configurations of a given library
+or framework into a single xcframework.
+
+If you want to package several frameworks just provide one of:
+
+  * An array containing the list of frameworks using the :frameworks parameter
+    (if they have no associated dSYMs):
+      ['FrameworkA.framework', 'FrameworkB.framework']
+
+  * A hash containing the list of frameworks with their dSYMs using the
+    :frameworks_with_dsyms parameter:
+      &#123;
+        'FrameworkA.framework' => &#123;&#125;,
+        'FrameworkB.framework' => &#123; dsyms: 'FrameworkB.framework.dSYM' &#125;
+      &#125;
+
+If you want to package several libraries just provide one of:
+
+  * An array containing the list of libraries using the :libraries parameter
+    (if they have no associated headers or dSYMs):
+      ['LibraryA.so', 'LibraryB.so']
+
+  * A hash containing the list of libraries with their headers and dSYMs
+    using the :libraries_with_headers_or_dsyms parameter:
+      &#123;
+        'LibraryA.so' => &#123; dsyms: 'libraryA.so.dSYM' &#125;,
+        'LibraryB.so' => &#123; headers: 'headers' &#125;
+      &#125;
+
+Finally specify the location of the xcframework to be generated using the :output
+parameter.
+
+
+## Parameters & Options
+
+Total options available: **6**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `frameworks` | `Array` | `FL_CREATE_XCFRAMEWORK_FRAMEWORKS` | `-` | No | Frameworks (without dSYMs) to add to the target xcframework |
+| `frameworks_with_dsyms` | `Hash` | `FL_CREATE_XCFRAMEWORK_FRAMEWORKS_WITH_DSYMS` | `-` | No | Frameworks (with dSYMs) to add to the target xcframework |
+| `libraries` | `Array` | `FL_CREATE_XCFRAMEWORK_LIBRARIES` | `-` | No | Libraries (without headers or dSYMs) to add to the target xcframework |
+| `libraries_with_headers_or_dsyms` | `Hash` | `FL_CREATE_XCFRAMEWORK_LIBRARIES_WITH_HEADERS_OR_DSYMS` | `-` | No | Libraries (with headers or dSYMs) to add to the target xcframework |
+| `output` | `String` | `FL_CREATE_XCFRAMEWORK_OUTPUT` | `-` | **Yes** | The path to write the xcframework to |
+| `allow_internal_distribution` | `Fastlane::Boolean` | `FL_CREATE_XCFRAMEWORK_ALLOW_INTERNAL_DISTRIBUTION` | `false` | No | Specifies that the created xcframework contains information not suitable for public distribution |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::XCFRAMEWORK_PATH` | Location of the generated xcframework |
+
+## Examples
+
+```ruby
+create_xcframework(frameworks: ['FrameworkA.framework', 'FrameworkB.framework'], output: 'UniversalFramework.xcframework')
+```
+
+```ruby
+create_xcframework(frameworks_with_dsyms: {'FrameworkA.framework' => {}, 'FrameworkB.framework' => { dsyms: 'FrameworkB.framework.dSYM' } }, output: 'UniversalFramework.xcframework')
+```
+
+```ruby
+create_xcframework(libraries: ['LibraryA.so', 'LibraryB.so'], output: 'UniversalFramework.xcframework')
+```
+
+```ruby
+create_xcframework(libraries_with_headers_or_dsyms: { 'LibraryA.so' => { dsyms: 'libraryA.so.dSYM' }, 'LibraryB.so' => { headers: 'LibraryBHeaders' } }, output: 'UniversalFramework.xcframework')
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `create_xcframework.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/create_xcframework.rb)
+- **Authors**: `jgongo`

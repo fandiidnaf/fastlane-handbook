@@ -1,0 +1,55 @@
+---
+title: "tryouts"
+description: "Upload a new build to [Tryouts](https://tryouts.io/)"
+---
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Category:** `beta` | **Platforms:** `ios`, `android`
+
+> Upload a new build to [Tryouts](https://tryouts.io/)
+
+## Details
+
+More information: [http://tryouts.readthedocs.org/en/latest/releases.html#create-release](http://tryouts.readthedocs.org/en/latest/releases.html#create-release)
+
+## Parameters & Options
+
+Total options available: **7**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `app_id` | `String` | `TRYOUTS_APP_ID` | `-` | **Yes** | Tryouts application hash |
+| `api_token` | `String` | `TRYOUTS_API_TOKEN` | `-` | **Yes** | API Token (api_key:api_secret) for Tryouts Access |
+| `build_file` | `String` | `TRYOUTS_BUILD_FILE` | `-` | **Yes** | Path to your IPA or APK file. Optional if you use the _gym_ or _xcodebuild_ action |
+| `notes` | `String` | `TRYOUTS_NOTES` | `-` | No | Release notes |
+| `notes_path` | `String` | `TRYOUTS_NOTES_PATH` | `-` | No | Release notes text file path. Overrides the :notes parameter |
+| `notify` | `Integer` | `TRYOUTS_NOTIFY` | `1` | **Yes** | Notify testers? 0 for no |
+| `status` | `Integer` | `TRYOUTS_STATUS` | `2` | **Yes** | 2 to make your release public. Release will be distributed to available testers. 1 to make your release private. Release won't be distributed to testers. This also prevents release from showing up for SDK update |
+
+## Lane Context Shared Values
+
+This action writes the following values to `Actions.lane_context[SharedValues::...]`:
+
+| Key | Description |
+| :--- | :--- |
+| `SharedValues::TRYOUTS_BUILD_INFORMATION` | Contains release info like :application_name, :download_url. See http://tryouts.readthedocs.org/en/latest/releases.html#create-release |
+
+## Examples
+
+```ruby
+tryouts(
+            api_token: "...",
+            app_id: "application-id",
+            build_file: "test.ipa",
+          )
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `tryouts.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/tryouts.rb)
+- **Authors**: `alicertel`
