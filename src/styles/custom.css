@@ -1,4 +1,4 @@
-/* Fastlane Handbook - Flight Control / High-Density Terminal Design */
+/* Fastlane Handbook - Premium Developer Dark / Charcoal-Zinc Design */
 
 :root {
   --sl-color-accent-low: #2a0b14;
@@ -10,23 +10,23 @@
 }
 
 :root[data-theme='dark'] {
-  --sl-color-bg: #090d16;
-  --sl-color-bg-nav: #090d16e6;
-  --sl-color-bg-sidebar: #0b111e;
-  --sl-color-bg-inline-code: #131c2e;
-  --sl-color-hairline-light: #1e293b;
-  --sl-color-hairline: #172033;
+  --sl-color-bg: #0d1117;
+  --sl-color-bg-nav: rgba(13, 17, 23, 0.88);
+  --sl-color-bg-sidebar: #161b22;
+  --sl-color-bg-inline-code: #1f242c;
+  --sl-color-hairline-light: #30363d;
+  --sl-color-hairline: #21262d;
 
-  --sl-color-text: #e2e8f0;
+  --sl-color-text: #e6edf3;
   --sl-color-text-accent: #f43f5e;
   --sl-color-white: #ffffff;
-  --sl-color-gray-1: #f1f5f9;
-  --sl-color-gray-2: #cbd5e1;
-  --sl-color-gray-3: #94a3b8;
-  --sl-color-gray-4: #64748b;
-  --sl-color-gray-5: #334155;
-  --sl-color-gray-6: #1e293b;
-  --sl-color-black: #090d16;
+  --sl-color-gray-1: #f0f6fc;
+  --sl-color-gray-2: #c9d1d9;
+  --sl-color-gray-3: #8b949e;
+  --sl-color-gray-4: #6e7681;
+  --sl-color-gray-5: #30363d;
+  --sl-color-gray-6: #161b22;
+  --sl-color-black: #0d1117;
 }
 
 :root[data-theme='light'] {
@@ -34,39 +34,147 @@
   --sl-color-accent: #e11d48;
   --sl-color-accent-high: #9f1239;
 
-  --sl-color-bg: #f8fafc;
-  --sl-color-bg-nav: #f8fafce6;
-  --sl-color-bg-sidebar: #f1f5f9;
-  --sl-color-hairline-light: #e2e8f0;
-  --sl-color-hairline: #cbd5e1;
+  --sl-color-bg: #f6f8fa;
+  --sl-color-bg-nav: rgba(246, 248, 250, 0.88);
+  --sl-color-bg-sidebar: #ffffff;
+  --sl-color-hairline-light: #d0d7de;
+  --sl-color-hairline: #e1e4e8;
+  --sl-color-text: #1f2328;
 }
 
-/* Parameter and Badge Components */
-.param-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: 0.875rem;
+/* Navbar glassmorphism */
+header.header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sl-color-hairline-light);
 }
 
-.param-table th {
-  background-color: var(--sl-color-gray-6);
-  color: var(--sl-color-gray-1);
-  text-align: left;
-  padding: 0.65rem 0.85rem;
-  border-bottom: 2px solid var(--sl-color-hairline-light);
-  font-family: var(--sl-font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+/* Tactile button hover interactions */
+.sl-link-button {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  font-weight: 600 !important;
 }
 
-.param-table td {
-  padding: 0.65rem 0.85rem;
-  border-bottom: 1px solid var(--sl-color-hairline);
-  vertical-align: top;
+.sl-link-button.primary {
+  background-color: #e11d48 !important;
+  color: #ffffff !important;
+  border: 1px solid transparent !important;
 }
 
+.sl-link-button.primary:hover {
+  background-color: #f43f5e !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 16px rgba(225, 29, 72, 0.45) !important;
+}
+
+.sl-link-button.secondary {
+  border: 1px solid var(--sl-color-hairline-light) !important;
+  background-color: var(--sl-color-bg-sidebar) !important;
+  color: var(--sl-color-text) !important;
+}
+
+.sl-link-button.secondary:hover {
+  border-color: #e11d48 !important;
+  color: #f43f5e !important;
+  transform: translateY(-2px) !important;
+  background-color: rgba(225, 29, 72, 0.08) !important;
+}
+
+.sl-link-button.minimal:hover {
+  color: #f43f5e !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Starlight Card hover polish */
+.card {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+  border: 1px solid var(--sl-color-hairline-light) !important;
+  background-color: var(--sl-color-bg-sidebar) !important;
+}
+
+.card:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(225, 29, 72, 0.4) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Parameter & Specification Tables (Responsive & Unwrapped) */
+.sl-markdown-content table {
+  display: block !important;
+  overflow-x: auto !important;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 1.75rem 0 !important;
+  border: 1px solid var(--sl-color-hairline-light) !important;
+  border-radius: 6px !important;
+}
+
+.sl-markdown-content table th {
+  background-color: var(--sl-color-bg-sidebar) !important;
+  color: var(--sl-color-text) !important;
+  text-align: left !important;
+  padding: 0.75rem 1rem !important;
+  border-bottom: 2px solid var(--sl-color-hairline-light) !important;
+  font-family: var(--sl-font-mono) !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+
+.sl-markdown-content table td {
+  padding: 0.75rem 1rem !important;
+  border-bottom: 1px solid var(--sl-color-hairline) !important;
+  vertical-align: top !important;
+  font-size: 0.875rem !important;
+}
+
+.sl-markdown-content table tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Prevent awkward word-wrapping on parameter spec columns */
+.sl-markdown-content table th:nth-child(1),
+.sl-markdown-content table td:nth-child(1) {
+  white-space: nowrap !important;
+  font-family: var(--sl-font-mono) !important;
+  font-weight: 600 !important;
+  min-width: 180px !important;
+}
+
+.sl-markdown-content table th:nth-child(2),
+.sl-markdown-content table td:nth-child(2) {
+  white-space: nowrap !important;
+  min-width: 95px !important;
+}
+
+.sl-markdown-content table th:nth-child(3),
+.sl-markdown-content table td:nth-child(3) {
+  white-space: nowrap !important;
+  font-family: var(--sl-font-mono) !important;
+  min-width: 240px !important;
+}
+
+.sl-markdown-content table th:nth-child(4),
+.sl-markdown-content table td:nth-child(4) {
+  white-space: nowrap !important;
+  min-width: 110px !important;
+}
+
+.sl-markdown-content table th:nth-child(5),
+.sl-markdown-content table td:nth-child(5) {
+  white-space: nowrap !important;
+  text-align: center !important;
+  min-width: 85px !important;
+}
+
+.sl-markdown-content table th:nth-child(6),
+.sl-markdown-content table td:nth-child(6) {
+  min-width: 280px !important;
+  width: 100% !important;
+  line-height: 1.5 !important;
+}
+
+/* Badges */
 .badge-tag {
   display: inline-block;
   padding: 0.15rem 0.45rem;
@@ -77,32 +185,18 @@
   line-height: 1.2;
 }
 
-.badge-type {
-  background-color: rgba(6, 182, 212, 0.15);
-  color: #06b6d4;
-  border: 1px solid rgba(6, 182, 212, 0.3);
-}
-
-.badge-required {
-  background-color: rgba(225, 29, 72, 0.15);
-  color: #f43f5e;
-  border: 1px solid rgba(225, 29, 72, 0.3);
-}
-
-.badge-optional {
-  background-color: rgba(148, 163, 184, 0.15);
-  color: #94a3b8;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-}
-
-.badge-env {
-  background-color: rgba(245, 158, 11, 0.15);
-  color: #f59e0b;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+.badge-deprecated {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
   font-family: var(--sl-font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
-/* Callout & Disclaimer */
+/* Community Disclaimer Callout */
 .community-disclaimer {
   padding: 0.85rem 1.15rem;
   margin: 1.5rem 0;
@@ -115,4 +209,16 @@
 .community-disclaimer p {
   margin: 0;
   color: var(--sl-color-gray-2);
+}
+
+/* Mermaid SVG styling adjustments */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: var(--sl-color-bg-sidebar);
+  border: 1px solid var(--sl-color-hairline-light);
+  border-radius: 8px;
+  overflow-x: auto;
 }
