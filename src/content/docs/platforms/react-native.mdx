@@ -1,0 +1,106 @@
+---
+title: "React Native (TypeScript / Hermes)"
+description: "Configuring Fastlane for React Native apps: Metro bundler, Hermes dSYMs, CocoaPods, and Gradle variants"
+---
+
+React Native apps combine a JavaScript/TypeScript bundle compiled with **Hermes** and native code in `android/` and `ios/`. Fastlane handles compiling native binaries, injecting JS bundles, and uploading Hermes crash symbolication files.
+
+```mermaid
+flowchart LR
+    JS["Metro / Hermes (Bundle JS & Hermes Bytecode)"] --> Native["Compile Native Code (Gradle / Xcode)"]
+    Native --> Symbols["Hermes dSYM / ProGuard Mapping Generation"]
+    Symbols --> Dist["Deploy to Play Store & TestFlight"]
+```
+
+---
+
+## Directory Setup
+
+Initialize Fastlane in both the `android/` and `ios/` subdirectories:
+
+```bash
+# In your React Native project root:
+cd android && bundle exec fastlane init
+cd ../ios && bundle exec fastlane init
+```
+
+---
+
+## 1. Android Lane: Gradle & ProGuard Mappings
+
+In React Native, Hermes bytecode symbols and ProGuard mappings are crucial for crash symbolication:
+
+```ruby
+# android/fastlane/Fastfile
+default_platform(:android)
+
+platform :android do
+  desc "Build React Native Android AppBundle and upload to Play Store"
+  lane :beta do |options|
+    # Clean previous builds
+    gradle(task: "clean")
+
+    # Compile bundleRelease
+    gradle(
+      task: "bundle",
+      build_type: "Release"
+    )
+
+    # Locate generated mapping file and AAB
+    mapping_path = "app/build/outputs/mapping/release/mapping.txt"
+    aab_path = "app/build/outputs/bundle/release/app-release.aab"
+
+    upload_to_play_store(
+      aab: aab_path,
+      mapping_paths: [mapping_path],
+      track: options[:track] || "internal"
+    )
+  end
+end
+```
+
+---
+
+## 2. iOS Lane: CocoaPods, Hermes dSYMs & TestFlight
+
+In React Native iOS, CocoaPods must be resolved before invoking `build_app`, and Hermes dSYMs must be included:
+
+```ruby
+# ios/fastlane/Fastfile
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    # 1. Ensure CocoaPods are installed
+    cocoapods(
+      clean_install: false,
+      podfile: "./Podfile"
+    )
+  end
+
+  desc "Archive and upload React Native iOS to TestFlight"
+  lane :beta do
+    match(type: "appstore", readonly: is_ci)
+
+    # Compile IPA using gym
+    build_app(
+      workspace: "YourApp.xcworkspace",
+      scheme: "YourApp",
+      export_method: "app-store"
+    )
+
+    # Upload to TestFlight with dSYMs (including Hermes dSYM)
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
+    )
+  end
+end
+```
+
+---
+
+## Common React Native Pitfalls
+
+1. **Metro Bundler Cache**: If you see stale JavaScript inside your production build, execute `npm run build:android -- --reset-cache` or delete the `android/app/build` directory prior to `gradle`.
+2. **Missing CocoaPods**: Running `cocoapods` action in `before_all` prevents build failures caused by newly installed native npm modules.
+3. **Hermes Symbolication**: Ensure `upload_to_testflight` or your Crashlytics/Sentry action uploads `Actions.lane_context[SharedValues::DSYM_OUTPUT_PATH]`. Hermes produces separate dSYM files inside Xcode's DerivedData.
