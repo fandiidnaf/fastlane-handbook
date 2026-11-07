@@ -20,6 +20,7 @@ hero:
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import PlatformCard from '../../components/PlatformCard.astro';
 
 <div class="community-disclaimer">
   <strong>Community Notice:</strong> Fastlane Handbook is an independent, community-maintained technical reference and guide created by mobile automation practitioners. Fastlane is an open-source project created by Felix Krause and maintained by the Fastlane Authors under the MIT License. This project is not officially affiliated with or endorsed by Fastlane or Google.
@@ -27,31 +28,35 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
 ## Choose Your Mobile Platform
 
-<CardGrid>
-  <Card title="Native Android" icon="android">
-    Kotlin, Java, and Gradle tasks (`bundleRelease`, `assembleRelease`), signing configs, and Google Play API deployment.
-    
-    [Read Android Guide &rarr;](/fastlane-handbook/platforms/android/)
-  </Card>
+<div class="platform-grid">
+  <PlatformCard
+    platform="android"
+    title="Native Android"
+    description="Kotlin, Java, and Gradle tasks (bundleRelease, assembleRelease), signing configs, and Google Play API deployment."
+    href="/fastlane-handbook/platforms/android/"
+  />
 
-  <Card title="Native iOS" icon="apple">
-    Swift, Xcode schemes, build configurations, code signing via `match`, TestFlight, and App Store Connect API keys (`.p8`).
-    
-    [Read iOS Guide &rarr;](/fastlane-handbook/platforms/ios/)
-  </Card>
+  <PlatformCard
+    platform="ios"
+    title="Native iOS"
+    description="Swift, Xcode schemes, build configurations, code signing via match, TestFlight, and App Store Connect API keys (.p8)."
+    href="/fastlane-handbook/platforms/ios/"
+  />
 
-  <Card title="Flutter" icon="seti:flutter">
-    Dual-tier Fastlane orchestration (root + native), parsing `pubspec.yaml` versions, and compiling with `--flavor`.
-    
-    [Read Flutter Guide &rarr;](/fastlane-handbook/platforms/flutter/)
-  </Card>
+  <PlatformCard
+    platform="flutter"
+    title="Flutter"
+    description="Dual-tier Fastlane orchestration (root + native), parsing pubspec.yaml versions, and compiling with --flavor."
+    href="/fastlane-handbook/platforms/flutter/"
+  />
 
-  <Card title="React Native" icon="seti:react">
-    Managing Metro bundler caches, Hermes dSYMs symbolication, CocoaPods dependencies, and Gradle variants.
-    
-    [Read React Native Guide &rarr;](/fastlane-handbook/platforms/react-native/)
-  </Card>
-</CardGrid>
+  <PlatformCard
+    platform="react-native"
+    title="React Native"
+    description="Managing Metro bundler caches, Hermes dSYMs symbolication, CocoaPods dependencies, and Gradle variants."
+    href="/fastlane-handbook/platforms/react-native/"
+  />
+</div>
 
 ---
 
@@ -82,3 +87,12 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
     [Browse Actions &rarr;](/fastlane-handbook/actions/upload_to_play_store/)
   </Card>
 </CardGrid>
+
+<style>{`
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0 3rem 0;
+  }
+`}</style>

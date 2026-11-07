@@ -1,0 +1,131 @@
+---
+interface Props {
+  platform: 'android' | 'ios' | 'flutter' | 'react-native';
+  title: string;
+  description: string;
+  href: string;
+}
+
+const { platform, title, description, href } = Astro.props;
+---
+
+<a href={href} class="platform-card">
+  <div class="icon-wrapper">
+    {platform === 'android' && (
+      <svg class="platform-svg android-svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.997-3.459a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4111 13.8533 8.0834 12 8.0834s-3.5902.3277-5.1365.8664L4.8412 5.4469a.4161.4161 0 10-.7197.4155l1.997 3.459C2.6876 11.2613.4167 15.311.4167 20h23.1666c0-4.689-2.2709-8.7387-5.7013-10.6786"/>
+      </svg>
+    )}
+
+    {platform === 'ios' && (
+      <svg class="platform-svg ios-svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.88c.67-.82 1.13-1.96.99-3.11-.99.04-2.16.66-2.85 1.47-.6.7-1.13 1.83-.98 2.96 1.1.09 2.19-.53 2.84-1.32"/>
+      </svg>
+    )}
+
+    {platform === 'flutter' && (
+      <svg class="platform-svg flutter-svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.37zM14.314 11.013l-6.386 6.387 3.7 3.7 2.686-2.687 4.7-4.7-4.7-4.7v-.002zM21.684 18.4l-3.7-3.7-3.686 3.7 3.686 3.7 3.7-3.7z"/>
+      </svg>
+    )}
+
+    {platform === 'react-native' && (
+      <svg class="platform-svg react-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(0 12 12)"/>
+        <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/>
+        <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/>
+        <circle cx="12" cy="12" r="1.8" fill="currentColor"/>
+      </svg>
+    )}
+  </div>
+
+  <div class="content-wrapper">
+    <div class="card-title">
+      <h3>{title}</h3>
+      <span class="arrow">&rarr;</span>
+    </div>
+    <p class="card-desc">{description}</p>
+  </div>
+</a>
+
+<style>
+  .platform-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 8px;
+    background-color: var(--sl-color-bg-sidebar);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.2s ease, 
+                box-shadow 0.2s ease;
+  }
+
+  .platform-card:hover {
+    transform: translateY(-3px);
+    border-color: #e11d48;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--sl-color-hairline);
+    margin-bottom: 1.25rem;
+  }
+
+  .platform-svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .android-svg { color: #3ddc84; }
+  .ios-svg { color: #f1f5f9; }
+  .flutter-svg { color: #02569b; }
+  .react-svg { color: #61dafb; }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-title h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+  }
+
+  .arrow {
+    color: #e11d48;
+    font-size: 1.25rem;
+    font-weight: 700;
+    transition: transform 0.15s ease;
+  }
+
+  .platform-card:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .card-desc {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-2);
+    line-height: 1.5;
+  }
+</style>
