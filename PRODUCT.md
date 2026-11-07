@@ -14,4 +14,4 @@ Fastlane Handbook is an independent, community-driven technical documentation we
 - We do not write generic introductory blog posts; every page must contain reproducible code, parameter types, and concrete failure modes.
 
 ## Disclaimer & Independence
-Fastlane is an open-source project created by Felix Krause and maintained by the Fastlane Authors under the MIT License. Fastlane Handbook is an independent community project and is neither affiliated with nor endorsed by Fastlane or its parent organizations.
+Fastlane is an open-source project created by Felix Krause and maintained by the Fastlane Authors under the MIT License. Fastlane Handbook is an independent community project and is neither affiliated with nor endorsed by Fastlane.

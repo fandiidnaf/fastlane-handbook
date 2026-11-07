@@ -3,7 +3,15 @@
   "type": "module",
   "version": "1.0.0",
   "description": "The independent, high-density community handbook and API reference for Fastlane automation",
-  "author": "Fastlane Community Contributor",
+  "author": "fandiidnaf <fandigit7@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fandiidnaf/fastlane-handbook.git"
+  },
+  "homepage": "https://fandiidnaf.github.io/fastlane-handbook/",
+  "bugs": {
+    "url": "https://github.com/fandiidnaf/fastlane-handbook/issues"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "astro dev",
