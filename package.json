@@ -1,0 +1,24 @@
+{
+  "name": "fastlane-handbook",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "The independent, high-density community handbook and API reference for Fastlane automation",
+  "author": "Fastlane Community Contributor",
+  "license": "MIT",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync:actions": "ruby scripts/extract-actions.rb && bun run scripts/generate-action-docs.ts"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.32.5",
+    "astro": "^5.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "typescript": "^5.8.2"
+  }
+}
