@@ -1,0 +1,59 @@
+name: Fastlane Upstream Release Watcher & Sync
+
+on:
+  schedule:
+    # Run daily at 03:00 UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: |
+          gem install fastlane --no-document
+          bun install --frozen-lockfile
+
+      - name: Extract Actions & Generate Docs
+        run: |
+          ruby scripts/extract-actions.rb
+          bun run scripts/generate-action-docs.ts
+
+      - name: Check for Changes
+        id: git-check
+        run: |
+          git status --porcelain
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changes_detected=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changes_detected=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and Push Upstream Updates
+        if: steps.git-check.outputs.changes_detected == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          LATEST_VERSION=$(bun -e 'console.log(require("./src/data/fastlane-version.json").fastlane_version)')
+          git add src/data/ src/content/docs/actions/
+          git commit -m "chore(upstream): sync fastlane actions to v${LATEST_VERSION} [skip ci]"
+          git push origin main
