@@ -1,0 +1,135 @@
+---
+title: "Fastlane Ruby Essentials"
+description: "A pragmatic Rosetta Stone for mobile engineers (Flutter, React Native, Swift, Kotlin) writing Fastfiles"
+---
+
+You do not need to become a Ruby master to write rock-solid Fastlane automation. You only need to understand six specific Ruby language concepts that appear in Fastfiles.
+
+---
+
+## 1. Symbols vs. Strings
+
+In Ruby, you will see both `:key` (symbol) and `"key"` (string).
+
+| Concept | Ruby Syntax | Flutter / Dart equivalent | Swift equivalent | TypeScript equivalent |
+| :--- | :--- | :--- | :--- | :--- |
+| **Symbol** | `:brand` | `#brand` (or enum identifier) | `enum Case` / Static identifier | Constant string `'brand'` |
+| **String** | `"production"` | `'production'` | `"production"` | `"production"` |
+
+### The Golden Rule:
+In Fastlane, **option keys and lane names are almost always Symbols**:
+```ruby
+# Correct
+upload_to_play_store(
+  track: "internal",        # :track is a Symbol key; "internal" is a String value
+  skip_upload_images: true  # :skip_upload_images is a Symbol key; true is a Boolean
+)
+
+# Lane declaration
+lane :deploy do |options|
+  # options[:env] is accessed via Symbol
+  env = options[:env] || "prod"
+end
+```
+
+---
+
+## 2. Passing Options (Hashes and Keyword Arguments)
+
+In Kotlin or Swift, you pass named arguments: `buildApp(scheme: "Release", clean: true)`.
+In Ruby, when a function accepts keyword arguments or a hash, curly braces `{}` are optional at the call site:
+
+```ruby
+# These two calls are identical in Ruby:
+build_app(workspace: "App.xcworkspace", scheme: "Production")
+build_app({ workspace: "App.xcworkspace", scheme: "Production" })
+```
+
+### Accessing Options in a Lane:
+When you trigger Fastlane from the terminal:
+```bash
+bundle exec fastlane deploy brand:pesantrenqu env:production dry_run:true
+```
+Fastlane automatically parses these arguments into an `options` hash:
+```ruby
+lane :deploy do |options|
+  brand = options[:brand]        # => "pesantrenqu"
+  env   = options[:env]          # => "production"
+  is_dry = options[:dry_run]     # => "true" (String)
+end
+```
+
+> [!WARNING]
+> Command line arguments passed to lanes are parsed as **Strings**, not Booleans. A common bug is writing `if options[:dry_run]`, which evaluates to `true` even if the user ran `dry_run:false` (because non-empty strings are truthy in Ruby).
+> 
+> **Safe boolean pattern:**
+> ```ruby
+> dry_run = options[:dry_run].to_s == 'true'
+> ```
+
+---
+
+## 3. Blocks & Closures (`do ... end` and `{ ... }`)
+
+Ruby uses "blocks" where Swift uses trailing closures `{}` and Kotlin uses lambdas `{ it -> ... }`.
+
+```ruby
+# Lane definition block
+lane :build do |options|
+  # Everything here runs when :build is invoked
+  UI.message("Building artifact for #{options[:brand]}")
+end
+
+# Lifecycle error block
+error do |lane, exception, options|
+  UI.error("Lane #{lane} failed with error: #{exception.message}")
+end
+```
+
+---
+
+## 4. UI Messaging Helpers (`FastlaneCore::UI`)
+
+Never use raw `puts` or `print` in production Fastfiles. Fastlane provides a dedicated `UI` class that formats terminal output, handles log levels, and integrates with CI reporters:
+
+```ruby
+UI.header("Deploying Application to Production") # Cyan boxed header
+UI.message("Resolving release notes from git...") # Plain message
+UI.success("Artifact uploaded successfully!")     # Green checkmark
+UI.important("Notice: Dry-run mode enabled")      # Yellow alert
+UI.error("Keystore signature verification failed")# Red error box
+
+# Halts lane execution immediately with a non-zero exit code:
+UI.user_error!("Missing PLAY_STORE_JSON_KEY_PATH environment variable!")
+```
+
+---
+
+## 5. Shell Execution (`sh`)
+
+To execute native commands (like `flutter build`, `npm run`, or `gradlew`), use Fastlane's built-in `sh` action instead of Ruby system calls:
+
+```ruby
+# Basic command
+sh("flutter", "pub", "get")
+
+# Passing arguments dynamically
+sh("flutter", "build", "appbundle", "--flavor", brand, "--release")
+
+# Capturing output
+git_hash = sh("git rev-parse --short HEAD").strip
+```
+
+`sh` automatically streams output to the terminal, and if the command fails (exit code != 0), it crashes the lane cleanly with a full stack trace.
+
+---
+
+## 6. Safe Navigation and Nil Handling
+
+Ruby has a safe navigation operator `&.` identical to Kotlin, Swift, and TypeScript (`?.`):
+
+```ruby
+# Kotlin: brandInfo?.packageName ?: "default"
+# Ruby:
+package_name = brand_info&.dig(:package_name) || "com.default.app"
+```

@@ -1,0 +1,78 @@
+---
+title: "Fastlane Handbook"
+description: "The independent, high-density field guide and complete reference for Fastlane automation"
+template: splash
+hero:
+  tagline: "Bridging Fastlane internals and modern mobile engineering. Complete parameter schemas, Ruby-free mental models, and battle-tested production recipes."
+  actions:
+    - text: "Explore Action Reference"
+      link: "/fastlane-handbook/actions/upload_to_play_store/"
+      icon: right-arrow
+      variant: primary
+    - text: "Ruby for Mobile Devs"
+      link: "/fastlane-handbook/rosetta-stone/ruby-for-mobile-devs/"
+      icon: document
+      variant: secondary
+    - text: "Production Recipes"
+      link: "/fastlane-handbook/recipes/white-label-multi-brand/"
+      icon: star
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<div class="community-disclaimer">
+  <strong>Community Notice:</strong> Fastlane Handbook is an independent, community-maintained technical reference and guide created by mobile automation practitioners. Fastlane is an open-source project created by Felix Krause and maintained by the Fastlane Authors under the MIT License. This project is not officially affiliated with or endorsed by Fastlane or Google.
+</div>
+
+## Why This Handbook Exists
+
+Fastlane is the undisputed standard for automating Android and iOS builds, code signing, and app store deployment. However, modern mobile engineers primarily build applications with **Flutter (Dart)**, **React Native (TypeScript)**, **Kotlin**, and **Swift**. 
+
+Fastlane's official documentation leaves major operational gaps:
+1. **Omitted Parameters & Options**: Hundreds of valid options exist in lower-level libraries (`supply`, `deliver`, `gym`, `pilot`) that are undocumented on the main site.
+2. **The Ruby Syntax Barrier**: Mobile developers frequently struggle with Ruby idioms: Symbols vs Strings, closure blocks, hashes, and exception rescuing.
+3. **Missing Production Architectures**: Real-world setups (multi-flavor branding, keystore pre-flights, zero-rebuild track promotions) require inspecting raw Ruby source code.
+4. **Lane Context Obscurity**: Actions share data through `Actions.lane_context[SharedValues::...]`, but this flow is invisible in typical tutorials.
+
+---
+
+## Core Sections
+
+<CardGrid>
+  <Card title="Ruby Rosetta Stone" icon="pencil">
+    Everything a Kotlin, Swift, Dart, or TypeScript developer needs to read, write, and debug Fastfiles without learning full Ruby.
+    
+    [Read Rosetta Stone &rarr;](/fastlane-handbook/rosetta-stone/ruby-for-mobile-devs/)
+  </Card>
+
+  <Card title="Production Recipes" icon="seti:config">
+    Battle-tested recipes from production codebases: white-label multi-brand matrices, zero-rebuild track promotion, and encrypted keystore pre-flights.
+    
+    [Browse Recipes &rarr;](/fastlane-handbook/recipes/white-label-multi-brand/)
+  </Card>
+
+  <Card title="Complete 238+ Actions" icon="list-format">
+    Every built-in action introspected directly from the Fastlane gem AST. Full parameter tables, environment variables, default values, and outputs.
+    
+    [View Action Reference &rarr;](/fastlane-handbook/actions/upload_to_play_store/)
+  </Card>
+
+  <Card title="Fastlane Internals" icon="puzzle">
+    Deep dives into `Spaceship::ConnectAPI`, `lane_context` shared values, and building modular plugins.
+    
+    [Explore Internals &rarr;](/fastlane-handbook/internals/lane-context-and-shared-values/)
+  </Card>
+</CardGrid>
+
+---
+
+## Direct Action Highlights
+
+| Action | Primary Responsibility | Common Platform | Options Available |
+| :--- | :--- | :---: | :---: |
+| [`upload_to_play_store`](/fastlane-handbook/actions/upload_to_play_store/) | Upload AAB/APK, screenshots, and metadata via *supply* | Android | 40 parameters |
+| [`upload_to_app_store`](/fastlane-handbook/actions/upload_to_app_store/) | Upload IPA, metadata, and submit for review via *deliver* | iOS / macOS | 55+ parameters |
+| [`build_app`](/fastlane-handbook/actions/build_app/) | Archive and export iOS binaries via *gym* | iOS / macOS | 60+ parameters |
+| [`match`](/fastlane-handbook/actions/match/) | Sync certificates and provisioning profiles via Git | iOS / macOS | 45+ parameters |
+| [`gradle`](/fastlane-handbook/actions/gradle/) | Execute Gradle tasks with custom flags and keystores | Android | 15+ parameters |

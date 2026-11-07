@@ -1,0 +1,53 @@
+---
+title: "App Store Connect API (.p8)"
+description: "Authenticating with Apple without SMS 2FA prompts using App Store Connect API keys"
+---
+
+Legacy Apple authentication using email and passwords with 2FA requires storing session cookies (`FASTLANE_SESSION`) that expire every 30 days.
+
+The official, non-expiring standard for CI/CD automation is the **App Store Connect API Key** (`.p8`).
+
+---
+
+## 1. Generating the Key in App Store Connect
+1. Navigate to **App Store Connect** &rarr; **Users and Access** &rarr; **Integrations** &rarr; **App Store Connect API**.
+2. Click **Generate API Key**.
+3. Name: `Fastlane CI`. Access: `Admin` (or `App Manager`).
+4. Note three pieces of data:
+   - **Key ID**: 10-character string (e.g., `D383X7YKP4`).
+   - **Issuer ID**: UUID string (e.g., `69a6de70-xxxx-xxxx-xxxx-xxxxxxxxxxxx`).
+   - **Private Key (`.p8`)**: Download the key file (can only be downloaded once).
+
+---
+
+## 2. Using `app_store_connect_api_key` in Fastlane
+
+Fastlane has a dedicated action `app_store_connect_api_key` that generates an in-memory JWT token valid for 20 minutes, automatically refreshed as needed.
+
+```ruby
+lane :beta do
+  # 1. Initialize API Key
+  api_key = app_store_connect_api_key(
+    key_id: ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"],
+    issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+    key_content: ENV["APP_STORE_CONNECT_API_KEY_KEY"], # Raw base64 or plaintext .p8 content
+    is_key_content_base64: true,
+    in_house: false # true only for Enterprise Apple Developer programs
+  )
+
+  # 2. Build iOS Archive
+  build_app(scheme: "Production")
+
+  # 3. Upload to TestFlight using the API Key
+  upload_to_testflight(
+    api_key: api_key,
+    skip_waiting_for_build_processing: true
+  )
+end
+```
+
+### Passing API Key via Environment Variables:
+If you define the following standard environment variables, actions like `match`, `deliver`, `pilot`, and `cert` detect them automatically without explicitly passing `api_key`:
+- `APP_STORE_CONNECT_API_KEY_KEY_ID`
+- `APP_STORE_CONNECT_API_KEY_ISSUER_ID`
+- `APP_STORE_CONNECT_API_KEY_KEY_CONTENT`

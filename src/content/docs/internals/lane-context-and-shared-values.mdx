@@ -1,0 +1,67 @@
+---
+title: "Lane Context & Shared Values"
+description: "How Fastlane actions exchange artifacts and build outputs under the hood via Actions.lane_context"
+---
+
+Fastlane maintains a thread-safe global hash during lane execution named **`Actions.lane_context`**. 
+
+When an action runs, it writes outputs (such as generated file paths, build numbers, or git tags) to standard keys defined under `Fastlane::Actions::SharedValues`. Downstream actions inspect this context to configure their defaults automatically.
+
+---
+
+## Accessing `lane_context` in your Fastfile
+
+You can inspect or mutate `lane_context` directly inside any lane:
+
+```ruby
+lane :custom_pipeline do
+  build_app(scheme: "MyApp")
+
+  # Read the output path produced by build_app
+  ipa_path = Actions.lane_context[SharedValues::IPA_OUTPUT_PATH]
+  dsym_path = Actions.lane_context[SharedValues::DSYM_OUTPUT_PATH]
+
+  UI.message("Captured IPA at: #{ipa_path}")
+  UI.message("Captured dSYM at: #{dsym_path}")
+
+  # Store your own custom metadata
+  Actions.lane_context[:MY_CUSTOM_BUILD_TAG] = "release-v2.1"
+end
+```
+
+---
+
+## Standard `SharedValues` Reference Map
+
+The following table lists common `SharedValues` keys and which actions produce them:
+
+| Shared Value Key | Typical Type | Producing Action | Downstream Consumer |
+| :--- | :--- | :--- | :--- |
+| `IPA_OUTPUT_PATH` | `String` (File path) | `build_app` (`gym`) | `upload_to_app_store`, `upload_to_testflight` |
+| `DSYM_OUTPUT_PATH` | `String` (File path) | `build_app` (`gym`) | `upload_symbols_to_crashlytics`, `sentry_upload_dsym` |
+| `XCODEBUILD_ARCHIVE` | `String` (Path) | `build_app` (`gym`) | `backup_xcarchive` |
+| `GRADLE_AAB_OUTPUT_PATH` | `String` (File path) | `gradle` | `upload_to_play_store` |
+| `GRADLE_APK_OUTPUT_PATH` | `String` (File path) | `gradle` | `upload_to_play_store`, `firebase_app_distribution` |
+| `BUILD_NUMBER` | `String` | `increment_build_number`, `latest_testflight_build_number` | `build_app`, `notification_helper` |
+| `VERSION_NUMBER` | `String` | `increment_version_number`, `get_version_number` | `badge`, `slack`, `changelog` |
+| `LANE_NAME` | `Symbol` | Fastlane Core Runner | `after_all`, `error` hooks |
+| `PLATFORM_NAME` | `Symbol` | Fastlane Core Runner | Platform guards, analytics |
+| `GIT_REPO_WAS_DIRTY` | `Boolean` | `ensure_git_status_clean` | Cleanup & stash routines |
+| `SNAPSHOT_SCREENSHOTS_PATH` | `String` (Directory) | `snapshot` | `deliver`, `frameit` |
+
+---
+
+## Inspecting Context During Errors
+
+When debugging a lane failure, printing all active `lane_context` keys in your `error` hook provides instant insight into the state of the pipeline:
+
+```ruby
+error do |lane, exception, options|
+  UI.error("Pipeline failed in lane #{lane}!")
+  UI.message("Active Lane Context Snapshot:")
+
+  Actions.lane_context.each do |key, value|
+    UI.message("  #{key} => #{value}")
+  end
+end
+```

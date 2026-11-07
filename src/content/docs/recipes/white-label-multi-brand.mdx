@@ -1,0 +1,159 @@
+---
+title: "White-Label Multi-Brand Pipeline"
+description: "A battle-tested architectural pattern for building, signing, and deploying multi-tenant / white-label mobile apps"
+---
+
+When maintaining a single Flutter or React Native codebase deployed under multiple customer brand identities (distinct package names, bundle IDs, app names, icons, and signing credentials), a monolithic `Fastfile` quickly becomes unmaintainable.
+
+This pattern demonstrates a modular, scalable architecture inspired by enterprise white-label production systems.
+
+---
+
+## Directory Architecture
+
+```
+repo-root/
+├── .env                              # Global CI secrets and default configs
+├── assets/
+│   └── brands/
+│       ├── brand_a/
+│       │   ├── config/prod.json      # Package name, bundle ID, display name
+│       │   └── assets/icon.png       # Brand launcher icons
+│       └── brand_b/
+│           ├── config/prod.json
+│           └── assets/icon.png
+├── android/
+│   └── fastlane/
+│       ├── Fastfile                  # Android-specific lanes (:build_aab, :deploy)
+│       └── helpers/brand_helper.rb   # Resolves Android flavor & signing configs
+├── ios/
+│   └── fastlane/
+│       ├── Fastfile                  # iOS-specific lanes (:build_ipa, :deploy)
+│       └── Matchfile                 # iOS certificate configuration
+└── fastlane/
+    ├── Fastfile                      # Root orchestrator & unified lanes
+    └── helpers/
+        ├── environment_verifier_helper.rb
+        └── notification_helper.rb
+```
+
+---
+
+## 1. The Root Orchestrator (`fastlane/Fastfile`)
+
+The root `Fastfile` does not duplicate platform-specific build logic. Instead, it imports both native platform files and exposes high-level unified commands:
+
+```ruby
+# frozen_string_literal: true
+fastlane_version "2.241.2"
+require 'dotenv'
+
+# 1. Load root environment variables
+Dotenv.load(File.expand_path('../.env', __dir__))
+
+# 2. Require pre-flight environment security guard
+require_relative 'helpers/environment_verifier_helper'
+EnvironmentVerifierHelper.verify!
+
+# 3. Import platform-specific Fastfiles
+import File.expand_path('../android/fastlane/Fastfile', __dir__)
+import File.expand_path('../ios/fastlane/Fastfile', __dir__)
+
+# 4. Global Lifecycle Hooks
+after_all do |lane, options|
+  NotificationHelper.notify_success(lane: lane, options: options)
+end
+
+error do |lane, exception, options|
+  NotificationHelper.notify_failure(lane: lane, exception: exception, options: options)
+end
+
+# 5. Unified Brand Listing Lane
+desc "List all registered white-label brands and bundle configurations"
+lane :brands do
+  brands_dir = File.expand_path('../assets/brands', __dir__)
+  brands = Dir.children(brands_dir).select { |b| File.directory?(File.join(brands_dir, b)) }.sort
+
+  rows = brands.map do |b|
+    cfg = JSON.parse(File.read(File.join(brands_dir, b, 'config', 'prod.json')))
+    [b, cfg['display_name'], cfg['android_package_name'], cfg['ios_bundle_id']]
+  end
+
+  require 'terminal-table'
+  table = Terminal::Table.new(
+    title: "Registered White-Label Brands (#{brands.size})",
+    headings: ['Brand ID', 'Display Name', 'Android Package', 'iOS Bundle ID'],
+    rows: rows
+  )
+  UI.message("\n" + table.to_s + "\n")
+end
+```
+
+---
+
+## 2. Dynamic Platform Build Lane (`android/fastlane/lanes/build.rb`)
+
+Instead of hardcoding flavor names, the lane accepts a `brand` argument and resolves the appropriate configuration dynamically:
+
+```ruby
+platform :android do
+  desc "Build an Android Release App Bundle (AAB) with automated signing"
+  lane :build_aab do |options|
+    brand = options[:brand] || "default_brand"
+    env = options[:env] || "prod"
+    dry_run = options[:dry_run].to_s == 'true'
+
+    brand_info = BrandHelper.load_android(brand, env: env)
+    UI.header("Building #{brand_info[:display_name]} (#{brand_info[:package_name]})")
+
+    # 1. Pre-generate launcher assets for target brand
+    FlutterHelper.generate_assets(brand_info)
+
+    # 2. Compile Flutter AppBundle
+    if dry_run
+      UI.success("[Dry Run] Simulated AAB build for #{brand}")
+      "/simulated/path/app-#{brand}-release.aab"
+    else
+      sh("flutter", "build", "appbundle", 
+         "--flavor", brand_info[:flavor], 
+         "--target-platform", "android-arm,android-arm64,android-x64",
+         "--release")
+      
+      "build/app/outputs/bundle/#{brand_info[:flavor]}Release/app-#{brand_info[:flavor]}-release.aab"
+    end
+  end
+end
+```
+
+---
+
+## 3. Deployment with Dynamic Store Metadata
+
+When deploying to Google Play Store using `upload_to_play_store` (via `supply`), point metadata dynamically to the brand's directory:
+
+```ruby
+platform :android do
+  lane :deploy do |options|
+    brand = options[:brand] || UI.user_error!("Missing required option 'brand'")
+    brand_info = BrandHelper.load_android(brand)
+    
+    aab_path = build_aab(brand: brand)
+    meta_dir = File.expand_path("../metadata/#{brand_info[:package_name]}/android", __dir__)
+
+    upload_to_play_store(
+      package_name: brand_info[:package_name],
+      aab: aab_path,
+      track: options[:track] || "internal",
+      release_status: "completed",
+      metadata_path: meta_dir,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+end
+```
+
+### Key Takeaways:
+- **Zero code duplication**: Core build orchestration is shared across all tenants.
+- **Isolated tenant metadata**: Each brand has its own release notes and store assets separated by bundle identifier.
+- **Clean CI invocation**: `bundle exec fastlane android deploy brand:customer_a track:production`.

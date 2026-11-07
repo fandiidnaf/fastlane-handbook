@@ -1,0 +1,80 @@
+---
+title: "Spaceship API Reference"
+description: "Direct programmatic access to Apple Developer Portal and App Store Connect via Fastlane Spaceship"
+---
+
+`Spaceship` is Fastlane's standalone Ruby HTTP client for Apple services. Every action that communicates with Apple (`cert`, `sigh`, `match`, `deliver`, `pilot`) is built on top of Spaceship.
+
+When Fastlane's high-level actions don't support a specific Apple API capability (e.g. creating tester groups, querying App Store review attachments, or automating device registration), you can call Spaceship directly in your `Fastfile`.
+
+---
+
+## 1. Spaceship Architecture
+
+Spaceship consists of two distinct subsystems:
+- **`Spaceship::ConnectAPI`**: Modern REST client using Apple's official App Store Connect API (JSON:API specification). Supports API Keys (`.p8`).
+- **`Spaceship::Portal`**: Client for the Apple Developer Portal (certificates, devices, bundle IDs, merchant IDs).
+
+---
+
+## 2. Using `Spaceship::ConnectAPI` with an API Key
+
+```ruby
+lane :register_beta_tester do |options|
+  email = options[:email] || UI.user_error!("Missing email")
+  group_name = options[:group] || "Internal QA"
+
+  # 1. Authenticate Spaceship with App Store Connect API Key
+  Spaceship::ConnectAPI.token = Spaceship::ConnectAPI::Token.create(
+    key_id: ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"],
+    issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+    filepath: File.expand_path("AuthKey.p8", __dir__)
+  )
+
+  # 2. Find Beta Group
+  group = Spaceship::ConnectAPI::BetaGroup.all(filter: { name: group_name }).first
+  UI.user_error!("Beta group '#{group_name}' not found!") unless group
+
+  # 3. Add Tester
+  UI.message("Adding tester #{email} to group #{group_name}...")
+  tester = Spaceship::ConnectAPI::BetaTester.create(
+    email: email,
+    first_name: options[:first_name] || "QA",
+    last_name: options[:last_name] || "Tester"
+  )
+  group.add_beta_testers(beta_testers: [tester])
+
+  UI.success("Successfully registered tester #{email}!")
+end
+```
+
+---
+
+## 3. Querying App Store Versions Programmatically
+
+```ruby
+lane :get_live_version do
+  Spaceship::ConnectAPI.token = Spaceship::ConnectAPI::Token.create(...)
+
+  app = Spaceship::ConnectAPI::App.find("com.example.app")
+  app_store_version = app.get_live_app_store_version
+
+  if app_store_version
+    UI.message("Live App Store Version: #{app_store_version.version_string}")
+    UI.message("Release State: #{app_store_version.app_store_state}")
+  else
+    UI.important("No currently approved live version on the App Store.")
+  end
+end
+```
+
+---
+
+## Direct CLI Usage
+
+Spaceship can also be used as an interactive playground directly from your terminal:
+
+```bash
+bundle exec spaceship
+```
+This drops you into an interactive IRB shell with `Spaceship` pre-authenticated, allowing you to test API calls interactively.

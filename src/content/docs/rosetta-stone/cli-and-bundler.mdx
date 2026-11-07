@@ -1,0 +1,60 @@
+---
+title: "CLI & Bundler vs System Gem"
+description: "Why you should never run 'gem install fastlane' globally and how to lock reproducible CI/CD environments"
+---
+
+The single most common source of mysterious CI build failures in Fastlane is version drift between developer machines and CI runners.
+
+## The Problem: System Gem Mutation
+
+When you run:
+```bash
+gem install fastlane # ⚠️ Do not do this in production
+fastlane beta
+```
+You are relying on whatever Ruby runtime and gem versions happened to be installed in your global environment. If Fastlane releases a breaking change to Xcode export options or Google Play API handling, your CI runner might pull the new version overnight and break your deployment.
+
+---
+
+## The Solution: Bundler & `Gemfile.lock`
+
+Bundler is Ruby's equivalent to `package.json` + `bun.lock` (in Node/Bun) or `pubspec.yaml` + `pubspec.lock` (in Flutter).
+
+### 1. Define `Gemfile` in your project root:
+```ruby
+# Gemfile
+source "https://rubygems.org"
+
+gem "fastlane", "2.241.2"
+gem "dotenv", "~> 2.8"
+```
+
+### 2. Install and Lock Dependencies:
+```bash
+bundle install
+```
+This generates a `Gemfile.lock` pinning the exact transitive dependency graph. **Always commit `Gemfile.lock` to Git.**
+
+### 3. Always Execute with `bundle exec`:
+```bash
+# Correct execution
+bundle exec fastlane [lane_name]
+
+# Example:
+bundle exec fastlane android deploy brand:pesantrenqu
+```
+
+By prefixing with `bundle exec`, you guarantee that Ruby resolves the exact gem version locked in `Gemfile.lock`, ignoring any conflicting system gems.
+
+---
+
+## Fastlane Version Guard in `Fastfile`
+
+To prevent teammates or CI runners from accidentally running an outdated Fastlane version, put this at the very top of your `Fastfile`:
+
+```ruby
+# frozen_string_literal: true
+fastlane_version "2.241.2"
+```
+
+If anyone attempts to run your lanes with an older version, Fastlane aborts before performing any build or release actions.

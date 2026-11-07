@@ -1,0 +1,98 @@
+---
+title: "Custom Actions & Plugins"
+description: "Authoring reusable, typed Fastlane actions for non-Ruby engineers"
+---
+
+When you have a pipeline step that is reused across multiple lanes or projects (e.g. posting to an internal webhook, decrypting keys, or checking an internal license server), you should write a custom Fastlane Action.
+
+Custom actions live inside your `fastlane/actions/` directory and are automatically loaded by Fastlane without any `require` statements.
+
+---
+
+## Anatomical Structure of an Action
+
+A custom action inherits from `Fastlane::Action` and implements a small set of class methods:
+
+```ruby
+# fastlane/actions/verify_git_branch.rb
+module Fastlane
+  module Actions
+    class VerifyGitBranchAction < Action
+      # 1. Main execution logic
+      def self.run(params)
+        expected_branch = params[:expected]
+        current_branch = sh("git rev-parse --abbrev-ref HEAD").strip
+
+        UI.message("Current git branch is: #{current_branch}")
+
+        if current_branch != expected_branch
+          UI.user_error!("❌ Must be on branch '#{expected_branch}', but currently on '#{current_branch}'!")
+        end
+
+        UI.success("Branch verification passed!")
+        current_branch
+      end
+
+      # 2. Short description
+      def self.description
+        "Enforces that the current git branch matches an expected target"
+      end
+
+      # 3. Parameter validation schema
+      def self.available_options
+        [
+          FastlaneCore::ConfigItem.new(
+            key: :expected,
+            env_name: "EXPECTED_GIT_BRANCH",
+            description: "The name of the branch required to run this lane",
+            type: String,
+            default_value: "main",
+            optional: false
+          )
+        ]
+      end
+
+      # 4. Context shared values output
+      def self.output
+        [
+          ['VERIFIED_GIT_BRANCH', 'The validated active git branch name']
+        ]
+      end
+
+      # 5. Return value description
+      def self.return_value
+        "The string name of the verified branch"
+      end
+
+      # 6. Authors and platform compatibility
+      def self.authors
+        ["Your Name"]
+      end
+
+      def self.is_supported?(platform)
+        true # Cross-platform
+      end
+    end
+  end
+end
+```
+
+---
+
+## Calling Your Action in `Fastfile`
+
+Once placed in `fastlane/actions/verify_git_branch.rb`, it is callable by snake_case name just like built-in actions:
+
+```ruby
+lane :release do
+  # Calls your custom action
+  verify_git_branch(expected: "release")
+
+  build_app
+end
+```
+
+By defining `available_options` with `FastlaneCore::ConfigItem`, Fastlane automatically:
+- Generates `--help` documentation when someone runs `fastlane action verify_git_branch`.
+- Reads `ENV["EXPECTED_GIT_BRANCH"]` if the argument is omitted.
+- Validates the type and requirement before `self.run` is executed.
