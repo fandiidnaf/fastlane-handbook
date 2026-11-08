@@ -45,6 +45,31 @@ export default defineConfig({
       },
       head: [
         {
+          tag: 'meta',
+          attrs: {
+            name: 'google-site-verification',
+            content: 'google0f28e4ba386520d1',
+          },
+        },
+        {
+          tag: 'script',
+          attrs: {
+            type: 'application/ld+json',
+          },
+          content: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Fastlane Handbook',
+            url: 'https://fandiidnaf.github.io/fastlane-handbook/',
+            description: 'The independent, high-density field guide and complete reference for Fastlane mobile automation.',
+            publisher: {
+              '@type': 'Organization',
+              name: 'Fastlane Handbook Community',
+              url: 'https://github.com/fandiidnaf/fastlane-handbook',
+            },
+          }),
+        },
+        {
           tag: 'link',
           attrs: {
             rel: 'icon',

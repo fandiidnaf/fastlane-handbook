@@ -1,0 +1,5 @@
+# robots.txt for Fastlane Handbook
+User-agent: *
+Allow: /
+
+Sitemap: https://fandiidnaf.github.io/fastlane-handbook/sitemap-index.xml
