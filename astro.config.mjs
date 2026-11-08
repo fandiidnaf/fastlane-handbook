@@ -13,10 +13,36 @@ export default defineConfig({
     starlight({
       title: 'Fastlane Handbook',
       description: 'The independent, high-density field guide and complete API reference for Fastlane automation',
-      tagline: 'Bridging Fastlane internals and modern mobile engineering (Android, iOS, Flutter, React Native)',
+      tagline: 'Bridging Fastlane internals and modern mobile engineering (Android, iOS, Flutter, React Native, Any Stack)',
       social: {
         github: 'https://github.com/fandiidnaf/fastlane-handbook',
       },
+      head: [
+        {
+          tag: 'script',
+          content: `
+            function scrollActiveSidebarIntoView() {
+              const activeLink = document.querySelector('#starlight__sidebar a[aria-current="page"]');
+              if (activeLink) {
+                let parent = activeLink.closest('details');
+                while (parent) {
+                  parent.open = true;
+                  parent = parent.parentElement ? parent.parentElement.closest('details') : null;
+                }
+                activeLink.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'smooth' });
+              }
+            }
+
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', () => setTimeout(scrollActiveSidebarIntoView, 80));
+            } else {
+              setTimeout(scrollActiveSidebarIntoView, 80);
+            }
+
+            document.addEventListener('astro:page-load', () => setTimeout(scrollActiveSidebarIntoView, 80));
+          `,
+        },
+      ],
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
@@ -34,6 +60,7 @@ export default defineConfig({
             { label: 'Native iOS (Swift / Xcode)', slug: 'platforms/ios' },
             { label: 'Flutter (Dart / Hybrid)', slug: 'platforms/flutter' },
             { label: 'React Native (TypeScript / Hermes)', slug: 'platforms/react-native' },
+            { label: 'Framework-Agnostic (Any Mobile Stack)', slug: 'platforms/agnostic' },
           ],
         },
         {
