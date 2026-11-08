@@ -1,7 +1,7 @@
 # PRODUCT.md - Fastlane Handbook
 
 ## Vision
-Fastlane Handbook is an independent, community-driven technical documentation website and reference manual for Fastlane. It bridges the gap between Fastlane's Ruby-centric implementation and modern mobile app engineers building apps with Flutter, React Native, Kotlin, and Swift.
+Fastlane Handbook is an independent, community-driven technical documentation website and reference manual for Fastlane. It bridges Fastlane's Ruby-centric implementation with modern mobile engineers building applications across Kotlin, Swift, Flutter, React Native, and framework-agnostic stacks (Kotlin Multiplatform, .NET MAUI, Unity, Capacitor).
 
 ## Target Audience
 - Mobile software engineers and tech leads who manage CI/CD deployment pipelines.

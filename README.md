@@ -16,17 +16,17 @@ An independent, high-density community handbook and complete API reference for [
 
 ---
 
-## Why Fastlane Handbook?
+## Mission & Purpose
 
-Fastlane is the gold standard for mobile CI/CD automation across iOS and Android. However, modern mobile engineers primarily build applications with **Flutter (Dart)**, **React Native (TypeScript)**, **Kotlin**, and **Swift**.
+Fastlane is the gold standard for mobile CI/CD automation across iOS and Android. Today, mobile engineering encompasses a rich multi-stack ecosystem—including **Kotlin & Java**, **Swift & Objective-C**, **Flutter (Dart)**, **React Native (TypeScript)**, as well as **Kotlin Multiplatform (KMP)**, **.NET MAUI**, **Unity**, and **Capacitor**.
 
-When developers consult the official documentation (`docs.fastlane.tools`), they often encounter significant gaps:
-1. **Undocumented Parameters**: Dozens of valid parameters supported by underlying engines (`supply`, `deliver`, `gym`, `pilot`) are missing from action pages.
-2. **Ruby Language Barrier**: Fastlane's Ruby syntax creates friction for mobile engineers who aren't familiar with Ruby's Symbols, closure blocks, hashes, or Bundler workflows.
-3. **Missing Production Patterns**: Real-world enterprise architectures—such as multi-brand matrices, zero-rebuild track promotions, encrypted keystore security guards, and locale-specific metadata mapping—are left for developers to reverse-engineer from Ruby source code.
-4. **Context Sharing Obscurity**: Fastlane actions communicate via `Actions.lane_context[SharedValues::...]`, but what keys each action reads and writes is largely undocumented.
+Fastlane Handbook is designed as an exhaustive, production-grade technical companion that empowers mobile developers across all frameworks:
 
-Fastlane Handbook addresses these gaps with complete introspected parameter schemas, battle-tested architectural recipes, and a dedicated **Ruby Rosetta Stone** for mobile engineers.
+1. **Complete Introspected Reference**: Explores all 238+ built-in actions directly from the underlying Fastlane Ruby gem, presenting full parameter schemas, data types, environment variable fallbacks, default values, and return types.
+2. **Ruby Rosetta Stone**: Bridges Ruby idioms (Symbols, closure blocks, Bundler gemsets) into familiar concepts for engineers coming from Kotlin, Swift, TypeScript, or Dart.
+3. **Production Architecture Blueprints**: Delivers battle-tested patterns for real-world release pipelines—including multi-flavor/scheme matrix builds, zero-rebuild Play Store track promotion, encrypted keystore security guards, and App Store Connect API (`.p8`) automation.
+4. **Lane Context Dataflow**: Maps how actions share state through `Actions.lane_context[SharedValues::...]`, clarifying data handoffs between test, build, and distribution stages.
+5. **Framework-Agnostic Design**: Demonstrates how artifact-first automation applies cleanly whether your binaries originate from native Gradle/Xcode, cross-platform CLI toolchains, or custom game engines.
 
 ---
 
