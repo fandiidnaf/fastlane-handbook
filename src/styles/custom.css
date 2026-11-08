@@ -262,16 +262,16 @@ starlight-toc a[aria-current='true']:hover {
   overflow-x: auto;
 }
 
-/* Action Metadata Card & Platform Chips */
+/* Action Metadata Card & Platform Chips (Impeccable High-Density Terminal) */
 .action-metadata-card {
-  padding: 0.85rem 1.15rem;
+  padding: 0.75rem 1rem;
   margin: 1.25rem 0;
   border: 1px solid var(--sl-color-hairline-light);
   background-color: var(--sl-color-bg-sidebar);
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.45rem;
 }
 
 .metadata-row {
@@ -284,27 +284,33 @@ starlight-toc a[aria-current='true']:hover {
 .platform-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.2rem 0.65rem;
-  border-radius: 5px;
-  font-size: 0.8rem;
+  gap: 0.45rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
   font-weight: 600;
   font-family: var(--sl-font-mono);
   line-height: 1.2;
 }
 
+.platform-svg-inline {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
 .category-badge {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--sl-color-gray-2);
 }
 
 .category-badge code {
   color: var(--sl-color-text-accent) !important;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
 }
 
 .catalog-link {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--sl-color-text-accent) !important;
   text-decoration: none;
@@ -316,85 +322,95 @@ starlight-toc a[aria-current='true']:hover {
 }
 
 .audience-row {
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   color: var(--sl-color-gray-2);
   line-height: 1.45;
   border-top: 1px solid var(--sl-color-hairline);
-  padding-top: 0.5rem;
+  padding-top: 0.45rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
 }
 
-.audience-row strong {
+.audience-label {
+  font-weight: 600;
   color: var(--sl-color-text);
+  font-family: var(--sl-font-mono);
+  font-size: 0.78rem;
+}
+
+.audience-text {
+  color: var(--sl-color-gray-2);
 }
 
 /* High-Contrast Chip Variants (Light & Dark Mode) */
 :root[data-theme='light'] .chip-android {
-  background-color: #dcfce7;
-  color: #15803d;
-  border: 1px solid #86efac;
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
 }
 
 :root[data-theme='dark'] .chip-android {
-  background-color: rgba(34, 197, 94, 0.15);
-  color: #4ade80;
-  border: 1px solid rgba(74, 222, 128, 0.4);
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
 }
 
 :root[data-theme='light'] .chip-ios {
-  background-color: #e0f2fe;
-  color: #0369a1;
-  border: 1px solid #7dd3fc;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
 }
 
 :root[data-theme='dark'] .chip-ios {
-  background-color: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  background-color: rgba(241, 245, 249, 0.1);
+  color: #f8fafc;
+  border: 1px solid rgba(241, 245, 249, 0.25);
 }
 
 :root[data-theme='light'] .chip-dual {
-  background-color: #f3e8ff;
-  color: #7e22ce;
-  border: 1px solid #d8b4fe;
+  background-color: #faf5ff;
+  color: #6b21a8;
+  border: 1px solid #e9d5ff;
 }
 
 :root[data-theme='dark'] .chip-dual {
-  background-color: rgba(168, 85, 247, 0.15);
+  background-color: rgba(168, 85, 247, 0.12);
   color: #c084fc;
-  border: 1px solid rgba(192, 132, 252, 0.4);
+  border: 1px solid rgba(192, 132, 252, 0.35);
 }
 
 :root[data-theme='light'] .chip-cross {
-  background-color: #fef3c7;
-  color: #b45309;
-  border: 1px solid #fcd34d;
+  background-color: #f0f9ff;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
 }
 
 :root[data-theme='dark'] .chip-cross {
-  background-color: rgba(245, 158, 11, 0.15);
-  color: #fbbf24;
-  border: 1px solid rgba(251, 191, 36, 0.4);
+  background-color: rgba(14, 165, 233, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
 }
 
 :root[data-theme='light'] .chip-mac {
-  background-color: #f1f5f9;
+  background-color: #f8fafc;
   color: #334155;
   border: 1px solid #cbd5e1;
 }
 
 :root[data-theme='dark'] .chip-mac {
-  background-color: rgba(148, 163, 184, 0.15);
+  background-color: rgba(148, 163, 184, 0.1);
   color: #cbd5e1;
-  border: 1px solid rgba(203, 213, 225, 0.4);
+  border: 1px solid rgba(203, 213, 225, 0.3);
 }
 
-/* Platform Catalog Stats Grid */
+/* Platform Catalog Stats Grid (Impeccable Architecture) */
 .platform-catalog-header {
   margin: 1.5rem 0 2rem 0;
 }
 
 .catalog-intro {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--sl-color-gray-2);
   line-height: 1.6;
   margin-bottom: 1.25rem;
@@ -402,7 +418,7 @@ starlight-toc a[aria-current='true']:hover {
 
 .platform-stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
   gap: 0.85rem;
 }
 
@@ -410,19 +426,25 @@ starlight-toc a[aria-current='true']:hover {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 6px;
   text-decoration: none !important;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease;
 }
 
 .stat-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  border-color: #e11d48 !important;
 }
 
-.stat-icon {
-  font-size: 1.6rem;
-  margin-bottom: 0.35rem;
+.stat-icon-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.45rem;
+}
+
+.stat-svg-large {
+  width: 24px;
+  height: 24px;
 }
 
 .stat-count {
@@ -436,5 +458,22 @@ starlight-toc a[aria-current='true']:hover {
   font-size: 0.8rem;
   font-weight: 600;
   line-height: 1.25;
+}
+
+.platform-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.heading-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading-icon svg {
+  width: 22px;
+  height: 22px;
 }
 

@@ -41,8 +41,25 @@ interface PlatformGroupInfo {
   badgeLabel: string;
   badgeClass: string;
   targetAudience: string;
-  icon: string;
+  svgIcon: string;
+  statSvg: string;
 }
+
+const SVG_ICONS = {
+  android: `<svg class="platform-svg-inline android-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.997-3.459a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4111 13.8533 8.0834 12 8.0834s-3.5902.3277-5.1365.8664L4.8412 5.4469a.4161.4161 0 10-.7197.4155l1.997 3.459C2.6876 11.2613.4167 15.311.4167 20h23.1666c0-4.689-2.2709-8.7387-5.7013-10.6786"/></svg>`,
+  ios: `<svg class="platform-svg-inline ios-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.88c.67-.82 1.13-1.96.99-3.11-.99.04-2.16.66-2.85 1.47-.6.7-1.13 1.83-.98 2.96 1.1.09 2.19-.53 2.84-1.32"/></svg>`,
+  dual: `<svg class="platform-svg-inline dual-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+  cross: `<svg class="platform-svg-inline cross-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+  mac: `<svg class="platform-svg-inline mac-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+};
+
+const STAT_SVGS = {
+  android: `<svg class="stat-svg-large android-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.997-3.459a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4111 13.8533 8.0834 12 8.0834s-3.5902.3277-5.1365.8664L4.8412 5.4469a.4161.4161 0 10-.7197.4155l1.997 3.459C2.6876 11.2613.4167 15.311.4167 20h23.1666c0-4.689-2.2709-8.7387-5.7013-10.6786"/></svg>`,
+  ios: `<svg class="stat-svg-large ios-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.88c.67-.82 1.13-1.96.99-3.11-.99.04-2.16.66-2.85 1.47-.6.7-1.13 1.83-.98 2.96 1.1.09 2.19-.53 2.84-1.32"/></svg>`,
+  dual: `<svg class="stat-svg-large dual-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+  cross: `<svg class="stat-svg-large cross-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+  mac: `<svg class="stat-svg-large mac-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+};
 
 function getPlatformGroup(platforms: string[]): PlatformGroupInfo {
   const p = platforms.map(x => x.toLowerCase());
@@ -57,7 +74,8 @@ function getPlatformGroup(platforms: string[]): PlatformGroupInfo {
       badgeLabel: 'Android Dedicated',
       badgeClass: 'chip-android',
       targetAudience: 'Native Android developers (Gradle, Google Play Store, Screengrab, Keystore)',
-      icon: '🤖',
+      svgIcon: SVG_ICONS.android,
+      statSvg: STAT_SVGS.android,
     };
   }
 
@@ -68,7 +86,8 @@ function getPlatformGroup(platforms: string[]): PlatformGroupInfo {
       badgeLabel: hasMac ? 'iOS & Apple' : 'iOS Only',
       badgeClass: 'chip-ios',
       targetAudience: 'Apple platform developers (iOS, iPadOS, macOS, Xcode, TestFlight, App Store Connect)',
-      icon: '🍏',
+      svgIcon: SVG_ICONS.ios,
+      statSvg: STAT_SVGS.ios,
     };
   }
 
@@ -79,7 +98,8 @@ function getPlatformGroup(platforms: string[]): PlatformGroupInfo {
       badgeLabel: 'Android + iOS Dual-Stack',
       badgeClass: 'chip-dual',
       targetAudience: 'Mobile engineers shipping unified features to both Google Play Store and iOS App Store',
-      icon: '📱',
+      svgIcon: SVG_ICONS.dual,
+      statSvg: STAT_SVGS.dual,
     };
   }
 
@@ -90,7 +110,8 @@ function getPlatformGroup(platforms: string[]): PlatformGroupInfo {
       badgeLabel: 'macOS Desktop Only',
       badgeClass: 'chip-mac',
       targetAudience: 'macOS developers and host-specific Xcode toolchain environments',
-      icon: '🖥️',
+      svgIcon: SVG_ICONS.mac,
+      statSvg: STAT_SVGS.mac,
     };
   }
 
@@ -100,7 +121,8 @@ function getPlatformGroup(platforms: string[]): PlatformGroupInfo {
     badgeLabel: 'Universal (Cross-Platform)',
     badgeClass: 'chip-cross',
     targetAudience: 'Universal workflows (Git, Slack, shell execution, CI/CD orchestration across Linux/macOS/Windows)',
-    icon: '🌐',
+    svgIcon: SVG_ICONS.cross,
+    statSvg: STAT_SVGS.cross,
   };
 }
 
@@ -290,14 +312,15 @@ This action is marked as **DEPRECATED** in upstream Fastlane. It may no longer b
   const metadataCardHtml = `<div class="action-metadata-card">
   <div class="metadata-row">
     <span class="platform-chip ${group.badgeClass}">
-      <span class="chip-icon">${group.icon}</span>
+      <span class="chip-icon">${group.svgIcon}</span>
       <span class="chip-label">${group.badgeLabel}</span>
     </span>
     <span class="category-badge">Category: <code>${action.category}</code></span>
-    ${!isDep ? `<a href="/fastlane-handbook/actions-by-platform/#${group.id}" class="catalog-link">View all ${group.name} actions &rarr;</a>` : ''}
+    ${!isDep ? `<a href="/fastlane-handbook/actions-by-platform/#${group.id}" class="catalog-link">Platform Catalog &rarr;</a>` : ''}
   </div>
   <div class="audience-row">
-    <strong>Target Audience:</strong> ${group.targetAudience}
+    <span class="audience-label">Target Audience:</span>
+    <span class="audience-text">${group.targetAudience}</span>
   </div>
 </div>`;
 
@@ -339,7 +362,8 @@ const groups: PlatformGroupInfo[] = [
     badgeLabel: 'Android Dedicated',
     badgeClass: 'chip-android',
     targetAudience: 'Native Android developers managing Gradle builds, signing keystores, Google Play Store uploads (supply), and emulator screenshots (screengrab).',
-    icon: '🤖',
+    svgIcon: SVG_ICONS.android,
+    statSvg: STAT_SVGS.android,
   },
   {
     id: 'ios',
@@ -347,7 +371,8 @@ const groups: PlatformGroupInfo[] = [
     badgeLabel: 'iOS & Apple',
     badgeClass: 'chip-ios',
     targetAudience: 'Apple developers building Swift/Obj-C codebases with Xcode, managing TestFlight (pilot), App Store releases (deliver), code signing (match, cert, sigh), and UI screenshots (snapshot).',
-    icon: '🍏',
+    svgIcon: SVG_ICONS.ios,
+    statSvg: STAT_SVGS.ios,
   },
   {
     id: 'dual',
@@ -355,7 +380,8 @@ const groups: PlatformGroupInfo[] = [
     badgeLabel: 'Android + iOS Dual-Stack',
     badgeClass: 'chip-dual',
     targetAudience: 'Cross-platform and multi-app engineers managing Crashlytics symbols, TestFairy distributions, and push notification configuration across both major mobile OSs.',
-    icon: '📱',
+    svgIcon: SVG_ICONS.dual,
+    statSvg: STAT_SVGS.dual,
   },
   {
     id: 'cross',
@@ -363,7 +389,8 @@ const groups: PlatformGroupInfo[] = [
     badgeLabel: 'Universal CI Tools',
     badgeClass: 'chip-cross',
     targetAudience: 'Any CI/CD engineer orchestrating Git tags, Slack / Teams / Discord release announcements, S3 file staging, version bumping, and shell scripting on macOS, Linux, or Windows.',
-    icon: '🌐',
+    svgIcon: SVG_ICONS.cross,
+    statSvg: STAT_SVGS.cross,
   },
   {
     id: 'mac',
@@ -371,7 +398,8 @@ const groups: PlatformGroupInfo[] = [
     badgeLabel: 'macOS Desktop',
     badgeClass: 'chip-mac',
     targetAudience: 'macOS app developers and build pipelines that configure Xcode toolchains and desktop-only build environments.',
-    icon: '🖥️',
+    svgIcon: SVG_ICONS.mac,
+    statSvg: STAT_SVGS.mac,
   },
 ];
 
@@ -390,7 +418,7 @@ description: Complete index of all 222 active Fastlane actions categorized by pl
 for (const grp of groups) {
   const count = activeActions.filter(a => getPlatformGroup(a.platforms).id === grp.id).length;
   catalogMarkdown += `    <a href="#${grp.id}" class="stat-card ${grp.badgeClass}">
-      <span class="stat-icon">${grp.icon}</span>
+      <span class="stat-icon-wrapper">${grp.statSvg}</span>
       <span class="stat-count">${count} Actions</span>
       <span class="stat-title">${grp.name}</span>
     </a>\n`;
@@ -404,7 +432,7 @@ catalogMarkdown += `  </div>
 
 for (const grp of groups) {
   const grpActions = activeActions.filter(a => getPlatformGroup(a.platforms).id === grp.id);
-  catalogMarkdown += `\n<h2 id="${grp.id}">${grp.icon} ${grp.name} (${grpActions.length} Actions)</h2>\n\n`;
+  catalogMarkdown += `\n<h2 id="${grp.id}" class="platform-heading"><span class="heading-icon">${grp.svgIcon}</span> <span>${grp.name} (${grpActions.length} Actions)</span></h2>\n\n`;
   catalogMarkdown += `> **Who it's for:** ${grp.targetAudience}\n\n`;
   catalogMarkdown += `| Action | Category | Description | Parameters | Source |\n`;
   catalogMarkdown += `| :--- | :--- | :--- | :---: | :---: |\n`;
