@@ -16,13 +16,21 @@ export default defineConfig({
         src: './src/assets/logo.svg',
         replacesTitle: false,
       },
-      favicon: '/favicon.svg',
+      favicon: '/favicon.svg?v=2',
       description: 'The independent, high-density field guide and complete API reference for Fastlane automation',
       tagline: 'Bridging Fastlane internals and modern mobile engineering (Android, iOS, Flutter, React Native, Any Stack)',
       social: {
         github: 'https://github.com/fandiidnaf/fastlane-handbook',
       },
       head: [
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'icon',
+            type: 'image/svg+xml',
+            href: '/fastlane-handbook/favicon.svg?v=2',
+          },
+        },
         {
           tag: 'script',
           content: `
