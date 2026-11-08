@@ -25,7 +25,7 @@ Total options available: **15**
 | `development` | `Fastlane::Boolean` | `CERT_DEVELOPMENT` | `false` | **Yes** | Create a development certificate instead of a distribution one |
 | `type` | `String` | `CERT_TYPE` | `-` | No | Create specific certificate type (takes precedence over :development) |
 | `force` | `Fastlane::Boolean` | `CERT_FORCE` | `false` | **Yes** | Create a certificate even if an existing certificate exists |
-| `generate_apple_certs` | `Fastlane::Boolean` | `CERT_GENERATE_APPLE_CERTS` | `true` | **Yes** | Create a certificate type for Xcode 11 and later (Apple Development or Apple Distribution) |
+| `generate_apple_certs` | `Fastlane::Boolean` | `CERT_GENERATE_APPLE_CERTS` | `false` | **Yes** | Create a certificate type for Xcode 11 and later (Apple Development or Apple Distribution) |
 | `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |
 | `api_key` | `Hash` | `-` | `-` | No | Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option) |
 | `username` | `String` | `CERT_USERNAME` | `-` | No | Your Apple ID Username |
@@ -33,7 +33,7 @@ Total options available: **15**
 | `team_name` | `String` | `CERT_TEAM_NAME` | `-` | No | The name of your Developer Portal team if you're in multiple teams |
 | `filename` | `String` | `CERT_FILE_NAME` | `-` | No | The filename of certificate to store |
 | `output_path` | `String` | `CERT_OUTPUT_PATH` | `.` | **Yes** | The path to a directory in which all certificates and private keys should be stored |
-| `keychain_path` | `String` | `CERT_KEYCHAIN_PATH` | `/Users/fandi/Library/Keychains/login.keychain-db` | No | Path to a custom keychain |
+| `keychain_path` | `String` | `CERT_KEYCHAIN_PATH` | `-` | No | Path to a custom keychain |
 | `keychain_password` | `String` | `CERT_KEYCHAIN_PASSWORD` | `-` | No | This might be required the first time you access certificates on a new mac. For the login/default keychain this is your macOS account password |
 | `skip_set_partition_list` | `Fastlane::Boolean` | `CERT_SKIP_SET_PARTITION_LIST` | `false` | **Yes** | Skips setting the partition list (which can sometimes take a long time). Setting the partition list is usually needed to prevent Xcode from prompting to allow a cert to be used for signing |
 | `platform` | `String` | `CERT_PLATFORM` | `ios` | **Yes** | Set the provisioning profile's platform (ios, macos, tvos) |
