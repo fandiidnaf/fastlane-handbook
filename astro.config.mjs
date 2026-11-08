@@ -3,9 +3,30 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import mermaid from 'astro-mermaid';
 
+function rehypeExternalLinks() {
+  return (tree) => {
+    function visit(node) {
+      if (node.type === 'element' && node.tagName === 'a' && node.properties && node.properties.href) {
+        const href = String(node.properties.href);
+        if (/^https?:\/\//i.test(href) && !href.includes('fandiidnaf.github.io/fastlane-handbook')) {
+          node.properties.target = '_blank';
+          node.properties.rel = ['noopener', 'noreferrer'];
+        }
+      }
+      if (node.children && Array.isArray(node.children)) {
+        node.children.forEach(visit);
+      }
+    }
+    visit(tree);
+  };
+}
+
 export default defineConfig({
   site: 'https://fandiidnaf.github.io',
   base: '/fastlane-handbook',
+  markdown: {
+    rehypePlugins: [rehypeExternalLinks],
+  },
   integrations: [
     mermaid({
       autoTheme: true,
@@ -46,13 +67,37 @@ export default defineConfig({
               }
             }
 
-            if (document.readyState === 'loading') {
-              document.addEventListener('DOMContentLoaded', () => setTimeout(scrollActiveSidebarIntoView, 80));
-            } else {
-              setTimeout(scrollActiveSidebarIntoView, 80);
+            function setupExternalLinks() {
+              const currentHost = window.location.hostname;
+              const links = document.querySelectorAll('a[href^="http://"], a[href^="https://"]');
+              links.forEach((link) => {
+                try {
+                  const url = new URL(link.href, window.location.origin);
+                  if (url.hostname !== currentHost && url.hostname !== 'localhost') {
+                    link.setAttribute('target', '_blank');
+                    const existingRel = (link.getAttribute('rel') || '').split(/\\s+/).filter(Boolean);
+                    if (!existingRel.includes('noopener')) existingRel.push('noopener');
+                    if (!existingRel.includes('noreferrer')) existingRel.push('noreferrer');
+                    link.setAttribute('rel', existingRel.join(' '));
+                  }
+                } catch {}
+              });
             }
 
-            document.addEventListener('astro:page-load', () => setTimeout(scrollActiveSidebarIntoView, 80));
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(scrollActiveSidebarIntoView, 80);
+                setupExternalLinks();
+              });
+            } else {
+              setTimeout(scrollActiveSidebarIntoView, 80);
+              setupExternalLinks();
+            }
+
+            document.addEventListener('astro:page-load', () => {
+              setTimeout(scrollActiveSidebarIntoView, 80);
+              setupExternalLinks();
+            });
           `,
         },
       ],
