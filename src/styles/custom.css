@@ -18,7 +18,8 @@
   --sl-color-hairline: #21262d;
 
   --sl-color-text: #e6edf3;
-  --sl-color-text-accent: #e11d48;
+  --sl-color-text-accent: #fb7185; /* WCAG AAA 7.03:1 contrast against #0d1117 */
+  --sl-color-accent-high: #fda4af; /* WCAG AAA 10.01:1 contrast */
   --sl-color-text-invert: #ffffff; /* Crucial: White text when inverted over accent */
   --sl-color-white: #ffffff;
   --sl-color-gray-1: #f0f6fc;
@@ -34,6 +35,7 @@
   --sl-color-accent-low: #ffe4e6;
   --sl-color-accent: #e11d48;
   --sl-color-accent-high: #9f1239;
+  --sl-color-text-accent: #be123c; /* High contrast 5.9:1 on #f6f8fa */
   --sl-color-text-invert: #ffffff;
 
   --sl-color-bg: #f6f8fa;
@@ -59,9 +61,7 @@ header.header {
   font-weight: 600 !important;
   color: #ffffff !important;
   background-color: #e11d48 !important;
-  border-left: 3px solid #fda4af !important;
   border-radius: 4px !important;
-  padding-left: 0.65rem !important;
 }
 
 .sidebar-content [aria-current='page'] * {
@@ -93,14 +93,14 @@ header.header {
 }
 
 .sl-link-button.secondary:hover {
-  border-color: #e11d48 !important;
-  color: #f43f5e !important;
+  border-color: var(--sl-color-text-accent) !important;
+  color: var(--sl-color-text-accent) !important;
   transform: translateY(-2px) !important;
-  background-color: rgba(225, 29, 72, 0.08) !important;
+  background-color: rgba(244, 63, 94, 0.08) !important;
 }
 
 .sl-link-button.minimal:hover {
-  color: #f43f5e !important;
+  color: var(--sl-color-text-accent) !important;
   transform: translateY(-1px) !important;
 }
 
@@ -120,14 +120,14 @@ starlight-toc a {
 }
 
 starlight-toc a:hover {
-  color: #ffffff !important;
+  color: var(--sl-color-white) !important;
 }
 
 starlight-toc a[aria-current='true'],
 starlight-toc a[aria-current='true']:hover {
-  color: #ffffff !important; /* Pure white text for clear visibility in dark mode */
+  color: var(--sl-color-white) !important; /* Pure white text for clear visibility in dark mode */
   font-weight: 700 !important;
-  border-left: 2px solid #e11d48 !important;
+  border-left: 2px solid var(--sl-color-text-accent) !important;
   background-color: transparent !important;
 }
 
@@ -238,10 +238,11 @@ starlight-toc a[aria-current='true']:hover {
 .community-disclaimer {
   padding: 0.85rem 1.15rem;
   margin: 1.5rem 0;
-  border-left: 3px solid #e11d48;
-  background-color: rgba(225, 29, 72, 0.08);
-  border-radius: 0 4px 4px 0;
+  border: 1px solid var(--sl-color-hairline-light);
+  background-color: var(--sl-color-bg-sidebar);
+  border-radius: 8px;
   font-size: 0.875rem;
+  color: var(--sl-color-gray-2);
 }
 
 .community-disclaimer p {
