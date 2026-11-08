@@ -29,7 +29,7 @@ Total options available: **1**
 ```ruby
 adb_devices.each do |device|
   model = adb(command: "shell getprop ro.product.model",
-              serial: device.serial).strip
+    serial: device.serial).strip
 
   puts "Model #{model} is connected"
 end

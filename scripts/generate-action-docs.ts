@@ -92,36 +92,53 @@ function cleanDetails(str: string): string {
 
 function cleanRubyExample(code: string): string {
   if (!code) return '';
-  const rawLines = code.trim().replace(/^```[a-z]*\r?\n?/i, '').replace(/\r?\n?```$/i, '').split(/\r?\n/);
-  if (rawLines.length <= 1) return rawLines[0]?.trim() || '';
+  const clean = code.trim().replace(/^```[a-z]*\r?\n?/i, '').replace(/\r?\n?```$/i, '');
+  const lines = clean.split(/\r?\n/);
+  if (lines.length <= 1) return lines[0]?.trim() || '';
 
-  const first = rawLines[0].trim();
-  const last = rawLines[rawLines.length - 1].trim();
+  let indent = 0;
+  const output: string[] = [];
 
-  const isOpenBlock = first.endsWith('(') || first.endsWith('{') || first.endsWith('[') || /\bdo(\s*\|[^|]*\|)?\s*$/.test(first);
-  const isCloseBlock = last === ')' || last === '}' || last === ']' || last === 'end' || last === ');';
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) {
+      output.push('');
+      continue;
+    }
 
-  if (rawLines.length > 2 && isOpenBlock && isCloseBlock) {
-    const middle = rawLines.slice(1, -1);
-    const nonBlankMiddle = middle.filter(l => l.trim().length > 0);
-    const minMiddleIndent = nonBlankMiddle.length > 0
-      ? Math.min(...nonBlankMiddle.map(l => l.match(/^(\s*)/)?.[1].length || 0))
-      : 0;
+    // Check if this line closes a block or paren
+    // Closing tokens: ), ], }, end, else, elsif, rescue, ensure
+    const isClosing = /^(\)|\]|\}|end\b|else\b|elsif\b|rescue\b|ensure\b)/.test(line);
+    if (isClosing && indent > 0) {
+      indent--;
+    }
 
-    const formattedMiddle = middle.map(l => {
-      if (l.trim().length === 0) return '';
-      const stripped = l.slice(minMiddleIndent);
-      return '  ' + stripped;
-    });
+    output.push('  '.repeat(indent) + line);
 
-    return [first, ...formattedMiddle, last].join('\n');
+    // Count bracket pairs
+    let opens = 0;
+    for (const char of line) {
+      if (char === '(' || char === '{' || char === '[') opens++;
+      if (char === ')' || char === '}' || char === ']') opens--;
+    }
+
+    // Check keywords that open blocks: do, begin, class, module, def, else, elsif, rescue, ensure
+    if (
+      /\bdo(\s*\|[^|]*\|)?\s*$/.test(line) ||
+      /^(class|module|def|begin|case|else|elsif|rescue|ensure)\b/.test(line) ||
+      (/^(if|unless)\b/.test(line) && !/then\s+.*$/.test(line))
+    ) {
+      opens++;
+    }
+
+    if (opens > 0) {
+      indent += opens;
+    } else if (opens < 0 && !isClosing) {
+      indent = Math.max(0, indent + opens);
+    }
   }
 
-  // General multiline dedent
-  const nonBlank = rawLines.filter(l => l.trim().length > 0);
-  if (nonBlank.length === 0) return '';
-  const minIndent = Math.min(...nonBlank.map(l => l.match(/^(\s*)/)?.[1].length || 0));
-  return rawLines.map(l => l.trim().length === 0 ? '' : l.slice(minIndent)).join('\n');
+  return output.join('\n');
 }
 
 let activeCount = 0;

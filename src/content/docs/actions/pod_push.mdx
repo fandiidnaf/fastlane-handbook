@@ -39,22 +39,22 @@ Total options available: **15**
 
 ```ruby
 # If no path is supplied then Trunk will attempt to find the first Podspec in the current directory.
-          pod_push
+pod_push
 ```
 
 ```ruby
 # Alternatively, supply the Podspec file path
-          pod_push(path: "TSMessages.podspec")
+pod_push(path: "TSMessages.podspec")
 ```
 
 ```ruby
 # You may also push to a private repo instead of Trunk
-          pod_push(path: "TSMessages.podspec", repo: "MyRepo")
+pod_push(path: "TSMessages.podspec", repo: "MyRepo")
 ```
 
 ```ruby
 # If the podspec has a dependency on another private pod, then you will have to supply the sources you want the podspec to lint with for pod_push to succeed. Read more here - https://github.com/CocoaPods/CocoaPods/issues/2543.
-          pod_push(path: "TMessages.podspec", repo: "MyRepo", sources: ["https://github.com/username/Specs", "https://github.com/CocoaPods/Specs"])
+pod_push(path: "TMessages.podspec", repo: "MyRepo", sources: ["https://github.com/username/Specs", "https://github.com/CocoaPods/Specs"])
 ```
 
 

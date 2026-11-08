@@ -34,35 +34,35 @@ Total options available: **7**
 
 ```ruby
 # Using App Store Connect API key (recommended for CI)
-          update_app_age_rating(
-            api_key_path: "fastlane/api_key.json",
-            app_identifier: "com.example.app",
-            age_rating_config_path: "fastlane/metadata/age_rating.json"
-          )
+update_app_age_rating(
+  api_key_path: "fastlane/api_key.json",
+  app_identifier: "com.example.app",
+  age_rating_config_path: "fastlane/metadata/age_rating.json"
+)
 ```
 
 ```ruby
 # Using Apple ID
-          update_app_age_rating(
-            username: "user@example.com",
-            app_identifier: "com.example.app",
-            age_rating_config_path: "fastlane/metadata/age_rating.json",
-            team_id: "ABC123456"
-          )
+update_app_age_rating(
+  username: "user@example.com",
+  app_identifier: "com.example.app",
+  age_rating_config_path: "fastlane/metadata/age_rating.json",
+  team_id: "ABC123456"
+)
 ```
 
 ```ruby
 # Using the api_key hash returned by app_store_connect_api_key action
-          api_key = app_store_connect_api_key(
-            key_id: "D383SF739",
-            issuer_id: "6053b7fe-68a8-4acb-89be-165aa6465141",
-            key_filepath: "./AuthKey_D383SF739.p8"
-          )
-          update_app_age_rating(
-            api_key: api_key,
-            app_identifier: "com.example.app",
-            age_rating_config_path: "fastlane/metadata/age_rating.json"
-          )
+api_key = app_store_connect_api_key(
+  key_id: "D383SF739",
+  issuer_id: "6053b7fe-68a8-4acb-89be-165aa6465141",
+  key_filepath: "./AuthKey_D383SF739.p8"
+)
+update_app_age_rating(
+  api_key: api_key,
+  app_identifier: "com.example.app",
+  age_rating_config_path: "fastlane/metadata/age_rating.json"
+)
 ```
 
 

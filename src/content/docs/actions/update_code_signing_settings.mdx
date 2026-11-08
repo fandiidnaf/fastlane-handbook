@@ -38,32 +38,32 @@ Total options available: **11**
 
 ```ruby
 # manual code signing
-          update_code_signing_settings(
-            use_automatic_signing: false,
-            path: "demo-project/demo/demo.xcodeproj"
-          )
+update_code_signing_settings(
+  use_automatic_signing: false,
+  path: "demo-project/demo/demo.xcodeproj"
+)
 ```
 
 ```ruby
 # automatic code signing
-          update_code_signing_settings(
-            use_automatic_signing: true,
-            path: "demo-project/demo/demo.xcodeproj"
-          )
+update_code_signing_settings(
+  use_automatic_signing: true,
+  path: "demo-project/demo/demo.xcodeproj"
+)
 ```
 
 ```ruby
 # more advanced manual code signing
-          update_code_signing_settings(
-            use_automatic_signing: false,
-            path: "demo-project/demo/demo.xcodeproj",
-            team_id: "QABC123DEV",
-            bundle_identifier: "com.demoapp.QABC123DEV",
-            code_sign_identity: "iPhone Distribution",
-            sdk: "iphoneos*",
-            profile_name: "Demo App Deployment Profile",
-            entitlements_file_path: "Demo App/generated/New.entitlements"
-          )
+update_code_signing_settings(
+  use_automatic_signing: false,
+  path: "demo-project/demo/demo.xcodeproj",
+  team_id: "QABC123DEV",
+  bundle_identifier: "com.demoapp.QABC123DEV",
+  code_sign_identity: "iPhone Distribution",
+  sdk: "iphoneos*",
+  profile_name: "Demo App Deployment Profile",
+  entitlements_file_path: "Demo App/generated/New.entitlements"
+)
 ```
 
 

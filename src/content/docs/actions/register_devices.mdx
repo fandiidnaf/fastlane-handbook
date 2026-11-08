@@ -38,17 +38,17 @@ Total options available: **8**
 
 ```ruby
 register_devices(
-            devices: {
-              "Luka iPhone 6" => "1234567890123456789012345678901234567890",
-              "Felix iPad Air 2" => "abcdefghijklmnopqrstvuwxyzabcdefghijklmn"
-            }
-          ) # Simply provide a list of devices as a Hash
+  devices: {
+    "Luka iPhone 6" => "1234567890123456789012345678901234567890",
+    "Felix iPad Air 2" => "abcdefghijklmnopqrstvuwxyzabcdefghijklmn"
+  }
+) # Simply provide a list of devices as a Hash
 ```
 
 ```ruby
 register_devices(
-            devices_file: "./devices.txt"
-          ) # Alternatively provide a standard UDID export .txt file, see the Apple Sample (http://devimages.apple.com/downloads/devices/Multiple-Upload-Samples.zip)
+  devices_file: "./devices.txt"
+) # Alternatively provide a standard UDID export .txt file, see the Apple Sample (http://devimages.apple.com/downloads/devices/Multiple-Upload-Samples.zip)
 ```
 
 ```ruby
@@ -61,12 +61,12 @@ register_devices(
 
 ```ruby
 register_devices(
-            devices: {
-              "Luka MacBook" => "12345678-1234-1234-1234-123456789012",
-              "Felix MacBook Pro" => "ABCDEFGH-ABCD-ABCD-ABCD-ABCDEFGHIJKL"
-            },
-            platform: "mac"
-          ) # Register devices for Mac
+  devices: {
+    "Luka MacBook" => "12345678-1234-1234-1234-123456789012",
+    "Felix MacBook Pro" => "ABCDEFGH-ABCD-ABCD-ABCD-ABCDEFGHIJKL"
+  },
+  platform: "mac"
+) # Register devices for Mac
 ```
 
 

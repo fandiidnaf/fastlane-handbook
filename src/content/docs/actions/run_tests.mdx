@@ -138,25 +138,25 @@ run_tests(
 
 ```ruby
 # Build For Testing
-          run_tests(
-             derived_data_path: "my_folder",
-             build_for_testing: true
-          )
+run_tests(
+  derived_data_path: "my_folder",
+  build_for_testing: true
+)
 ```
 
 ```ruby
 # run tests using derived data from prev. build
-          run_tests(
-             derived_data_path: "my_folder",
-             test_without_building: true
-          )
+run_tests(
+  derived_data_path: "my_folder",
+  test_without_building: true
+)
 ```
 
 ```ruby
 # or run it from an existing xctestrun package
-          run_tests(
-             xctestrun: "/path/to/mytests.xctestrun"
-          )
+run_tests(
+  xctestrun: "/path/to/mytests.xctestrun"
+)
 ```
 
 

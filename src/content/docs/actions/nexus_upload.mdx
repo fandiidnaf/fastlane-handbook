@@ -41,34 +41,34 @@ Total options available: **17**
 
 ```ruby
 # for Nexus 2
-          nexus_upload(
-            file: "/path/to/file.ipa",
-            repo_id: "artefacts",
-            repo_group_id: "com.fastlane",
-            repo_project_name: "ipa",
-            repo_project_version: "1.13",
-            repo_classifier: "dSYM", # Optional
-            endpoint: "http://localhost:8081",
-            username: "admin",
-            password: "admin123"
-          )
+nexus_upload(
+  file: "/path/to/file.ipa",
+  repo_id: "artefacts",
+  repo_group_id: "com.fastlane",
+  repo_project_name: "ipa",
+  repo_project_version: "1.13",
+  repo_classifier: "dSYM", # Optional
+  endpoint: "http://localhost:8081",
+  username: "admin",
+  password: "admin123"
+)
 ```
 
 ```ruby
 # for Nexus 3
-          nexus_upload(
-            nexus_version: 3,
-            mount_path: "",
-            file: "/path/to/file.ipa",
-            repo_id: "artefacts",
-            repo_group_id: "com.fastlane",
-            repo_project_name: "ipa",
-            repo_project_version: "1.13",
-            repo_classifier: "dSYM", # Optional
-            endpoint: "http://localhost:8081",
-            username: "admin",
-            password: "admin123"
-          )
+nexus_upload(
+  nexus_version: 3,
+  mount_path: "",
+  file: "/path/to/file.ipa",
+  repo_id: "artefacts",
+  repo_group_id: "com.fastlane",
+  repo_project_name: "ipa",
+  repo_project_version: "1.13",
+  repo_classifier: "dSYM", # Optional
+  endpoint: "http://localhost:8081",
+  username: "admin",
+  password: "admin123"
+)
 ```
 
 

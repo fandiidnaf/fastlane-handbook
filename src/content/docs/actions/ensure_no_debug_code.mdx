@@ -38,24 +38,24 @@ ensure_no_debug_code(text: "// TODO")
 
 ```ruby
 ensure_no_debug_code(text: "Log.v",
-                          extension: "java")
+  extension: "java")
 ```
 
 ```ruby
 ensure_no_debug_code(text: "NSLog",
-                               path: "./lib",
-                          extension: "m")
+  path: "./lib",
+  extension: "m")
 ```
 
 ```ruby
 ensure_no_debug_code(text: "(^#define DEBUG|NSLog)",
-                               path: "./lib",
-                          extension: "m")
+  path: "./lib",
+  extension: "m")
 ```
 
 ```ruby
 ensure_no_debug_code(text: "<<<<<<",
-                         extensions: ["m", "swift", "java"])
+  extensions: ["m", "swift", "java"])
 ```
 
 

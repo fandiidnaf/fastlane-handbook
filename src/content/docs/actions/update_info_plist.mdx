@@ -33,35 +33,35 @@ Total options available: **6**
 
 ```ruby
 update_info_plist( # update app identifier string
-            plist_path: "path/to/Info.plist",
-            app_identifier: "com.example.newappidentifier"
-          )
+  plist_path: "path/to/Info.plist",
+  app_identifier: "com.example.newappidentifier"
+)
 ```
 
 ```ruby
 update_info_plist( # Change the Display Name of your app
-            plist_path: "path/to/Info.plist",
-            display_name: "MyApp-Beta"
-          )
+  plist_path: "path/to/Info.plist",
+  display_name: "MyApp-Beta"
+)
 ```
 
 ```ruby
 update_info_plist( # Target a specific `xcodeproj` rather than finding the first available one
-            xcodeproj: "path/to/Example.proj",
-            plist_path: "path/to/Info.plist",
-            display_name: "MyApp-Beta"
-          )
+  xcodeproj: "path/to/Example.proj",
+  plist_path: "path/to/Info.plist",
+  display_name: "MyApp-Beta"
+)
 ```
 
 ```ruby
 update_info_plist( # Advanced processing: find URL scheme for particular key and replace value
-            xcodeproj: "path/to/Example.proj",
-            plist_path: "path/to/Info.plist",
-            block: proc do |plist|
-              urlScheme = plist["CFBundleURLTypes"].find{|scheme| scheme["CFBundleURLName"] == "com.acme.default-url-handler"}
-              urlScheme[:CFBundleURLSchemes] = ["acme-production"]
-            end
-          )
+  xcodeproj: "path/to/Example.proj",
+  plist_path: "path/to/Info.plist",
+  block: proc do |plist|
+    urlScheme = plist["CFBundleURLTypes"].find{|scheme| scheme["CFBundleURLName"] == "com.acme.default-url-handler"}
+    urlScheme[:CFBundleURLSchemes] = ["acme-production"]
+  end
+)
 ```
 
 
