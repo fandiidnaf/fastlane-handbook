@@ -3,11 +3,25 @@ title: "screengrab"
 description: "Alias for the `capture_android_screenshots` action"
 ---
 
+<div class="action-metadata-card">
+  <div class="metadata-row">
+    <span class="platform-chip chip-android">
+      <span class="chip-icon">🤖</span>
+      <span class="chip-label">Android Dedicated</span>
+    </span>
+    <span class="category-badge">Category: <code>screenshots</code></span>
+    <a href="/fastlane-handbook/actions-by-platform/#android" class="catalog-link">View all Android Dedicated actions &rarr;</a>
+  </div>
+  <div class="audience-row">
+    <strong>Target Audience:</strong> Native Android developers (Gradle, Google Play Store, Screengrab, Keystore)
+  </div>
+</div>
+
 <div class="community-disclaimer">
   <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
 </div>
 
-**Category:** `screenshots` | **Platforms:** `android`
+**Supported Platforms:** `android`
 
 > Alias for the `capture_android_screenshots` action
 
@@ -18,12 +32,12 @@ Total options available: **22**
 
 | Key | Type | Env Variable | Default | Required | Description |
 | :--- | :--- | :--- | :--- | :---: | :--- |
-| `android_home` | `String` | `-` | `/usr/local/lib/android/sdk` | No | Path to the root of your Android SDK installation, e.g. ~/tools/android-sdk-macosx |
+| `android_home` | `String` | `-` | `/Users/fandi/Library/Android/sdk` | No | Path to the root of your Android SDK installation, e.g. ~/tools/android-sdk-macosx |
 | `build_tools_version` | `String` | `-` | `-` | No | **DEPRECATED!** The Android build tools version to use, e.g. '23.0.2' |
 | `locales` | `Array` | `-` | `["en-US"]` | **Yes** | A list of locales which should be used |
 | `clear_previous_screenshots` | `Fastlane::Boolean` | `SCREENGRAB_CLEAR_PREVIOUS_SCREENSHOTS` | `false` | **Yes** | Enabling this option will automatically clear previously generated screenshots before running screengrab |
 | `output_directory` | `String` | `SCREENGRAB_OUTPUT_DIRECTORY` | `fastlane/metadata/android` | **Yes** | The directory where to store the screenshots |
-| `skip_open_summary` | `Fastlane::Boolean` | `SCREENGRAB_SKIP_OPEN_SUMMARY` | `true` | **Yes** | Don't open the summary after running _screengrab_ |
+| `skip_open_summary` | `Fastlane::Boolean` | `SCREENGRAB_SKIP_OPEN_SUMMARY` | `false` | **Yes** | Don't open the summary after running _screengrab_ |
 | `app_package_name` | `String` | `SCREENGRAB_APP_PACKAGE_NAME` | `-` | **Yes** | The package name of the app under test (e.g. com.yourcompany.yourapp) |
 | `tests_package_name` | `String` | `SCREENGRAB_TESTS_PACKAGE_NAME` | `-` | No | The package name of the tests bundle (e.g. com.yourcompany.yourapp.test) |
 | `use_tests_in_packages` | `Array` | `SCREENGRAB_USE_TESTS_IN_PACKAGES` | `-` | No | Only run tests in these Java packages |

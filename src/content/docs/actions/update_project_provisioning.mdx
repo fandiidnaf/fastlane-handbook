@@ -3,11 +3,25 @@ title: "update_project_provisioning"
 description: "Update projects code signing settings from your provisioning profile"
 ---
 
+<div class="action-metadata-card">
+  <div class="metadata-row">
+    <span class="platform-chip chip-ios">
+      <span class="chip-icon">🍏</span>
+      <span class="chip-label">iOS & Apple</span>
+    </span>
+    <span class="category-badge">Category: <code>code_signing</code></span>
+    <a href="/fastlane-handbook/actions-by-platform/#ios" class="catalog-link">View all iOS & Apple Ecosystem actions &rarr;</a>
+  </div>
+  <div class="audience-row">
+    <strong>Target Audience:</strong> Apple platform developers (iOS, iPadOS, macOS, Xcode, TestFlight, App Store Connect)
+  </div>
+</div>
+
 <div class="community-disclaimer">
   <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
 </div>
 
-**Category:** `code_signing` | **Platforms:** `ios`, `mac`
+**Supported Platforms:** `ios`, `mac`
 
 > Update projects code signing settings from your provisioning profile
 
@@ -31,7 +45,7 @@ Total options available: **7**
 | `target_filter` | `String` | `FL_PROJECT_PROVISIONING_PROFILE_TARGET_FILTER` | `-` | No | A filter for the target name. Use a standard regex |
 | `build_configuration_filter` | `String` | `FL_PROJECT_PROVISIONING_PROFILE_FILTER` | `-` | No | Legacy option, use 'target_filter' instead |
 | `build_configuration` | `String` | `FL_PROJECT_PROVISIONING_PROFILE_BUILD_CONFIGURATION` | `-` | No | A filter for the build configuration name. Use a standard regex. Applied to all configurations if not specified |
-| `certificate` | `String` | `FL_PROJECT_PROVISIONING_CERTIFICATE_PATH` | `/tmp/AppleIncRootCertificate.cer` | **Yes** | Path to apple root certificate |
+| `certificate` | `String` | `FL_PROJECT_PROVISIONING_CERTIFICATE_PATH` | `/var/folders/ms/6l7tqllj7s15qt4l88v1mw080000gn/T/AppleIncRootCertificate.cer` | **Yes** | Path to apple root certificate |
 | `code_signing_identity` | `String` | `FL_PROJECT_PROVISIONING_CODE_SIGN_IDENTITY` | `-` | No | Code sign identity for build configuration |
 
 

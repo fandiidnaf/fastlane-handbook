@@ -3,11 +3,25 @@ title: "get_provisioning_profile"
 description: "Generates a provisioning profile, saving it in the current folder (via _sigh_)"
 ---
 
+<div class="action-metadata-card">
+  <div class="metadata-row">
+    <span class="platform-chip chip-ios">
+      <span class="chip-icon">🍏</span>
+      <span class="chip-label">iOS & Apple</span>
+    </span>
+    <span class="category-badge">Category: <code>code_signing</code></span>
+    <a href="/fastlane-handbook/actions-by-platform/#ios" class="catalog-link">View all iOS & Apple Ecosystem actions &rarr;</a>
+  </div>
+  <div class="audience-row">
+    <strong>Target Audience:</strong> Apple platform developers (iOS, iPadOS, macOS, Xcode, TestFlight, App Store Connect)
+  </div>
+</div>
+
 <div class="community-disclaimer">
   <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
 </div>
 
-**Category:** `code_signing` | **Platforms:** `ios`, `mac`
+**Supported Platforms:** `ios`, `mac`
 
 > Generates a provisioning profile, saving it in the current folder (via _sigh_)
 
@@ -42,7 +56,7 @@ Total options available: **30**
 | `filename` | `String` | `SIGH_PROFILE_FILE_NAME` | `-` | No | Filename to use for the generated provisioning profile (must include .mobileprovision) |
 | `skip_fetch_profiles` | `String` | `SIGH_SKIP_FETCH_PROFILES` | `false` | **Yes** | Skips the verification of existing profiles which is useful if you have thousands of profiles |
 | `include_all_certificates` | `String` | `SIGH_INCLUDE_ALL_CERTIFICATES` | `false` | **Yes** | Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type |
-| `skip_certificate_verification` | `String` | `SIGH_SKIP_CERTIFICATE_VERIFICATION` | `true` | **Yes** | Skips the verification of the certificates for every existing profiles. This will make sure the provisioning profile can be used on the local machine |
+| `skip_certificate_verification` | `String` | `SIGH_SKIP_CERTIFICATE_VERIFICATION` | `false` | **Yes** | Skips the verification of the certificates for every existing profiles. This will make sure the provisioning profile can be used on the local machine |
 | `platform` | `String` | `SIGH_PLATFORM` | `ios` | **Yes** | Set the provisioning profile's platform (i.e. ios, tvos, macos, catalyst) |
 | `readonly` | `String` | `SIGH_READONLY` | `false` | No | Only fetch existing profile, don't generate new ones |
 | `template_name` | `String` | `SIGH_PROVISIONING_PROFILE_TEMPLATE_NAME` | `-` | No | **DEPRECATED!** Removed since May 2025 on App Store Connect API OpenAPI v3.8.0 - Learn more: https://docs.fastlane.tools/actions/match/#managed-capabilities - The name of provisioning profile template. If the developer account has provisioning profile templates (aka: custom entitlements), the template name can be found by inspecting the Entitlements drop-down while creating/editing a provisioning profile (e.g. "Apple Pay Pass Suppression Development") |

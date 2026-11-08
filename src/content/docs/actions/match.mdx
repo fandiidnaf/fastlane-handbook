@@ -3,11 +3,25 @@ title: "match"
 description: "Alias for the `sync_code_signing` action"
 ---
 
+<div class="action-metadata-card">
+  <div class="metadata-row">
+    <span class="platform-chip chip-ios">
+      <span class="chip-icon">🍏</span>
+      <span class="chip-label">iOS & Apple</span>
+    </span>
+    <span class="category-badge">Category: <code>code_signing</code></span>
+    <a href="/fastlane-handbook/actions-by-platform/#ios" class="catalog-link">View all iOS & Apple Ecosystem actions &rarr;</a>
+  </div>
+  <div class="audience-row">
+    <strong>Target Audience:</strong> Apple platform developers (iOS, iPadOS, macOS, Xcode, TestFlight, App Store Connect)
+  </div>
+</div>
+
 <div class="community-disclaimer">
   <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
 </div>
 
-**Category:** `code_signing` | **Platforms:** `ios`, `mac`
+**Supported Platforms:** `ios`, `mac`
 
 > Alias for the `sync_code_signing` action
 
@@ -24,7 +38,7 @@ Total options available: **59**
 | `type` | `String` | `MATCH_TYPE` | `development` | **Yes** | Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution, developer_id_installer |
 | `additional_cert_types` | `Array` | `MATCH_ADDITIONAL_CERT_TYPES` | `-` | No | Create additional cert types needed for macOS installers (valid values: mac_installer_distribution, developer_id_installer) |
 | `readonly` | `Fastlane::Boolean` | `MATCH_READONLY` | `false` | **Yes** | Only fetch existing certificates and profiles, don't generate new ones |
-| `generate_apple_certs` | `Fastlane::Boolean` | `MATCH_GENERATE_APPLE_CERTS` | `false` | **Yes** | Create a certificate type for Xcode 11 and later (Apple Development or Apple Distribution) |
+| `generate_apple_certs` | `Fastlane::Boolean` | `MATCH_GENERATE_APPLE_CERTS` | `true` | **Yes** | Create a certificate type for Xcode 11 and later (Apple Development or Apple Distribution) |
 | `skip_provisioning_profiles` | `Fastlane::Boolean` | `MATCH_SKIP_PROVISIONING_PROFILES` | `false` | **Yes** | Skip syncing provisioning profiles |
 | `app_identifier` | `Array` | `MATCH_APP_IDENTIFIER` | `-` | **Yes** | The bundle identifier(s) of your app (comma-separated string or array of strings) |
 | `api_key_path` | `String` | `-` | `-` | No | Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file) |

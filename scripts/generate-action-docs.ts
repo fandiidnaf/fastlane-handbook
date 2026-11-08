@@ -35,10 +35,80 @@ interface Action {
   source_url: string | null;
 }
 
+interface PlatformGroupInfo {
+  id: 'android' | 'ios' | 'dual' | 'cross' | 'mac';
+  name: string;
+  badgeLabel: string;
+  badgeClass: string;
+  targetAudience: string;
+  icon: string;
+}
+
+function getPlatformGroup(platforms: string[]): PlatformGroupInfo {
+  const p = platforms.map(x => x.toLowerCase());
+  const hasAndroid = p.includes('android');
+  const hasIos = p.includes('ios');
+  const hasMac = p.includes('mac');
+
+  if (hasAndroid && !hasIos && !hasMac) {
+    return {
+      id: 'android',
+      name: 'Android Dedicated',
+      badgeLabel: 'Android Dedicated',
+      badgeClass: 'chip-android',
+      targetAudience: 'Native Android developers (Gradle, Google Play Store, Screengrab, Keystore)',
+      icon: '🤖',
+    };
+  }
+
+  if (hasIos && !hasAndroid) {
+    return {
+      id: 'ios',
+      name: 'iOS & Apple Ecosystem',
+      badgeLabel: hasMac ? 'iOS & Apple' : 'iOS Only',
+      badgeClass: 'chip-ios',
+      targetAudience: 'Apple platform developers (iOS, iPadOS, macOS, Xcode, TestFlight, App Store Connect)',
+      icon: '🍏',
+    };
+  }
+
+  if (hasAndroid && hasIos && !hasMac) {
+    return {
+      id: 'dual',
+      name: 'Mobile Dual-Stack',
+      badgeLabel: 'Android + iOS Dual-Stack',
+      badgeClass: 'chip-dual',
+      targetAudience: 'Mobile engineers shipping unified features to both Google Play Store and iOS App Store',
+      icon: '📱',
+    };
+  }
+
+  if (hasMac && !hasAndroid && !hasIos) {
+    return {
+      id: 'mac',
+      name: 'macOS Desktop Dedicated',
+      badgeLabel: 'macOS Desktop Only',
+      badgeClass: 'chip-mac',
+      targetAudience: 'macOS developers and host-specific Xcode toolchain environments',
+      icon: '🖥️',
+    };
+  }
+
+  return {
+    id: 'cross',
+    name: 'Universal / Cross-Platform',
+    badgeLabel: 'Universal (Cross-Platform)',
+    badgeClass: 'chip-cross',
+    targetAudience: 'Universal workflows (Git, Slack, shell execution, CI/CD orchestration across Linux/macOS/Windows)',
+    icon: '🌐',
+  };
+}
+
 const rootDir = process.cwd();
 const actionsPath = path.join(rootDir, 'src/data/fastlane-actions.json');
 const docsActionsDir = path.join(rootDir, 'src/content/docs/actions');
 const docsDeprecatedDir = path.join(rootDir, 'src/content/docs/deprecated-actions');
+const catalogMdxPath = path.join(rootDir, 'src/content/docs/actions-by-platform.mdx');
 
 if (!fs.existsSync(actionsPath)) {
   console.error(`Actions file not found: ${actionsPath}`);
@@ -106,8 +176,6 @@ function cleanRubyExample(code: string): string {
       continue;
     }
 
-    // Check if this line closes a block or paren
-    // Closing tokens: ), ], }, end, else, elsif, rescue, ensure
     const isClosing = /^(\)|\]|\}|end\b|else\b|elsif\b|rescue\b|ensure\b)/.test(line);
     if (isClosing && indent > 0) {
       indent--;
@@ -115,14 +183,12 @@ function cleanRubyExample(code: string): string {
 
     output.push('  '.repeat(indent) + line);
 
-    // Count bracket pairs
     let opens = 0;
     for (const char of line) {
       if (char === '(' || char === '{' || char === '[') opens++;
       if (char === ')' || char === '}' || char === ']') opens--;
     }
 
-    // Check keywords that open blocks: do, begin, class, module, def, else, elsif, rescue, ensure
     if (
       /\bdo(\s*\|[^|]*\|)?\s*$/.test(line) ||
       /^(class|module|def|begin|case|else|elsif|rescue|ensure)\b/.test(line) ||
@@ -152,9 +218,11 @@ for (const action of actions) {
   if (isDep) deprecatedCount++;
   else activeCount++;
 
+  const group = getPlatformGroup(action.platforms);
+
   const platformsBadge = action.platforms.length > 0
     ? action.platforms.map(p => `\`${p}\``).join(', ')
-    : '`All platforms (cross-platform)`';
+    : '`Universal / Cross-platform`';
 
   let optionsSection = '';
   if (action.options && action.options.length > 0) {
@@ -219,16 +287,32 @@ This action is marked as **DEPRECATED** in upstream Fastlane. It may no longer b
 :::\n\n`
     : '';
 
+  const metadataCardHtml = `<div class="action-metadata-card">
+  <div class="metadata-row">
+    <span class="platform-chip ${group.badgeClass}">
+      <span class="chip-icon">${group.icon}</span>
+      <span class="chip-label">${group.badgeLabel}</span>
+    </span>
+    <span class="category-badge">Category: <code>${action.category}</code></span>
+    ${!isDep ? `<a href="/fastlane-handbook/actions-by-platform/#${group.id}" class="catalog-link">View all ${group.name} actions &rarr;</a>` : ''}
+  </div>
+  <div class="audience-row">
+    <strong>Target Audience:</strong> ${group.targetAudience}
+  </div>
+</div>`;
+
   const mdxContent = `---
 title: ${JSON.stringify(action.name + (isDep ? ' [DEPRECATED]' : ''))}
 description: ${JSON.stringify(safeDesc)}
 ---
 
-${deprecationNotice}<div class="community-disclaimer">
+${deprecationNotice}${metadataCardHtml}
+
+<div class="community-disclaimer">
   <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
 </div>
 
-**Category:** \`${action.category}\` | **Platforms:** ${platformsBadge}
+**Supported Platforms:** ${platformsBadge}
 
 ${action.description ? `> ${cleanDetails(action.description)}\n` : ''}
 ${detailsSection}
@@ -246,4 +330,96 @@ ${examplesSection}
   fs.writeFileSync(filePath, mdxContent, 'utf8');
 }
 
+// Generate the Comprehensive Actions by Platform Catalog
+const activeActions = actions.filter(a => !a.is_deprecated);
+const groups: PlatformGroupInfo[] = [
+  {
+    id: 'android',
+    name: 'Android Dedicated Actions',
+    badgeLabel: 'Android Dedicated',
+    badgeClass: 'chip-android',
+    targetAudience: 'Native Android developers managing Gradle builds, signing keystores, Google Play Store uploads (supply), and emulator screenshots (screengrab).',
+    icon: '🤖',
+  },
+  {
+    id: 'ios',
+    name: 'iOS & Apple Ecosystem Actions',
+    badgeLabel: 'iOS & Apple',
+    badgeClass: 'chip-ios',
+    targetAudience: 'Apple developers building Swift/Obj-C codebases with Xcode, managing TestFlight (pilot), App Store releases (deliver), code signing (match, cert, sigh), and UI screenshots (snapshot).',
+    icon: '🍏',
+  },
+  {
+    id: 'dual',
+    name: 'Mobile Dual-Stack Actions',
+    badgeLabel: 'Android + iOS Dual-Stack',
+    badgeClass: 'chip-dual',
+    targetAudience: 'Cross-platform and multi-app engineers managing Crashlytics symbols, TestFairy distributions, and push notification configuration across both major mobile OSs.',
+    icon: '📱',
+  },
+  {
+    id: 'cross',
+    name: 'Universal & Cross-Platform CI Actions',
+    badgeLabel: 'Universal CI Tools',
+    badgeClass: 'chip-cross',
+    targetAudience: 'Any CI/CD engineer orchestrating Git tags, Slack / Teams / Discord release announcements, S3 file staging, version bumping, and shell scripting on macOS, Linux, or Windows.',
+    icon: '🌐',
+  },
+  {
+    id: 'mac',
+    name: 'macOS Desktop Dedicated Actions',
+    badgeLabel: 'macOS Desktop',
+    badgeClass: 'chip-mac',
+    targetAudience: 'macOS app developers and build pipelines that configure Xcode toolchains and desktop-only build environments.',
+    icon: '🖥️',
+  },
+];
+
+let catalogMarkdown = `---
+title: Fastlane Actions Catalog by Platform
+description: Complete index of all 222 active Fastlane actions categorized by platform (Android, iOS & Apple, Mobile Dual-Stack, Cross-Platform, and macOS).
+---
+
+<div class="platform-catalog-header">
+  <p class="catalog-intro">
+    Discover and navigate all <strong>${activeActions.length} active Fastlane actions</strong> grouped by target operating system and mobile platform. Use this catalog to quickly identify the exact tools suited for your stack.
+  </p>
+  <div class="platform-stats-grid">
+`;
+
+for (const grp of groups) {
+  const count = activeActions.filter(a => getPlatformGroup(a.platforms).id === grp.id).length;
+  catalogMarkdown += `    <a href="#${grp.id}" class="stat-card ${grp.badgeClass}">
+      <span class="stat-icon">${grp.icon}</span>
+      <span class="stat-count">${count} Actions</span>
+      <span class="stat-title">${grp.name}</span>
+    </a>\n`;
+}
+
+catalogMarkdown += `  </div>
+</div>
+
+---
+`;
+
+for (const grp of groups) {
+  const grpActions = activeActions.filter(a => getPlatformGroup(a.platforms).id === grp.id);
+  catalogMarkdown += `\n<h2 id="${grp.id}">${grp.icon} ${grp.name} (${grpActions.length} Actions)</h2>\n\n`;
+  catalogMarkdown += `> **Who it's for:** ${grp.targetAudience}\n\n`;
+  catalogMarkdown += `| Action | Category | Description | Parameters | Source |\n`;
+  catalogMarkdown += `| :--- | :--- | :--- | :---: | :---: |\n`;
+
+  for (const act of grpActions) {
+    const rawDesc = stripDeadLinks(act.description || '');
+    const cleanDesc = rawDesc ? escapeMarkdownTable(rawDesc.slice(0, 160) + (rawDesc.length > 160 ? '...' : '')) : 'Action documentation';
+    const optCount = act.options ? act.options.length : 0;
+    const optLabel = optCount === 0 ? '-' : `\`${optCount}\``;
+    const upstreamLink = act.source_url ? `[Ruby Code](${act.source_url})` : '-';
+    catalogMarkdown += `| [\`${act.name}\`](/fastlane-handbook/actions/${act.name}/) | \`${act.category}\` | ${cleanDesc} | ${optLabel} | ${upstreamLink} |\n`;
+  }
+}
+
+fs.writeFileSync(catalogMdxPath, catalogMarkdown, 'utf8');
+
 console.log(`==> Extracted: ${activeCount} active actions and ${deprecatedCount} deprecated actions.`);
+console.log(`==> Generated platform catalog at ${catalogMdxPath}`);

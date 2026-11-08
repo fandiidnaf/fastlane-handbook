@@ -19,20 +19,47 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Check Latest Fastlane Version
+        id: fastlane-remote
+        run: |
+          LATEST_V=$(curl -s https://rubygems.org/api/v1/versions/fastlane/latest.json | jq -r .version)
+          echo "version=${LATEST_V}" >> "$GITHUB_OUTPUT"
+          echo "Upstream Fastlane version on RubyGems: ${LATEST_V}"
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 'ruby' # Uses latest stable Ruby (Ruby 4.0.x)
+          ruby-version: '3.3'
+
+      - name: Cache Fastlane Gem
+        uses: actions/cache@v4
+        id: gem-cache
+        with:
+          path: ~/.local/share/gem
+          key: ${{ runner.os }}-gem-fastlane-${{ steps.fastlane-remote.outputs.version }}
+          restore-keys: |
+            ${{ runner.os }}-gem-fastlane-
+
+      - name: Install Fastlane
+        run: |
+          gem install fastlane --user-install --no-document
+          echo "$(gem environment user_gemhome)/bin" >> "$GITHUB_PATH"
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.4.4
 
-      - name: Install Dependencies
-        run: |
-          gem install fastlane --no-document
-          bun install --frozen-lockfile
+      - name: Cache Bun Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-cache-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-cache-
+
+      - name: Install Node Dependencies
+        run: bun install --frozen-lockfile
 
       - name: Extract Actions & Generate Docs
         run: |
@@ -55,7 +82,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           LATEST_VERSION=$(bun -e 'console.log(require("./src/data/fastlane-version.json").fastlane_version)')
-          git add src/data/ src/content/docs/actions/ src/content/docs/deprecated-actions/
+          git add src/data/ src/content/docs/actions/ src/content/docs/deprecated-actions/ src/content/docs/actions-by-platform.mdx
           git commit -m "chore(upstream): sync fastlane actions to v${LATEST_VERSION}"
           git push origin main
 

@@ -10,6 +10,32 @@ require 'time'
 puts "==> Loading Fastlane actions from gem (v#{Fastlane::VERSION})..."
 Fastlane.load_actions
 
+# Platform Virtualization for Documentation Generator:
+# Fastlane action implementations (such as capture_ios_screenshots, snapshot, match)
+# gate options behind `Helper.mac?` or `xcode_at_least?`. Because this documentation
+# generator documents all platforms for mobile developers worldwide, we virtualize
+# macOS and Xcode environment queries so that 100% of parameters are extracted,
+# even when this script executes on a Linux host (e.g. GitHub Actions ubuntu-latest).
+module FastlaneCore
+  module Helper
+    def self.mac?
+      true
+    end
+
+    def self.is_mac?
+      true
+    end
+
+    def self.xcode_at_least?(_version = nil)
+      true
+    end
+
+    def self.xcode_available?
+      true
+    end
+  end
+end
+
 extracted_actions = []
 
 Fastlane::ActionsList.all_actions do |action, name|

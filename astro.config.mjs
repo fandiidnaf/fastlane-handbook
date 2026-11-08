@@ -177,7 +177,13 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Core Action Reference',
+          label: 'Actions Directory',
+          items: [
+            { label: '🧭 Catalog by Platform', slug: 'actions-by-platform' },
+          ],
+        },
+        {
+          label: 'Core Action Reference (A-Z)',
           collapsed: true,
           autogenerate: { directory: 'actions' },
         },
