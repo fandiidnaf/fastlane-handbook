@@ -20,6 +20,12 @@ flowchart TD
 
 ### Milestone 1: The Core Foundation
 - **Goal**: Understand the Fastlane mental model and avoid system Ruby traps.
+- **Current Fastlane Baseline**: Fastlane `v2.241.2` strictly requires **Ruby >= 3.2.0** (Ruby `3.3.0+` is officially recommended).
+
+:::caution[The macOS System Ruby Trap]
+macOS still ships with an outdated system Ruby (v2.6) which is unsupported by modern Fastlane versions. Attempting to run `sudo gem install fastlane` will lead to permission errors or broken dependencies. **Always** install Ruby via a version manager like `rbenv`, `mise`, or install Fastlane via Homebrew (`brew install fastlane`).
+:::
+
 - **What to study**:
   1. [Fastlane Architecture & Mental Model](/fastlane-handbook/start/architecture/)
   2. [CLI & Bundler vs System Gem](/fastlane-handbook/rosetta-stone/cli-and-bundler/) (Locking versions with `Gemfile.lock`)

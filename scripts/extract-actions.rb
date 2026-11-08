@@ -128,12 +128,24 @@ puts "==> Successfully wrote #{extracted_actions.size} actions to #{actions_json
 
 # Save fastlane-version.json
 version_json_path = File.join(data_dir, 'fastlane-version.json')
+fastlane_spec = begin
+  Gem::Specification.find_by_name('fastlane')
+rescue StandardError
+  nil
+end
+
+min_ruby = fastlane_spec ? fastlane_spec.required_ruby_version.to_s : '>= 3.2.0'
+
 version_info = {
   fastlane_version: Fastlane::VERSION,
+  min_ruby_version: min_ruby,
+  recommended_ruby_version: ">= 3.3.0",
   extracted_at: Time.now.utc.iso8601,
   total_actions: extracted_actions.size,
+  active_actions: extracted_actions.count { |a| !a[:is_deprecated] },
   deprecated_actions: extracted_actions.count { |a| a[:is_deprecated] },
-  upstream_repo: "https://github.com/fastlane/fastlane"
+  upstream_repo: "https://github.com/fastlane/fastlane",
+  rubygems_url: "https://rubygems.org/gems/fastlane"
 }
 File.write(version_json_path, JSON.pretty_generate(version_info))
 puts "==> Wrote version info to #{version_json_path}"

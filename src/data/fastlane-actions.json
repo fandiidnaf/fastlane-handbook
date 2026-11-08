@@ -8383,7 +8383,7 @@
         "env_name": "PRODUCE_SKU",
         "description": "SKU Number (e.g. '1234')",
         "data_type": "String",
-        "default_value": "1794058221",
+        "default_value": "1794114816",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -11510,7 +11510,7 @@
         "env_name": "",
         "description": "[Advanced] A block to customize your screenshots' device orientation",
         "data_type": "string_callback",
-        "default_value": "#<Proc:0x000000012382bc38 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
+        "default_value": "#<Proc:0x000000012250a0f0 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -11711,7 +11711,7 @@
         "env_name": "",
         "description": "[Advanced] A block to customize your screenshots' device orientation",
         "data_type": "string_callback",
-        "default_value": "#<Proc:0x000000012382bc38 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
+        "default_value": "#<Proc:0x000000012250a0f0 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -20281,7 +20281,7 @@
         "env_name": "PRODUCE_SKU",
         "description": "SKU Number (e.g. '1234')",
         "data_type": "String",
-        "default_value": "1794058221",
+        "default_value": "1794114816",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
