@@ -8383,7 +8383,7 @@
         "env_name": "PRODUCE_SKU",
         "description": "SKU Number (e.g. '1234')",
         "data_type": "String",
-        "default_value": "1794146850",
+        "default_value": "1794235295",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -8786,7 +8786,7 @@
         "env_name": "GITHUB_PULL_REQUEST_HEAD",
         "description": "The name of the branch where your changes are implemented (defaults to the current branch name)",
         "data_type": "String",
-        "default_value": "main",
+        "default_value": "git rev-parse --abbrev-ref HEAD",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -11510,7 +11510,7 @@
         "env_name": "",
         "description": "[Advanced] A block to customize your screenshots' device orientation",
         "data_type": "string_callback",
-        "default_value": "#<Proc:0x00000001235721e0 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
+        "default_value": "#<Proc:0x00000001280f6d28 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -11711,7 +11711,7 @@
         "env_name": "",
         "description": "[Advanced] A block to customize your screenshots' device orientation",
         "data_type": "string_callback",
-        "default_value": "#<Proc:0x00000001235721e0 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
+        "default_value": "#<Proc:0x00000001280f6d28 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -20281,7 +20281,7 @@
         "env_name": "PRODUCE_SKU",
         "description": "SKU Number (e.g. '1234')",
         "data_type": "String",
-        "default_value": "1794146850",
+        "default_value": "1794235295",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null

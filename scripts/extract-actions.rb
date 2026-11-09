@@ -16,6 +16,25 @@ Fastlane.load_actions
 # generator documents all platforms for mobile developers worldwide, we virtualize
 # macOS and Xcode environment queries so that 100% of parameters are extracted,
 # even when this script executes on a Linux host (e.g. GitHub Actions ubuntu-latest).
+require 'open3'
+module Open3
+  class << self
+    alias_method :original_capture3, :capture3 unless method_defined?(:original_capture3)
+    def capture3(*cmd, **opts)
+      cmd_str = cmd.join(' ')
+      if cmd_str.include?('xcodebuild') || cmd_str.include?('xcode-select') || cmd_str.include?('xcrun')
+        return ["Xcode 16.0\nBuild version 16A242d\niOS 18.0 (22A3351)", "", Struct.new(:success?).new(true)]
+      end
+      original_capture3(*cmd, **opts)
+    rescue Errno::ENOENT => e
+      ["", e.message, Struct.new(:success?).new(false)]
+    end
+  end
+end
+
+class SpecHelper; end
+ENV['SNAPSHOT_IOS_VERSION'] ||= '18.0'
+
 module FastlaneCore
   module Helper
     def self.mac?
@@ -31,6 +50,14 @@ module FastlaneCore
     end
 
     def self.xcode_available?
+      true
+    end
+
+    def self.test?
+      true
+    end
+
+    def self.is_test?
       true
     end
   end
