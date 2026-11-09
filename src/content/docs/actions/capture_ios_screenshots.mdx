@@ -82,7 +82,7 @@ Total options available: **54**
 | `only_testing` | `String` | `SNAPSHOT_ONLY_TESTING` | `-` | No | Array of strings matching Test Bundle/Test Suite/Test Cases to run |
 | `skip_testing` | `String` | `SNAPSHOT_SKIP_TESTING` | `-` | No | Array of strings matching Test Bundle/Test Suite/Test Cases to skip |
 | `run_rosetta_simulator` | `Fastlane::Boolean` | `SNAPSHOT_RUN_ROSETTA_SIMULATOR` | `false` | **Yes** | Run simulator in a Rosetta mode |
-| `xcodebuild_formatter` | `String` | `-` | `xcpretty` | **Yes** | xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/) |
+| `xcodebuild_formatter` | `String` | `-` | `xcbeautify` | **Yes** | xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/) |
 | `xcpretty_args` | `String` | `SNAPSHOT_XCPRETTY_ARGS` | `-` | No | **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Additional xcpretty arguments |
 | `disable_xcpretty` | `Fastlane::Boolean` | `SNAPSHOT_DISABLE_XCPRETTY` | `-` | No | Disable xcpretty formatting of build |
 | `suppress_xcode_output` | `Fastlane::Boolean` | `SNAPSHOT_SUPPRESS_XCODE_OUTPUT` | `-` | No | Suppress the output of xcodebuild to stdout. Output is still saved in buildlog_path |
