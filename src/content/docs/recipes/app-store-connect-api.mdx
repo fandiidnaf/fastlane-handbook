@@ -51,3 +51,22 @@ If you define the following standard environment variables, actions like `match`
 - `APP_STORE_CONNECT_API_KEY_KEY_ID`
 - `APP_STORE_CONNECT_API_KEY_ISSUER_ID`
 - `APP_STORE_CONNECT_API_KEY_KEY_CONTENT`
+
+---
+
+## 3. Programmatic Usage with Spaceship
+
+The same App Store Connect API Key can be initialized directly inside Ruby code to manage capabilities, devices, and TestFlight groups programmatically:
+
+```ruby
+Spaceship::ConnectAPI.token = Spaceship::ConnectAPI::Token.create(
+  key_id: ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"],
+  issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+  filepath: File.expand_path("AuthKey.p8", __dir__)
+)
+```
+
+For full implementations, see:
+- [Programmatic Capabilities & Bundle IDs (Spaceship)](/fastlane-handbook/recipes/spaceship-bundle-id-capabilities/)
+- [Spaceship API Reference & Internals](/fastlane-handbook/internals/spaceship-deep-dive/)
+

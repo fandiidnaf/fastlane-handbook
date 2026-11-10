@@ -1,0 +1,361 @@
+{
+  "fastlane_version": "2.241.2",
+  "extracted_at": "2026-11-10T01:55:05Z",
+  "total_capabilities": 59,
+  "capabilities": [
+    {
+      "constant": "ACCESS_WIFI_INFORMATION",
+      "value": "ACCESS_WIFI_INFORMATION",
+      "description": "Access Wi-Fi Information & Network Extension Wi-Fi info",
+      "settings": "None"
+    },
+    {
+      "constant": "APPLE_ID_AUTH",
+      "value": "APPLE_ID_AUTH",
+      "description": "Sign in with Apple authentication",
+      "settings": "`APPLE_ID_AUTH_APP_CONSENT` (`PRIMARY_APP_CONSENT`)"
+    },
+    {
+      "constant": "APPLE_PAY",
+      "value": "APPLE_PAY",
+      "description": "Apple Pay Merchant payment processing",
+      "settings": "Linked Merchant Identifiers"
+    },
+    {
+      "constant": "APP_ATTEST",
+      "value": "APP_ATTEST",
+      "description": "DeviceCheck & App Attest fraud protection",
+      "settings": "None"
+    },
+    {
+      "constant": "APP_GROUPS",
+      "value": "APP_GROUPS",
+      "description": "Shared data storage between App & App Extensions",
+      "settings": "Linked Group Identifiers"
+    },
+    {
+      "constant": "ASSOCIATED_DOMAINS",
+      "value": "ASSOCIATED_DOMAINS",
+      "description": "Universal Links, App Clips, & Shared Web Credentials",
+      "settings": "Configured via `.entitlements`"
+    },
+    {
+      "constant": "AUTOFILL_CREDENTIAL_PROVIDER",
+      "value": "AUTOFILL_CREDENTIAL_PROVIDER",
+      "description": "Password manager credential provider extensions",
+      "settings": "None"
+    },
+    {
+      "constant": "CARPLAY_MESSAGING",
+      "value": "CARPLAY_MESSAGING",
+      "description": "CarPlay messaging readout & Siri compose",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "CARPLAY_NAVIGATION",
+      "value": "CARPLAY_NAVIGATION",
+      "description": "CarPlay turn-by-turn navigation & maps",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "CARPLAY_PLAYABLE_CONTENT",
+      "value": "CARPLAY_PLAYABLE_CONTENT",
+      "description": "CarPlay audio streaming & playable content",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "CARPLAY_VOIP",
+      "value": "CARPLAY_VOIP",
+      "description": "CarPlay telephony & VoIP call routing",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "CLASSKIT",
+      "value": "CLASSKIT",
+      "description": "ClassKit student progress recording",
+      "settings": "None"
+    },
+    {
+      "constant": "COREMEDIA_HLS_LOW_LATENCY",
+      "value": "COREMEDIA_HLS_LOW_LATENCY",
+      "description": "Low-latency HLS video broadcasting",
+      "settings": "None"
+    },
+    {
+      "constant": "CRITICAL_ALERTS",
+      "value": "CRITICAL_ALERTS",
+      "description": "Bypasses Do Not Disturb / Mute hardware switch",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "DATA_PROTECTION",
+      "value": "DATA_PROTECTION",
+      "description": "Complete / Protected filesystem encryption",
+      "settings": "`DATA_PROTECTION_PERMISSION_LEVEL`"
+    },
+    {
+      "constant": "DECLARED_AGE_RANGE",
+      "value": "DECLARED_AGE_RANGE",
+      "description": "Declared Age Range verification (App Store Connect compliance)",
+      "settings": "None"
+    },
+    {
+      "constant": "DRIVERKIT",
+      "value": "DRIVERKIT",
+      "description": "DriverKit user-space hardware driver execution",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "DRIVERKIT_ENDPOINT_SECURITY",
+      "value": "DRIVERKIT_ENDPOINT_SECURITY",
+      "description": "Endpoint Security client extension driver",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "DRIVERKIT_HID",
+      "value": "DRIVERKIT_HID",
+      "description": "Human Interface Device (HID) driver",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "DRIVERKIT_HID_DEVICE",
+      "value": "DRIVERKIT_HID_DEVICE",
+      "description": "HID USB/PCIe hardware device access",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "DRIVERKIT_HID_EVENT_SERVICE",
+      "value": "DRIVERKIT_HID_EVENT_SERVICE",
+      "description": "HID Event Service custom event dispatch",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "DRIVERKIT_NETWORKING",
+      "value": "DRIVERKIT_NETWORKING",
+      "description": "Network interface Ethernet driver",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "DRIVERKIT_SERIAL",
+      "value": "DRIVERKIT_SERIAL",
+      "description": "Serial / USB-UART communications driver",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "EXTENDED_VIRTUAL_ADDRESSING",
+      "value": "EXTENDED_VIRTUAL_ADDRESSING",
+      "description": "Increased 64-bit virtual memory address space",
+      "settings": "None"
+    },
+    {
+      "constant": "FAMILY_CONTROLS",
+      "value": "FAMILY_CONTROLS",
+      "description": "Screen Time API parental & usage controls",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "FILEPROVIDER_TESTINGMODE",
+      "value": "FILEPROVIDER_TESTINGMODE",
+      "description": "Cloud FileProvider framework testing mode",
+      "settings": "None"
+    },
+    {
+      "constant": "FONT_INSTALLATION",
+      "value": "FONT_INSTALLATION",
+      "description": "Dynamic system font provider extensions",
+      "settings": "None"
+    },
+    {
+      "constant": "GAME_CENTER",
+      "value": "GAME_CENTER",
+      "description": "Apple Game Center achievements & leaderboards",
+      "settings": "`GAME_CENTER_SETTING`"
+    },
+    {
+      "constant": "GROUP_ACTIVITIES",
+      "value": "GROUP_ACTIVITIES",
+      "description": "SharePlay synchronized group experiences",
+      "settings": "None"
+    },
+    {
+      "constant": "HEALTHKIT",
+      "value": "HEALTHKIT",
+      "description": "HealthKit health & clinical record access",
+      "settings": "None"
+    },
+    {
+      "constant": "HEALTHKIT_RECALIBRATE_ESTIMATES",
+      "value": "HEALTHKIT_RECALIBRATE_ESTIMATES",
+      "description": "HealthKit custom baseline recalibration",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "HLS_INTERSTITIAL_PREVIEW",
+      "value": "HLS_INTERSTITIAL_PREVIEW",
+      "description": "HLS video stream interstitial ad preview",
+      "settings": "None"
+    },
+    {
+      "constant": "HOMEKIT",
+      "value": "HOMEKIT",
+      "description": "HomeKit connected smart home accessories",
+      "settings": "None"
+    },
+    {
+      "constant": "HOTSPOT_HELPER_MANAGED",
+      "value": "HOTSPOT_HELPER_MANAGED",
+      "description": "MDM-managed Hotspot Helper Wi-Fi configuration",
+      "settings": "Apple Special Approval Required"
+    },
+    {
+      "constant": "HOT_SPOT",
+      "value": "HOT_SPOT",
+      "description": "Hotspot Helper Wi-Fi network configuration",
+      "settings": "None"
+    },
+    {
+      "constant": "ICLOUD",
+      "value": "ICLOUD",
+      "description": "iCloud Key-Value Storage & CloudKit database",
+      "settings": "`ICLOUD_VERSION`"
+    },
+    {
+      "constant": "INTER_APP_AUDIO",
+      "value": "INTER_APP_AUDIO",
+      "description": "Legacy Inter-App Audio routing",
+      "settings": "None"
+    },
+    {
+      "constant": "IN_APP_PURCHASE",
+      "value": "IN_APP_PURCHASE",
+      "description": "StoreKit In-App Purchases & Subscriptions",
+      "settings": "None"
+    },
+    {
+      "constant": "IPAD_CAMERA_MULTITASKING",
+      "value": "IPAD_CAMERA_MULTITASKING",
+      "description": "iPad Multitasking Camera access while in Split View",
+      "settings": "None"
+    },
+    {
+      "constant": "MAPS",
+      "value": "MAPS",
+      "description": "Turn-by-turn routing app coverage document",
+      "settings": "None"
+    },
+    {
+      "constant": "MARZIPAN",
+      "value": "MARZIPAN",
+      "description": "Mac Catalyst cross-platform app porting",
+      "settings": "None"
+    },
+    {
+      "constant": "MDM_MANAGED_ASSOCIATED_DOMAINS",
+      "value": "MDM_MANAGED_ASSOCIATED_DOMAINS",
+      "description": "MDM-managed Associated Domains & Enterprise Universal Links",
+      "settings": "None"
+    },
+    {
+      "constant": "MULTIPATH",
+      "value": "MULTIPATH",
+      "description": "Multipath TCP (MPTCP) network failover",
+      "settings": "None"
+    },
+    {
+      "constant": "MUSIC_KIT",
+      "value": "MUSIC_KIT",
+      "description": "Apple Music catalog & personal subscriber library",
+      "settings": "None"
+    },
+    {
+      "constant": "NETWORK_CUSTOM_PROTOCOL",
+      "value": "NETWORK_CUSTOM_PROTOCOL",
+      "description": "Custom network packet tunneling protocol",
+      "settings": "None"
+    },
+    {
+      "constant": "NETWORK_EXTENSIONS",
+      "value": "NETWORK_EXTENSIONS",
+      "description": "Packet tunnels, DNS proxies, and content filters",
+      "settings": "None"
+    },
+    {
+      "constant": "NFC_TAG_READING",
+      "value": "NFC_TAG_READING",
+      "description": "CoreNFC Tag Reading & Writing",
+      "settings": "None"
+    },
+    {
+      "constant": "PERSONAL_VPN",
+      "value": "PERSONAL_VPN",
+      "description": "NEVPNManager personal VPN tunnels",
+      "settings": "None"
+    },
+    {
+      "constant": "PUSH_NOTIFICATIONS",
+      "value": "PUSH_NOTIFICATIONS",
+      "description": "Apple Push Notification service (APNs)",
+      "settings": "None (default)"
+    },
+    {
+      "constant": "SFUNIVERSALLINK_API",
+      "value": "SFUNIVERSALLINK_API",
+      "description": "Safari Universal Link programmatic verification",
+      "settings": "None"
+    },
+    {
+      "constant": "SHAZAM_KIT",
+      "value": "SHAZAM_KIT",
+      "description": "Audio fingerprinting & song recognition",
+      "settings": "None"
+    },
+    {
+      "constant": "SIRIKIT",
+      "value": "SIRIKIT",
+      "description": "Siri voice shortcuts & custom intents",
+      "settings": "None"
+    },
+    {
+      "constant": "SYSTEM_EXTENSION_INSTALL",
+      "value": "SYSTEM_EXTENSION_INSTALL",
+      "description": "macOS / DriverKit daemon install entitlement",
+      "settings": "None"
+    },
+    {
+      "constant": "USERNOTIFICATIONS_COMMUNICATION",
+      "value": "USERNOTIFICATIONS_COMMUNICATION",
+      "description": "Communication & VoIP call notifications",
+      "settings": "None"
+    },
+    {
+      "constant": "USERNOTIFICATIONS_TIMESENSITIVE",
+      "value": "USERNOTIFICATIONS_TIMESENSITIVE",
+      "description": "Time-sensitive break-through notifications",
+      "settings": "None"
+    },
+    {
+      "constant": "USER_MANAGEMENT",
+      "value": "USER_MANAGEMENT",
+      "description": "Multi-user Apple School Manager support",
+      "settings": "None"
+    },
+    {
+      "constant": "VP9_DECODER",
+      "value": "VP9_DECODER",
+      "description": "Hardware-accelerated VP9 video decoding",
+      "settings": "None"
+    },
+    {
+      "constant": "WALLET",
+      "value": "WALLET",
+      "description": "PassKit digital wallet passes & loyalty cards",
+      "settings": "Linked Pass Type Identifiers"
+    },
+    {
+      "constant": "WIRELESS_ACCESSORY_CONFIGURATION",
+      "value": "WIRELESS_ACCESSORY_CONFIGURATION",
+      "description": "MFi wireless accessory configuration (WAC)",
+      "settings": "None"
+    }
+  ]
+}

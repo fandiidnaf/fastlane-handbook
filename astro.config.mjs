@@ -166,6 +166,7 @@ export default defineConfig({
             { label: 'Zero-Rebuild Track Promotion', slug: 'recipes/zero-rebuild-promotion' },
             { label: 'Keystore Decryption & Pre-Flight Guards', slug: 'recipes/signing-and-keystore-security' },
             { label: 'App Store Connect API (.p8)', slug: 'recipes/app-store-connect-api' },
+            { label: 'Programmatic Capabilities (Spaceship)', slug: 'recipes/spaceship-bundle-id-capabilities' },
           ],
         },
         {

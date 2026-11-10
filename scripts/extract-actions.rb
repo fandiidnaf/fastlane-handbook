@@ -202,3 +202,123 @@ version_info = {
 }
 File.write(version_json_path, JSON.pretty_generate(version_info))
 puts "==> Wrote version info to #{version_json_path}"
+
+# ==============================================================================
+# Spaceship Bundle ID Capabilities Extractor & Sync Generator
+# ==============================================================================
+if defined?(Spaceship::ConnectAPI::BundleIdCapability::Type)
+  puts "==> Extracting Spaceship Bundle ID Capabilities from gem..."
+
+  CAPABILITY_METADATA = {
+    "ACCESS_WIFI_INFORMATION" => { description: "Access Wi-Fi Information & Network Extension Wi-Fi info", settings: "None" },
+    "APP_ATTEST" => { description: "DeviceCheck & App Attest fraud protection", settings: "None" },
+    "APP_GROUPS" => { description: "Shared data storage between App & App Extensions", settings: "Linked Group Identifiers" },
+    "APPLE_ID_AUTH" => { description: "Sign in with Apple authentication", settings: "`APPLE_ID_AUTH_APP_CONSENT` (`PRIMARY_APP_CONSENT`)" },
+    "APPLE_PAY" => { description: "Apple Pay Merchant payment processing", settings: "Linked Merchant Identifiers" },
+    "ASSOCIATED_DOMAINS" => { description: "Universal Links, App Clips, & Shared Web Credentials", settings: "Configured via `.entitlements`" },
+    "AUTOFILL_CREDENTIAL_PROVIDER" => { description: "Password manager credential provider extensions", settings: "None" },
+    "CARPLAY_MESSAGING" => { description: "CarPlay messaging readout & Siri compose", settings: "Apple Special Approval Required" },
+    "CARPLAY_NAVIGATION" => { description: "CarPlay turn-by-turn navigation & maps", settings: "Apple Special Approval Required" },
+    "CARPLAY_PLAYABLE_CONTENT" => { description: "CarPlay audio streaming & playable content", settings: "Apple Special Approval Required" },
+    "CARPLAY_VOIP" => { description: "CarPlay telephony & VoIP call routing", settings: "Apple Special Approval Required" },
+    "CLASSKIT" => { description: "ClassKit student progress recording", settings: "None" },
+    "COREMEDIA_HLS_LOW_LATENCY" => { description: "Low-latency HLS video broadcasting", settings: "None" },
+    "CRITICAL_ALERTS" => { description: "Bypasses Do Not Disturb / Mute hardware switch", settings: "Apple Special Approval Required" },
+    "DATA_PROTECTION" => { description: "Complete / Protected filesystem encryption", settings: "`DATA_PROTECTION_PERMISSION_LEVEL`" },
+    "DECLARED_AGE_RANGE" => { description: "Declared Age Range verification (App Store Connect compliance)", settings: "None" },
+    "DRIVERKIT" => { description: "DriverKit user-space hardware driver execution", settings: "Apple Special Approval Required" },
+    "DRIVERKIT_ENDPOINT_SECURITY" => { description: "Endpoint Security client extension driver", settings: "Apple Special Approval Required" },
+    "DRIVERKIT_HID" => { description: "Human Interface Device (HID) driver", settings: "Apple Special Approval Required" },
+    "DRIVERKIT_HID_DEVICE" => { description: "HID USB/PCIe hardware device access", settings: "Apple Special Approval Required" },
+    "DRIVERKIT_HID_EVENT_SERVICE" => { description: "HID Event Service custom event dispatch", settings: "Apple Special Approval Required" },
+    "DRIVERKIT_NETWORKING" => { description: "Network interface Ethernet driver", settings: "Apple Special Approval Required" },
+    "DRIVERKIT_SERIAL" => { description: "Serial / USB-UART communications driver", settings: "Apple Special Approval Required" },
+    "EXTENDED_VIRTUAL_ADDRESSING" => { description: "Increased 64-bit virtual memory address space", settings: "None" },
+    "FAMILY_CONTROLS" => { description: "Screen Time API parental & usage controls", settings: "Apple Special Approval Required" },
+    "FILEPROVIDER_TESTINGMODE" => { description: "Cloud FileProvider framework testing mode", settings: "None" },
+    "FONT_INSTALLATION" => { description: "Dynamic system font provider extensions", settings: "None" },
+    "GAME_CENTER" => { description: "Apple Game Center achievements & leaderboards", settings: "`GAME_CENTER_SETTING`" },
+    "GROUP_ACTIVITIES" => { description: "SharePlay synchronized group experiences", settings: "None" },
+    "HEALTHKIT" => { description: "HealthKit health & clinical record access", settings: "None" },
+    "HEALTHKIT_RECALIBRATE_ESTIMATES" => { description: "HealthKit custom baseline recalibration", settings: "Apple Special Approval Required" },
+    "HLS_INTERSTITIAL_PREVIEW" => { description: "HLS video stream interstitial ad preview", settings: "None" },
+    "HOMEKIT" => { description: "HomeKit connected smart home accessories", settings: "None" },
+    "HOTSPOT_HELPER_MANAGED" => { description: "MDM-managed Hotspot Helper Wi-Fi configuration", settings: "Apple Special Approval Required" },
+    "HOT_SPOT" => { description: "Hotspot Helper Wi-Fi network configuration", settings: "None" },
+    "ICLOUD" => { description: "iCloud Key-Value Storage & CloudKit database", settings: "`ICLOUD_VERSION`" },
+    "INTER_APP_AUDIO" => { description: "Legacy Inter-App Audio routing", settings: "None" },
+    "IN_APP_PURCHASE" => { description: "StoreKit In-App Purchases & Subscriptions", settings: "None" },
+    "IPAD_CAMERA_MULTITASKING" => { description: "iPad Multitasking Camera access while in Split View", settings: "None" },
+    "MAPS" => { description: "Turn-by-turn routing app coverage document", settings: "None" },
+    "MARZIPAN" => { description: "Mac Catalyst cross-platform app porting", settings: "None" },
+    "MDM_MANAGED_ASSOCIATED_DOMAINS" => { description: "MDM-managed Associated Domains & Enterprise Universal Links", settings: "None" },
+    "MULTIPATH" => { description: "Multipath TCP (MPTCP) network failover", settings: "None" },
+    "MUSIC_KIT" => { description: "Apple Music catalog & personal subscriber library", settings: "None" },
+    "NETWORK_CUSTOM_PROTOCOL" => { description: "Custom network packet tunneling protocol", settings: "None" },
+    "NETWORK_EXTENSIONS" => { description: "Packet tunnels, DNS proxies, and content filters", settings: "None" },
+    "NFC_TAG_READING" => { description: "CoreNFC Tag Reading & Writing", settings: "None" },
+    "PERSONAL_VPN" => { description: "NEVPNManager personal VPN tunnels", settings: "None" },
+    "PUSH_NOTIFICATIONS" => { description: "Apple Push Notification service (APNs)", settings: "None (default)" },
+    "SFUNIVERSALLINK_API" => { description: "Safari Universal Link programmatic verification", settings: "None" },
+    "SHAZAM_KIT" => { description: "Audio fingerprinting & song recognition", settings: "None" },
+    "SIRIKIT" => { description: "Siri voice shortcuts & custom intents", settings: "None" },
+    "SYSTEM_EXTENSION_INSTALL" => { description: "macOS / DriverKit daemon install entitlement", settings: "None" },
+    "USER_MANAGEMENT" => { description: "Multi-user Apple School Manager support", settings: "None" },
+    "USERNOTIFICATIONS_COMMUNICATION" => { description: "Communication & VoIP call notifications", settings: "None" },
+    "USERNOTIFICATIONS_TIMESENSITIVE" => { description: "Time-sensitive break-through notifications", settings: "None" },
+    "VP9_DECODER" => { description: "Hardware-accelerated VP9 video decoding", settings: "None" },
+    "WALLET" => { description: "PassKit digital wallet passes & loyalty cards", settings: "Linked Pass Type Identifiers" },
+    "WIRELESS_ACCESSORY_CONFIGURATION" => { description: "MFi wireless accessory configuration (WAC)", settings: "None" }
+  }
+
+  raw_types = Spaceship::ConnectAPI::BundleIdCapability::Type.constants.map(&:to_s).sort
+  capabilities_data = raw_types.map do |const_name|
+    meta = CAPABILITY_METADATA[const_name] || {
+      description: const_name.split('_').map(&:capitalize).join(' ') + " (Auto-detected from Upstream)",
+      settings: "None / Refer to Apple Developer documentation"
+    }
+    {
+      constant: const_name,
+      value: Spaceship::ConnectAPI::BundleIdCapability::Type.const_get(const_name),
+      description: meta[:description],
+      settings: meta[:settings]
+    }
+  end
+
+  # 1. Save data to src/data/spaceship-capabilities.json
+  capabilities_json_path = File.join(data_dir, 'spaceship-capabilities.json')
+  payload = {
+    fastlane_version: Fastlane::VERSION,
+    extracted_at: Time.now.utc.iso8601,
+    total_capabilities: capabilities_data.size,
+    capabilities: capabilities_data
+  }
+  File.write(capabilities_json_path, JSON.pretty_generate(payload))
+  puts "==> Wrote #{capabilities_data.size} Spaceship capabilities to #{capabilities_json_path}"
+
+  # 2. Synchronize Markdown table in spaceship-bundle-id-capabilities.mdx
+  recipe_mdx_path = File.expand_path('../src/content/docs/recipes/spaceship-bundle-id-capabilities.mdx', __dir__)
+  if File.exist?(recipe_mdx_path)
+    mdx_content = File.read(recipe_mdx_path)
+    start_tag = "{/* AUTO-GENERATED-SPACESHIP-CAPABILITIES-START */}"
+    end_tag = "{/* AUTO-GENERATED-SPACESHIP-CAPABILITIES-END */}"
+
+    if mdx_content.include?(start_tag) && mdx_content.include?(end_tag)
+      table_rows = capabilities_data.map do |cap|
+        "| `#{cap[:constant]}` | #{cap[:description]} | #{cap[:settings]} |"
+      end
+
+      generated_table = [
+        "| Type Constant (`Spaceship::ConnectAPI::BundleIdCapability::Type::*`) | Apple Entitlement Description | Supported Settings |",
+        "|:---|:---|:---|",
+        table_rows.join("\n")
+      ].join("\n")
+
+      replacement = "#{start_tag}\n#{generated_table}\n#{end_tag}"
+      updated_mdx = mdx_content.gsub(/#{Regexp.escape(start_tag)}[\s\S]*?#{Regexp.escape(end_tag)}/, replacement)
+
+      File.write(recipe_mdx_path, updated_mdx)
+      puts "==> Successfully synchronized #{capabilities_data.size} capabilities to #{recipe_mdx_path}"
+    end
+  end
+end
