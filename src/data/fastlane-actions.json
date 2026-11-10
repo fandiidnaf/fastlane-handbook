@@ -42,13 +42,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The output of the adb command",
     "return_type": "string",
     "examples": [
       "adb(\n            command: \"shell ls\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "adb.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/adb.rb"
@@ -76,13 +80,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "Returns an array of all currently connected android devices",
     "return_type": "",
     "examples": [
       "adb_devices.each do |device|\n            model = adb(command: \"shell getprop ro.product.model\",\n                        serial: device.serial).strip\n\n            puts \"Model #{model} is connected\"\n          end"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "adb_devices.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/adb_devices.rb"
@@ -112,13 +120,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "add_extra_platforms(\n            platforms: [:windows, :neogeo]\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "add_extra_platforms.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/add_extra_platforms.rb"
@@ -239,7 +251,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -247,7 +261,9 @@
       "add_git_tag(\n            grouping: \"fastlane-builds\",\n            includes_lane: true,\n            prefix: \"v\",\n            postfix: \"-RC1\",\n            build_number: 123\n          )",
       "# Alternatively, you can specify your own tag. Note that if you do specify a tag, all other arguments are ignored.\n          add_git_tag(\n            tag: \"my_custom_tag\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "add_git_tag.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/add_git_tag.rb"
@@ -388,7 +404,9 @@
       "app_store_build_number(\n            live: false,\n            app_identifier: \"app.identifier\",\n            version: \"1.2.9\"\n          )",
       "api_key = app_store_connect_api_key(\n            key_id: \"MyKeyID12345\",\n            issuer_id: \"00000000-0000-0000-0000-000000000000\",\n            key_filepath: \"./AuthKey.p8\"\n          )\n          build_num = app_store_build_number(\n            api_key: api_key\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "app_store_build_number.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/app_store_build_number.rb"
@@ -505,7 +523,9 @@
       "app_store_connect_api_key(\n            key_id: \"D83848D23\",\n            issuer_id: \"227b0bbf-ada8-458c-9d62-3d8022b7d07f\",\n            key_content: \"-----BEGIN EC PRIVATE KEY-----\\nfewfawefawfe\\n-----END EC PRIVATE KEY-----\"\n          )",
       "app_store_connect_api_key(\n            key_id: \"D83848D23\", # no issuer_id if the key is individual\n            key_content: \"-----BEGIN EC PRIVATE KEY-----\\nfewfawefawfe\\n-----END EC PRIVATE KEY-----\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "app_store_connect_api_key.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/app_store_connect_api_key.rb"
@@ -615,13 +635,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "appaloosa(\n            # Path tor your IPA or APK\n            binary: '/path/to/binary.ipa',\n            # You can find your store’s id at the bottom of the “Settings” page of your store\n            store_id: 'your_store_id',\n            # You can find your api_token at the bottom of the “Settings” page of your store\n            api_token: 'your_api_key',\n            # User group_ids visibility, if it's not specified we'll publish the app for all users in your store'\n            group_ids: '112, 232, 387',\n            # You can use fastlane/snapshot or specify your own screenshots folder.\n            # If you use snapshot please specify a local and a device to upload your screenshots from.\n            # When multiple values are specified in the Snapfile, we default to 'en-US'\n            locale: 'en-US',\n            # By default, the screenshots from the last device will be used\n            device: 'iPhone6',\n            # Screenshots' filenames should start with device's name like 'iphone6-s1.png' if device specified\n            screenshots: '/path/to_your/screenshots'\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "appaloosa.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/appaloosa.rb"
@@ -746,7 +770,9 @@
       "appetize(\n            path: \"./MyApp.zip\",\n            api_token: \"yourapitoken\", # get it from https://appetize.io/docs#request-api-token\n            public_key: \"your_public_key\" # get it from https://appetize.io/dashboard\n          )",
       "appetize(\n            path: \"./MyApp.zip\",\n            api_host: \"company.appetize.io\", # only needed for enterprise hosted solution\n            api_token: \"yourapitoken\", # get it from https://appetize.io/docs#request-api-token\n            public_key: \"your_public_key\" # get it from https://appetize.io/dashboard\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "appetize.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/appetize.rb"
@@ -874,11 +900,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The URL to preview the iPhone app",
     "return_type": "",
-    "examples": [],
-    "aliases": [],
+    "examples": [
+
+    ],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "appetize_viewing_url_generator.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/appetize_viewing_url_generator.rb"
@@ -987,13 +1019,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "appium(\n            app_path:  \"appium/apps/TargetApp.app\",\n            spec_path: \"appium/spec\",\n            platform:  \"iOS\",\n            caps: {\n              versionNumber: \"9.1\",\n              deviceName:    \"iPhone 6\"\n            },\n            appium_lib: {\n              wait: 10\n            }\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "appium.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/appium.rb"
@@ -1473,7 +1509,9 @@
     "examples": [
       "appledoc(\n            project_name: \"MyProjectName\",\n            project_company: \"Company Name\",\n            input: [\n              \"MyProjectSources\",\n              \"MyProjectSourceFile.h\"\n            ],\n            ignore: [\n              \"ignore/path/1\",\n              \"ignore/path/2\"\n            ],\n            options: \"--keep-intermediate-files --search-undocumented-doc\",\n            warnings: \"--warn-missing-output-path --warn-missing-company-id\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "appledoc.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/appledoc.rb"
@@ -2265,7 +2303,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -2273,7 +2313,9 @@
       "deliver   # alias for \"upload_to_app_store\"",
       "appstore  # alias for \"upload_to_app_store\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "appstore.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/appstore.rb"
@@ -2321,13 +2363,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "apteligent(\n            app_id: \"...\",\n            api_key: \"...\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "apteligent.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/apteligent.rb"
@@ -2521,7 +2567,9 @@
       "artifactory(\n            username: \"username\",\n            password: \"password\",\n            endpoint: \"https://artifactory.example.com/artifactory/\",\n            file: \"example.ipa\",                                # File to upload\n            repo: \"mobile_artifacts\",                           # Artifactory repo\n            repo_path: \"/ios/appname/example-major.minor.ipa\"   # Path to place the artifact including its filename\n          )",
       "artifactory(\n            api_key: \"api_key\",\n            endpoint: \"https://artifactory.example.com/artifactory/\",\n            file: \"example.ipa\",                                # File to upload\n            repo: \"mobile_artifacts\",                           # Artifactory repo\n            repo_path: \"/ios/appname/example-major.minor.ipa\"   # Path to place the artifact including its filename\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "artifactory.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/artifactory.rb"
@@ -2624,7 +2672,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The current status (boolean) of codesigning after modification",
     "return_type": "",
     "examples": [
@@ -2670,13 +2720,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "backup_file(path: \"/path/to/file\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "backup_file.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/backup_file.rb"
@@ -2756,7 +2810,9 @@
     "examples": [
       "backup_xcarchive(\n            xcarchive: \"/path/to/file.xcarchive\", # Optional if you use the `xcodebuild` action\n            destination: \"/somewhere/else/\", # Where the backup should be created\n            zip_filename: \"file.xcarchive\", # The name of the backup file\n            zip: false, # Enable compression of the archive. Defaults to `true`.\n            versioned: true # Create a versioned (date and app version) subfolder where to put the archive\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "backup_xcarchive.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/backup_xcarchive.rb"
@@ -2886,7 +2942,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -2895,7 +2953,9 @@
       "badge(custom: \"/Users/xxx/Desktop/badge.png\")",
       "badge(shield: \"Version-0.0.3-blue\", no_badge: true)"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "badge.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/badge.rb"
@@ -2973,11 +3033,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
-    "examples": [],
-    "aliases": [],
+    "examples": [
+
+    ],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "build_and_upload_to_appetize.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/build_and_upload_to_appetize.rb"
@@ -3168,7 +3234,9 @@
     "examples": [
       "gradle(\n            task: \"assemble\",\n            flavor: \"WorldDomination\",\n            build_type: \"Release\"\n          )\n          ```\n\n          To build an AAB use:\n          ```ruby\n          gradle(\n            task: \"bundle\",\n            flavor: \"WorldDomination\",\n            build_type: \"Release\"\n          )\n          ```\n\n          You can pass multiple gradle tasks:\n          ```ruby\n          gradle(\n            tasks: [\"assembleDebug\", \"bundleDebug\"]\n          )\n          ```\n\n          You can pass properties to gradle:\n          ```ruby\n          gradle(\n            # ...\n\n            properties: {\n              \"exampleNumber\" => 100,\n              \"exampleString\" => \"1.0.0\",\n              # ...\n            }\n          )\n          ```\n\n          You can use this to change the version code and name of your app:\n          ```ruby\n          gradle(\n            # ...\n\n            properties: {\n              \"android.injected.version.code\" => 100,\n              \"android.injected.version.name\" => \"1.0.0\",\n              # ...\n            }\n          )\n          ```\n\n          You can use this to automatically [sign and zipalign](https://developer.android.com/studio/publish/app-signing.html) your app:\n          ```ruby\n          gradle(\n            task: \"assemble\",\n            build_type: \"Release\",\n            print_command: false,\n            properties: {\n              \"android.injected.signing.store.file\" => \"keystore.jks\",\n              \"android.injected.signing.store.password\" => \"store_password\",\n              \"android.injected.signing.key.alias\" => \"key_alias\",\n              \"android.injected.signing.key.password\" => \"key_password\",\n            }\n          )\n          ```\n\n          If you need to pass sensitive information through the `gradle` action, and don't want the generated command to be printed before it is run, you can suppress that:\n          ```ruby\n          gradle(\n            # ...\n            print_command: false\n          )\n          ```\n\n          You can also suppress printing the output generated by running the generated Gradle command:\n          ```ruby\n          gradle(\n            # ...\n            print_command_output: false\n          )\n          ```\n\n          To pass any other CLI flags to gradle use:\n          ```ruby\n          gradle(\n            # ...\n\n            flags: \"--exitcode --xml file.xml\"\n          )\n          ```\n\n          Delete the build directory, generated APKs and AABs\n          ```ruby\n          gradle(\n            task: \"clean\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "build_android_app.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/build_android_app.rb"
@@ -3545,7 +3613,7 @@
         "env_name": "",
         "description": "xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)",
         "data_type": "String",
-        "default_value": "xcpretty",
+        "default_value": "xcbeautify",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -3778,7 +3846,9 @@
       "build_ios_app    # alias for \"build_app (only iOS options)\"",
       "build_mac_app    # alias for \"build_app (only macOS options)\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "build_app.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/build_app.rb"
@@ -4124,7 +4194,7 @@
         "env_name": "",
         "description": "xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)",
         "data_type": "String",
-        "default_value": "xcpretty",
+        "default_value": "xcbeautify",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -4357,7 +4427,9 @@
       "build_ios_app    # alias for \"build_app (only iOS options)\"",
       "build_mac_app    # alias for \"build_app (only macOS options)\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "build_ios_app.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/build_ios_app.rb"
@@ -4713,7 +4785,7 @@
         "env_name": "",
         "description": "xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)",
         "data_type": "String",
-        "default_value": "xcpretty",
+        "default_value": "xcbeautify",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -4946,7 +5018,9 @@
       "build_ios_app    # alias for \"build_app (only iOS options)\"",
       "build_mac_app    # alias for \"build_app (only macOS options)\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "build_mac_app.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/build_mac_app.rb"
@@ -5167,11 +5241,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
-    "examples": [],
-    "aliases": [],
+    "examples": [
+
+    ],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "bundle_install.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/bundle_install.rb"
@@ -5195,7 +5275,7 @@
         "env_name": "",
         "description": "Path to the root of your Android SDK installation, e.g. ~/tools/android-sdk-macosx",
         "data_type": "String",
-        "default_value": "/Users/fandi/Library/Android/sdk",
+        "default_value": "/Users/runner/Library/Android/sdk",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -5424,7 +5504,9 @@
       "screengrab # alias for \"capture_android_screenshots\"",
       "capture_android_screenshots(\n            locales: [\"en-US\", \"fr-FR\", \"ja-JP\"],\n            clear_previous_screenshots: true,\n            app_apk_path: \"build/outputs/apk/example-debug.apk\",\n            tests_apk_path: \"build/outputs/apk/example-debug-androidTest-unaligned.apk\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "capture_android_screenshots.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/capture_android_screenshots.rb"
@@ -5937,7 +6019,7 @@
         "env_name": "",
         "description": "xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)",
         "data_type": "String",
-        "default_value": "xcpretty",
+        "default_value": "xcbeautify",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -5996,7 +6078,9 @@
       "snapshot # alias for \"capture_ios_screenshots\"",
       "capture_ios_screenshots(\n            skip_open_summary: true,\n            clean: true\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "capture_ios_screenshots.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/capture_ios_screenshots.rb"
@@ -6509,7 +6593,7 @@
         "env_name": "",
         "description": "xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)",
         "data_type": "String",
-        "default_value": "xcpretty",
+        "default_value": "xcbeautify",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -6568,7 +6652,9 @@
       "snapshot # alias for \"capture_ios_screenshots\"",
       "capture_ios_screenshots(\n            skip_open_summary: true,\n            clean: true\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "capture_screenshots.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/capture_screenshots.rb"
@@ -6825,14 +6911,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "carthage",
       "carthage(\n            frameworks: [\"MyFramework1\", \"MyFramework2\"],   # Specify which frameworks to archive (only for the archive command)\n            output: \"MyFrameworkBundle.framework.zip\",      # Specify the output archive name (only for the archive command)\n            command: \"bootstrap\",                           # One of: build, bootstrap, update, archive. (default: bootstrap)\n            dependencies: [\"Alamofire\", \"Notice\"],          # Specify which dependencies to update or build (only for update, build and bootstrap commands)\n            use_ssh: false,                                 # Use SSH for downloading GitHub repositories.\n            use_submodules: false,                          # Add dependencies as Git submodules.\n            use_binaries: true,                             # Check out dependency repositories even when prebuilt frameworks exist\n            no_build: false,                                # When bootstrapping Carthage do not build\n            no_skip_current: false,                         # Don't skip building the current project (only for frameworks)\n            verbose: false,                                 # Print xcodebuild output inline\n            platform: \"all\",                                # Define which platform to build for (one of ‘all’, ‘Mac’, ‘iOS’, ‘watchOS’, ‘tvOS‘, or comma-separated values of the formers except for ‘all’)\n            configuration: \"Release\",                       # Build configuration to use when building\n            cache_builds: true,                             # By default Carthage will rebuild a dependency regardless of whether its the same resolved version as before.\n            toolchain: \"com.apple.dt.toolchain.Swift_2_3\",  # Specify the xcodebuild toolchain\n            new_resolver: false,                            # Use the new resolver to resolve dependency graph\n            log_path: \"carthage.log\"                        # Path to the xcode build output\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "carthage.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/carthage.rb"
@@ -6968,7 +7058,7 @@
         "env_name": "CERT_KEYCHAIN_PATH",
         "description": "Path to a custom keychain",
         "data_type": "String",
-        "default_value": "/Users/fandi/Library/Keychains/login.keychain-db",
+        "default_value": "/Users/runner/Library/Keychains/login.keychain-db",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -7021,7 +7111,9 @@
       "cert # alias for \"get_certificates\"",
       "get_certificates(\n            development: true,\n            username: \"user@email.com\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "cert.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/cert.rb"
@@ -7190,7 +7282,9 @@
       "changelog_from_git_commits",
       "changelog_from_git_commits(\n            between: [\"7b092b3\", \"HEAD\"],            # Optional, lets you specify a revision/tag range between which to collect commit info\n            pretty: \"- (%ae) %s\",                    # Optional, lets you provide a custom format to apply to each commit when generating the changelog text\n            date_format: \"short\",                    # Optional, lets you provide an additional date format to dates within the pretty-formatted string\n            match_lightweight_tag: false,            # Optional, lets you ignore lightweight (non-annotated) tags when searching for the last tag\n            matching_pattern: \"[.*?].*\",             # Optional, lets you filter out commits not matching the regex pattern\n            merge_commit_filtering: \"exclude_merges\" # Optional, lets you filter out merge commits\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "changelog_from_git_commits.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/changelog_from_git_commits.rb"
@@ -7250,13 +7344,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "chatwork(\n            message: \"App successfully released!\",\n            roomid: 12345,\n            success: true,\n            api_token: \"Your Token\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "chatwork.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/chatwork.rb"
@@ -7479,14 +7577,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "true if precheck passes, else, false",
     "return_type": "bool",
     "examples": [
       "check_app_store_metadata(\n            negative_apple_sentiment: [level: :skip], # Set to skip to not run the `negative_apple_sentiment` rule\n            curse_words: [level: :warn] # Set to warn to only warn on curse word check failures\n          )",
       "precheck   # alias for \"check_app_store_metadata\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "check_app_store_metadata.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/check_app_store_metadata.rb"
@@ -7515,13 +7617,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "clean_build_artifacts"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "clean_build_artifacts.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/clean_build_artifacts.rb"
@@ -7590,14 +7696,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "clean_cocoapods_cache",
       "clean_cocoapods_cache(name: \"CACHED_POD\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "clean_cocoapods_cache.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/clean_cocoapods_cache.rb"
@@ -7626,14 +7736,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "clear_derived_data",
       "clear_derived_data(derived_data_path: \"/custom/\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "clear_derived_data.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/clear_derived_data.rb"
@@ -7665,14 +7779,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "clipboard(value: \"https://docs.fastlane.tools/\")",
       "clipboard(value: lane_context[SharedValues::HOCKEY_DOWNLOAD_LINK] || \"\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "clipboard.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/clipboard.rb"
@@ -7741,13 +7859,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "cloc(\n             exclude_dir: \"ThirdParty,Resources\",\n             output_directory: \"reports\",\n             source_directory: \"MyCoolApp\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "cloc.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/cloc.rb"
@@ -7899,14 +8021,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "cocoapods",
       "cocoapods(\n            clean_install: true,\n            podfile: \"./CustomPodfile\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "cocoapods.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/cocoapods.rb"
@@ -8029,7 +8155,9 @@
     "examples": [
       "response = commit_github_file(\n            repository_name: \"fastlane/fastlane\",\n            server_url: \"https://api.github.com\",\n            api_token: ENV[\"GITHUB_TOKEN\"],\n            message: \"Add my new file\",\n            branch: \"master\",\n            path: \"assets/my_new_file.xcarchive\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "commit_github_file.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/commit_github_file.rb"
@@ -8136,7 +8264,9 @@
       "commit_version_bump(\n            ignore: /OtherProject/ # ignore files matching a regular expression\n          )",
       "commit_version_bump(\n            no_verify: true           # optional, default: false\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "commit_version_bump.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/commit_version_bump.rb"
@@ -8196,14 +8326,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "copy_artifacts(\n            target_path: \"artifacts\",\n            artifacts: [\"*.cer\", \"*.mobileprovision\", \"*.ipa\", \"*.dSYM.zip\", \"path/to/file.txt\", \"another/path/*.extension\"]\n          )\n\n          # Reset the git repo to a clean state, but leave our artifacts in place\n          reset_git_repo(\n            exclude: \"artifacts\"\n          )",
       "# Copy the .ipa created by _gym_ if it was successfully created\n          artifacts = []\n          artifacts << lane_context[SharedValues::IPA_OUTPUT_PATH] if lane_context[SharedValues::IPA_OUTPUT_PATH]\n          copy_artifacts(\n             artifacts: artifacts\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "copy_artifacts.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/copy_artifacts.rb"
@@ -8305,13 +8439,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "create_app_on_managed_play_store(\n            json_key: 'path/to/you/json/key/file',\n            developer_account_id: 'developer_account_id', # obtained using the `get_managed_play_store_publishing_rights` action (or looking at the Play Console url)\n            app_title: 'Your app title',\n            language: 'en_US', # primary app language in BCP 47 format\n            apk: '/files/app-release.apk'\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "create_app_on_managed_play_store.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/create_app_on_managed_play_store.rb"
@@ -8383,7 +8521,7 @@
         "env_name": "PRODUCE_SKU",
         "description": "SKU Number (e.g. '1234')",
         "data_type": "String",
-        "default_value": "1794275704",
+        "default_value": "1794307303",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -8535,7 +8673,9 @@
       "create_app_online(\n            username: \"felix@krausefx.com\",\n            app_identifier: \"com.krausefx.app\",\n            app_name: \"MyApp\",\n            language: \"English\",\n            app_version: \"1.0\",\n            sku: \"123\",\n            team_name: \"SunApps GmbH\" # Only necessary when in multiple teams.\n          )",
       "produce   # alias for \"create_app_online\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "create_app_online.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/create_app_online.rb"
@@ -8674,7 +8814,9 @@
     "examples": [
       "create_keychain(\n            name: \"KeychainName\",\n            default_keychain: true,\n            unlock: true,\n            timeout: 3600,\n            lock_when_sleeps: true\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "create_keychain.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/create_keychain.rb"
@@ -8857,7 +8999,9 @@
     "examples": [
       "create_pull_request(\n            api_token: \"secret\",                # optional, defaults to ENV[\"GITHUB_API_TOKEN\"]\n            repo: \"fastlane/fastlane\",\n            title: \"Amazing new feature\",\n            head: \"my-feature\",                 # optional, defaults to current branch name\n            base: \"master\",                     # optional, defaults to \"master\"\n            body: \"Please pull this in!\",       # optional\n            api_url: \"http://yourdomain/api/v3\" # optional, for GitHub Enterprise, defaults to \"https://api.github.com\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "create_pull_request.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/create_pull_request.rb"
@@ -8966,7 +9110,9 @@
       "create_xcframework(libraries: ['LibraryA.so', 'LibraryB.so'], output: 'UniversalFramework.xcframework')",
       "create_xcframework(libraries_with_headers_or_dsyms: { 'LibraryA.so' => { dsyms: 'libraryA.so.dSYM' }, 'LibraryB.so' => { headers: 'LibraryBHeaders' } }, output: 'UniversalFramework.xcframework')"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "create_xcframework.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/create_xcframework.rb"
@@ -9126,14 +9272,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "danger",
       "danger(\n            danger_id: \"unit-tests\",\n            dangerfile: \"tests/MyOtherDangerFile\",\n            github_api_token: ENV[\"GITHUB_API_TOKEN\"],\n            verbose: true\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "danger.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/danger.rb"
@@ -9151,14 +9301,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "debug"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "debug.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/debug.rb"
@@ -9176,7 +9332,9 @@
       "android",
       "mac"
     ],
-    "options": [],
+    "options": [
+
+    ],
     "output": [
       {
         "key": "DEFAULT_PLATFORM",
@@ -9188,7 +9346,9 @@
     "examples": [
       "default_platform(:android)"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "default_platform.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/default_platform.rb"
@@ -9233,14 +9393,18 @@
         ]
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "delete_keychain(name: \"KeychainName\")",
       "delete_keychain(keychain_path: \"/keychains/project.keychain\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "delete_keychain.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/delete_keychain.rb"
@@ -10032,7 +10196,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -10040,7 +10206,9 @@
       "deliver   # alias for \"upload_to_app_store\"",
       "appstore  # alias for \"upload_to_app_store\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "deliver.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/deliver.rb"
@@ -10170,7 +10338,9 @@
       "deploygate(\n            api_token: \"...\",\n            user: \"target username or organization name\",\n            ipa: \"./ipa_file.ipa\",\n            message: \"Build #{lane_context[SharedValues::BUILD_NUMBER]}\",\n            distribution_key: \"(Optional) Target Distribution Key\",\n            distribution_name: \"(Optional) Target Distribution Name\"\n          )",
       "deploygate(\n            api_token: \"...\",\n            user: \"target username or organization name\",\n            apk: \"./apk_file.apk\",\n            message: \"Build #{lane_context[SharedValues::BUILD_NUMBER]}\",\n            distribution_key: \"(Optional) Target Distribution Key\",\n            distribution_name: \"(Optional) Target Distribution Name\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "deploygate.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/deploygate.rb"
@@ -10200,13 +10370,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "dotgpg_environment(dotgpg_file: './path/to/gpgfile')"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "dotgpg_environment.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/dotgpg_environment.rb"
@@ -10247,7 +10421,9 @@
     "examples": [
       "data = download(url: \"https://host.com/api.json\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "download.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/download.rb"
@@ -10318,14 +10494,18 @@
         ]
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "download_app_privacy_details_from_app_store(\n            username: \"your@email.com\",\n            team_name: \"Your Team\",\n            app_identifier: \"com.your.bundle\"\n          )",
       "download_app_privacy_details_from_app_store(\n            username: \"your@email.com\",\n            team_name: \"Your Team\",\n            app_identifier: \"com.your.bundle\",\n            output_json_path: \"fastlane/app_data_usages.json\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "download_app_privacy_details_from_app_store.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/download_app_privacy_details_from_app_store.rb"
@@ -10507,7 +10687,9 @@
       "download_dsyms(min_version: \"1.2.3\")",
       "download_dsyms(after_uploaded_date: \"2020-09-11T19:00:00+01:00\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "download_dsyms.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/download_dsyms.rb"
@@ -10637,13 +10819,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "download_from_play_store"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "download_from_play_store.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/download_from_play_store.rb"
@@ -10749,11 +10935,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The path to the downloaded Universal APK. The action will raise an exception if it failed to find or download the APK in Google Play",
     "return_type": "",
-    "examples": [],
-    "aliases": [],
+    "examples": [
+
+    ],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "download_universal_apk_from_google_play.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/download_universal_apk_from_google_play.rb"
@@ -10814,7 +11006,9 @@
       "dsym_zip",
       "dsym_zip(\n            archive_path: \"MyApp.xcarchive\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "dsym_zip.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/dsym_zip.rb"
@@ -10844,7 +11038,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -10871,14 +11067,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "ensure_bundle_exec"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "ensure_bundle_exec.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ensure_bundle_exec.rb"
@@ -10908,13 +11110,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "ensure_env_vars(\n            env_vars: ['GITHUB_USER_NAME', 'GITHUB_API_TOKEN']\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "ensure_env_vars.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ensure_env_vars.rb"
@@ -10945,14 +11151,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "ensure_git_branch # defaults to `master` branch",
       "ensure_git_branch(\n            branch: 'develop'\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "ensure_git_branch.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ensure_git_branch.rb"
@@ -11024,7 +11234,9 @@
     "examples": [
       "ensure_git_status_clean"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "ensure_git_status_clean.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ensure_git_status_clean.rb"
@@ -11104,7 +11316,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -11114,7 +11328,9 @@
       "ensure_no_debug_code(text: \"(^#define DEBUG|NSLog)\",\n                               path: \"./lib\",\n                          extension: \"m\")",
       "ensure_no_debug_code(text: \"<<<<<<\",\n                         extensions: [\"m\", \"swift\", \"java\"])"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "ensure_no_debug_code.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ensure_no_debug_code.rb"
@@ -11165,7 +11381,9 @@
     "examples": [
       "ensure_xcode_version(version: \"12.5\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "ensure_xcode_version.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ensure_xcode_version.rb"
@@ -11215,11 +11433,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "string",
-    "examples": [],
-    "aliases": [],
+    "examples": [
+
+    ],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "environment_variable.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/environment_variable.rb"
@@ -11279,13 +11503,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "# Example `erb` template:\n\n          # Variable1 <%= var1 %>\n          # Variable2 <%= var2 %>\n          # <% for item in var3 %>\n          #        <%= item %>\n          # <% end %>\n\n          erb(\n            template: \"1.erb\",\n            destination: \"/tmp/rendered.out\",\n            placeholders: {\n              :var1 => 123,\n              :var2 => \"string\",\n              :var3 => [\"element1\", \"element2\"]\n            }\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "erb.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/erb.rb"
@@ -11303,14 +11531,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "min_fastlane_version(\"1.50.0\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "fastlane_version.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/fastlane_version.rb"
@@ -11360,13 +11594,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "flock(\n            message: \"Hello\",\n            token: \"xxx\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "flock.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/flock.rb"
@@ -11510,7 +11748,7 @@
         "env_name": "",
         "description": "[Advanced] A block to customize your screenshots' device orientation",
         "data_type": "string_callback",
-        "default_value": "#<Proc:0x00000001267041e0 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
+        "default_value": "#<Proc:0x0000000122d91cc8 /Users/runner/.local/share/gem/ruby/3.3.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -11556,7 +11794,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -11567,7 +11807,9 @@
       "frame_screenshots(path: \"/screenshots\")",
       "frame_screenshots(rose_gold: true)"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "frame_screenshots.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/frame_screenshots.rb"
@@ -11711,7 +11953,7 @@
         "env_name": "",
         "description": "[Advanced] A block to customize your screenshots' device orientation",
         "data_type": "string_callback",
-        "default_value": "#<Proc:0x00000001267041e0 /Users/fandi/.rbenv/versions/4.0.9/lib/ruby/gems/4.0.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
+        "default_value": "#<Proc:0x0000000122d91cc8 /Users/runner/.local/share/gem/ruby/3.3.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -11757,7 +11999,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -11768,7 +12012,9 @@
       "frame_screenshots(path: \"/screenshots\")",
       "frame_screenshots(rose_gold: true)"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "frameit.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/frameit.rb"
@@ -11784,14 +12030,20 @@
     "platforms": [
       "ios"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "gcovr(\n            html: true,\n            html_details: true,\n            output: \"./code-coverage/report.html\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "gcovr.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/gcovr.rb"
@@ -11841,7 +12093,9 @@
     "examples": [
       "build_number = get_build_number(xcodeproj: \"Project.xcodeproj\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "get_build_number.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_build_number.rb"
@@ -11883,7 +12137,9 @@
     "examples": [
       "get_build_number_repository"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "get_build_number_repository.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_build_number_repository.rb"
@@ -12019,7 +12275,7 @@
         "env_name": "CERT_KEYCHAIN_PATH",
         "description": "Path to a custom keychain",
         "data_type": "String",
-        "default_value": "/Users/fandi/Library/Keychains/login.keychain-db",
+        "default_value": "/Users/runner/Library/Keychains/login.keychain-db",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -12072,7 +12328,9 @@
       "cert # alias for \"get_certificates\"",
       "get_certificates(\n            development: true,\n            username: \"user@email.com\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "get_certificates.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_certificates.rb"
@@ -12160,7 +12418,9 @@
     "examples": [
       "release = get_github_release(url: \"fastlane/fastlane\", version: \"1.0.0\")\n          puts release[\"name\"]"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "get_github_release.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_github_release.rb"
@@ -12210,7 +12470,9 @@
     "examples": [
       "identifier = get_info_plist_value(path: \"./Info.plist\", key: \"CFBundleIdentifier\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "get_info_plist_value.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_info_plist_value.rb"
@@ -12260,7 +12522,9 @@
     "examples": [
       "get_ipa_info_plist_value(ipa: \"path.ipa\", key: \"KEY_YOU_READ\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "get_ipa_info_plist_value.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_ipa_info_plist_value.rb"
@@ -12302,13 +12566,17 @@
         ]
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "An URI to obtain publishing rights for custom apps on Managed Play Store",
     "return_type": "",
     "examples": [
       "get_managed_play_store_publishing_rights(\n            json_key: \"path/to/your/json/key/file\"\n          )\n          # it is probably easier to execute this action directly in the command line:\n          # $ fastlane run get_managed_play_store_publishing_rights"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "get_managed_play_store_publishing_rights.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_managed_play_store_publishing_rights.rb"
@@ -12671,7 +12939,9 @@
       "sigh # alias for \"get_provisioning_profile\"",
       "get_provisioning_profile(\n            adhoc: true,\n            force: true,\n            filename: \"myFile.mobileprovision\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "get_provisioning_profile.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_provisioning_profile.rb"
@@ -12855,7 +13125,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -12863,7 +13135,9 @@
       "pem # alias for \"get_push_certificate\"",
       "get_push_certificate(\n            force: true, # create a new profile, even if the old one is still valid\n            app_identifier: \"net.sunapps.9\", # optional app identifier,\n            save_private_key: true,\n            new_profile: proc do |profile_path| # this block gets called when a new profile was generated\n              puts profile_path # the absolute path to the new PEM file\n              # insert the code to upload the PEM file to the server\n            end\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "get_push_certificate.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_push_certificate.rb"
@@ -12925,7 +13199,9 @@
       "version = get_version_number(xcodeproj: \"Project.xcodeproj\")",
       "version = get_version_number(\n            xcodeproj: \"Project.xcodeproj\",\n            target: \"App\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "get_version_number.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/get_version_number.rb"
@@ -12990,7 +13266,9 @@
         ]
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -13003,7 +13281,9 @@
       "git_add(path: \"*.txt\", shell_escape: false)",
       "git_add(path: \"./tmp/.keep\", force: true)"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "git_add.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_add.rb"
@@ -13021,7 +13301,9 @@
       "android",
       "mac"
     ],
-    "options": [],
+    "options": [
+
+    ],
     "output": [
       {
         "key": "GIT_BRANCH_ENV_VARS",
@@ -13033,7 +13315,9 @@
     "examples": [
       "git_branch"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "git_branch.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_branch.rb"
@@ -13093,7 +13377,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -13102,7 +13388,9 @@
       "git_commit(path: [\"./*.txt\", \"./*.md\"], message: \"Update documentation\")",
       "git_commit(path: [\"./*.txt\", \"./*.md\"], message: \"Update documentation\", skip_git_hooks: true)"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "git_commit.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_commit.rb"
@@ -13143,7 +13431,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -13151,7 +13441,9 @@
       "git_pull(only_tags: true) # only the tags, no commits",
       "git_pull(rebase: true) # use --rebase with pull"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "git_pull.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_pull.rb"
@@ -13181,14 +13473,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "string",
     "examples": [
       "git_remote_branch # Query git for first available remote name",
       "git_remote_branch(remote_name:\"upstream\") # Provide a remote name"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "git_remote_branch.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_remote_branch.rb"
@@ -13228,7 +13524,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -13237,7 +13535,9 @@
       "git_submodule_update(init: true)",
       "git_submodule_update(recursive: true, init: true)"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "git_submodule_update.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_submodule_update.rb"
@@ -13287,13 +13587,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "Boolean value whether the tag exists or not",
     "return_type": "bool",
     "examples": [
       "if git_tag_exists(tag: \"1.1.0\")\n            UI.message(\"Found it 🚀\")\n          end"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "git_tag_exists.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/git_tag_exists.rb"
@@ -13447,7 +13751,9 @@
       "result = github_api(\n            server_url: \"https://api.github.com\",\n            api_token: ENV[\"GITHUB_TOKEN\"],\n            http_method: \"GET\",\n            path: \"/repos/:owner/:repo/readme\",\n            body: { ref: \"master\" }\n          )",
       "# Alternatively call directly with optional error handling or block usage\n            GithubApiAction.run(\n              server_url: \"https://api.github.com\",\n              api_token: ENV[\"GITHUB_TOKEN\"],\n              http_method: \"GET\",\n              path: \"/repos/:owner/:repo/readme\",\n              error_handlers: {\n                404 => proc do |result|\n                  UI.message(\"Something went wrong - I couldn't find it...\")\n                end,\n                '*' => proc do |result|\n                  UI.message(\"Handle all error codes other than 404\")\n                end\n              }\n            ) do |result|\n              UI.message(\"JSON returned: #{result[:json]}\")\n            end\n          "
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "github_api.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/github_api.rb"
@@ -13557,13 +13863,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "Array of strings representing the release names for the given Google Play track",
     "return_type": "",
     "examples": [
       "google_play_track_release_names"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "google_play_track_release_names.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/google_play_track_release_names.rb"
@@ -13673,13 +13983,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "Array of integers representing the version codes for the given Google Play track",
     "return_type": "",
     "examples": [
       "google_play_track_version_codes"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "google_play_track_version_codes.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/google_play_track_version_codes.rb"
@@ -13870,7 +14184,9 @@
     "examples": [
       "gradle(\n            task: \"assemble\",\n            flavor: \"WorldDomination\",\n            build_type: \"Release\"\n          )\n          ```\n\n          To build an AAB use:\n          ```ruby\n          gradle(\n            task: \"bundle\",\n            flavor: \"WorldDomination\",\n            build_type: \"Release\"\n          )\n          ```\n\n          You can pass multiple gradle tasks:\n          ```ruby\n          gradle(\n            tasks: [\"assembleDebug\", \"bundleDebug\"]\n          )\n          ```\n\n          You can pass properties to gradle:\n          ```ruby\n          gradle(\n            # ...\n\n            properties: {\n              \"exampleNumber\" => 100,\n              \"exampleString\" => \"1.0.0\",\n              # ...\n            }\n          )\n          ```\n\n          You can use this to change the version code and name of your app:\n          ```ruby\n          gradle(\n            # ...\n\n            properties: {\n              \"android.injected.version.code\" => 100,\n              \"android.injected.version.name\" => \"1.0.0\",\n              # ...\n            }\n          )\n          ```\n\n          You can use this to automatically [sign and zipalign](https://developer.android.com/studio/publish/app-signing.html) your app:\n          ```ruby\n          gradle(\n            task: \"assemble\",\n            build_type: \"Release\",\n            print_command: false,\n            properties: {\n              \"android.injected.signing.store.file\" => \"keystore.jks\",\n              \"android.injected.signing.store.password\" => \"store_password\",\n              \"android.injected.signing.key.alias\" => \"key_alias\",\n              \"android.injected.signing.key.password\" => \"key_password\",\n            }\n          )\n          ```\n\n          If you need to pass sensitive information through the `gradle` action, and don't want the generated command to be printed before it is run, you can suppress that:\n          ```ruby\n          gradle(\n            # ...\n            print_command: false\n          )\n          ```\n\n          You can also suppress printing the output generated by running the generated Gradle command:\n          ```ruby\n          gradle(\n            # ...\n            print_command_output: false\n          )\n          ```\n\n          To pass any other CLI flags to gradle use:\n          ```ruby\n          gradle(\n            # ...\n\n            flags: \"--exitcode --xml file.xml\"\n          )\n          ```\n\n          Delete the build directory, generated APKs and AABs\n          ```ruby\n          gradle(\n            task: \"clean\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "gradle.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/gradle.rb"
@@ -14247,7 +14563,7 @@
         "env_name": "",
         "description": "xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)",
         "data_type": "String",
-        "default_value": "xcpretty",
+        "default_value": "xcbeautify",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -14480,7 +14796,9 @@
       "build_ios_app    # alias for \"build_app (only iOS options)\"",
       "build_mac_app    # alias for \"build_app (only macOS options)\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "gym.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/gym.rb"
@@ -14510,13 +14828,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "hg_add_tag(tag: \"1.3\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "hg_add_tag.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/hg_add_tag.rb"
@@ -14586,14 +14908,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "hg_commit_version_bump",
       "hg_commit_version_bump(\n            message: \"Version Bump\",                 # create a commit with a custom message\n            xcodeproj: \"./path/MyProject.xcodeproj\", # optional, if you have multiple Xcode project files, you must specify your main project here\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "hg_commit_version_bump.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/hg_commit_version_bump.rb"
@@ -14611,7 +14937,9 @@
       "android",
       "mac"
     ],
-    "options": [],
+    "options": [
+
+    ],
     "output": [
       {
         "key": "HG_REPO_WAS_CLEAN_ON_START",
@@ -14623,7 +14951,9 @@
     "examples": [
       "hg_ensure_clean_status"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "hg_ensure_clean_status.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/hg_ensure_clean_status.rb"
@@ -14663,14 +14993,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "hg_push",
       "hg_push(\n            destination: \"ssh://hg@repohost.com/owner/repo\",\n            force: true\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "hg_push.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/hg_push.rb"
@@ -14983,7 +15317,9 @@
       "hockey(\n            api_token: \"...\",\n            create_update: true,\n            public_identifier: \"....\",\n            bundle_short_version: \"1.0.2\",\n            bundle_version: \"1.0.2.145\",\n            ipa: \"./my.msi\",\n            notes: \"Changelog\"\n          )",
       "# You can bypass the CDN if you are uploading to Hockey and receive an SSL error (which can happen on corporate firewalls)\n          hockey(\n            api_token: \"...\",\n            ipa: \"./app.ipa\",\n            notes: \"Changelog\",\n            bypass_cdn: true\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "hockey.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/hockey.rb"
@@ -15053,13 +15389,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "ifttt(\n            api_key: \"...\",\n            event_name: \"...\",\n            value1: \"foo\",\n            value2: \"bar\",\n            value3: \"baz\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "ifttt.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ifttt.rb"
@@ -15077,14 +15417,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "import(\"./path/to/other/Fastfile\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "import.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/import.rb"
@@ -15174,7 +15520,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -15183,7 +15531,9 @@
       "import_certificate(\n            certificate_path: \"certs/development.cer\"\n          )",
       "import_certificate(\n            certificate_path: \"certs/dist.p12\",\n            certificate_password: ENV[\"CERTIFICATE_PASSWORD\"] || \"default\",\n            certificate_format: \"pkcs12\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "import_certificate.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/import_certificate.rb"
@@ -15275,14 +15625,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "import_from_git(\n            url: \"git@github.com:fastlane/fastlane.git\", # The URL of the repository to import the Fastfile from.\n            branch: \"HEAD\", # The branch to checkout on the repository.\n            path: \"fastlane/Fastfile\", # The path of the Fastfile in the repository.\n            version: \"~> 1.0.0\" # The version to checkout on the repository. Optimistic match operator can be used to select the latest version within constraints.\n          )",
       "import_from_git(\n            url: \"git@github.com:fastlane/fastlane.git\", # The URL of the repository to import the Fastfile from.\n            branch: \"HEAD\", # The branch to checkout on the repository.\n            path: \"fastlane/Fastfile\", # The path of the Fastfile in the repository.\n            version: [\">= 1.1.0\", \"< 2.0.0\"], # The version to checkout on the repository. Multiple conditions can be used to select the latest version within constraints.\n            cache_path: \"~/.cache/fastlane/imported\", # A directory in which the repository will be added, which means that it will not be cloned again on subsequent calls.\n            git_extra_headers: [\"Authorization: Basic <YOUR BASE64 KEY>\", \"Cache-Control: no-cache\"]\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "import_from_git.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/import_from_git.rb"
@@ -15345,7 +15699,9 @@
       "increment_build_number(\n            build_number: 75, # specify specific build number (optional, omitting it increments by one)\n            xcodeproj: \"./path/to/MyApp.xcodeproj\" # (optional, you must specify the path to your main Xcode project if it is not in the project root directory)\n          )",
       "build_number = increment_build_number"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "increment_build_number.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/increment_build_number.rb"
@@ -15411,7 +15767,9 @@
       "increment_version_number(\n            version_number: \"2.1.1\",                # specify specific version number (optional, omitting it increments patch version number)\n            xcodeproj: \"./path/to/MyApp.xcodeproj\"  # (optional, you must specify the path to your main Xcode project if it is not in the project root directory)\n          )",
       "version = increment_version_number"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "increment_version_number.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/increment_version_number.rb"
@@ -15469,13 +15827,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "install_on_device(\n            device_id: \"a3be6c9ff7e5c3c6028597513243b0f933b876d4\",\n            ipa: \"./app.ipa\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "install_on_device.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/install_on_device.rb"
@@ -15504,13 +15866,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The absolute path to the installed provisioning profile",
     "return_type": "string",
     "examples": [
       "install_provisioning_profile(path: \"profiles/profile.mobileprovision\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "install_provisioning_profile.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/install_provisioning_profile.rb"
@@ -15550,14 +15916,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "install_xcode_plugin(url: \"https://example.com/clubmate/plugin.zip\")",
       "install_xcode_plugin(github: \"https://github.com/contentful/ContentfulXcodePlugin\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "install_xcode_plugin.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/install_xcode_plugin.rb"
@@ -15636,7 +16006,9 @@
     "examples": [
       "installr(\n            api_token: \"...\",\n            ipa: \"test.ipa\",\n            notes: \"The next great version of the app!\",\n            notify: \"dev,qa\",\n            add: \"exec,ops\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "installr.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/installr.rb"
@@ -15799,7 +16171,9 @@
     "examples": [
       "ipa(\n            workspace: \"MyApp.xcworkspace\",\n            configuration: \"Debug\",\n            scheme: \"MyApp\",\n            # (optionals)\n            clean: true,                     # This means \"Do Clean\". Cleans project before building (the default if not specified).\n            destination: \"path/to/dir\",      # Destination directory. Defaults to current directory.\n            ipa: \"my-app.ipa\",               # specify the name of the .ipa file to generate (including file extension)\n            xcargs: \"MY_ADHOC=0\",            # pass additional arguments to xcodebuild when building the app.\n            embed: \"my.mobileprovision\",     # Sign .ipa file with .mobileprovision\n            identity: \"MyIdentity\",          # Identity to be used along with --embed\n            sdk: \"10.0\",                     # use SDK as the name or path of the base SDK when building the project.\n            archive: true                    # this means \"Do Archive\". Archive project after building (the default if not specified).\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "ipa.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ipa.rb"
@@ -15817,14 +16191,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "bool",
     "examples": [
       "if is_ci\n            puts \"I'm a computer\"\n          else\n            say \"Hi Human!\"\n          end"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "is_ci.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/is_ci.rb"
@@ -15863,14 +16243,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "jazzy",
       "jazzy(config: \".jazzy.yaml\", module_version: \"2.1.37\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "jazzy.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/jazzy.rb"
@@ -15974,7 +16358,9 @@
       "jira(\n            url: \"https://yourserverdomain.com\",\n            context_path: \"/jira\",\n            username: \"Your username\",\n            password: \"Your password or API token\",\n            ticket_id: \"IOS-123\",\n            comment_text: \"Text to post as a comment\"\n          )",
       "jira(\n            ticket_id: \"IOS-123\",\n            comment_text: \"Text to post as a comment\",\n            fail_on_error: false\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "jira.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/jira.rb"
@@ -15992,15 +16378,21 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "hash",
     "examples": [
       "lane_context[SharedValues::BUILD_NUMBER]",
       "lane_context[SharedValues::IPA_OUTPUT_PATH]"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "lane_context.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/lane_context.rb"
@@ -16018,14 +16410,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "Returns the following dict: {commit_hash: \"commit hash\", abbreviated_commit_hash: \"abbreviated commit hash\" author: \"Author\", author_email: \"author email\", message: \"commit message\"}",
     "return_type": "hash_of_strings",
     "examples": [
       "commit = last_git_commit\n          pilot(changelog: commit[:message]) # message of commit\n          author = commit[:author] # author of the commit\n          author_email = commit[:author_email] # email of the author of the commit\n          hash = commit[:commit_hash] # long sha of commit\n          short_hash = commit[:abbreviated_commit_hash] # short sha of commit"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "last_git_commit.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/last_git_commit.rb"
@@ -16056,14 +16454,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "string",
     "examples": [
       "last_git_tag",
       "last_git_tag(pattern: \"release/v1.0/\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "last_git_tag.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/last_git_tag.rb"
@@ -16202,7 +16604,9 @@
       "latest_testflight_build_number(version: \"1.3\")",
       "increment_build_number({\n            build_number: latest_testflight_build_number + 1\n          })"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "latest_testflight_build_number.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/latest_testflight_build_number.rb"
@@ -16261,13 +16665,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "lcov(\n            project_name: \"ProjectName\",\n            scheme: \"yourScheme\",\n            output_dir: \"cov_reports\" # This value is optional. Default is coverage_reports\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "lcov.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/lcov.rb"
@@ -16447,14 +16855,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "mailgun(\n            to: \"fastlane@krausefx.com\",\n            success: true,\n            message: \"This is the mail's content\"\n          )",
       "mailgun(\n            postmaster: \"MY_POSTMASTER\",\n            apikey: \"MY_API_KEY\",\n            to: \"DESTINATION_EMAIL\",\n            from: \"EMAIL_FROM_NAME\",\n            reply_to: \"EMAIL_REPLY_TO\",\n            success: true,\n            message: \"Mail Body\",\n            app_link: \"http://www.myapplink.com\",\n            ci_build_link: \"http://www.mycibuildlink.com\",\n            template_path: \"HTML_TEMPLATE_PATH\",\n            custom_placeholders: {\n              :var1 => 123,\n              :var2 => \"string\"\n            },\n            attachment: \"dirname/filename.ext\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "mailgun.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/mailgun.rb"
@@ -16505,7 +16917,9 @@
     "examples": [
       "make_changelog_from_jenkins(\n            # Optional, lets you set a changelog in the case is not generated on Jenkins or if ran outside of Jenkins\n            fallback_changelog: \"Bug fixes and performance enhancements\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "make_changelog_from_jenkins.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/make_changelog_from_jenkins.rb"
@@ -17145,7 +17559,9 @@
       "sync_code_signing(app_identifier: [\"tools.fastlane.app\", \"tools.fastlane.sleepy\"])",
       "match   # alias for \"sync_code_signing\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "match.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/match.rb"
@@ -17767,14 +18183,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "match_nuke(type: \"development\")",
       "match_nuke(type: \"development\", api_key: app_store_connect_api_key)"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "match_nuke.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/match_nuke.rb"
@@ -17792,14 +18212,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "min_fastlane_version(\"1.50.0\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "min_fastlane_version.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/min_fastlane_version.rb"
@@ -17867,13 +18293,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "modify_services(\n            username: \"test.account@gmail.com\",\n            app_identifier: \"com.someorg.app\",\n            services: {\n              push_notification: \"on\",\n              associated_domains: \"off\",\n              wallet: :on,\n              apple_pay: :off,\n              data_protection: true,\n              multipath: false\n            })"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "modify_services.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/modify_services.rb"
@@ -18064,14 +18494,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "# for Nexus 2\n          nexus_upload(\n            file: \"/path/to/file.ipa\",\n            repo_id: \"artefacts\",\n            repo_group_id: \"com.fastlane\",\n            repo_project_name: \"ipa\",\n            repo_project_version: \"1.13\",\n            repo_classifier: \"dSYM\", # Optional\n            endpoint: \"http://localhost:8081\",\n            username: \"admin\",\n            password: \"admin123\"\n          )",
       "# for Nexus 3\n          nexus_upload(\n            nexus_version: 3,\n            mount_path: \"\",\n            file: \"/path/to/file.ipa\",\n            repo_id: \"artefacts\",\n            repo_group_id: \"com.fastlane\",\n            repo_project_name: \"ipa\",\n            repo_project_version: \"1.13\",\n            repo_classifier: \"dSYM\", # Optional\n            endpoint: \"http://localhost:8081\",\n            username: \"admin\",\n            password: \"admin123\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "nexus_upload.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/nexus_upload.rb"
@@ -18178,11 +18612,17 @@
         ]
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
-    "examples": [],
-    "aliases": [],
+    "examples": [
+
+    ],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "notarize.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/notarize.rb"
@@ -18296,13 +18736,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "notification(subtitle: \"Finished Building\", message: \"Ready to upload...\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "notification.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/notification.rb"
@@ -18321,12 +18765,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
-    "examples": [],
-    "aliases": [],
+    "examples": [
+
+    ],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "notify.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/notify.rb"
@@ -18357,14 +18809,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The total number of all commits in current git branch",
     "return_type": "int",
     "examples": [
       "increment_build_number(build_number: number_of_commits)",
       "build_number = number_of_commits(all: true)\n          increment_build_number(build_number: build_number)"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "number_of_commits.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/number_of_commits.rb"
@@ -18585,7 +19041,9 @@
     "examples": [
       "oclint(\n            compile_commands: \"commands.json\",    # The JSON compilation database, use xctool reporter \"json-compilation-database\"\n            select_regex: /ViewController.m/,     # Select all files matching this regex\n            exclude_regex: /Test.m/,              # Exclude all files matching this regex\n            report_type: \"pmd\",                   # The type of the report (default: html)\n            max_priority_1: 10,                   # The max allowed number of priority 1 violations\n            max_priority_2: 100,                  # The max allowed number of priority 2 violations\n            max_priority_3: 1000,                 # The max allowed number of priority 3 violations\n            thresholds: [                         # Override the default behavior of rules\n              \"LONG_LINE=200\",\n              \"LONG_METHOD=200\"\n            ],\n            enable_rules: [                       # List of rules to pick explicitly\n              \"DoubleNegative\",\n              \"SwitchStatementsDon'TNeedDefaultWhenFullyCovered\"\n            ],\n            disable_rules: [\"GotoStatement\"],     # List of rules to disable\n            list_enabled_rules: true,             # List enabled rules\n            enable_clang_static_analyzer: true,   # Enable Clang Static Analyzer, and integrate results into OCLint report\n            enable_global_analysis: true,         # Compile every source, and analyze across global contexts (depends on number of source files, could results in high memory load)\n            allow_duplicated_violations: true,    # Allow duplicated violations in the OCLint report\n            extra_arg: \"-Wno-everything\"          # Additional argument to append to the compiler command line\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "oclint.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/oclint.rb"
@@ -18721,7 +19179,9 @@
       "onesignal(\n            auth_token: \"Your OneSignal Auth Token\",\n            app_name: \"Name for OneSignal App\",\n            android_token: \"Your Android GCM key (optional)\",\n            android_gcm_sender_id: \"Your Android GCM Sender ID (optional)\",\n            fcm_json: \"Path to FCM Service Account JSON File (optional)\",\n            apns_p12: \"Path to Apple .p12 file (optional)\",\n            apns_p12_password: \"Password for .p12 file (optional)\",\n            apns_env: \"production/sandbox (defaults to production)\",\n            organization_id: \"Onesignal organization id (optional)\"\n          )",
       "onesignal(\n            app_id: \"Your OneSignal App ID\",\n            auth_token: \"Your OneSignal Auth Token\",\n            app_name: \"New Name for OneSignal App\",\n            android_token: \"Your Android GCM key (optional)\",\n            android_gcm_sender_id: \"Your Android GCM Sender ID (optional)\",\n            fcm_json: \"Path to FCM Service Account JSON File (optional)\",\n            apns_p12: \"Path to Apple .p12 file (optional)\",\n            apns_p12_password: \"Password for .p12 file (optional)\",\n            apns_env: \"production/sandbox (defaults to production)\",\n            organization_id: \"Onesignal organization id (optional)\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "onesignal.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/onesignal.rb"
@@ -18740,12 +19200,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
-    "examples": [],
-    "aliases": [],
+    "examples": [
+
+    ],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "opt_out_crash_reporting.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/opt_out_crash_reporting.rb"
@@ -18763,14 +19231,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "opt_out_usage # add this to the top of your Fastfile"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "opt_out_usage.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/opt_out_usage.rb"
@@ -18954,7 +19428,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -18962,7 +19438,9 @@
       "pem # alias for \"get_push_certificate\"",
       "get_push_certificate(\n            force: true, # create a new profile, even if the old one is still valid\n            app_identifier: \"net.sunapps.9\", # optional app identifier,\n            save_private_key: true,\n            new_profile: proc do |profile_path| # this block gets called when a new profile was generated\n              puts profile_path # the absolute path to the new PEM file\n              # insert the code to upload the PEM file to the server\n            end\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "pem.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/pem.rb"
@@ -19420,7 +19898,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -19432,7 +19912,9 @@
       "upload_to_testflight(\n            beta_app_feedback_email: \"email@email.com\",\n            beta_app_description: \"This is a description of my app\",\n            demo_account_required: true,\n            notify_external_testers: false,\n            changelog: \"This is my changelog of things that have changed in a log\"\n          )",
       "upload_to_testflight(\n            beta_app_review_info: {\n              contact_email: \"email@email.com\",\n              contact_first_name: \"Connect\",\n              contact_last_name: \"API\",\n              contact_phone: \"5558675309\",\n              demo_account_name: \"demo@email.com\",\n              demo_account_password: \"connectapi\",\n              notes: \"this is review note for the reviewer <3 thank you for reviewing\"\n            },\n            localized_app_info: {\n              \"default\": {\n                feedback_email: \"default@email.com\",\n                marketing_url: \"https://example.com/marketing-default\",\n                privacy_policy_url: \"https://example.com/privacy-default\",\n                description: \"Default description\",\n              },\n              \"en-GB\": {\n                feedback_email: \"en-gb@email.com\",\n                marketing_url: \"https://example.com/marketing-en-gb\",\n                privacy_policy_url: \"https://example.com/privacy-en-gb\",\n                description: \"en-gb description\",\n              }\n            },\n            localized_build_info: {\n              \"default\": {\n                whats_new: \"Default changelog\",\n              },\n              \"en-GB\": {\n                whats_new: \"en-gb changelog\",\n              }\n            }\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "pilot.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/pilot.rb"
@@ -19651,7 +20133,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -19660,7 +20144,9 @@
       "# Allow warnings during pod lint\n          pod_lib_lint(allow_warnings: true)",
       "# If the podspec has a dependency on another private pod, then you will have to supply the sources\n          pod_lib_lint(sources: [\"https://github.com/username/Specs\", \"https://github.com/CocoaPods/Specs\"])"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "pod_lib_lint.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/pod_lib_lint.rb"
@@ -19829,7 +20315,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -19838,7 +20326,9 @@
       "# You may also push to a private repo instead of Trunk\n          pod_push(path: \"TSMessages.podspec\", repo: \"MyRepo\")",
       "# If the podspec has a dependency on another private pod, then you will have to supply the sources you want the podspec to lint with for pod_push to succeed. Read more here - https://github.com/CocoaPods/CocoaPods/issues/2543.\n          pod_push(path: \"TMessages.podspec\", repo: \"MyRepo\", sources: [\"https://github.com/username/Specs\", \"https://github.com/CocoaPods/Specs\"])"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "pod_push.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/pod_push.rb"
@@ -19940,7 +20430,9 @@
     "examples": [
       "podio_item(\n            identifying_value: \"Your unique value\",\n            other_fields: {\n              \"field1\" => \"fieldValue\",\n              \"field2\" => \"fieldValue2\"\n            }\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "podio_item.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/podio_item.rb"
@@ -20163,14 +20655,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "true if precheck passes, else, false",
     "return_type": "bool",
     "examples": [
       "check_app_store_metadata(\n            negative_apple_sentiment: [level: :skip], # Set to skip to not run the `negative_apple_sentiment` rule\n            curse_words: [level: :warn] # Set to warn to only warn on curse word check failures\n          )",
       "precheck   # alias for \"check_app_store_metadata\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "precheck.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/precheck.rb"
@@ -20200,7 +20696,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -20281,7 +20779,7 @@
         "env_name": "PRODUCE_SKU",
         "description": "SKU Number (e.g. '1234')",
         "data_type": "String",
-        "default_value": "1794275704",
+        "default_value": "1794307303",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -20433,7 +20931,9 @@
       "create_app_online(\n            username: \"felix@krausefx.com\",\n            app_identifier: \"com.krausefx.app\",\n            app_name: \"MyApp\",\n            language: \"English\",\n            app_version: \"1.0\",\n            sku: \"123\",\n            team_name: \"SunApps GmbH\" # Only necessary when in multiple teams.\n          )",
       "produce   # alias for \"create_app_online\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "produce.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/produce.rb"
@@ -20503,14 +21003,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "string",
     "examples": [
       "changelog = prompt(text: \"Changelog: \")",
       "changelog = prompt(\n            text: \"Changelog: \",\n            multi_line_end_keyword: \"END\"\n          )\n\n          pilot(changelog: changelog)"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "prompt.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/prompt.rb"
@@ -20560,13 +21064,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "push_git_tags"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "push_git_tags.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/push_git_tags.rb"
@@ -20676,14 +21184,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "push_to_git_remote # simple version. pushes \"master\" branch to \"origin\" remote",
       "push_to_git_remote(\n            remote: \"origin\",         # optional, default: \"origin\"\n            local_branch: \"develop\",  # optional, aliased by \"branch\", default is set to current branch\n            remote_branch: \"develop\", # optional, default is set to local_branch\n            force: true,              # optional, default: false\n            force_with_lease: true,   # optional, default: false\n            tags: false,              # optional, default: true\n            no_verify: true,          # optional, default: false\n            set_upstream: true        # optional, default: false\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "push_to_git_remote.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/push_to_git_remote.rb"
@@ -20713,7 +21225,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -20763,7 +21277,9 @@
       "spec = read_podspec\n          version = spec[\"version\"]\n          puts \"Using Version #{version}\"",
       "spec = read_podspec(path: \"./XcodeServerSDK.podspec\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "read_podspec.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/read_podspec.rb"
@@ -20792,13 +21308,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "recreate_schemes(project: \"./path/to/MyApp.xcodeproj\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "recreate_schemes.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/recreate_schemes.rb"
@@ -20901,14 +21421,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "string",
     "examples": [
       "register_device(\n            name: \"Luka iPhone 6\",\n            udid: \"1234567890123456789012345678901234567890\"\n          ) # Simply provide the name and udid of the device",
       "register_device(\n            name: \"Luka iPhone 6\",\n            udid: \"1234567890123456789012345678901234567890\",\n            team_id: \"XXXXXXXXXX\",         # Optional, if you\"re a member of multiple teams, then you need to pass the team ID here.\n            username: \"luka@goonbee.com\"   # Optional, lets you override the Apple Member Center username.\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "register_device.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/register_device.rb"
@@ -21011,7 +21535,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -21020,7 +21546,9 @@
       "register_devices(\n            devices_file: \"./devices.txt\", # You must pass in either `devices_file` or `devices`.\n            team_id: \"XXXXXXXXXX\",         # Optional, if you\"re a member of multiple teams, then you need to pass the team ID here.\n            username: \"luka@goonbee.com\"   # Optional, lets you override the Apple Member Center username.\n          )",
       "register_devices(\n            devices: {\n              \"Luka MacBook\" => \"12345678-1234-1234-1234-123456789012\",\n              \"Felix MacBook Pro\" => \"ABCDEFGH-ABCD-ABCD-ABCD-ABCDEFGHIJKL\"\n            },\n            platform: \"mac\"\n          ) # Register devices for Mac"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "register_devices.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/register_devices.rb"
@@ -21090,7 +21618,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -21099,7 +21629,9 @@
       "reset_git_repo(skip_clean: true) # If you want \"git clean\" to be skipped, thus NOT deleting untracked files like \".env\". Optional, defaults to false.",
       "reset_git_repo(\n            force: true,\n            files: [\n              \"./file.txt\"\n            ]\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "reset_git_repo.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/reset_git_repo.rb"
@@ -21137,7 +21669,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -21295,14 +21829,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "resign(\n            ipa: \"path/to/ipa\", # can omit if using the `ipa` action\n            signing_identity: \"iPhone Distribution: Luka Mirosevic (0123456789)\",\n            provisioning_profile: \"path/to/profile\", # can omit if using the _sigh_ action\n          )",
       "# You may provide multiple provisioning profiles if the application contains nested\n          # applications or app extensions, which need their own provisioning profile.\n          # You can do so by passing an array of provisioning profile strings or a hash\n          # that associates provisioning profile values to bundle identifier keys.\n          resign(\n            ipa: \"path/to/ipa\", # can omit if using the `ipa` action\n            signing_identity: \"iPhone Distribution: Luka Mirosevic (0123456789)\",\n            provisioning_profile: {\n              \"com.example.awesome-app\" => \"path/to/profile\",\n              \"com.example.awesome-app.app-extension\" => \"path/to/app-extension/profile\"\n            }\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "resign.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/resign.rb"
@@ -21332,13 +21870,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "restore_file(path: \"/path/to/file\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "restore_file.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/restore_file.rb"
@@ -21357,14 +21899,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "string",
     "examples": [
       "rocket"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "rocket.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/rocket.rb"
@@ -21414,13 +21962,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "rsync(\n            source: \"root@host:/tmp/1.txt\",\n            destination: \"/tmp/local_file.txt\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "rsync.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/rsync.rb"
@@ -21438,14 +21990,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "ruby_version(\"2.4.0\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "ruby_version.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ruby_version.rb"
@@ -21826,7 +22384,7 @@
         "env_name": "",
         "description": "xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)",
         "data_type": "String",
-        "default_value": "xcpretty",
+        "default_value": "xcbeautify",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -22360,7 +22918,9 @@
       "# run tests using derived data from prev. build\n          run_tests(\n             derived_data_path: \"my_folder\",\n             test_without_building: true\n          )",
       "# or run it from an existing xctestrun package\n          run_tests(\n             xctestrun: \"/path/to/mytests.xctestrun\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "run_tests.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/run_tests.rb"
@@ -22373,7 +22933,9 @@
     "authors": [
       "joshdholtz"
     ],
-    "platforms": [],
+    "platforms": [
+
+    ],
     "options": [
       {
         "key": "ipa",
@@ -22564,7 +23126,9 @@
       "s3",
       "s3(\n            # All of these are used to make Shenzhen's `ipa distribute:s3` command\n            access_key: ENV[\"S3_ACCESS_KEY\"],               # Required from user.\n            secret_access_key: ENV[\"S3_SECRET_ACCESS_KEY\"], # Required from user.\n            bucket: ENV[\"S3_BUCKET\"],                       # Required from user.\n            ipa: \"AppName.ipa\",                             # Optional if you use `ipa` to build\n            dsym: \"AppName.app.dSYM.zip\",                   # Optional if you use `ipa` to build\n            path: \"v{CFBundleShortVersionString}_b{CFBundleVersion}/\", # This is actually the default.\n            upload_metadata: true,                          # Upload version.json, plist and HTML. Set to false to skip uploading of these files.\n            version_file_name: \"app_version.json\",          # Name of the file to upload to S3. Defaults to \"version.json\"\n            version_template_path: \"path/to/erb\"            # Path to an ERB to configure the structure of the version JSON file\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "s3.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/s3.rb"
@@ -22604,13 +23168,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "say(\"I can speak\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "say.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/say.rb"
@@ -22991,7 +23559,7 @@
         "env_name": "",
         "description": "xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)",
         "data_type": "String",
-        "default_value": "xcpretty",
+        "default_value": "xcbeautify",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -23525,7 +24093,9 @@
       "# run tests using derived data from prev. build\n          run_tests(\n             derived_data_path: \"my_folder\",\n             test_without_building: true\n          )",
       "# or run it from an existing xctestrun package\n          run_tests(\n             xctestrun: \"/path/to/mytests.xctestrun\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "scan.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/scan.rb"
@@ -23605,14 +24175,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "scp(\n            host: \"dev.januschka.com\",\n            username: \"root\",\n            upload: {\n              src: \"/root/dir1\",\n              dst: \"/tmp/new_dir\"\n            }\n          )",
       "scp(\n            host: \"dev.januschka.com\",\n            username: \"root\",\n            download: {\n              src: \"/root/dir1\",\n              dst: \"/tmp/new_dir\"\n            }\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "scp.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/scp.rb"
@@ -23636,7 +24210,7 @@
         "env_name": "",
         "description": "Path to the root of your Android SDK installation, e.g. ~/tools/android-sdk-macosx",
         "data_type": "String",
-        "default_value": "/Users/fandi/Library/Android/sdk",
+        "default_value": "/Users/runner/Library/Android/sdk",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -23865,7 +24439,9 @@
       "screengrab # alias for \"capture_android_screenshots\"",
       "capture_android_screenshots(\n            locales: [\"en-US\", \"fr-FR\", \"ja-JP\"],\n            clear_previous_screenshots: true,\n            app_apk_path: \"build/outputs/apk/example-debug.apk\",\n            tests_apk_path: \"build/outputs/apk/example-debug-androidTest-unaligned.apk\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "screengrab.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/screengrab.rb"
@@ -23906,14 +24482,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "set_build_number_repository",
       "set_build_number_repository(\n            xcodeproj: \"./path/to/MyApp.xcodeproj\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "set_build_number_repository.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/set_build_number_repository.rb"
@@ -24026,14 +24606,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "set_changelog(changelog: \"Changelog for all Languages\")",
       "set_changelog(app_identifier: \"com.krausefx.app\", version: \"1.0\", changelog: \"Changelog for all Languages\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "set_changelog.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/set_changelog.rb"
@@ -24197,7 +24781,9 @@
     "examples": [
       "github_release = set_github_release(\n            repository_name: \"fastlane/fastlane\",\n            api_token: ENV[\"GITHUB_TOKEN\"],\n            name: \"Super New actions\",\n            tag_name: \"v1.22.0\",\n            description: (File.read(\"changelog\") rescue \"No changelog provided\"),\n            commitish: \"master\",\n            upload_assets: [\"example_integration.ipa\", \"./pkg/built.gem\"]\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "set_github_release.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/set_github_release.rb"
@@ -24267,14 +24853,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "set_info_plist_value(path: \"./Info.plist\", key: \"CFBundleIdentifier\", value: \"com.krausefx.app.beta\")",
       "set_info_plist_value(path: \"./MyApp-Info.plist\", key: \"NSAppTransportSecurity\", subkey: \"NSAllowsArbitraryLoads\", value: true, output_file_name: \"./Info.plist\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "set_info_plist_value.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/set_info_plist_value.rb"
@@ -24333,13 +24923,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "set_pod_key(\n            key: \"APIToken\",\n            value: \"1234\",\n            project: \"MyProject\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "set_pod_key.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/set_pod_key.rb"
@@ -24409,7 +25003,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -24417,7 +25013,9 @@
       "setup_ci(\n            provider: \"circleci\",\n            timeout: 0\n          )",
       "setup_ci(\n            provider: \"circleci\",\n            timeout: 0,\n            keychain_name: \"custom_keychain_name\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "setup_ci.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/setup_ci.rb"
@@ -24447,13 +25045,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "setup_circle_ci"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "setup_circle_ci.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/setup_circle_ci.rb"
@@ -24582,13 +25184,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "setup_jenkins"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "setup_jenkins.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/setup_jenkins.rb"
@@ -24618,13 +25224,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "setup_travis"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "setup_travis.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/setup_travis.rb"
@@ -24674,14 +25284,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "Outputs the string and executes it. When running in tests, it returns the actual command instead of executing it",
     "return_type": "string",
     "examples": [
       "sh(\"ls\")",
       "sh(\"git\", \"commit\", \"-m\", \"My message\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "sh.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/sh.rb"
@@ -25044,7 +25658,9 @@
       "sigh # alias for \"get_provisioning_profile\"",
       "get_provisioning_profile(\n            adhoc: true,\n            force: true,\n            filename: \"myFile.mobileprovision\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "sigh.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/sigh.rb"
@@ -25062,14 +25678,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "skip_docs"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "skip_docs.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/skip_docs.rb"
@@ -25239,14 +25861,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "slack(message: \"App successfully released!\")",
       "slack(\n            message: \"App successfully released!\",\n            channel: \"#channel\",  # Optional, by default will post to the default channel configured for the POST URL.\n            success: true,        # Optional, defaults to true.\n            payload: {            # Optional, lets you specify any number of your own Slack attachments.\n              \"Build Date\" => Time.new.to_s,\n              \"Built by\" => \"Jenkins\",\n            },\n            default_payloads: [:git_branch, :git_author], # Optional, lets you specify default payloads to include. Pass an empty array to suppress all the default payloads.\n            attachment_properties: { # Optional, lets you specify any other properties available for attachments in the slack API (see https://api.slack.com/docs/attachments).\n                                     # This hash is deep merged with the existing properties set using the other properties above. This allows your own fields properties to be appended to the existing fields that were created using the `payload` property for instance.\n              thumb_url: \"http://example.com/path/to/thumb.png\",\n              fields: [{\n                title: \"My Field\",\n                value: \"My Value\",\n                short: true\n              }]\n            }\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "slack.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/slack.rb"
@@ -25595,13 +26221,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "slather(\n            build_directory: \"foo\",\n            input_format: \"bah\",\n            scheme: \"MyScheme\",\n            proj: \"MyProject.xcodeproj\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "slather.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/slather.rb"
@@ -26114,7 +26744,7 @@
         "env_name": "",
         "description": "xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)",
         "data_type": "String",
-        "default_value": "xcpretty",
+        "default_value": "xcbeautify",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -26173,7 +26803,9 @@
       "snapshot # alias for \"capture_ios_screenshots\"",
       "capture_ios_screenshots(\n            skip_open_summary: true,\n            clean: true\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "snapshot.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/snapshot.rb"
@@ -26367,14 +26999,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The exit code of the sonar-scanner binary",
     "return_type": "",
     "examples": [
       "sonar(\n            project_key: \"name.gretzki.awesomeApp\",\n            project_version: \"1.0\",\n            project_name: \"iOS - AwesomeApp\",\n            sources_path: File.expand_path(\"../AwesomeApp\")\n          )",
       "sonar(\n            project_key: \"name.gretzki.awesomeApp\",\n            project_version: \"1.0\",\n            project_name: \"iOS - AwesomeApp\",\n            sources_path: File.expand_path(\"../AwesomeApp\"),\n            sonar_organization: \"myOrg\",\n            sonar_token: \"123456abcdef\",\n            sonar_url: \"https://sonarcloud.io\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "sonar.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/sonar.rb"
@@ -26533,14 +27169,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "sourcedocs(output_folder: 'docs')",
       "sourcedocs(output_folder: 'docs', clean: true, reproducible: true, scheme: 'MyApp')"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "sourcedocs.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/sourcedocs.rb"
@@ -26610,7 +27250,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The array of Spaceship logs",
     "return_type": "array_of_strings",
     "examples": [
@@ -26620,7 +27262,9 @@
       "spaceship_logs(\n            print_contents: true,\n            print_paths: true\n          )",
       "spaceship_logs(\n            latest: false,\n            print_contents: true,\n            print_paths: true\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "spaceship_logs.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/spaceship_logs.rb"
@@ -26650,13 +27294,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "spaceship_stats"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "spaceship_stats.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/spaceship_stats.rb"
@@ -26764,13 +27412,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "splunkmint(\n            dsym: \"My.app.dSYM.zip\",\n            api_key: \"43564d3a\",\n            api_token: \"e05456234c4869fb7e0b61\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "splunkmint.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/splunkmint.rb"
@@ -26951,7 +27603,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -26962,7 +27616,9 @@
       "spm(\n            simulator: \"iphonesimulator\"\n          )",
       "spm(\n            simulator: \"macosx\",\n            simulator_arch: \"arm64\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "spm.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/spm.rb"
@@ -27057,7 +27713,9 @@
     "examples": [
       "ssh(\n            host: \"dev.januschka.com\",\n            username: \"root\",\n            commands: [\n              \"date\",\n              \"echo 1 > /tmp/file1\"\n            ]\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "ssh.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/ssh.rb"
@@ -27507,14 +28165,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "upload_to_play_store",
       "supply # alias for \"upload_to_play_store\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "supply.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/supply.rb"
@@ -27683,13 +28345,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "swiftlint(\n            mode: :lint,                          # SwiftLint mode: :lint (default) or :autocorrect\n            path: \"/path/to/lint\",                 # Specify path to lint (optional)\n            output_file: \"swiftlint.result.json\", # The path of the output file (optional)\n            config_file: \".swiftlint-ci.yml\",     # The path of the configuration file (optional)\n            files: [                              # List of files to process (optional)\n              \"AppDelegate.swift\",\n              \"path/to/project/Model.swift\"\n            ],\n            raise_if_swiftlint_error: true,      # Allow fastlane to raise an error if swiftlint fails\n            ignore_exit_status: true              # Allow fastlane to continue even if SwiftLint returns a non-zero exit status\n\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "swiftlint.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/swiftlint.rb"
@@ -28329,7 +28995,9 @@
       "sync_code_signing(app_identifier: [\"tools.fastlane.app\", \"tools.fastlane.sleepy\"])",
       "match   # alias for \"sync_code_signing\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "sync_code_signing.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/sync_code_signing.rb"
@@ -28345,14 +29013,20 @@
     "platforms": [
       "ios"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "team_id(\"Q2CBPK58CA\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "team_id.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/team_id.rb"
@@ -28368,14 +29042,20 @@
     "platforms": [
       "ios"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "team_name(\"Felix Krause\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "team_name.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/team_name.rb"
@@ -28601,7 +29281,9 @@
       "testfairy(\n            api_key: \"...\",\n            ipa: \"./ipa_file.ipa\",\n            comment: \"Build #{lane_context[SharedValues::BUILD_NUMBER]}\",\n          )",
       "testfairy(\n            api_key: \"...\",\n            apk: \"../build/app/outputs/apk/qa/release/app-qa-release.apk\",\n            comment: \"Build #{lane_context[SharedValues::BUILD_NUMBER]}\",\n           )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "testfairy.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/testfairy.rb"
@@ -29059,7 +29741,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -29071,7 +29755,9 @@
       "upload_to_testflight(\n            beta_app_feedback_email: \"email@email.com\",\n            beta_app_description: \"This is a description of my app\",\n            demo_account_required: true,\n            notify_external_testers: false,\n            changelog: \"This is my changelog of things that have changed in a log\"\n          )",
       "upload_to_testflight(\n            beta_app_review_info: {\n              contact_email: \"email@email.com\",\n              contact_first_name: \"Connect\",\n              contact_last_name: \"API\",\n              contact_phone: \"5558675309\",\n              demo_account_name: \"demo@email.com\",\n              demo_account_password: \"connectapi\",\n              notes: \"this is review note for the reviewer <3 thank you for reviewing\"\n            },\n            localized_app_info: {\n              \"default\": {\n                feedback_email: \"default@email.com\",\n                marketing_url: \"https://example.com/marketing-default\",\n                privacy_policy_url: \"https://example.com/privacy-default\",\n                description: \"Default description\",\n              },\n              \"en-GB\": {\n                feedback_email: \"en-gb@email.com\",\n                marketing_url: \"https://example.com/marketing-en-gb\",\n                privacy_policy_url: \"https://example.com/privacy-en-gb\",\n                description: \"en-gb description\",\n              }\n            },\n            localized_build_info: {\n              \"default\": {\n                whats_new: \"Default changelog\",\n              },\n              \"en-GB\": {\n                whats_new: \"en-gb changelog\",\n              }\n            }\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "testflight.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/testflight.rb"
@@ -29180,11 +29866,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "A hash with the key being the path of the generated file, the value being if the tests were successful",
     "return_type": "",
-    "examples": [],
-    "aliases": [],
+    "examples": [
+
+    ],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "trainer.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/trainer.rb"
@@ -29284,7 +29976,9 @@
     "examples": [
       "tryouts(\n            api_token: \"...\",\n            app_id: \"application-id\",\n            build_file: \"test.ipa\",\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "tryouts.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/tryouts.rb"
@@ -29354,13 +30048,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "twitter(\n            access_token: \"XXXX\",\n            access_token_secret: \"xxx\",\n            consumer_key: \"xxx\",\n            consumer_secret: \"xxx\",\n            message: \"You rock!\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "twitter.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/twitter.rb"
@@ -29378,14 +30076,20 @@
       "android",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "typetalk(\n            message: \"App successfully released!\",\n            note_path: \"ChangeLog.md\",\n            topicId: 1,\n            success: true,\n            typetalk_token: \"Your Typetalk Token\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "typetalk.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/typetalk.rb"
@@ -29445,7 +30149,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -29454,7 +30160,9 @@
       "unlock_keychain( # In addition, the keychain can be selected as a default keychain\n            path: \"/path/to/KeychainName.keychain\",\n            password: \"mysecret\",\n            set_default: true\n          )",
       "unlock_keychain( # If the keychain file is located in the standard location `~/Library/Keychains`, then it is sufficient to provide the keychain file name, or file name with its suffix.\n            path: \"KeychainName\",\n            password: \"mysecret\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "unlock_keychain.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/unlock_keychain.rb"
@@ -29547,7 +30255,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "Returns true if the age rating was successfully updated",
     "return_type": "",
     "examples": [
@@ -29555,7 +30265,9 @@
       "# Using Apple ID\n          update_app_age_rating(\n            username: \"user@example.com\",\n            app_identifier: \"com.example.app\",\n            age_rating_config_path: \"fastlane/metadata/age_rating.json\",\n            team_id: \"ABC123456\"\n          )",
       "# Using the api_key hash returned by app_store_connect_api_key action\n          api_key = app_store_connect_api_key(\n            key_id: \"D383SF739\",\n            issuer_id: \"6053b7fe-68a8-4acb-89be-165aa6465141\",\n            key_filepath: \"./AuthKey_D383SF739.p8\"\n          )\n          update_app_age_rating(\n            api_key: api_key,\n            app_identifier: \"com.example.app\",\n            age_rating_config_path: \"fastlane/metadata/age_rating.json\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_app_age_rating.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_app_age_rating.rb"
@@ -29604,7 +30316,9 @@
     "examples": [
       "update_app_group_identifiers(\n            entitlements_file: \"/path/to/entitlements_file.entitlements\",\n            app_group_identifiers: [\"group.your.app.group.identifier\"]\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_app_group_identifiers.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_app_group_identifiers.rb"
@@ -29653,13 +30367,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "update_app_identifier(\n            xcodeproj: \"Example.xcodeproj\", # Optional path to xcodeproj, will use the first .xcodeproj if not set\n            plist_path: \"Example/Info.plist\", # Path to info plist file, relative to xcodeproj\n            app_identifier: \"com.test.example\" # The App Identifier\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_app_identifier.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_app_identifier.rb"
@@ -29794,7 +30512,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The current status (boolean) of codesigning after modification",
     "return_type": "",
     "examples": [
@@ -29802,7 +30522,9 @@
       " # automatic code signing\n          update_code_signing_settings(\n            use_automatic_signing: true,\n            path: \"demo-project/demo/demo.xcodeproj\"\n          )",
       " # more advanced manual code signing\n          update_code_signing_settings(\n            use_automatic_signing: false,\n            path: \"demo-project/demo/demo.xcodeproj\",\n            team_id: \"QABC123DEV\",\n            bundle_identifier: \"com.demoapp.QABC123DEV\",\n            code_sign_identity: \"iPhone Distribution\",\n            sdk: \"iphoneos*\",\n            profile_name: \"Demo App Deployment Profile\",\n            entitlements_file_path: \"Demo App/generated/New.entitlements\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_code_signing_settings.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_code_signing_settings.rb"
@@ -29843,13 +30565,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "before_all do\n            update_fastlane\n            # ...\n          end"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_fastlane.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_fastlane.rb"
@@ -29898,7 +30624,9 @@
     "examples": [
       "update_icloud_container_identifiers(\n            entitlements_file: \"/path/to/entitlements_file.entitlements\",\n            icloud_container_identifiers: [\"iCloud.com.companyname.appname\"]\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_icloud_container_identifiers.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_icloud_container_identifiers.rb"
@@ -29976,7 +30704,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -29985,7 +30715,9 @@
       "update_info_plist( # Target a specific `xcodeproj` rather than finding the first available one\n            xcodeproj: \"path/to/Example.proj\",\n            plist_path: \"path/to/Info.plist\",\n            display_name: \"MyApp-Beta\"\n          )",
       "update_info_plist( # Advanced processing: find URL scheme for particular key and replace value\n            xcodeproj: \"path/to/Example.proj\",\n            plist_path: \"path/to/Info.plist\",\n            block: proc do |plist|\n              urlScheme = plist[\"CFBundleURLTypes\"].find{|scheme| scheme[\"CFBundleURLName\"] == \"com.acme.default-url-handler\"}\n              urlScheme[:CFBundleURLSchemes] = [\"acme-production\"]\n            end\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_info_plist.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_info_plist.rb"
@@ -30034,7 +30766,9 @@
     "examples": [
       "update_keychain_access_groups(\n            entitlements_file: \"/path/to/entitlements_file.entitlements\",\n            identifiers: [\"your.keychain.access.groups.identifiers\"]\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_keychain_access_groups.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_keychain_access_groups.rb"
@@ -30073,7 +30807,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -30084,7 +30820,9 @@
       "update_plist( # The block can contain logic too\n            plist_path: \"path/to/your_plist_file.plist\",\n            block: proc do |plist|\n              if options[:environment] == \"production\"\n                plist[:CLIENT_ID] = \"new_client_id_production\"\n              else\n                plist[:CLIENT_ID] = \"new_client_id_development\"\n              end\n            end\n          )",
       "update_plist( # Advanced processing: find URL scheme for particular key and replace value\n            plist_path: \"path/to/Info.plist\",\n            block: proc do |plist|\n              urlScheme = plist[\"CFBundleURLTypes\"].find{|scheme| scheme[\"CFBundleURLName\"] == \"com.acme.default-url-handler\"}\n              urlScheme[:CFBundleURLSchemes] = [\"acme-production\"]\n            end\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_plist.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_plist.rb"
@@ -30132,11 +30870,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
-    "examples": [],
-    "aliases": [],
+    "examples": [
+
+    ],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "update_project_code_signing.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_project_code_signing.rb"
@@ -30210,7 +30954,7 @@
         "env_name": "FL_PROJECT_PROVISIONING_CERTIFICATE_PATH",
         "description": "Path to apple root certificate",
         "data_type": "String",
-        "default_value": "/var/folders/ms/6l7tqllj7s15qt4l88v1mw080000gn/T/AppleIncRootCertificate.cer",
+        "default_value": "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/AppleIncRootCertificate.cer",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -30226,13 +30970,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "update_project_provisioning(\n            xcodeproj: \"Project.xcodeproj\",\n            profile: \"./watch_app_store.mobileprovision\", # optional if you use sigh\n            target_filter: \".*WatchKit Extension.*\", # matches name or type of a target\n            build_configuration: \"Release\",\n            code_signing_identity: \"iPhone Development\" # optionally specify the codesigning identity\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_project_provisioning.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_project_provisioning.rb"
@@ -30282,14 +31030,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "update_project_team",
       "update_project_team(\n            path: \"Example.xcodeproj\",\n            teamid: \"A3ZZVJ7CNY\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_project_team.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_project_team.rb"
@@ -30367,13 +31119,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "update_urban_airship_configuration(\n            plist_path: \"AirshipConfig.plist\",\n            production_app_key: \"PRODKEY\",\n            production_app_secret: \"PRODSECRET\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_urban_airship_configuration.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_urban_airship_configuration.rb"
@@ -30422,14 +31178,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "update_url_schemes(\n            path: \"path/to/Info.plist\",\n            url_schemes: [\"com.myapp\"]\n          )",
       "update_url_schemes(\n            path: \"path/to/Info.plist\",\n            update_url_schemes: proc do |schemes|\n              schemes + [\"anotherscheme\"]\n            end\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "update_url_schemes.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/update_url_schemes.rb"
@@ -30546,14 +31306,18 @@
         ]
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "upload_app_privacy_details_to_app_store(\n            username: \"your@email.com\",\n            team_name: \"Your Team\",\n            app_identifier: \"com.your.bundle\"\n          )",
       "upload_app_privacy_details_to_app_store(\n            username: \"your@email.com\",\n            team_name: \"Your Team\",\n            app_identifier: \"com.your.bundle\",\n            json_path: \"fastlane/app_data_usages.json\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "upload_app_privacy_details_to_app_store.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/upload_app_privacy_details_to_app_store.rb"
@@ -30671,13 +31435,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "upload_symbols_to_crashlytics(dsym_path: \"./App.dSYM.zip\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "upload_symbols_to_crashlytics.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/upload_symbols_to_crashlytics.rb"
@@ -30765,13 +31533,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The uploaded dSYM path(s)",
     "return_type": "",
     "examples": [
       "upload_symbols_to_sentry(\n            auth_token: \"...\",\n            org_slug: \"...\",\n            project_slug: \"...\",\n            dsym_path: \"./App.dSYM.zip\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "upload_symbols_to_sentry.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/upload_symbols_to_sentry.rb"
@@ -31563,7 +32335,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -31571,7 +32345,9 @@
       "deliver   # alias for \"upload_to_app_store\"",
       "appstore  # alias for \"upload_to_app_store\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "upload_to_app_store.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/upload_to_app_store.rb"
@@ -32021,14 +32797,18 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "upload_to_play_store",
       "supply # alias for \"upload_to_play_store\""
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "upload_to_play_store.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/upload_to_play_store.rb"
@@ -32160,13 +32940,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "Returns a string containing the download URL for the uploaded APK/AAB (or array of strings if multiple were uploaded).",
     "return_type": "",
     "examples": [
       "upload_to_play_store_internal_app_sharing"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "upload_to_play_store_internal_app_sharing.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/upload_to_play_store_internal_app_sharing.rb"
@@ -32624,7 +33408,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -32636,7 +33422,9 @@
       "upload_to_testflight(\n            beta_app_feedback_email: \"email@email.com\",\n            beta_app_description: \"This is a description of my app\",\n            demo_account_required: true,\n            notify_external_testers: false,\n            changelog: \"This is my changelog of things that have changed in a log\"\n          )",
       "upload_to_testflight(\n            beta_app_review_info: {\n              contact_email: \"email@email.com\",\n              contact_first_name: \"Connect\",\n              contact_last_name: \"API\",\n              contact_phone: \"5558675309\",\n              demo_account_name: \"demo@email.com\",\n              demo_account_password: \"connectapi\",\n              notes: \"this is review note for the reviewer <3 thank you for reviewing\"\n            },\n            localized_app_info: {\n              \"default\": {\n                feedback_email: \"default@email.com\",\n                marketing_url: \"https://example.com/marketing-default\",\n                privacy_policy_url: \"https://example.com/privacy-default\",\n                description: \"Default description\",\n              },\n              \"en-GB\": {\n                feedback_email: \"en-gb@email.com\",\n                marketing_url: \"https://example.com/marketing-en-gb\",\n                privacy_policy_url: \"https://example.com/privacy-en-gb\",\n                description: \"en-gb description\",\n              }\n            },\n            localized_build_info: {\n              \"default\": {\n                whats_new: \"Default changelog\",\n              },\n              \"en-GB\": {\n                whats_new: \"en-gb changelog\",\n              }\n            }\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "upload_to_testflight.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/upload_to_testflight.rb"
@@ -32698,13 +33486,17 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "validate_play_store_json_key(\n            json_key: 'path/to/you/json/key/file'\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "validate_play_store_json_key.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/validate_play_store_json_key.rb"
@@ -32806,13 +33598,17 @@
         ]
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "verify_build(\n            provisioning_type: \"distribution\",\n            bundle_identifier: \"com.example.myapp\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "verify_build.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/verify_build.rb"
@@ -32829,14 +33625,20 @@
       "ios",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "verify_pod_keys"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "verify_pod_keys.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/verify_pod_keys.rb"
@@ -32859,20 +33661,24 @@
         "env_name": "FL_VERIFY_XCODE_XCODE_PATH",
         "description": "The path to the Xcode installation to test",
         "data_type": "String",
-        "default_value": "/Applications/Xcode.app",
+        "default_value": "/Applications/Xcode_26.6.app",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "verify_xcode",
       "verify_xcode(xcode_path: \"/Applications/Xcode.app\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "verify_xcode.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/verify_xcode.rb"
@@ -32954,7 +33760,9 @@
       "version = version_bump_podspec(path: \"TSMessages.podspec\", bump_type: \"patch\")",
       "version = version_bump_podspec(path: \"TSMessages.podspec\", version_number: \"1.4\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "version_bump_podspec.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/version_bump_podspec.rb"
@@ -33005,7 +33813,9 @@
     "examples": [
       "version = version_get_podspec(path: \"TSMessages.podspec\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "version_get_podspec.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/version_get_podspec.rb"
@@ -33022,14 +33832,20 @@
       "ios",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "xcarchive"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "xcodebuild.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcodebuild.rb"
@@ -33046,14 +33862,20 @@
       "ios",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "xcbuild"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "xcodebuild.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcodebuild.rb"
@@ -33070,14 +33892,20 @@
       "ios",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "xcclean"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "xcodebuild.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcodebuild.rb"
@@ -33094,14 +33922,20 @@
       "ios",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "xcexport"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "xcodebuild.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcodebuild.rb"
@@ -33171,7 +34005,9 @@
     "examples": [
       "xcode_install(version: \"7.1\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "xcode_install.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcode_install.rb"
@@ -33188,14 +34024,20 @@
       "ios",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "xcode_select(\"/Applications/Xcode-8.3.2.app\")"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "xcode_select.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcode_select.rb"
@@ -33309,7 +34151,9 @@
     "examples": [
       "xcode_server_get_assets(\n            host: \"10.99.0.59\", # Specify Xcode Server's Host or IP Address\n            bot_name: \"release-1.3.4\" # Specify the particular Bot\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "xcode_server_get_assets.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcode_server_get_assets.rb"
@@ -33326,14 +34170,20 @@
       "ios",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "xcodebuild(\n            archive: true,\n            archive_path: \"./build-dir/MyApp.xcarchive\",\n            scheme: \"MyApp\",\n            workspace: \"MyApp.xcworkspace\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "xcodebuild.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcodebuild.rb"
@@ -33386,7 +34236,7 @@
         "env_name": "FL_XCODES_BINARY_PATH",
         "description": "Where the xcodes binary lives on your system (full path)",
         "data_type": "String",
-        "default_value": "",
+        "default_value": "/opt/homebrew/bin/xcodes",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -33414,7 +34264,9 @@
       "xcodes(version: \"14.1\")",
       "xcodes # When missing, the version value defaults to the value specified in the .xcode-version file"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "xcodes.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcodes.rb"
@@ -33431,14 +34283,20 @@
       "ios",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "xcov(\n            workspace: \"YourWorkspace.xcworkspace\",\n            scheme: \"YourScheme\",\n            output_directory: \"xcov_output\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "xcov.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcov.rb"
@@ -33455,14 +34313,20 @@
       "ios",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "xctest(\n            destination: \"name=iPhone 7s,OS=10.0\"\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "xcodebuild.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcodebuild.rb"
@@ -33479,15 +34343,21 @@
       "ios",
       "mac"
     ],
-    "options": [],
-    "output": [],
+    "options": [
+
+    ],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
       "xctool(:test)",
       "# If you prefer to have the build configuration stored in the `Fastfile`:\n          xctool(:test, [\n            \"--workspace\", \"'AwesomeApp.xcworkspace'\",\n            \"--scheme\", \"'Schema Name'\",\n            \"--configuration\", \"Debug\",\n            \"--sdk\", \"iphonesimulator\",\n            \"--arch\", \"i386\"\n          ].join(\" \"))"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "xctool.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xctool.rb"
@@ -33517,7 +34387,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "",
     "return_type": "",
     "examples": [
@@ -33525,7 +34397,9 @@
       "xcversion(version: \"~> 8.1.0\") # Selects the latest installed version from the 8.1.x set",
       "xcversion # When missing, the version value defaults to the value specified in the .xcode-version file"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": true,
     "source_file": "xcversion.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/xcversion.rb"
@@ -33615,7 +34489,9 @@
         "conflicting_options": null
       }
     ],
-    "output": [],
+    "output": [
+
+    ],
     "return_value": "The path to the output zip file",
     "return_type": "string",
     "examples": [
@@ -33626,7 +34502,9 @@
       "zip(\n            path: \"./\",\n            output_path: \"Source Code.zip\",\n            exclude: [\".git/*\"]\n          )",
       "zip(\n            path: \"./\",\n            output_path: \"Swift Code.zip\",\n            include: [\"**/*.swift\"],\n            exclude: [\"Package.swift\", \"vendor/*\", \"Pods/*\"]\n          )"
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "is_deprecated": false,
     "source_file": "zip.rb",
     "source_url": "https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/zip.rb"
