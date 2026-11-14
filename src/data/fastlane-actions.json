@@ -8521,7 +8521,7 @@
         "env_name": "PRODUCE_SKU",
         "description": "SKU Number (e.g. '1234')",
         "data_type": "String",
-        "default_value": "1794565601",
+        "default_value": "1794649467",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -11748,7 +11748,7 @@
         "env_name": "",
         "description": "[Advanced] A block to customize your screenshots' device orientation",
         "data_type": "string_callback",
-        "default_value": "#<Proc:0x000000012507fb90 /Users/runner/.local/share/gem/ruby/3.3.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
+        "default_value": "#<Proc:0x0000000122acae18 /Users/runner/.local/share/gem/ruby/3.3.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -11953,7 +11953,7 @@
         "env_name": "",
         "description": "[Advanced] A block to customize your screenshots' device orientation",
         "data_type": "string_callback",
-        "default_value": "#<Proc:0x000000012507fb90 /Users/runner/.local/share/gem/ruby/3.3.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
+        "default_value": "#<Proc:0x0000000122acae18 /Users/runner/.local/share/gem/ruby/3.3.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -20779,7 +20779,7 @@
         "env_name": "PRODUCE_SKU",
         "description": "SKU Number (e.g. '1234')",
         "data_type": "String",
-        "default_value": "1794565602",
+        "default_value": "1794649467",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
