@@ -8521,7 +8521,7 @@
         "env_name": "PRODUCE_SKU",
         "description": "SKU Number (e.g. '1234')",
         "data_type": "String",
-        "default_value": "1794737804",
+        "default_value": "1794825102",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -11748,7 +11748,7 @@
         "env_name": "",
         "description": "[Advanced] A block to customize your screenshots' device orientation",
         "data_type": "string_callback",
-        "default_value": "#<Proc:0x0000000126a750b8 /Users/runner/.local/share/gem/ruby/3.3.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
+        "default_value": "#<Proc:0x000000012642b4f0 /Users/runner/.local/share/gem/ruby/3.3.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -11953,7 +11953,7 @@
         "env_name": "",
         "description": "[Advanced] A block to customize your screenshots' device orientation",
         "data_type": "string_callback",
-        "default_value": "#<Proc:0x0000000126a750b8 /Users/runner/.local/share/gem/ruby/3.3.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
+        "default_value": "#<Proc:0x000000012642b4f0 /Users/runner/.local/share/gem/ruby/3.3.0/gems/fastlane-2.241.2/frameit/lib/frameit/options.rb:81>",
         "optional": true,
         "sensitive": false,
         "conflicting_options": null
@@ -20779,7 +20779,7 @@
         "env_name": "PRODUCE_SKU",
         "description": "SKU Number (e.g. '1234')",
         "data_type": "String",
-        "default_value": "1794737805",
+        "default_value": "1794825102",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
@@ -30954,7 +30954,7 @@
         "env_name": "FL_PROJECT_PROVISIONING_CERTIFICATE_PATH",
         "description": "Path to apple root certificate",
         "data_type": "String",
-        "default_value": "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/AppleIncRootCertificate.cer",
+        "default_value": "/var/folders/q2/p1t6rgxj5fj32g1dc7dmd49r0000gn/T/AppleIncRootCertificate.cer",
         "optional": false,
         "sensitive": false,
         "conflicting_options": null
