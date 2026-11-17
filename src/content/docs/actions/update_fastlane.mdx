@@ -43,6 +43,8 @@ After the above changes, restart your terminal, then run `mkdir $GEM_HOME` to cr
 
 Recommended usage of the `update_fastlane` action is at the top inside of the `before_all` block, before running any other action.
 
+When fastlane runs with Bundler (`bundle exec fastlane`), this action does nothing: run `bundle update fastlane` instead.
+
 ## Parameters & Options
 
 Total options available: **2**

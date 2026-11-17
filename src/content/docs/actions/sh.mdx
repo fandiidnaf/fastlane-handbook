@@ -33,13 +33,16 @@ Be aware of a specific behavior of `sh` action with regard to the working direct
 
 ## Parameters & Options
 
-Total options available: **3**
+Total options available: **6**
 
 | Key | Type | Env Variable | Default | Required | Description |
 | :--- | :--- | :--- | :--- | :---: | :--- |
 | `command` | `String` | `-` | `-` | **Yes** | Shell command to be executed |
 | `log` | `Fastlane::Boolean` | `-` | `true` | No | Determines whether fastlane should print out the executed command itself and output of the executed command. If command line option --troubleshoot is used, then it overrides this option to true |
 | `error_callback` | `string_callback` | `-` | `-` | No | A callback invoked with the command output if there is a non-zero exit status |
+| `stdin` | `String` | `-` | `-` | No | Data written to the command's standard input, which is then closed. It is never printed, so it can carry a secret the command reads from its input |
+| `chdir` | `String` | `-` | `-` | No | Directory the command runs in; the lane's own directory stays as it is |
+| `separate_stderr` | `Fastlane::Boolean` | `-` | `false` | No | Return stdout only; stderr goes to the error message and the error_callback |
 
 
 ## Examples
@@ -50,6 +53,14 @@ sh("ls")
 
 ```ruby
 sh("git", "commit", "-m", "My message")
+```
+
+```ruby
+sh("gh", "auth", "login", "--with-token", stdin: ENV["GH_TOKEN"])
+```
+
+```ruby
+version = sh("xcodebuild", "-version", separate_stderr: true)
 ```
 
 

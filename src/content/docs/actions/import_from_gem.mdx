@@ -1,0 +1,64 @@
+---
+title: "import_from_gem"
+description: "Import Fastfiles from an installed gem to use their lanes"
+---
+
+<div class="action-metadata-card">
+  <div class="metadata-row">
+    <span class="platform-chip chip-cross">
+      <span class="chip-icon"><svg class="platform-svg-inline cross-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+      <span class="chip-label">Universal (Cross-Platform)</span>
+    </span>
+    <span class="category-badge">Category: <code>misc</code></span>
+    <a href="/fastlane-handbook/actions-by-platform/#cross" class="catalog-link">Platform Catalog &rarr;</a>
+  </div>
+  <div class="audience-row">
+    <span class="audience-label">Target Audience:</span>
+    <span class="audience-text">Universal workflows (Git, Slack, shell execution, CI/CD orchestration across Linux/macOS/Windows)</span>
+  </div>
+</div>
+
+<div class="community-disclaimer">
+  <strong>Community Action Reference</strong>: Inspected directly from Fastlane core ruby gem definitions.
+</div>
+
+**Supported Platforms:** `ios`, `android`, `mac`
+
+> Import Fastfiles from an installed gem to use their lanes
+
+## Details
+
+Like `import_from_git`, this is useful if you share lanes across multiple apps, here by packaging the Fastfiles in a gem. The project's `Gemfile.lock` then pins the version of the shared lanes and of what they depend on, and the fastlane plugins the gem depends on are loaded when its Fastfiles are imported.
+The gem must be in the project's Gemfile. By default every `fastlane/Fastfile*` in the gem is imported, so lanes can be split into files by purpose; an `actions` folder next to them is imported too.
+
+## Parameters & Options
+
+Total options available: **2**
+
+| Key | Type | Env Variable | Default | Required | Description |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| `gem_name` | `String` | `-` | `-` | **Yes** | The gem to import the Fastfiles and actions from |
+| `paths` | `Array` | `-` | `["fastlane/Fastfile*"]` | No | The path(s) of the Fastfiles in the gem, as glob patterns |
+
+
+## Examples
+
+```ruby
+import_from_gem(
+  gem_name: "my_company_lanes" # The gem to import the Fastfiles from, listed in your Gemfile
+)
+```
+
+```ruby
+import_from_gem(
+  gem_name: "my_company_lanes",
+  paths: ["fastlane/Fastfile", "fastlane/Fastfile.release"] # The Fastfiles to import, relative to the gem
+)
+```
+
+
+## Source & Upstream
+
+- **Gem Action**: `import_from_gem.rb`
+- **Upstream Source**: [Inspect Ruby Implementation on GitHub](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/import_from_gem.rb)
+- **Authors**: `lacostej`

@@ -32,7 +32,7 @@ More information: https://docs.fastlane.tools/actions/supply/
 
 ## Parameters & Options
 
-Total options available: **40**
+Total options available: **41**
 
 | Key | Type | Env Variable | Default | Required | Description |
 | :--- | :--- | :--- | :--- | :---: | :--- |
@@ -60,6 +60,7 @@ Total options available: **40**
 | `sync_image_upload` | `Fastlane::Boolean` | `SUPPLY_SYNC_IMAGE_UPLOAD` | `false` | **Yes** | Whether to use sha256 comparison to skip upload of images and screenshots that are already in Play Store |
 | `track_promote_to` | `String` | `SUPPLY_TRACK_PROMOTE_TO` | `-` | No | The track to promote to. The default available tracks are: production, beta, alpha, internal |
 | `track_promote_release_status` | `String` | `SUPPLY_TRACK_PROMOTE_RELEASE_STATUS` | `completed` | No | Promoted track release status (used when promoting a track) - valid values are completed, draft, halted, inProgress |
+| `track_promote_force` | `Fastlane::Boolean` | `SUPPLY_TRACK_PROMOTE_FORCE` | `false` | No | Force the promotion of a version code that is no longer returned for the source track (:version_code and :version_name are required) |
 | `validate_only` | `Fastlane::Boolean` | `SUPPLY_VALIDATE_ONLY` | `false` | No | Only validate changes with Google Play rather than actually publish |
 | `mapping` | `String` | `SUPPLY_MAPPING` | `-` | No | Path to the mapping file to upload (mapping.txt or native-debug-symbols.zip alike) |
 | `mapping_paths` | `Array` | `SUPPLY_MAPPING_PATHS` | `-` | No | An array of paths to mapping files to upload (mapping.txt or native-debug-symbols.zip alike) |

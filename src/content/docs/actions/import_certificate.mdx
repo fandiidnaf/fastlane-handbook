@@ -39,7 +39,7 @@ Total options available: **7**
 | `certificate_path` | `String` | `-` | `-` | **Yes** | Path to certificate |
 | `certificate_password` | `String` | `-` | `-` | No | Certificate password |
 | `certificate_format` | `String` | `-` | `-` | No | Format of the certificate. Check the '-f' switch from 'security import --help' command |
-| `keychain_name` | `String` | `KEYCHAIN_NAME` | `-` | **Yes** | Keychain the items should be imported to |
+| `keychain_name` | `String` | `KEYCHAIN_NAME` | `-` | No | Keychain the items should be imported to |
 | `keychain_path` | `String` | `KEYCHAIN_PATH` | `-` | No | Path to the Keychain file to which the items should be imported |
 | `keychain_password` | `String` | `FL_IMPORT_CERT_KEYCHAIN_PASSWORD` | `-` | No | The password for the keychain. Note that for the login keychain this is your user's password |
 | `log_output` | `Fastlane::Boolean` | `-` | `false` | No | If output should be logged to the console |
@@ -48,19 +48,9 @@ Total options available: **7**
 ## Examples
 
 ```ruby
-import_certificate(certificate_path: "certs/AppleWWDRCA6.cer")
-```
-
-```ruby
 import_certificate(
-  certificate_path: "certs/dist.p12",
-  certificate_password: ENV["CERTIFICATE_PASSWORD"] || "default"
-)
-```
-
-```ruby
-import_certificate(
-  certificate_path: "certs/development.cer"
+  certificate_path: "certs/AppleWWDRCA6.cer",
+  keychain_name: "login.keychain"
 )
 ```
 
@@ -68,7 +58,23 @@ import_certificate(
 import_certificate(
   certificate_path: "certs/dist.p12",
   certificate_password: ENV["CERTIFICATE_PASSWORD"] || "default",
-  certificate_format: "pkcs12"
+  keychain_name: "custom.keychain"
+)
+```
+
+```ruby
+import_certificate(
+  certificate_path: "certs/development.cer",
+  keychain_path: File.expand_path("~/Library/Keychains/login.keychain-db")
+)
+```
+
+```ruby
+import_certificate(
+  certificate_path: "certs/dist.p12",
+  certificate_password: ENV["CERTIFICATE_PASSWORD"] || "default",
+  certificate_format: "pkcs12",
+  keychain_path: "/path/to/custom.keychain"
 )
 ```
 

@@ -1,11 +1,11 @@
 {
-  "fastlane_version": "2.241.2",
+  "fastlane_version": "2.242.0",
   "min_ruby_version": ">= 3.2.0",
   "recommended_ruby_version": ">= 3.3.0",
-  "extracted_at": "2026-11-16T10:31:43Z",
-  "total_actions": 238,
+  "extracted_at": "2026-11-17T11:25:09Z",
+  "total_actions": 237,
   "active_actions": 222,
-  "deprecated_actions": 16,
+  "deprecated_actions": 15,
   "upstream_repo": "https://github.com/fastlane/fastlane",
   "rubygems_url": "https://rubygems.org/gems/fastlane"
 }
