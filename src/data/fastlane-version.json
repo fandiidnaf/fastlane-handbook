@@ -2,7 +2,7 @@
   "fastlane_version": "2.242.0",
   "min_ruby_version": ">= 3.2.0",
   "recommended_ruby_version": ">= 3.3.0",
-  "extracted_at": "2026-11-20T10:50:47Z",
+  "extracted_at": "2026-11-21T10:33:46Z",
   "total_actions": 237,
   "active_actions": 222,
   "deprecated_actions": 15,
